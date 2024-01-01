@@ -28,7 +28,7 @@
             </a>
             
         </div>
-        <div class="sidebar-body pt-0 data-scrollbar">
+        <div class="sidebar-body pt-0 data-scrollbar"  style="max-height: calc(100vh - 100px); overflow-y: auto;">
             <div class="sidebar-list">
                 <!-- Sidebar Menu Start -->
                 <ul class="navbar-nav iq-main-menu" id="sidebar-menu">
