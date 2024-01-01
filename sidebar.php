@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="main.min.css">
-<div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-offset="0" class="scrollspy-y" tabindex="0">
+<div class="sidebar">
 <aside class="sidebar sidebar-default sidebar-white sidebar-base navs-rounded-all ">
         <div class="sidebar-header d-flex align-items-center justify-content-start">
             <a href="../dashboard/index.html" class="navbar-brand">
@@ -28,7 +28,8 @@
             </a>
             
         </div>
-        <div class="sidebar-body pt-0 data-scrollbar">
+        <!-- <div class="sidebar-body pt-0 data-scrollbar"> -->
+     <div class="sidebar-body pt-0 data-scrollbar"  style="max-height: calc(100vh - 100px); overflow-y: auto;">
             <div class="sidebar-list">
                 <!-- Sidebar Menu Start -->
                 <ul class="navbar-nav iq-main-menu" id="sidebar-menu">
@@ -173,7 +174,8 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link " href="employee.php">
+                                <!-- add employee -->
+                                <a class="nav-link " href="employee.php">  
                                     <i class="icon">
                                         <svg class="icon-10"   width="10" viewBox="0 0 24 24" fill="currentColor">
                                             <g>
@@ -186,7 +188,8 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link " href="../dashboard/app">
+                                <!-- emp list  -->
+                                <a class="nav-link " href="employee-list.php">
                                     <i class="icon">
                                         <svg class="icon-10"   width="10" viewBox="0 0 24 24" fill="currentColor">
                                             <g>

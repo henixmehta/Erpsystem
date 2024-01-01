@@ -8,7 +8,9 @@
    <link rel="stylesheet" href="sidebar.css">
 </head>
 <body>
-	<div class="dashboard">
+<?php 
+   include 'sidebar.php';
+            ?>
 	<main class="main-content">
             <div class="card-body px-0">
                <div class="table-responsive">
@@ -410,6 +412,5 @@
                </div>
             </div>
         </main>
-        </div>
     </body>
 </html>
