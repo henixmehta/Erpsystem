@@ -7,6 +7,5 @@
 </head>
 <body>
         enter city here  
-        <h1> city1 </h1>
 </body>
 </html>
