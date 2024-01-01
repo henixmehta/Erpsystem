@@ -6,6 +6,7 @@
     <title>Document</title>
 </head>
 <body>
-        enter city here
+        enter city here  
+        <h1> city1 </h1>
 </body>
 </html>
