@@ -160,7 +160,7 @@
                         </a>
                         <ul class="sub-nav collapse" id="sidebar-user" data-bs-parent="#sidebar-menu">
                             <li class="nav-item">
-                                <a class="nav-link " href="../dashboard/app/user-profile.html">
+                                <a class="nav-link " href="#">
                                     <i class="icon">
                                         <svg class="icon-10"   width="10" viewBox="0 0 24 24" fill="currentColor">
                                             <g>
@@ -173,7 +173,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link " href="../dashboard/app/user-add.html">
+                                <a class="nav-link " href="employee.php">
                                     <i class="icon">
                                         <svg class="icon-10"   width="10" viewBox="0 0 24 24" fill="currentColor">
                                             <g>
@@ -186,7 +186,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link " href="../dashboard/app/user-list.html">
+                                <a class="nav-link " href="../dashboard/app">
                                     <i class="icon">
                                         <svg class="icon-10"   width="10" viewBox="0 0 24 24" fill="currentColor">
                                             <g>
