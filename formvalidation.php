@@ -1,4 +1,5 @@
 <?php
+
 function validateEmailWithDomain($email, $requiredDomain) {
     // Remove illegal characters from email
     $email = filter_var($email, FILTER_SANITIZE_EMAIL);
@@ -15,24 +16,36 @@ function validateEmailWithDomain($email, $requiredDomain) {
     }
 
     return false; // Invalid email or incorrect domain
-}
-
+    }
 $e_fname = $e_lname = $e_add1 = $e_email = $e_mobno = $e_altconno = $e_pno = $e_uname = $e_pass = $e_rpass = "";
+
+// Function to clear error messages if the field is not empty
+function clearError($field, &$error) {
+    if (!empty($_POST[$field])) {
+        $error = "";
+    }
+}
 
 if (isset($_POST['sub_btn'])) {
     // Validate First Name
     if (empty($_POST['fname'])) {
         $e_fname .= "<ul><li>Enter First Name</li></ul>";
+    } else {
+        clearError('fname', $e_fname);
     }
 
     // Validate Last Name
     if (empty($_POST['lname'])) {
         $e_lname .= "Enter Last Name";
+    } else {
+        clearError('lname', $e_lname);
     }
 
     // Validate Address 1
     if (empty($_POST['add1'])) {
         $e_add1 .= "Enter Address";
+    } else {
+        clearError('add1', $e_add1);
     }
 
     // Validate Email
@@ -44,6 +57,8 @@ if (isset($_POST['sub_btn'])) {
 
         if (!validateEmailWithDomain($emailToValidate, $requiredDomain)) {
             $e_email .= "Invalid email or doesn't have the required domain";
+        } else {
+            clearError('email', $e_email);
         }
     }
 
@@ -51,6 +66,7 @@ if (isset($_POST['sub_btn'])) {
     if (empty($_POST['mobno'])) {
         $e_mobno .= "Enter Mobile Number";
     } else {
+        clearError('mobno', $e_mobno);
         // Additional validation for mobile number if needed
     }
 
@@ -58,6 +74,7 @@ if (isset($_POST['sub_btn'])) {
     if (empty($_POST['altconno'])) {
         $e_altconno .= "Enter Alternate Contact";
     } else {
+        clearError('altconno', $e_altconno);
         // Additional validation for alternate contact if needed
     }
 
@@ -65,6 +82,7 @@ if (isset($_POST['sub_btn'])) {
     if (empty($_POST['pno'])) {
         $e_pno .= "Enter Pin Code";
     } else {
+        clearError('pno', $e_pno);
         // Additional validation for pin code if needed
     }
 
@@ -72,6 +90,7 @@ if (isset($_POST['sub_btn'])) {
     if (empty($_POST['uname'])) {
         $e_uname .= "Enter User Name";
     } else {
+        clearError('uname', $e_uname);
         // Additional validation for user name if needed
     }
 
@@ -79,6 +98,7 @@ if (isset($_POST['sub_btn'])) {
     if (empty($_POST['pass'])) {
         $e_pass .= "Enter Password";
     } else {
+        clearError('pass', $e_pass);
         // Additional validation for password if needed
     }
 
@@ -86,6 +106,7 @@ if (isset($_POST['sub_btn'])) {
     if (empty($_POST['rpass'])) {
         $e_rpass .= "Enter Repeat Password";
     } else {
+        clearError('rpass', $e_rpass);
         // Additional validation for repeat password if needed
     }
 
