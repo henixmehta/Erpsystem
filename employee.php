@@ -190,6 +190,18 @@
                                  <label class="form-label" for="rpass">Repeat Password:</label>
                                  <input type="password" class="form-control" id="rpass" placeholder="Repeat Password ">
                               </div>
+                              <fieldset class="mb-3">
+                              <legend>Status:</legend>
+                                 <div class="form-check">
+                                    <input type="radio" name="radios" class="form-check-input" id="Active">
+                                    <label class="form-check-label" for="Active">Active</label>
+                                 </div>
+                                 <div class="mb-3 form-check">
+                                    <input type="radio" name="radios" class="form-check-input" id="Inactive">
+                                    <label class="form-check-label" for="Inactive">Inactive</label>
+                                 </div>
+                              </fieldset> 
+                           </fieldset> 
                            </div>
                            <div class="checkbox">
                               <label class="form-label"><input class="form-check-input me-2" type="checkbox" value="" id="flexCheckChecked">Enable Two-Factor-Authentication</label>
