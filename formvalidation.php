@@ -1,4 +1,22 @@
 <?php
+function validateEmailWithDomain($email, $requiredDomain) {
+    // Remove illegal characters from email
+    $email = filter_var($email, FILTER_SANITIZE_EMAIL);
+
+    // Validate email using filter_var
+    if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        // Extract the domain from the email address
+        list($username, $domain) = explode('@', $email);
+
+        // Check if the domain matches the required domain
+        if ($domain === $requiredDomain) {
+            return true; // Valid email with the correct domain
+        }
+    }
+
+    return false; // Invalid email or incorrect domain
+}
+
 $e_fname = $e_lname = $e_add1 = $e_email = $e_mobno = $e_altconno = $e_pno = $e_uname = $e_pass = $e_rpass = "";
 
 if (isset($_POST['sub_btn'])) {

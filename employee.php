@@ -78,7 +78,7 @@
                         </div>
                         <div class="form-group">
                            <label class="form-label">User Role:</label>
-                           <select name="type" class="selectpicker form-control" data-style="py-0">
+                           <select name="type" class="selectpicker form-control" data-style="py-0" required>
                               <option>Select</option>
                               <option>Web Designer</option>
                               <option>Web Developer</option>
@@ -93,25 +93,25 @@
                            <div class="row">
                               <div class="form-group col-md-6">
                                  <label class="form-label" for="fname">First Name:</label>
-                                 <input type="text" class="form-control" id="fname" placeholder="First Name">
+                                 <input type="text" class="form-control" id="fname" placeholder="First Name" required>
                                  <span class="error"><?php echo $e_fname; ?></span>                             
                               </div>
                               
                               <div class="form-group col-md-6">
                                  <label class="form-label" for="lname">Last Name:</label>
-                                 <input type="text" class="form-control" id="lname" placeholder="Last Name">
+                                 <input type="text" class="form-control" id="lname" placeholder="Last Name" required>
                                  <span class="error"><?php echo $e_lname; ?></span>   
                               </div>
 
                               <div class="form-group col-md-6">
                                  <label class="form-label" for="bdate">bdate:</label>
-                                 <input type="date" class="form-control" id="bdate" placeholder="Enter your Birthday">
+                                 <input type="date" class="form-control" id="bdate" placeholder="Enter your Birthday" required>
                                  <span class="error"><?php echo $e_lname; ?></span>   
                               </div>
                               
                               <div class="form-group col-sm-12">
                                  <label class="form-label">Country:</label>
-                                 <select name="country" class="form-control" >
+                                 <select name="country" class="form-control" required>
                                     <option>Select Country</option>
                                     <option>Caneda</option>
                                     <option>Noida</option>
@@ -122,58 +122,58 @@
                               </div>
                               <div class="form-group col-md-12">
                                  <label class="form-label" for="city">Town/City:</label>
-                                 <input type="text" class="form-control" id="city" placeholder="Town/City">
+                                 <input type="text" class="form-control" id="city" placeholder="Town/City" required>
                               <span class="error"><?php echo $e_fname; ?></span>  
                               </div>
                               <div class="form-group col-md-6">
                                  <label class="form-label" for="add1">Street Address 1:</label>
-                                 <input type="text" class="form-control" id="add1" placeholder="Street Address 1">
+                                 <input type="text" class="form-control" id="add1" placeholder="Street Address 1" required>
                               <span class="error"><?php echo $e_fname; ?></span>  
                               </div>
                               <div class="form-group col-md-6">
                                 <label class="form-label" for="mobno">Mobile Number:</label>
-                                 <input type="text" class="form-control" id="mobno" placeholder="Mobile Number">
+                                 <input type="text" class="form-control" id="mobno" placeholder="Mobile Number" required>
                               <span class="error"><?php echo $e_fname; ?></span>  
                               </div>
                               <div class="form-group col-md-6">
                                  <label class="form-label" for="altconno">Alternate Contact:</label>
-                                 <input type="text" class="form-control" id="altconno" placeholder="Alternate Contact">
+                                 <input type="text" class="form-control" id="altconno" placeholder="Alternate Contact" required>
                               <span class="error"><?php echo $e_fname; ?></span>  
                               </div>
                               <div class="form-group col-md-6">
                                  <label class="form-label" for="email">Email:</label>
-                                 <input type="email" class="form-control" id="email" placeholder="Email">
+                                 <input type="email" class="form-control" id="email" placeholder="Email" required>
                               <span class="error"><?php echo $e_fname; ?></span>  
                               </div>
                               <div class="form-group col-md-6">
                                  <label class="form-label" for="pno">Pin Code:</label>
-                                 <input type="text" class="form-control" id="pno" placeholder="Pin Code">
+                                 <input type="text" class="form-control" id="pno" placeholder="Pin Code" required>
                               <span class="error"><?php echo $e_fname; ?></span>  
                               </div>
                              
                               <div class="form-group col-md-12">
                                  <label class="form-label" for="Salary">Salary: </label>
-                                 <input type="text" class="form-control" id="Salary" placeholder="Salary">
+                                 <input type="text" class="form-control" id="Salary" placeholder="Salary" required>
                               <span class="error"><?php echo $e_fname; ?></span>  
                               </div>
                               <div class="form-group col-md-6">
                                  <label class="form-label" for="Joining Date">Joining Date:</label>
-                                 <input type="date" class="form-control" id="bdate" placeholder="Enter your Joining Date">
+                                 <input type="date" class="form-control" id="bdate" placeholder="Enter your Joining Date" required>
                                  <span class="error"><?php echo $e_lname; ?></span>   
                               </div>
                               <div class="form-group col-md-12">
                                  <label class="form-label" for="Experience">Experience: </label>
-                                 <input type="text" class="form-control" id="Experience" placeholder="Experience in year/ month" >
+                                 <input type="text" class="form-control" id="Experience" placeholder="Experience in year/ month" required>
                               <span class="error"><?php echo $e_fname; ?></span>  
                               </div>
                               <div class="form-group col-md-12">
                                  <label class="form-label" for="Degree">Degree certificate: </label>
-                                 <input type="file" class="form-control" id="Degree" placeholder="Degree certificate" >
+                                 <input type="file" class="form-control" id="Degree" placeholder="Degree certificate" required>
                               <span class="error"><?php echo $e_fname; ?></span>  
                               </div>
                               <div class="form-group col-md-12">
                                  <label class="form-label" for="Resume">Resume: </label>
-                                 <input type="file" class="form-control" id="Resume" placeholder="Resume" >
+                                 <input type="file" class="form-control" id="Resume" placeholder="Resume" required >
                               <span class="error"><?php echo $e_fname; ?></span>  
                               </div>
                            </div>
@@ -182,19 +182,19 @@
                            <div class="row">
                               <div class="form-group col-md-12">
                                  <label class="form-label" for="uname">User Name:</label>
-                                 <input type="text" class="form-control" id="uname" placeholder="User Name">
+                                 <input type="text" class="form-control" id="uname" placeholder="User Name" required>
                               </div>
                               <div class="form-group col-md-6">
                                  <label class="form-label" for="pass">Password:</label>
-                                 <input type="password" class="form-control" id="pass" placeholder="Password">
+                                 <input type="password" class="form-control" id="pass" placeholder="Password" required>
                               </div>
                               <div class="form-group col-md-6">
                                  <label class="form-label" for="rpass">Repeat Password:</label>
-                                 <input type="password" class="form-control" id="rpass" placeholder="Repeat Password ">
+                                 <input type="password" class="form-control" id="rpass" placeholder="Repeat Password " required>
                               </div>
                            </div>
                            <div class="checkbox">
-                              <label class="form-label"><input class="form-check-input me-2" type="checkbox" value="" id="flexCheckChecked">Enable Two-Factor-Authentication</label>
+                              <label class="form-label"><input class="form-check-input me-2" type="checkbox" value="" id="flexCheckChecked" required>Enable Two-Factor-Authentication</label>
                            </div>
                            <!-- <button type="submit" name="sub_btn" class="btn btn-primary">Add New User</button> -->
                         <input type="submit" value="submit" class="btn btn-primary" name="sub_btn">
