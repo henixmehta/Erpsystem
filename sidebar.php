@@ -52,7 +52,7 @@
                             <span class="item-name">Dashboard</span>
                         </a>
                     </li>
-                         \<li class="nav-item">
+                         <li class="nav-item">
                         <a class="nav-link" data-bs-toggle="collapse" href="#sidebar-user" role="button" aria-expanded="false" aria-controls="sidebar-user">
                             <i class="icon">
                                 <svg class="icon-20" width="20" viewBox="0 0 24 24" fill="none"  >
@@ -74,47 +74,6 @@
                         <ul class="sub-nav collapse" id="sidebar-user" data-bs-parent="#sidebar-menu">
                             
                         <li class="nav-item">
-                                <!-- add employee -->
-                                <a class="nav-link " href="employee.php">  
-                                    <i class="icon">
-                                        <svg class="icon-10"   width="10" viewBox="0 0 24 24" fill="currentColor">
-                                            <g>
-                                            <circle cx="12" cy="12" r="8" fill="currentColor"></circle>
-                                            </g>
-                                        </svg>
-                                    </i>
-                                    <i class="sidenav-mini-icon"> A </i>
-                                    <span class="item-name">Add Employee Role</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link " href="#">
-                                    <i class="icon">
-                                        <svg class="icon-10"   width="10" viewBox="0 0 24 24" fill="currentColor">
-                                            <g>
-                                            <circle cx="12" cy="12" r="8" fill="currentColor"></circle>
-                                            </g>
-                                        </svg>
-                                    </i>
-                                    <i class="sidenav-mini-icon"> U </i>
-                                    <span class="item-name">Employee Profile</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <!-- add employee -->
-                                <a class="nav-link " href="employee.php">  
-                                    <i class="icon">
-                                        <svg class="icon-10"   width="10" viewBox="0 0 24 24" fill="currentColor">
-                                            <g>
-                                            <circle cx="12" cy="12" r="8" fill="currentColor"></circle>
-                                            </g>
-                                        </svg>
-                                    </i>
-                                    <i class="sidenav-mini-icon"> A </i>
-                                    <span class="item-name">Add Employee</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
                                 <!-- emp list  -->
                                 <a class="nav-link " href="employee-list.php">
                                     <i class="icon">
@@ -125,7 +84,7 @@
                                         </svg>
                                     </i>
                                     <i class="sidenav-mini-icon"> U </i>
-                                    <span class="item-name">Employee List</span>
+                                    <span class="item-name">Employee</span>
                                 </a>
                             </li>
                         </ul>

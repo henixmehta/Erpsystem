@@ -64,7 +64,7 @@
                   </div>
                   <div class="card-body">
                      <div class="new-user-info">
-                     <!-- form    -->
+                     <!-- form-->
 
          
 					<form method="POST">
