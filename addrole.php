@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Team</title>
+	<title>Employee</title>
    <style>
         .error {
       color: red;
@@ -21,10 +21,8 @@
             <?php 
                include 'sidebar.php';
                include 'formvalidation.php';
-
             ?>
-<main class="main-content">
-
+        <main class="main-content">
 			<div class="iq-navbar-header" style="height: 215px;">
                <div class="container-fluid iq-container">
                   <div class="row">
@@ -57,84 +55,33 @@
                <div class="card">
                   <div class="card-header d-flex justify-content-between">
                      <div class="header-title">
-                        <h4 class="card-title">Add New Team Information</h4>
+                     <h4 class="card-title">Add  Employee Role</h4>
                      </div>
                   </div>
                   <div class="card-body">
-                     <div class="new-Team-info">
+                     <div class="new-employee-info">
                      <!-- form-->
 
          
 					<form method="POST">
                <div class="form-group">
                            <div class="profile-img-edit position-relative">
+    
 							<!-- insert add profile -->
-                           </div>
+                              
                         </div>
-                        <!-- <div class="form-group">
-                           <label class="form-label">Team Role:</label>
-                           <select name="type" class="selectpicker form-control" data-style="py-0">
-                              <option>Select</option>
-                              <option>Web Designer</option>
-                              <option>Web Developer</option>
-                              <option>Tester</option>
-                              <option>Php Developer</option>
-                              <option>Ios Developer </option>
-                           </select>
-                        </div> -->
             
                            <div class="row">
-                              <div class="form-group col-md-15">
-                                 <label class="form-label" for="fname">Team Name:</label>
-                                 <input type="text" class="form-control" id="tname" placeholder="team Name">
-                                 <span class="error"><?php echo $e_fname; ?></span>                             
+                              <div class="form-group col-md-6">
+                                 <label class="form-label" for="rname">Role Name:</label>
+                                 <input type="text" class="form-control" id="Rolename" placeholder="RoleName">
+                                 <span class="error"><?php echo $e_rname; ?></span>                             
                               </div>
-                              <div class="form-group col-md-15">
-                                 <label class="form-label" for="Degree"> Team Image </label>
-                                 <input type="file" class="form-control" id="Degree" placeholder="Degree certificate" >
-                              <span class="error"><?php echo $e_fname; ?></span>  
-                              </div>
-                           
-                              
-                            
-
-                              <fieldset class="mb-3">
-                              <legend>Status:</legend>
-                                 <div class="form-check">
-                                    <input type="radio" name="radios" class="form-check-input" id="Active">
-                                    <label class="form-check-label" for="Active">Active</label>
-                                 </div>
-                                 <div class="mb-3 form-check">
-                                    <input type="radio" name="radios" class="form-check-input" id="Inactive">
-                                    <label class="form-check-label" for="Inactive">Inactive</label>
-                                 </div>
-                              </fieldset> 
-
-
-                          
-                              <div class="form-group col-md-15">
-                                 <label class="form-label" for="add1">Team Description</label>
-                                 <input type="text" class="form-control" id="add1" placeholder="Team Description">
-                              <span class="error"><?php echo $e_fname; ?></span>  
-                              </div>
-                              
-                              
-                           <div class="form-group">
-                           <label class="form-label">Team Projects</label>
-                           <select name="type" class="selectpicker form-control" data-style="py-0">
-                              <option>Select</option>
-                              <option>Web Designer</option>
-                              <option>Web Developer</option>
-                              <option>Tester</option>
-                              <option>Php Developer</option>
-                              <option>Ios Developer </option>
-                           </select>
-                        </div>
                            <div class="checkbox">
                               <label class="form-label"><input class="form-check-input me-2" type="checkbox" value="" id="flexCheckChecked">Enable Two-Factor-Authentication</label>
                            </div>
-                           <!-- <button type="submit" name="sub_btn" class="btn btn-primary">Add New Team</button> -->
-                        <input type="submit" value="submit" class="btn btn-primary" name="sub_btn">
+                           <!-- <button type="submit" name="sub_btn" class="btn btn-primary">Add New Employee</button> -->
+                        <input type="submit" value="submit" class="btn btn-primary" name="sub_btn1">
                         </form>
                      </div>
                   </div>

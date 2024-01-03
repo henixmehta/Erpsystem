@@ -57,13 +57,13 @@
                <div class="card">
                   <div class="card-header d-flex justify-content-between">
                      <div class="header-title">
-                     <h4 class="card-title">Add New User</h4>
+                     <h4 class="card-title">Add New Employee</h4>
                         <hr>
-                        <h4 class="card-title">New User Information</h4>
+                        <h4 class="card-title">New Employee Information</h4>
                      </div>
                   </div>
                   <div class="card-body">
-                     <div class="new-user-info">
+                     <div class="new-employee-info">
                      <!-- form-->
 
          
@@ -77,7 +77,7 @@
 
                         </div>
                         <div class="form-group">
-                           <label class="form-label">User Role:</label>
+                           <label class="form-label">Employee Role:</label>
                            <select name="type" class="selectpicker form-control" data-style="py-0">
                               <option>Select</option>
                               <option>Web Designer</option>
@@ -175,12 +175,23 @@
                               <span class="error"><?php echo $e_fname; ?></span>  
                               </div>
                            </div>
+                           <div class="form-group">
+                           <label class="form-label">Add in Team:</label>
+                           <select name="type" class="selectpicker form-control" data-style="py-0">
+                              <option>Select</option>
+                              <option>Web Designer</option>
+                              <option>Web Developer</option>
+                              <option>Tester</option>
+                              <option>Php Developer</option>
+                              <option>Ios Developer </option>
+                           </select>
+                        </div>
                            <hr>
                            <h5 class="mb-3">Security</h5>
                            <div class="row">
                               <div class="form-group col-md-12">
-                                 <label class="form-label" for="uname">User Name:</label>
-                                 <input type="text" class="form-control" id="uname" placeholder="User Name">
+                                 <label class="form-label" for="uname">Employee Name:</label>
+                                 <input type="text" class="form-control" id="uname" placeholder="Employee Name">
                               </div>
                               <div class="form-group col-md-6">
                                  <label class="form-label" for="pass">Password:</label>
@@ -206,7 +217,7 @@
                            <div class="checkbox">
                               <label class="form-label"><input class="form-check-input me-2" type="checkbox" value="" id="flexCheckChecked">Enable Two-Factor-Authentication</label>
                            </div>
-                           <!-- <button type="submit" name="sub_btn" class="btn btn-primary">Add New User</button> -->
+                           <!-- <button type="submit" name="sub_btn" class="btn btn-primary">Add New Employee</button> -->
                         <input type="submit" value="submit" class="btn btn-primary" name="sub_btn">
                         </form>
                      </div>

@@ -20,6 +20,10 @@ function validateEmailWithDomain($email, $requiredDomain) {
 
 $e_fname = $e_lname = $e_add1 = $e_email = $e_mobno = $e_altconno = $e_pno = $e_uname = $e_pass = $e_rpass = "";
 
+
+
+// role form validation
+$e_rname = "";
 // Function to clear error messages if the field is not empty
 // Function to clear error messages if the field is not empty
 function clearError($field, &$error) {
@@ -120,4 +124,18 @@ if (isset($_POST['sub_btn'])) {
     // If there are no errors, you can process the form data
     // For example, you might insert data into a database
 }
+
+
+
+// role form validation
+
+if (isset($_POST['sub_btn1'])) {
+    // Validate First Name
+    if (empty($_POST['rname'])) {
+        $e_rname = "<ul><li>Enter First Name</li></ul>";
+    } else {
+        clearError('rname', $e_rname);
+    }
+}
+
 ?>
