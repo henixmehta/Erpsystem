@@ -21,7 +21,6 @@
             <?php 
                include 'sidebar.php';
                include 'formvalidation.php';
-
             ?>
 <main class="main-content">
 
