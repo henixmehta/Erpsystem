@@ -23,7 +23,7 @@ $e_fname = $e_lname = $e_add1 = $e_email = $e_mobno = $e_altconno = $e_pno = $e_
 
 
 // role form validation
-$e_rname = "";
+
 // Function to clear error messages if the field is not empty
 // Function to clear error messages if the field is not empty
 function clearError($field, &$error) {
@@ -128,6 +128,9 @@ if (isset($_POST['sub_btn'])) {
 
 
 // role form validation
+$e_rname = "";
+
+
 
 if (isset($_POST['sub_btn1'])) {
     // Validate First Name
