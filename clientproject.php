@@ -41,19 +41,25 @@
                      <thead>
                         <tr class="ligth">
                            <th>Id</th>
-                           <th>Team Name</th>
-                           <th>Team_image</th>
-                           <th>Team employee name</th>
+                           <th>Client Name / Compney Name</th>
+                           <th>Client_Image / Compney_image</th>
+                           <th>Project_name</th>
+                           <th>Contect</th>
+                           <th>Team_name</th>
+                           <th>Project_language</th>
                            <th>Status</th>
-                           <th>Team Description</th>
+                           <th>Project_Description</th>
                            <th style="min-width: 100px">Action</th>
                         </tr>
                      </thead>
                      <tbody>
                         <tr>
                             <td>Anna Sthesia</td>
-                            <td>(760) 756 7568</td>
+                            <td>c_NAME</td>
                             <td class="text-center"><img class="bg-soft-primary rounded img-fluid avatar-40 me-3" src="../../assets/images/shapes/01.png" alt="profile"></td>
+                            <td>p_name</td></td>
+                            <td>(760) 756 7568</td>
+                           <td>HENIL</td>
                            <td>HENIL</td>
                            <td><span class="badge bg-primary">Active</span></td>
                            <td>Acme Corporation</td>
