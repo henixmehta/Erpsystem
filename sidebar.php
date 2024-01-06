@@ -20,10 +20,7 @@
                         </svg>
                     </div>
                 </div>
-                <!--logo End-->
-                
-                
-                
+                <!--logo End--> 
                 <h4 class="logo-title">Hope UI</h4>
             </a>
             
@@ -139,7 +136,7 @@
                         </a>
                         <ul class="sub-nav collapse" id="sidebar-Projects" data-bs-parent="#sidebar-menu">
                             <li class="nav-item">
-                                <a class="nav-link " href="#">
+                                <a class="nav-link " href="clientproject.php">
                                     <i class="icon">
                                         <svg class="icon-10"   width="10" viewBox="0 0 24 24" fill="currentColor">
                                             <g>
