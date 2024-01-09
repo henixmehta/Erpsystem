@@ -16,6 +16,7 @@
     }
    </style>
 </head>
+
 <body>
 <?php 
    include 'sidebar.php';

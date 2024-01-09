@@ -15,8 +15,7 @@
       </style>
       <link rel="stylesheet" href="main.min.css">
 
-
-
+  
    <body>
                <?php 
                   include 'sidebar.php';
