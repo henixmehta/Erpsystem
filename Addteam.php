@@ -127,9 +127,6 @@
                               <option>Ios Developer </option>
                            </select>
                         </div>
-                           <div class="checkbox">
-                              <label class="form-label"><input class="form-check-input me-2" type="checkbox" value="" id="flexCheckChecked">Enable Two-Factor-Authentication</label>
-                           </div>
                            <!-- <button type="submit" name="sub_btn" class="btn btn-primary">Add New Team</button> -->
                         <input type="submit" value="submit" class="btn btn-primary" name="sub_btn">
                         </form>

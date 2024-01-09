@@ -100,7 +100,7 @@
                                     <option>Ios Developer </option>
                                 </select>
                                 </div>
-                              <div class="form-group col-md-15">
+                                 <div class="form-group col-md-15">
                                  <label class="form-label" for="fname">Project Language:</label>
                                  <input type="text" class="form-control" id="tname" placeholder="Project Language">
                                  <span class="error"><?php echo $e_fname; ?></span>                             
@@ -137,9 +137,7 @@
                               <option>Ios Developer </option>
                            </select>
                         </div>
-                           <div class="checkbox">
-                              <label class="form-label"><input class="form-check-input me-2" type="checkbox" value="" id="flexCheckChecked">Enable Two-Factor-Authentication</label>
-                           </div>
+                          
                            <!-- <button type="submit" name="sub_btn" class="btn btn-primary">Add New Team</button> -->
                         <input type="submit" value="submit" class="btn btn-primary" name="sub_btn">
                         </form>

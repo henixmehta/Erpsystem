@@ -77,9 +77,7 @@
                                  <input type="text" class="form-control" id="Rolename" placeholder="RoleName">
                                  <span class="error"><?php echo $e_rname; ?></span>                             
                               </div>
-                           <div class="checkbox">
-                              <label class="form-label"><input class="form-check-input me-2" type="checkbox" value="" id="flexCheckChecked">Enable Two-Factor-Authentication</label>
-                           </div>
+                          
                            <!-- <button type="submit" name="sub_btn" class="btn btn-primary">Add New Employee</button> -->
                         <input type="submit" value="submit" class="btn btn-primary" name="sub_btn1">
                         </form>
