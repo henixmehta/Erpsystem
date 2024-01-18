@@ -20,7 +20,7 @@
 <body>
             <?php 
                include 'sidebar.php';
-               include 'formvalidation.php';
+               // include 'formvalidation.php';
             ?>
         <main class="main-content">
 			<div class="iq-navbar-header" style="height: 215px;">
