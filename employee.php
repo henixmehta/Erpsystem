@@ -1,10 +1,69 @@
-   <!DOCTYPE html>
-   <html lang="en">
+   <html>
+   
    <head>
       <meta charset="UTF-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>Employee</title>
+      <script>
+         document.querySelector("form").addEventListener("submit", function(event) {
+  event.preventDefault();
+
+  // Clear previous error messages
+  document.querySelectorAll("span.error").forEach(function(span) {
+    span.textContent = "";
+  });
+
+  // Get form elements
+  let elements = this.elements;
+  let fname = elements["fname"];
+  let lname = elements["lname"];
+  let email = elements["email"];
+  let pass = elements["pass"];
+  let rpass = elements["rpass"];
+
+  // Check for empty fields
+  if (fname.value.trim() === "") {
+    showError(fname, "First name cannot be empty.");
+  }
+  if (lname.value.trim() === "") {
+    showError(lname, "Last name cannot be empty.");
+  }
+  if (email.value.trim() === "") {
+    showError(email, "Email cannot be empty.");
+  }
+  if (pass.value.trim() === "") {
+    showError(pass, "Password cannot be empty.");
+  }
+  if (rpass.value.trim() === "") {
+    showError(rpass, "Repeat password cannot be empty.");
+  }
+
+  // Check if passwords match
+  if (pass.value !== rpass.value) {
+    showError(pass, "Passwords do not match.");
+    showError(rpass, "Passwords do not match.");
+  }
+
+  // Check for valid email format
+  if (!isValidEmail(email.value)) {
+    showError(email, "Please enter a valid email address.");
+  }
+
+  // Function to show error message
+  function showError(element, message) {
+    let parent = element.parentElement;
+    let error = parent.querySelector("span.error");
+    error.textContent = message;
+  }
+
+  // Function to check for valid email format
+  function isValidEmail(email) {
+    let regex = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
+    return regex.test(email);
+  }
+});
+      </script>
       <style>
          .error {
          color: red;
@@ -208,7 +267,7 @@
                               </div>
                               <!-- <button type="submit" name="sub_btn" class="btn btn-primary">Add New Employee</button> -->
                            <input type="submit" value="submit" class="btn btn-primary" name="sub_btn">
-                           </form>
+                        </form>
                         </div>
                      </div>
                   </div>
