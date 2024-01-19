@@ -1,6 +1,6 @@
          <?php 
                   include 'sidebar.php';
-                  include 'formvalidation.php';
+               //   include 'formvalidation.php';
          ?>
    <html>
    
@@ -129,13 +129,13 @@
                                  <div class="form-group col-md-6">
                                     <label class="form-label" for="fname">First Name:</label>
                                     <input type="text" class="form-control" id="fname" placeholder="First Name">
-                                    <span class="error"><?php echo $e_fname; ?></span>                             
+                                    <!-- <span class="error"><?php // echo $e_fname; ?></span>                              -->
                                  </div>
                                  
                                  <div class="form-group col-md-6">
                                     <label class="form-label" for="lname">Last Name:</label>
                                     <input type="text" class="form-control" id="lname" placeholder="Last Name">
-                                    <span class="error"><?php echo $e_lname; ?></span>   
+                                    <!-- <span class="error"><?php // echo $e_lname; ?></span>    -->
                                  </div>
                                  
                                  <div class="form-group">
@@ -153,7 +153,7 @@
                                  <div class="form-group col-md-12">
                                     <label class="form-label" for="bdate">bdate:</label>
                                     <input type="date" class="form-control" id="bdate" placeholder="Enter your Birthday">
-                                    <span class="error"><?php echo $e_lname; ?></span>   
+                                    <!-- <span class="error"><?php // echo $e_lname; ?></span>    -->
                                  </div>
                                  
                                  <div class="form-group col-md-4">
@@ -189,49 +189,49 @@
                                  <div class="form-group col-md-12">
                                     <label class="form-label" for="add1">Street Address 1:</label>
                                     <input type="text" class="form-control" id="add1" placeholder="Street Address 1">
-                                 <span class="error"><?php echo $e_fname; ?></span>  
+                                 <!-- <span class="error"><?php // echo $e_fname; ?></span>   -->
                                  </div>
                                  <div class="form-group col-md-12">
                                     <label class="form-label" for="pno">Pin Code:</label>
                                     <input type="text" class="form-control" id="pno" placeholder="Pin Code">
-                                 <span class="error"><?php echo $e_fname; ?></span>  
+                                 <!-- <span class="error"><?php // echo $e_fname; ?></span>   -->
                                  </div>
                               
                                  <div class="form-group col-md-6">
                                  <label class="form-label" for="mobno">Mobile Number:</label>
                                     <input type="text" class="form-control" id="mobno" placeholder="Mobile Number">
-                                 <span class="error"><?php echo $e_fname; ?></span>  
+                                 <!-- <span class="error"><?php // echo $e_fname; ?></span>   -->
                                  </div>
                                  <div class="form-group col-md-6">
                                     <label class="form-label" for="altconno">Alternate Contact:</label>
                                     <input type="text" class="form-control" id="altconno" placeholder="Alternate Contact">
-                                 <span class="error"><?php echo $e_fname; ?></span>  
+                                 <!-- <span class="error"><?php // echo $e_fname; ?></span>   -->
                                  </div>
                                  <div class="form-group col-md-12">
                                     <label class="form-label" for="email">Email:</label>
                                     <input type="email" class="form-control" id="email" placeholder="Email">
-                                 <span class="error"><?php echo $e_fname; ?></span>  
+                                 <!-- <span class="error"><?php // echo $e_fname; ?></span>   -->
                                  </div>
                                  <div class="form-group col-md-6">
                                     <label class="form-label" for="Joining Date">Joining Date:</label>
                                     <input type="date" class="form-control" id="joindate" placeholder="Enter your Joining Date">
-                                    <span class="error"><?php echo $e_lname; ?></span>   
+                                    <!-- <span class="error"><?php // echo $e_lname; ?></span>    -->
                                  </div>
                                  
                                  <div class="form-group col-md-12">
                                     <label class="form-label" for="Experience">Experience: </label>
                                     <input type="text" class="form-control" id="Experience" placeholder="Experience in year/ month" >
-                                    <span class="error"><?php echo $e_fname; ?></span>  
+                                    <!-- <span class="error"><?php // echo $e_fname; ?></span>   -->
                                  </div>
                                  <div class="form-group col-md-12">
                                     <label class="form-label" for="Degree">Degree certificate: </label>
                                     <input type="file" class="form-control" id="Degree" placeholder="Degree certificate" >
-                                    <span class="error"><?php echo $e_fname; ?></span>  
+                                    <!-- <span class="error"><?php // echo $e_fname; ?></span>   -->
                                  </div>
                                  <div class="form-group col-md-12">
                                     <label class="form-label" for="Resume">Resume: </label>
                                     <input type="file" class="form-control" id="Resume" placeholder="Resume" >
-                                    <span class="error"><?php echo $e_fname; ?></span>  
+                                    <!-- <span class="error"><?php // echo $e_fname; ?></span>   -->
                                  </div>
                               </div>
                               <div class="form-group">
@@ -248,7 +248,7 @@
                               <div class="form-group col-md-12">
                                  <label class="form-label" for="Salary">Salary: </label>
                                  <input type="text" class="form-control" id="Salary" placeholder="Salary">
-                              <span class="error"><?php echo $e_fname; ?></span>  
+                              <!-- <span class="error"><?php // echo $e_fname; ?></span>   -->
                               </div>
                               <hr>
                               <h5 class="mb-3">Security</h5>
