@@ -1,3 +1,7 @@
+<?php 
+   include 'sidebar.php';
+   include 'connection.php';  
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
