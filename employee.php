@@ -125,19 +125,7 @@
                               <div class="profile-img-edit position-relative">
                               </div>
                            </div>
-                           <div class="form-group">
-                              <label class="form-label">Employee Role:</label>
-                              <select name="type" class="selectpicker form-control" data-style="py-0">
-                                 <option>Select</option>
-                                 <option>Web Designer</option>
-                                 <option>Web Developer</option>
-                                 <option>Tester</option>
-                                 <option>Php Developer</option>
-                                 <option>Ios Developer </option>
-                              </select>
-                           </div>
-               
-                              <div class="row">
+                           <div class="row">
                                  <div class="form-group col-md-6">
                                     <label class="form-label" for="fname">First Name:</label>
                                     <input type="text" class="form-control" id="fname" placeholder="First Name">
@@ -149,14 +137,26 @@
                                     <input type="text" class="form-control" id="lname" placeholder="Last Name">
                                     <span class="error"><?php echo $e_lname; ?></span>   
                                  </div>
-
-                                 <div class="form-group col-md-6">
+                                 
+                                 <div class="form-group">
+                                    <label class="form-label">Employee Role:</label>
+                                    <select name="type" class="selectpicker form-control" data-style="py-0">
+                                       <option>Select</option>
+                                       <option>Web Designer</option>
+                                       <option>Web Developer</option>
+                                       <option>Tester</option>
+                                       <option>Php Developer</option>
+                                       <option>Ios Developer </option>
+                                    </select>
+                                 </div>
+                     
+                                 <div class="form-group col-md-12">
                                     <label class="form-label" for="bdate">bdate:</label>
                                     <input type="date" class="form-control" id="bdate" placeholder="Enter your Birthday">
                                     <span class="error"><?php echo $e_lname; ?></span>   
                                  </div>
                                  
-                                 <div class="form-group col-sm-12">
+                                 <div class="form-group col-md-4">
                                     <label class="form-label">Country:</label>
                                     <select name="country" class="form-control" >
                                        <option>Select Country</option>
@@ -167,16 +167,36 @@
                                        <option>Africa</option>
                                     </select>
                                  </div>
-                                 <div class="form-group col-md-12">
-                                    <label class="form-label" for="city">Town/City:</label>
-                                    <input type="text" class="form-control" id="city" placeholder="Town/City">
-                                 <span class="error"><?php echo $e_fname; ?></span>  
+                                 
+                                 <div class="form-group col-sm-4">
+                                    <label class="form-label">state:</label>
+                                    <select name="country" class="form-control" >
+                                       <option>Select State</option>
+                                       <option>gujarat</option>
+                                       <option>rajasthan</option>
+                                       <option >maharastra</option>
+                                    </select>
                                  </div>
-                                 <div class="form-group col-md-6">
+                                 <div class="form-group col-sm-4">
+                                    <label class="form-label">City:</label>
+                                    <select name="country" class="form-control" >
+                                       <option>Select City</option>
+                                       <option>Surat</option>
+                                       <option>pune</option>
+                                       <option >mumbai</option>
+                                    </select>
+                                 </div>
+                                 <div class="form-group col-md-12">
                                     <label class="form-label" for="add1">Street Address 1:</label>
                                     <input type="text" class="form-control" id="add1" placeholder="Street Address 1">
                                  <span class="error"><?php echo $e_fname; ?></span>  
                                  </div>
+                                 <div class="form-group col-md-12">
+                                    <label class="form-label" for="pno">Pin Code:</label>
+                                    <input type="text" class="form-control" id="pno" placeholder="Pin Code">
+                                 <span class="error"><?php echo $e_fname; ?></span>  
+                                 </div>
+                              
                                  <div class="form-group col-md-6">
                                  <label class="form-label" for="mobno">Mobile Number:</label>
                                     <input type="text" class="form-control" id="mobno" placeholder="Mobile Number">
@@ -187,54 +207,49 @@
                                     <input type="text" class="form-control" id="altconno" placeholder="Alternate Contact">
                                  <span class="error"><?php echo $e_fname; ?></span>  
                                  </div>
-                                 <div class="form-group col-md-6">
+                                 <div class="form-group col-md-12">
                                     <label class="form-label" for="email">Email:</label>
                                     <input type="email" class="form-control" id="email" placeholder="Email">
                                  <span class="error"><?php echo $e_fname; ?></span>  
                                  </div>
                                  <div class="form-group col-md-6">
-                                    <label class="form-label" for="pno">Pin Code:</label>
-                                    <input type="text" class="form-control" id="pno" placeholder="Pin Code">
-                                 <span class="error"><?php echo $e_fname; ?></span>  
-                                 </div>
-                              
-                                 <div class="form-group col-md-12">
-                                    <label class="form-label" for="Salary">Salary: </label>
-                                    <input type="text" class="form-control" id="Salary" placeholder="Salary">
-                                 <span class="error"><?php echo $e_fname; ?></span>  
-                                 </div>
-                                 <div class="form-group col-md-6">
                                     <label class="form-label" for="Joining Date">Joining Date:</label>
-                                    <input type="date" class="form-control" id="bdate" placeholder="Enter your Joining Date">
+                                    <input type="date" class="form-control" id="joindate" placeholder="Enter your Joining Date">
                                     <span class="error"><?php echo $e_lname; ?></span>   
                                  </div>
+                                 
                                  <div class="form-group col-md-12">
                                     <label class="form-label" for="Experience">Experience: </label>
                                     <input type="text" class="form-control" id="Experience" placeholder="Experience in year/ month" >
-                                 <span class="error"><?php echo $e_fname; ?></span>  
+                                    <span class="error"><?php echo $e_fname; ?></span>  
                                  </div>
                                  <div class="form-group col-md-12">
                                     <label class="form-label" for="Degree">Degree certificate: </label>
                                     <input type="file" class="form-control" id="Degree" placeholder="Degree certificate" >
-                                 <span class="error"><?php echo $e_fname; ?></span>  
+                                    <span class="error"><?php echo $e_fname; ?></span>  
                                  </div>
                                  <div class="form-group col-md-12">
                                     <label class="form-label" for="Resume">Resume: </label>
                                     <input type="file" class="form-control" id="Resume" placeholder="Resume" >
-                                 <span class="error"><?php echo $e_fname; ?></span>  
+                                    <span class="error"><?php echo $e_fname; ?></span>  
                                  </div>
                               </div>
                               <div class="form-group">
-                              <label class="form-label">Add in Team:</label>
-                              <select name="type" class="selectpicker form-control" data-style="py-0">
-                                 <option>Select</option>
-                                 <option>Web Designer</option>
-                                 <option>Web Developer</option>
-                                 <option>Tester</option>
-                                 <option>Php Developer</option>
-                                 <option>Ios Developer </option>
-                              </select>
-                           </div>
+                                 <label class="form-label">Add in Team:</label>
+                                 <select name="type" class="selectpicker form-control" data-style="py-0">
+                                    <option>Select</option>
+                                    <option>Web Designer</option>
+                                    <option>Web Developer</option>
+                                    <option>Tester</option>
+                                    <option>Php Developer</option>
+                                    <option>Ios Developer </option>
+                                 </select>
+                              </div>
+                              <div class="form-group col-md-12">
+                                 <label class="form-label" for="Salary">Salary: </label>
+                                 <input type="text" class="form-control" id="Salary" placeholder="Salary">
+                              <span class="error"><?php echo $e_fname; ?></span>  
+                              </div>
                               <hr>
                               <h5 class="mb-3">Security</h5>
                               <div class="row">
