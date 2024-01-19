@@ -1,3 +1,7 @@
+         <?php 
+                  include 'sidebar.php';
+                  include 'formvalidation.php';
+         ?>
    <html>
    
    <head>
@@ -5,6 +9,7 @@
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>Employee</title>
+    
       <script>
          document.querySelector("form").addEventListener("submit", function(event) {
   event.preventDefault();
@@ -72,17 +77,10 @@
          margin-left:265px;
       }
       </style>
+
       <link rel="stylesheet" href="main.min.css">
-
-  
-   <body>
-               <?php 
-                  include 'sidebar.php';
-                  // include 'formvalidation.php';
-
-               ?>
-   <main class="main-content">
-
+      <body>
+         <main class="main-content">
             <div class="iq-navbar-header" style="height: 215px;">
                   <div class="container-fluid iq-container">
                      <div class="row">

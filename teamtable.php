@@ -21,7 +21,7 @@
    include 'sidebar.php';
             ?>
 	<main class="main-content">
-   <div class="conatiner-fluid content-inner mt-n5 py-0">
+   <div class="conatiner-fluid content-inners mt-n5 py-0">
       <div>
          <div class="row">
            
