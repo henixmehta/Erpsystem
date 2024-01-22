@@ -7,7 +7,7 @@
 	<title>Team</title>
    <style>
         .error {
-      color: red;
+   color: red;
     }
     .main-content{
       margin-left:265px;
@@ -59,9 +59,7 @@
                   </div>
                   <div class="card-body">
                      <div class="new-Team-info">
-                     <!-- form-->
-
-         
+                     <!-- form-->         
 					<form method="POST">
                <div class="form-group">
                            <div class="profile-img-edit position-relative">
@@ -72,22 +70,22 @@
                                <div class="form-group col-md-15">
                                    <label class="form-label" for="fname">Client / Compney Name:</label>
                                    <input type="text" class="form-control" id="tname" placeholder="Client / Compney  Name">
-                                   <span class="error"><?php echo $e_fname; ?></span>                             
+                                   <span class="error"><?php //echo $e_fname; ?></span>                             
                                 </div>
                                 <div class="form-group col-md-15">
                                     <label class="form-label" for="Degree"> Client / Compney  Image </label>
                                     <input type="file" class="form-control" id="Degree" placeholder="Client / Compney  Image" >
-                                    <span class="error"><?php echo $e_fname; ?></span>  
+                                    <!-- <span class="error"><?php // echo $e_fname; ?></span>   -->
                                 </div>
                                 <div class="form-group col-md-15">
                                     <label class="form-label" for="fname">Project Name:</label>
                                     <input type="text" class="form-control" id="tname" placeholder="Project  Name">
-                                    <span class="error"><?php echo $e_fname; ?></span>                             
+                                    <!-- <span class="error"><?php // echo $e_fname; ?></span>                              -->
                                 </div>
                                 <div class="form-group col-md-15">
                                     <label class="form-label" for="fname">Client / Compney contect:</label>
                                     <input type="text" class="form-control" id="tname" placeholder="Client / Compney  contect">
-                                    <span class="error"><?php echo $e_fname; ?></span>                             
+                                    <!-- <span class="error"><?php // echo $e_fname; ?></span>                              -->
                                 </div>
                                 <div class="form-group">
                                 <label class="form-label">Team Name:</label>
@@ -103,7 +101,7 @@
                                  <div class="form-group col-md-15">
                                  <label class="form-label" for="fname">Project Language:</label>
                                  <input type="text" class="form-control" id="tname" placeholder="Project Language">
-                                 <span class="error"><?php echo $e_fname; ?></span>                             
+                                 <!-- <span class="error"><?php // echo $e_fname; ?></span>                              -->
                               </div>
                               <fieldset class="mb-3">
                               <legend>Status:</legend>
@@ -122,7 +120,7 @@
                               <div class="form-group col-md-15">
                                  <label class="form-label" for="add1">Project Description</label>
                                  <input type="text" class="form-control" id="add1" placeholder="Project Description">
-                              <span class="error"><?php echo $e_fname; ?></span>  
+                              <!-- <span class="error"><?php // echo $e_fname; ?></span>   -->
                               </div>
                               
                               

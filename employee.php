@@ -1,16 +1,71 @@
          <?php 
                   include 'sidebar.php';
                   include 'connection.php';
-               //   include 'formvalidation.php';
-         ?>
+                  //   include 'formvalidation.php';
+                  ?>
    <html>
-   
-   <head>
-      <meta charset="UTF-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Employee</title>
-    
+      
+      <head>
+         <meta charset="UTF-8">
+         <meta http-equiv="X-UA-Compatible" content="IE=edge">
+         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+         <title>Employee</title>
+         <link rel="stylesheet" href="main.min.css">
+         <script src="js/jquery/3.7.1.min.js" type="text/javascript"></script>
+         <script type="text/javascript">
+            $(document).ready(function() {
+
+                $('#country').change(function() {
+                    loadState($(this).find(':selected').val())
+                })
+                $('#state').change(function() {
+                    loadCity($(this).find(':selected').val())
+                })
+
+
+            });
+
+            function loadCountry() {
+                $.ajax({
+                    type: "POST",
+                    url: "ajax.php",
+                    data: "get=country"
+                }).done(function(result) {
+
+
+                    $(result).each(function() {
+                        $("#country").append($(result));
+                    })
+                });
+            }
+            function loadState(countryId) {
+                $("#state").children().remove()
+                $.ajax({
+                    type: "POST",
+                    url: "ajax.php",
+                    data: "get=state&countryId=" + countryId
+                }).done(function(result) {
+
+                    $("#state").append($(result));
+
+                });
+            }
+            function loadCity(stateId) {
+                $("#city").children().remove()
+                $.ajax({
+                    type: "POST",
+                    url: "ajax.php",
+                    data: "get=city&stateId=" + stateId
+                }).done(function(result) {
+
+                    $("#city").append($(result));
+
+                });
+            }
+
+            // init the countries
+            loadCountry();
+        </script>
       <script>
          document.querySelector("form").addEventListener("submit", function(event) {
   event.preventDefault();
@@ -56,8 +111,8 @@
 
   // Function to check for valid email format
   function isValidEmail(email) {
-    let regex = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
-    return regex.test(email);
+     let regex = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
+     return regex.test(email);
   }
 });
       </script>
@@ -69,8 +124,11 @@
          margin-left:265px;
       }
       </style>
-
-      <link rel="stylesheet" href="main.min.css">
+      
+     <?php  
+      
+      
+      ?>
       <body>
          <main class="main-content">
             <div class="iq-navbar-header" style="height: 215px;">
@@ -120,7 +178,7 @@
                            <div class="row">
                                  <div class="form-group col-md-6">
                                     <label class="form-label" for="fname">First Name:</label>
-                                    <input type="text" class="form-control" id="fname" placeholder="First Name" required>
+                                    <input type="text" class="form-control" id="fname" placeholder="First Name" >
                                     <!-- <span class="error"><?php // echo $e_fname; ?></span>                              -->
                                  </div>
                                  
@@ -141,7 +199,6 @@
                                        <option>Ios Developer </option>
                                     </select>
                                  </div>
-                     
                                  <div class="form-group col-md-12">
                                     <label class="form-label" for="bdate">bdate:</label>
                                     <input type="date" class="form-control" id="bdate" placeholder="Enter your Birthday">
@@ -150,33 +207,18 @@
                                  
                                  <div class="form-group col-md-4">
                                     <label class="form-label">Country:</label>
-                                    <select name="country" class="form-control" >
-                                       <option>Select Country</option>
-                                       <option>Caneda</option>
-                                       <option>Noida</option>
-                                       <option >USA</option>
-                                       <option>India</option>
-                                       <option>Africa</option>
+                                    <select type="text" name="country" id="country" class="form-control">
                                     </select>
                                  </div>
                                  
                                  <div class="form-group col-sm-4">
                                     <label class="form-label">state:</label>
-                                    <select name="country" class="form-control" >
-                                       <option>Select State</option>
-                                       <option>gujarat</option>
-                                       <option>rajasthan</option>
-                                       <option >maharastra</option>
-                                    </select>
+                                    <select type="text" id="state" name="state" class="form-control"></select>
                                  </div>
                                  <div class="form-group col-sm-4">
                                     <label class="form-label">City:</label>
-                                    <select name="country" class="form-control" >
-                                       <option>Select City</option>
-                                       <option>Surat</option>
-                                       <option>pune</option>
-                                       <option >mumbai</option>
-                                    </select>
+                                    <select name="city" id="city" class="form-control"></select>
+
                                  </div>
                                  <div class="form-group col-md-12">
                                     <label class="form-label" for="add1">Street Address 1:</label>
