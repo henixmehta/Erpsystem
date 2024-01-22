@@ -55,7 +55,6 @@
                            <th>Email</th>
                            <th>Join date</th>
                            <th>Expirience</th>
-                           <th>Team Name</th>
                            <th>Compney Name</th>
                            <th>Password</th>
                            <th>Status</th>
@@ -84,29 +83,20 @@
                         <td><?php echo $row['e_email']?></td>
                         <td><?php echo $row['e_joindate']?></td>
                         <td><?php echo $row['e_exp']?></td>
-                        <td><?php echo $row['e_teamname']?></td>
                         <td><?php echo $row['e_com_email']?></td>
                         <td><?php echo $row['e_pwd']?></td>
-                        
-                       
-
-                           
                         <td><?php 
-                        
-                        
                         $status = $row['e_status'];
-
-                        if($status = "active")
+                        if($status == "active")
                         {
                            ?>
-                         <span class="badge bg-primary">Active</span>
+                            <span class="badge bg-primary">Active</span>
                            <?php
                         }
-                           
                         else
                         {  
                            ?>
-                           <td><span class="badge bg-danger">Inactive</span></td>
+                           <span class="badge bg-danger">Inactive</span>
                            <?php
                         }
                         ?>

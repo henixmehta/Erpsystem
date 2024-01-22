@@ -225,7 +225,7 @@
                         </a>
                         <ul class="sub-nav collapse" id="sidebar-maps" data-bs-parent="#sidebar-menu">
                             <li class="nav-item">
-                                <a class="nav-link " href="../dashboard/maps/google.html">
+                                <a class="nav-link " href="country/country.php">
                                     <i class="icon">
                                         <svg class="icon-10"   width="10" viewBox="0 0 24 24" fill="currentColor">
                                             <g>
@@ -233,12 +233,11 @@
                                             </g>
                                         </svg>
                                     </i>
-                                    <i class="sidenav-mini-icon"> G </i>
-                                    <span class="item-name">Google</span>
+                                    <span class="item-name">Country</span>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link " href="../dashboard/maps/vector.html">
+                                <a class="nav-link " href="country/state.php">
                                    <i class="icon">
                                         <svg class="icon-10"   width="10" viewBox="0 0 24 24" fill="currentColor">
                                             <g>
@@ -246,8 +245,19 @@
                                             </g>
                                         </svg>
                                     </i>
-                                    <i class="sidenav-mini-icon"> V </i>
-                                    <span class="item-name">Vector</span>
+                                    <span class="item-name">State</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link " href="country/city.php">
+                                   <i class="icon">
+                                        <svg class="icon-10"   width="10" viewBox="0 0 24 24" fill="currentColor">
+                                            <g>
+                                            <circle cx="12" cy="12" r="8" fill="currentColor"></circle>
+                                            </g>
+                                        </svg>
+                                    </i>
+                                    <span class="item-name">City</span>
                                 </a>
                             </li>
                         </ul>

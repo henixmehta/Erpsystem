@@ -1,5 +1,6 @@
          <?php 
                   include 'sidebar.php';
+                  include 'connection.php';
                //   include 'formvalidation.php';
          ?>
    <html>
@@ -25,7 +26,6 @@
   let lname = elements["lname"];
   let email = elements["email"];
   let pass = elements["pass"];
-  let rpass = elements["rpass"];
 
   // Check for empty fields
   if (fname.value.trim() === "") {
@@ -40,16 +40,8 @@
   if (pass.value.trim() === "") {
     showError(pass, "Password cannot be empty.");
   }
-  if (rpass.value.trim() === "") {
-    showError(rpass, "Repeat password cannot be empty.");
-  }
 
   // Check if passwords match
-  if (pass.value !== rpass.value) {
-    showError(pass, "Passwords do not match.");
-    showError(rpass, "Passwords do not match.");
-  }
-
   // Check for valid email format
   if (!isValidEmail(email.value)) {
     showError(email, "Please enter a valid email address.");
@@ -234,36 +226,21 @@
                                     <!-- <span class="error"><?php // echo $e_fname; ?></span>   -->
                                  </div>
                               </div>
-                              <div class="form-group">
-                                 <label class="form-label">Add in Team:</label>
-                                 <select name="type" class="selectpicker form-control" data-style="py-0">
-                                    <option>Select</option>
-                                    <option>Web Designer</option>
-                                    <option>Web Developer</option>
-                                    <option>Tester</option>
-                                    <option>Php Developer</option>
-                                    <option>Ios Developer </option>
-                                 </select>
-                              </div>
                               <div class="form-group col-md-12">
                                  <label class="form-label" for="Salary">Salary: </label>
                                  <input type="text" class="form-control" id="Salary" placeholder="Salary">
                               <!-- <span class="error"><?php // echo $e_fname; ?></span>   -->
-                              </div>
+                              </div>   
                               <hr>
                               <h5 class="mb-3">Security</h5>
                               <div class="row">
-                                 <div class="form-group col-md-12">
+                                 <div class="form-group col-md-6">
                                     <label class="form-label" for="uname">Employee Name:</label>
                                     <input type="text" class="form-control" id="uname" placeholder="Employee Name">
                                  </div>
                                  <div class="form-group col-md-6">
                                     <label class="form-label" for="pass">Password:</label>
                                     <input type="password" class="form-control" id="pass" placeholder="Password">
-                                 </div>
-                                 <div class="form-group col-md-6">
-                                    <label class="form-label" for="rpass">Repeat Password:</label>
-                                    <input type="password" class="form-control" id="rpass" placeholder="Repeat Password ">
                                  </div>
                                  <fieldset class="mb-3">
                                  <legend>Status:</legend>
@@ -276,7 +253,6 @@
                                        <label class="form-check-label" for="Inactive">Inactive</label>
                                     </div>
                                  </fieldset> 
-                              </fieldset> 
                               </div>
                               <!-- <button type="submit" name="sub_btn" class="btn btn-primary">Add New Employee</button> -->
                            <input type="submit" value="submit" class="btn btn-primary" name="sub_btn">

@@ -1,3 +1,7 @@
+<?php 
+   include 'sidebar.php';
+   include 'connection.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,9 +29,6 @@
    </style>
 </head>
 <body>
-<?php 
-   include 'sidebar.php';
-            ?>
 	<main class="main-content">
    <div class="conatiner-fluid content-inner mt-n5 py-0">
       <div>

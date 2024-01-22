@@ -1,3 +1,8 @@
+<?php 
+   include 'sidebar.php';
+   include 'connection.php';
+   // include 'formvalidation.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,13 +20,16 @@
    </style>
 	<link rel="stylesheet" href="main.min.css">
 
+<?php 
 
+    if(isset($_POST['sub_btn1']))
+    {
+    $q = "insert into role values(NULL,'".$_POST['role_name']."','".$_POST['r_status']."')";
+    $insert = mysqli_query($con,$q);
+    }
+?>
 
 <body>
-            <?php 
-               include 'sidebar.php';
-               // include 'formvalidation.php';
-            ?>
         <main class="main-content">
 			<div class="iq-navbar-header" style="height: 215px;">
                <div class="container-fluid iq-container">
@@ -74,12 +82,22 @@
                            <div class="row">
                               <div class="form-group col-md-6">
                                  <label class="form-label" for="rname">Role Name:</label>
-                                 <input type="text" class="form-control" id="Rolename" placeholder="RoleName">
-                                 <span class="error"><?php echo $e_rname; ?></span>                             
-                              </div>
-                          
-                           <!-- <button type="submit" name="sub_btn" class="btn btn-primary">Add New Employee</button> -->
-                        <input type="submit" value="submit" class="btn btn-primary" name="sub_btn1">
+                                 <input type="text" class="form-control" name="role_name" id="Rolename" placeholder="RoleName">
+                                 <!-- <span class="error"><?php // echo $e_rname; ?></span>                              -->
+                              </div> 
+                              
+                              <fieldset class="mb-3">
+                                 <legend>Status:</legend>
+                                    <div class="form-check">
+                                       <input type="radio" name="r_status" value="active" class="form-check-input" id="Active">
+                                       <label class="form-check-label" for="Active">Active</label>
+                                    </div>
+                                    <div class="mb-3 form-check">
+                                       <input type="radio" name="r_status" value="inactive" class="form-check-input" id="Inactive">
+                                       <label class="form-check-label" for="Inactive">Inactive</label>
+                                    </div>
+                                 </fieldset>
+                             <input type="submit" value="submit" class="btn btn-primary" name="sub_btn1">
                         </form>
                      </div>
                   </div>
