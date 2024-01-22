@@ -120,7 +120,7 @@
                            <div class="row">
                                  <div class="form-group col-md-6">
                                     <label class="form-label" for="fname">First Name:</label>
-                                    <input type="text" class="form-control" id="fname" placeholder="First Name">
+                                    <input type="text" class="form-control" id="fname" placeholder="First Name" required>
                                     <!-- <span class="error"><?php // echo $e_fname; ?></span>                              -->
                                  </div>
                                  
@@ -204,7 +204,7 @@
                                     <input type="email" class="form-control" id="email" placeholder="Email">
                                  <!-- <span class="error"><?php // echo $e_fname; ?></span>   -->
                                  </div>
-                                 <div class="form-group col-md-6">
+                                 <div class="form-group col-md-12">
                                     <label class="form-label" for="Joining Date">Joining Date:</label>
                                     <input type="date" class="form-control" id="joindate" placeholder="Enter your Joining Date">
                                     <!-- <span class="error"><?php // echo $e_lname; ?></span>    -->
@@ -235,12 +235,12 @@
                               <h5 class="mb-3">Security</h5>
                               <div class="row">
                                  <div class="form-group col-md-6">
-                                    <label class="form-label" for="uname">Employee Name:</label>
-                                    <input type="text" class="form-control" id="uname" placeholder="Employee Name">
+                                    <label class="form-label" for="uname">Employee Compney Email:</label>
+                                    <input type="text" class="form-control" id="uname" placeholder="Employee Compney Email" isValidEmail required>
                                  </div>
                                  <div class="form-group col-md-6">
                                     <label class="form-label" for="pass">Password:</label>
-                                    <input type="password" class="form-control" id="pass" placeholder="Password">
+                                    <input type="password" class="form-control" id="pass" placeholder="Employe Compney Password" required>
                                  </div>
                                  <fieldset class="mb-3">
                                  <legend>Status:</legend>
@@ -253,6 +253,7 @@
                                        <label class="form-check-label" for="Inactive">Inactive</label>
                                     </div>
                                  </fieldset> 
+                              </fieldset> 
                               </div>
                               <!-- <button type="submit" name="sub_btn" class="btn btn-primary">Add New Employee</button> -->
                            <input type="submit" value="submit" class="btn btn-primary" name="sub_btn">
