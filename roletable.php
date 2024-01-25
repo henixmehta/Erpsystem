@@ -56,7 +56,7 @@
                      </thead>
                      <tbody>
                      <?php
-                        $q = "select * from employee" ;
+                        $q = "select * from role" ;
                         $data=mysqli_query($con,$q);
                         while($row=mysqli_fetch_array($data))
                         {       

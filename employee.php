@@ -13,117 +13,117 @@
          <link rel="stylesheet" href="main.min.css">
          <script src="js/jquery/3.7.1.min.js" type="text/javascript"></script>
          <script type="text/javascript">
-            $(document).ready(function() {
+               $(document).ready(function() {
 
-                $('#country').change(function() {
-                    loadState($(this).find(':selected').val())
-                })
-                $('#state').change(function() {
-                    loadCity($(this).find(':selected').val())
-                })
-
-
-            });
-
-            function loadCountry() {
-                $.ajax({
-                    type: "POST",
-                    url: "ajax.php",
-                    data: "get=country"
-                }).done(function(result) {
+                     $('#country').change(function() {
+                        loadState($(this).find(':selected').val())
+                     })
+                     $('#state').change(function() {
+                        loadCity($(this).find(':selected').val())
+                     })
 
 
-                    $(result).each(function() {
-                        $("#country").append($(result));
-                    })
-                });
-            }
-            function loadState(countryId) {
-                $("#state").children().remove()
-                $.ajax({
-                    type: "POST",
-                    url: "ajax.php",
-                    data: "get=state&countryId=" + countryId
-                }).done(function(result) {
+                     });
 
-                    $("#state").append($(result));
+                     function loadCountry() {
+                     $.ajax({
+                        type: "POST",
+                        url: "ajax.php",
+                        data: "get=country"
+                     }).done(function(result) {
 
-                });
-            }
-            function loadCity(stateId) {
-                $("#city").children().remove()
-                $.ajax({
-                    type: "POST",
-                    url: "ajax.php",
-                    data: "get=city&stateId=" + stateId
-                }).done(function(result) {
 
-                    $("#city").append($(result));
+                        $(result).each(function() {
+                           $("#country").append($(result));
+                        })
+                     });
+                     }
+                     function loadState(countryId) {
+                     $("#state").children().remove()
+                     $.ajax({
+                        type: "POST",
+                        url: "ajax.php",
+                        data: "get=state&countryId=" + countryId
+                     }).done(function(result) {
 
-                });
-            }
+                        $("#state").append($(result));
 
-            // init the countries
-            loadCountry();
+                     });
+                     }
+                     function loadCity(stateId) {
+                     $("#city").children().remove()
+                     $.ajax({
+                        type: "POST",
+                        url: "ajax.php",
+                        data: "get=city&stateId=" + stateId
+                     }).done(function(result) {
+
+                        $("#city").append($(result));
+
+                     });
+                     }
+
+                     // init the countries
+                     loadCountry();
         </script>
       <script>
-         document.querySelector("form").addEventListener("submit", function(event) {
-  event.preventDefault();
+                        document.querySelector("form").addEventListener("submit", function(event) {
+               event.preventDefault();
 
-  // Clear previous error messages
-  document.querySelectorAll("span.error").forEach(function(span) {
-    span.textContent = "";
-  });
+               // Clear previous error messages
+               document.querySelectorAll("span.error").forEach(function(span) {
+                  span.textContent = "";
+               });
 
-  // Get form elements
-  let elements = this.elements;
-  let fname = elements["fname"];
-  let lname = elements["lname"];
-  let email = elements["email"];
-  let pass = elements["pass"];
+               // Get form elements
+               let elements = this.elements;
+               let fname = elements["fname"];
+               let lname = elements["lname"];
+               let email = elements["email"];
+               let pass = elements["pass"];
 
-  // Check for empty fields
-  if (fname.value.trim() === "") {
-    showError(fname, "First name cannot be empty.");
-  }
-  if (lname.value.trim() === "") {
-    showError(lname, "Last name cannot be empty.");
-  }
-  if (email.value.trim() === "") {
-    showError(email, "Email cannot be empty.");
-  }
-  if (pass.value.trim() === "") {
-    showError(pass, "Password cannot be empty.");
-  }
+               // Check for empty fields
+               if (fname.value.trim() === "") {
+                  showError(fname, "First name cannot be empty.");
+               }
+               if (lname.value.trim() === "") {
+                  showError(lname, "Last name cannot be empty.");
+               }
+               if (email.value.trim() === "") {
+                  showError(email, "Email cannot be empty.");
+               }
+               if (pass.value.trim() === "") {
+                  showError(pass, "Password cannot be empty.");
+               }
 
-  // Check if passwords match
-  // Check for valid email format
-  if (!isValidEmail(email.value)) {
-    showError(email, "Please enter a valid email address.");
-  }
+               // Check if passwords match
+               // Check for valid email format
+               if (!isValidEmail(email.value)) {
+                  showError(email, "Please enter a valid email address.");
+               }
 
-  // Function to show error message
-  function showError(element, message) {
-    let parent = element.parentElement;
-    let error = parent.querySelector("span.error");
-    error.textContent = message;
-  }
+               // Function to show error message
+               function showError(element, message) {
+                  let parent = element.parentElement;
+                  let error = parent.querySelector("span.error");
+                  error.textContent = message;
+               }
 
-  // Function to check for valid email format
-  function isValidEmail(email) {
-     let regex = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
-     return regex.test(email);
-  }
-});
-      </script>
-      <style>
-         .error {
-         color: red;
-      }
-      .main-content{
-         margin-left:265px;
-      }
-      </style>
+               // Function to check for valid email format
+               function isValidEmail(email) {
+                  let regex = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
+                  return regex.test(email);
+               }
+               });
+                     </script>
+                     <style>
+                        .error {
+                        color: red;
+                     }
+                     .main-content{
+                        margin-left:265px;
+                     }
+            </style>
       
      <?php  
       
@@ -207,8 +207,9 @@
                                  
                                  <div class="form-group col-md-4">
                                     <label class="form-label">Country:</label>
-                                    <select type="text" name="country" id="country" class="form-control">
-                                    </select>
+                                 <select type="text" name="country" id="country" class="form-control">
+                                    <option>Select Country</option>
+                                 </select>
                                  </div>
                                  
                                  <div class="form-group col-sm-4">
@@ -218,7 +219,6 @@
                                  <div class="form-group col-sm-4">
                                     <label class="form-label">City:</label>
                                     <select name="city" id="city" class="form-control"></select>
-
                                  </div>
                                  <div class="form-group col-md-12">
                                     <label class="form-label" for="add1">Street Address 1:</label>
