@@ -1,7 +1,6 @@
 <?php 
    include 'sidebar.php';
    include 'connection.php';
-   // include 'formvalidation.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -45,24 +44,24 @@
 
 <?php 
 
-// $rolne_name_error = $rolne_status_error ="";
+$rolne_name_error = $rolne_status_error ="";
 
-// if(isset($_POST['sub_btn1']))
-// {
-//       if(empty($_POST['role_name']))
-//       {
-//          $rolne_name_error = " <li> <b> Enter Role Please </b> </li> ";
-//       }
-//       if(empty($_POST['r_status']))
-//       {
-//          $rolne_status_error = " <li> <b> Enter status Please </b> </li> ";
-//       }
-//       else
-//       {
-//             $q = "insert into role values(NULL,'".$_POST['role_name']."','".$_POST['r_status']."')";
-//             $insert = mysqli_query($con,$q);
-//       }
-//     }
+if(isset($_POST['sub_btn1']))
+{
+      if(empty($_POST['role_name']))
+      {
+         $rolne_name_error = " <li> <b> Enter Role Please </b> </li> ";
+      }
+      if(empty($_POST['r_status']))
+      {
+         $rolne_status_error = " <li> <b> Enter status Please </b> </li> ";
+      }
+      else
+      {
+         $q = "insert into role values(NULL,'".$_POST['role_name']."','".$_POST['r_status']."')";
+         $insert = mysqli_query($conn,$q);
+      }
+    }
 ?>
 
 <body>
@@ -115,8 +114,8 @@
                            <div class="row">
                               <div class="form-group col-md-12 ">
                                  <label class="form-label" for="rname">Role Name:</label>
-                                 <input type="text" class="form-control" name="role_name" id="Rolename" placeholder="RoleName"  required>
-                                 <!-- <span class="error"><?php // echo  $rolne_name_error; ?></span> -->
+                                 <input type="text" class="form-control" name="role_name" id="Rolename" placeholder="RoleName" required >
+                                 <span class="error"><?php  echo  $rolne_name_error; ?></span>
                               </div> 
                               <fieldset class="mb-3">
                                  <legend>Status:</legend>
@@ -127,8 +126,8 @@
                                     <div class="mb-3 form-check">
                                        <input type="radio" name="r_status" value="inactive" class="form-check-input" id="Inactive" required>
                                        <label class="form-check-label" for="Inactive">Inactive</label>
+                                       <span class="error"><?php  echo $rolne_status_error; ?></span>
                                     </div>
-                                    <!-- <span class="error"><?php // echo $rolne_status_error; ?></span> -->
                                  </fieldset>
                              <input type="submit" value="submit" class="btn btn-primary" name="sub_btn1">
                         </form>
