@@ -12,62 +12,66 @@
          <title>Employee</title>
          <link rel="stylesheet" href="main.min.css">
          <script src="js/jquery/3.7.1.min.js" type="text/javascript"></script>
-         <script type="text/javascript">
-               $(document).ready(function() {
+         <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
 
-                     $('#country').change(function() {
-                        loadState($(this).find(':selected').val())
-                     })
-                     $('#state').change(function() {
-                        loadCity($(this).find(':selected').val())
-                     })
-
-
-                     });
-
-                     function loadCountry() {
-                     $.ajax({
-                        type: "POST",
-                        url: "ajax.php",
-                        data: "get=country"
-                     }).done(function(result) {
+                $('#country').change(function() {
+                    loadState($(this).find(':selected').val())
+                })
+                $('#state').change(function() {
+                    loadCity($(this).find(':selected').val())
+                })
 
 
-                        $(result).each(function() {
-                           $("#country").append($(result));
-                        })
-                     });
-                     }
-                     function loadState(countryId) {
-                     $("#state").children().remove()
-                     $.ajax({
-                        type: "POST",
-                        url: "ajax.php",
-                        data: "get=state&countryId=" + countryId
-                     }).done(function(result) {
+            });
 
-                        $("#state").append($(result));
+            function loadCountry() {
+                $.ajax({
+                    type: "POST",
+                    url: "ajax.php",
+                    data: "get=country"
+                }).done(function(result) {
 
-                     });
-                     }
-                     function loadCity(stateId) {
-                     $("#city").children().remove()
-                     $.ajax({
-                        type: "POST",
-                        url: "ajax.php",
-                        data: "get=city&stateId=" + stateId
-                     }).done(function(result) {
 
-                        $("#city").append($(result));
+                    $(result).each(function() {
+                        $("#country").append($(result));
+                    })
+                });
+            }
+            function loadState(countryId) {
+                $("#state").children().remove()
+                $.ajax({
+                    type: "POST",
+                    url: "ajax.php",
+                    data: "get=state&countryId=" + countryId
+                }).done(function(result) {
 
-                     });
-                     }
+                    $("#state").append($(result));
 
-                     // init the countries
-                     loadCountry();
+                });
+            }
+            function loadCity(stateId) {
+                $("#city").children().remove()
+                $.ajax({
+                    type: "POST",
+                    url: "ajax.php",
+                    data: "get=city&stateId=" + stateId
+                }).done(function(result) {
+
+                    $("#city").append($(result));
+
+                });
+            }
+
+            // init the countries
+            loadCountry();
         </script>
-      <script>
-                        document.querySelector("form").addEventListener("submit", function(event) {
+
+
+
+         <script>
+             document.querySelector("form").addEventListener("submit", function(event) {
                event.preventDefault();
 
                // Clear previous error messages
@@ -115,8 +119,8 @@
                   return regex.test(email);
                }
                });
-                     </script>
-                     <style>
+            </script>
+            <style>
                         .error {
                         color: red;
                      }
@@ -124,7 +128,8 @@
                         margin-left:265px;
                      }
             </style>
-      
+
+
      <?php  
       
       
