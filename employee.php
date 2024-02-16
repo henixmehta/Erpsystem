@@ -69,7 +69,7 @@
         </script>
 
 
-
+<!-- 
          <script>
              document.querySelector("form").addEventListener("submit", function(event) {
                event.preventDefault();
@@ -119,7 +119,7 @@
                   return regex.test(email);
                }
                });
-            </script>
+            </script> -->
             <style>
                         .error {
                         color: red;
@@ -132,7 +132,9 @@
 
      <?php  
       
+         // if(isset($_POST("")))
       
+
       ?>
       <body>
          <main class="main-content">
@@ -161,7 +163,7 @@
             </div>
             
             <div class="conatiner-fluid content-inner mt-n5 py-0">
-         <div>
+   
             <div class="row">
             
                <div class="col-xl-12 col-lg-8">
@@ -193,7 +195,7 @@
                                     <!-- <span class="error"><?php // echo $e_lname; ?></span>    -->
                                  </div>
                                  
-                                 <div class="form-group">
+                                 <!-- <div class="form-group">
                                     <label class="form-label">Employee Role:</label>
                                     <select name="type" class="selectpicker form-control" data-style="py-0">
                                        <option>Select</option>
@@ -203,7 +205,28 @@
                                        <option>Php Developer</option>
                                        <option>Ios Developer </option>
                                     </select>
+                                 </div> -->
+
+                                 <div class="form-group">
+                                    <label class="form-label">Employee Role:</label>
+                                    <select name="type" class="selectpicker form-control" data-style="py-0">
+                                       <option>Select</option>
+                                       <?php
+                                       // Assuming $conn is your database connection object
+                                       $query = "SELECT role_name, r_status FROM role";
+                                       $result = mysqli_query($conn, $query);
+                                       if(mysqli_num_rows($result) > 0) {
+                                             while($row = mysqli_fetch_assoc($result)) {
+                                                if($row['r_status'] == "active") {
+                                                   echo "<option>".$row['role_name']."</option>";
+                                                }
+                                             }
+                                       }
+                                       ?>
+                                    </select>
                                  </div>
+
+
                                  <div class="form-group col-md-12">
                                     <label class="form-label" for="bdate">bdate:</label>
                                     <input type="date" class="form-control" id="bdate" placeholder="Enter your Birthday">
