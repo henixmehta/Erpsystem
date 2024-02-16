@@ -42,6 +42,7 @@
     });
 </script>
 
+
 <?php 
 
 $rolne_name_error = $rolne_status_error ="";
