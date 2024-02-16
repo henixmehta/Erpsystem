@@ -65,7 +65,7 @@
                <tbody>                 
                   <?php
                         $q = "select * from employee" ;
-                        $data=mysqli_query($con,$q);
+                        $data=mysqli_query($conn,$q);
                         while($row=mysqli_fetch_array($data))
                         {       
                         ?>

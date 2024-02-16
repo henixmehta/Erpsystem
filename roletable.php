@@ -57,7 +57,7 @@
                      <tbody>
                      <?php
                         $q = "select * from role" ;
-                        $data=mysqli_query($con,$q);
+                        $data=mysqli_query($conn,$q);
                         while($row=mysqli_fetch_array($data))
                         {       
                         ?>
