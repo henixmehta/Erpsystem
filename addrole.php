@@ -19,6 +19,29 @@
     }
    </style>
 	<link rel="stylesheet" href="main.min.css">
+   <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var form = document.querySelector('form');
+
+        form.addEventListener('submit', function (event) {
+            var roleName = document.getElementById('Rolename').value.trim();
+            var statusActive = document.getElementById('Active').checked;
+            var statusInactive = document.getElementById('Inactive').checked;
+
+            if (roleName === '') {
+                alert('Please enter role name');
+                event.preventDefault();
+                return;
+            }
+
+            if (!statusActive && !statusInactive) {
+                alert('Please select status');
+                event.preventDefault();
+                return;
+            }
+        });
+    });
+</script>
 
 <?php 
 

@@ -13,6 +13,49 @@
       margin-left:265px;
     }
    </style>
+      <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var form = document.getElementById('myForm');
+
+        form.addEventListener('submit', function (event) {
+            var clientName = document.getElementById('tname').value.trim();
+            var projectName = document.getElementById('pname').value.trim();
+            var contact = document.getElementById('contact').value.trim();
+            var projectLanguage = document.getElementById('planguage').value.trim();
+            var projectDescription = document.getElementById('pdescription').value.trim();
+
+            if (clientName === '') {
+                alert('Please enter client/company name');
+                event.preventDefault();
+                return;
+            }
+
+            if (projectName === '') {
+                alert('Please enter project name');
+                event.preventDefault();
+                return;
+            }
+
+            if (contact === '') {
+                alert('Please enter client/company contact');
+                event.preventDefault();
+                return;
+            }
+
+            if (projectLanguage === '') {
+                alert('Please enter project language');
+                event.preventDefault();
+                return;
+            }
+
+            if (projectDescription === '') {
+                alert('Please enter project description');
+                event.preventDefault();
+                return;
+            }
+        });
+    });
+</script>
 	<link rel="stylesheet" href="main.min.css">
 
 <body>
