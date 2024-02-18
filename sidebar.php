@@ -25,7 +25,7 @@
                     </div>
                 </div>
                 <!--logo End--> 
-                <h4 class="logo-title">Hope UI</h4>
+                <h4 class="logo-title">Com name</h4>
             </a>
             
         </div>
@@ -38,7 +38,7 @@
                 <ul class="navbar-nav iq-main-menu" id="sidebar-menu">
                     <li class="nav-item static-item">
                         <a class="nav-link static-item disabled" href="#" tabindex="-1">
-                            <span class="default-icon">Home</span>
+                            <!-- <   class="default-icon">Home</> -->
                             <span class="mini-icon">-</span>
                         </a>
                     </li>

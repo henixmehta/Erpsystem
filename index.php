@@ -3,7 +3,7 @@
 <?php 
 
   include 'connection.php' ;
-
+  session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -240,32 +240,32 @@
     $e_email= ($_POST['email']);
     $e_pwd= ($_POST['pass']);
 
-      // if($e_email=="admin@gmail.com" && $e_pwd=="admin")
-      // {
-      //   $_SESSION['e_email']=$e_email; //create session variable
-      //   $_SESSION['e_pwd']=$e_pwd; //create session variable
-      //   header('location: deshboard.php');
-      // }
+      if($e_email=="admin@gmail.com" && $e_pwd=="admin")
+      {
+        //create session variable
+        header('location:employee.php');
+     
+      }
 
 
 
 
 
-    $select_emp="SELECT * FROM employee WHERE e_com_email='$e_email' AND e_pwd='$e_pwd'";
+    // $select_emp="SELECT * FROM employee WHERE e_com_email='$e_email' AND e_pwd='$e_pwd'";
    
-    $run_emp=mysqli_query($conn, $select_emp);
+    // $run_emp=mysqli_query($conn, $select_emp);
 
-    $row_count=mysqli_num_rows($run_emp);
+    // $row_count=mysqli_num_rows($run_emp);
 
-    if ($row_count==1) 
-    {
-      $_SESSION['e_email']=$e_email; //create session variable
-      $_SESSION['e_pwd']=$e_pwd; //create session variable
-      header('location:sidebar.php');
-    }
-    else{
-      echo "<script>alert('Invalid Email or Password')</script>";
-    }
+    // if ($row_count==1) 
+    // {
+    //   $_SESSION['e_email']=$e_email; //create session variable
+    //   $_SESSION['e_pwd']=$e_pwd; //create session variable
+    //   header('location:sidebar.php');
+    // }
+    // else{
+    //   echo "<script>alert('Invalid Email or Password')</script>";
+    // }
   }  //Login Script End
 ?>
 <body>

@@ -18,7 +18,7 @@
     }
    </style>
 	<link rel="stylesheet" href="main.min.css">
-   <script>
+   <!-- <script>
     document.addEventListener('DOMContentLoaded', function () {
         var form = document.querySelector('form');
 
@@ -40,7 +40,7 @@
             }
         });
     });
-</script>
+</script> -->
 
 
 <?php 
@@ -49,14 +49,14 @@ $rolne_name_error = $rolne_status_error ="";
 
 if(isset($_POST['sub_btn1']))
 {
-      if(empty($_POST['role_name']))
+      if(empty($_POST['role_name'] && $_POST['r_status']))
       {
          $rolne_name_error = " <li> <b> Enter Role Please </b> </li> ";
-      }
-      if(empty($_POST['r_status']))
-      {
          $rolne_status_error = " <li> <b> Enter status Please </b> </li> ";
       }
+      //if(empty($_POST['r_status']))
+      //{
+      //}
       else
       {
          $q = "insert into role values(NULL,'".$_POST['role_name']."','".$_POST['r_status']."')";
