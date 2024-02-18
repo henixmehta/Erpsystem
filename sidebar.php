@@ -43,8 +43,8 @@
                         </a>
                     </li>
                     <?php
-                    $_SESSION['e_email']="";
-                    if($_SESSION['e_email']=="admin@gmail.com" && $_SESSION['e_pwd']=="admin" )
+                    // $_SESSION['e_role']="";
+                    if($_SESSION['admin']="admin")
                     {
                     ?>
                         <li class="nav-item">
@@ -55,7 +55,7 @@
                                 <path opacity="0.4" d="M17.523 7.39595V8.86667C17.1673 8.7673 16.7913 8.71761 16.4052 8.71761H15.7447V7.39595C15.7447 5.37868 14.0681 3.73903 12.0053 3.73903C9.94257 3.73903 8.26594 5.36874 8.25578 7.37608V8.71761H7.60545C7.20916 8.71761 6.83319 8.7673 6.47754 8.87661V7.39595C6.4877 4.41476 8.95692 2 11.985 2C15.0537 2 17.523 4.41476 17.523 7.39595Z" fill="currentColor"></path>
                                 </svg>
                                 </i>
-                                    <span class="item-name">Admin</span>
+                                    <span class="item-name">admin</span>
                             </a>
                         </li>
                     <?php
@@ -111,6 +111,17 @@
                             
                         <li class="nav-item">
                                 <!-- emp list  -->
+                                <a class="nav-link " href="roletable.php">
+                                    <i class="icon">
+                                        <svg class="icon-10"   width="10" viewBox="0 0 24 24" fill="currentColor">
+                                            <g>
+                                                <circle cx="12" cy="12" r="8" fill="currentColor"></circle>
+                                            </g>
+                                        </svg>
+                                    </i>
+                                    <i class="sidenav-mini-icon"> U </i>
+                                    <span class="item-name">Add Employee Role</span>
+                                </a>
                                 <a class="nav-link " href="employee-list.php">
                                     <i class="icon">
                                         <svg class="icon-10"   width="10" viewBox="0 0 24 24" fill="currentColor">
@@ -120,18 +131,7 @@
                                         </svg>
                                     </i>
                                     <i class="sidenav-mini-icon"> U </i>
-                                    <span class="item-name">Employee</span>
-                                </a>
-                                <a class="nav-link " href="roletable.php">
-                                    <i class="icon">
-                                        <svg class="icon-10"   width="10" viewBox="0 0 24 24" fill="currentColor">
-                                            <g>
-                                            <circle cx="12" cy="12" r="8" fill="currentColor"></circle>
-                                            </g>
-                                        </svg>
-                                    </i>
-                                    <i class="sidenav-mini-icon"> U </i>
-                                    <span class="item-name">Add Employee Role</span>
+                                    <span class="item-name">Add Employees</span>
                                 </a>
                             </li>
                         </ul>
@@ -292,7 +292,7 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="index.php">
                             <i class="icon">
                                  <svg class="icon-20" width="20" viewBox="0 0 24 24" fill="none"  >                                
                            <path d="M2 11.0786C2.05 13.4166 2.19 17.4156 2.21 17.8566C2.281 18.7996 2.642 19.7526 3.204 20.4246C3.986 21.3676 4.949 21.7886 6.292 21.7886C8.148 21.7986 10.194 21.7986 12.181 21.7986C14.176 21.7986 16.112 21.7986 17.747 21.7886C19.071 21.7886 20.064 21.3566 20.836 20.4246C21.398 19.7526 21.759 18.7896 21.81 17.8566C21.83 17.4856 21.93 13.1446 21.99 11.0786H2Z" fill="currentColor"></path>
