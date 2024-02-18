@@ -69,57 +69,6 @@
         </script>
 
 
-<!-- 
-         <script>
-             document.querySelector("form").addEventListener("submit", function(event) {
-               event.preventDefault();
-
-               // Clear previous error messages
-               document.querySelectorAll("span.error").forEach(function(span) {
-                  span.textContent = "";
-               });
-
-               // Get form elements
-               let elements = this.elements;
-               let fname = elements["fname"];
-               let lname = elements["lname"];
-               let email = elements["email"];
-               let pass = elements["pass"];
-
-               // Check for empty fields
-               if (fname.value.trim() === "") {
-                  showError(fname, "First name cannot be empty.");
-               }
-               if (lname.value.trim() === "") {
-                  showError(lname, "Last name cannot be empty.");
-               }
-               if (email.value.trim() === "") {
-                  showError(email, "Email cannot be empty.");
-               }
-               if (pass.value.trim() === "") {
-                  showError(pass, "Password cannot be empty.");
-               }
-
-               // Check if passwords match
-               // Check for valid email format
-               if (!isValidEmail(email.value)) {
-                  showError(email, "Please enter a valid email address.");
-               }
-
-               // Function to show error message
-               function showError(element, message) {
-                  let parent = element.parentElement;
-                  let error = parent.querySelector("span.error");
-                  error.textContent = message;
-               }
-
-               // Function to check for valid email format
-               function isValidEmail(email) {
-                  let regex = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
-                  return regex.test(email);
-               }
-               });
-            </script> -->
             <style>
                         .error {
                         color: red;
@@ -132,7 +81,7 @@
 
      <?php  
       
-         // if(isset($_POST("")))
+
       
 
       ?>
@@ -161,11 +110,8 @@
                      </div>
                   </div>
             </div>
-            
             <div class="conatiner-fluid content-inner mt-n5 py-0">
-   
             <div class="row">
-            
                <div class="col-xl-12 col-lg-8">
                   <div class="card">
                      <div class="card-header d-flex justify-content-between">
@@ -194,19 +140,7 @@
                                     <input type="text" class="form-control" id="lname" placeholder="Last Name"required>
                                     <!-- <span class="error"><?php // echo $e_lname; ?></span>    -->
                                  </div>
-                                 
-                                 <!-- <div class="form-group">
-                                    <label class="form-label">Employee Role:</label>
-                                    <select name="type" class="selectpicker form-control" data-style="py-0">
-                                       <option>Select</option>
-                                       <option>Web Designer</option>
-                                       <option>Web Developer</option>
-                                       <option>Tester</option>
-                                       <option>Php Developer</option>
-                                       <option>Ios Developer </option>
-                                    </select>
-                                 </div> -->
-
+                               
                                  <div class="form-group">
                                     <label class="form-label">Employee Role:</label>
                                     <select name="type" class="selectpicker form-control" data-style="py-0" required>
@@ -274,6 +208,25 @@
                                     <input type="email" class="form-control" id="email" placeholder="Email" required>
                                  <!-- <span class="error"><?php // echo $e_fname; ?></span>   -->
                                  </div>
+                                 <div class="form-group">
+                                    <label class="form-label">Team Name:</label>
+                                    <select name="type" class="selectpicker form-control" data-style="py-0" required>
+                                       <option>Select</option>
+                                       <?php
+                                       // Assuming $conn is your database connection object
+                                       $t_query = "SELECT t_name, t_status FROM team";
+                                       $result = mysqli_query($conn, $t_query);
+                                       if(mysqli_num_rows($result) > 0) {
+                                             while($row = mysqli_fetch_assoc($result)) {
+                                                if($row['t_status'] == "active") {
+                                                   echo "<option>".$row['t_name']."</option>";
+                                                }
+                                             }
+                                       }
+                                       ?>
+                                    </select>
+                                 </div>
+                                 
                                  <div class="form-group col-md-12">
                                     <label class="form-label" for="Joining Date">Joining Date:</label>
                                     <input type="date" class="form-control" id="joindate" placeholder="Enter your Joining Date" required>
@@ -325,8 +278,7 @@
                                  </fieldset> 
                               </fieldset> 
                               </div>
-                              <!-- <button type="submit" name="sub_btn" class="btn btn-primary">Add New Employee</button> -->
-                           <input type="submit" value="submit" class="btn btn-primary" name="sub_btn">
+                              <input type="submit" value="submit" class="btn btn-primary" name="sub_btn1">
                         </form>
                         </div>
                      </div>

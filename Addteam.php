@@ -83,52 +83,41 @@
                            <div class="row">
                               <div class="form-group col-md-15">
                                  <label class="form-label" for="fname">Team Name:</label>
-                                 <input type="text" class="form-control" id="tname" placeholder="team Name">
-                                 <span class="error"><?php echo $e_fname; ?></span>                             
+                                 <input type="text" class="form-control" id="tname" placeholder="team Name" required>
                               </div>
                               <div class="form-group col-md-15">
                                  <label class="form-label" for="Degree"> Team Image </label>
-                                 <input type="file" class="form-control" id="Degree" placeholder="Degree certificate" >
-                              <span class="error"><?php echo $e_fname; ?></span>  
+                                 <input type="file" class="form-control" id="Degree" placeholder="Degree certificate" required >
                               </div>
-                           
-                              
-                            
-
-                              <fieldset class="mb-3">
-                              <legend>Status:</legend>
-                                 <div class="form-check">
-                                    <input type="radio" name="radios" class="form-check-input" id="Active">
-                                    <label class="form-check-label" for="Active">Active</label>
-                                 </div>
-                                 <div class="mb-3 form-check">
-                                    <input type="radio" name="radios" class="form-check-input" id="Inactive">
-                                    <label class="form-check-label" for="Inactive">Inactive</label>
-                                 </div>
-                              </fieldset> 
-
-
-                          
-                              <div class="form-group col-md-15">
-                                 <label class="form-label" for="add1">Team Description</label>
-                                 <input type="text" class="form-control" id="add1" placeholder="Team Description">
-                              <span class="error"><?php echo $e_fname; ?></span>  
-                              </div>
-                              
-                              
+                              <label class="form-label" for="add1">Team Description</label>
+                              <input type="text" class="form-control" id="add1" placeholder="Team Description" required>
+                           </div>
                            <div class="form-group">
-                           <label class="form-label">Team Projects</label>
-                           <select name="type" class="selectpicker form-control" data-style="py-0">
-                              <option>Select</option>
-                              <option>Web Designer</option>
-                              <option>Web Developer</option>
-                              <option>Tester</option>
-                              <option>Php Developer</option>
-                              <option>Ios Developer </option>
-                           </select>
-                        </div>
+                              <label class="form-label">Team Projects language</label>
+                              <select name="type" class="selectpicker form-control" data-style="py-0" required>
+                                 <option>Select</option>
+                                 <option>Laravel</option>
+                                 <option>Core PHP</option>
+                                 <option>Android</option>
+                                 <option>IOS</option>
+                                 <option>NODE JS </option>
+                              </select>
+                           </div>
+                           <fieldset class="mb-3">
+                           <legend>Status:</legend>
+                              <div class="form-check">
+                                 <input type="radio" name="radios" class="form-check-input" id="Active" required>
+                                 <label class="form-check-label" for="Active">Active</label>
+                              </div>
+                              <div class="mb-3 form-check">
+                                 <input type="radio" name="radios" class="form-check-input" id="Inactive" required>
+                                 <label class="form-check-label" for="Inactive">Inactive</label>
+                              </div>
+                           </fieldset> 
+                           <div class="form-group col-md-15">
                            <!-- <button type="submit" name="sub_btn" class="btn btn-primary">Add New Team</button> -->
-                        <input type="submit" value="submit" class="btn btn-primary" name="sub_btn">
+                           <input type="submit" value="submit" class="btn btn-primary" name="sub_btn">
+                           
                         </form>
                      </div>
                   </div>

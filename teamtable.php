@@ -16,7 +16,7 @@
       color: red;
     }
     .main-content{
-      margin-left:265px;
+      margin-left:295px;
       margin-top: 100px;
     }
    </style>
@@ -25,8 +25,7 @@
    <div class="conatiner-fluid content-inners mt-n5 py-0">
       <div>
          <div class="row">
-           
-            <div class="col-xl-12 col-lg-8">
+           <div class="col-xl-11 col-lg-8">
                <div class="card">
                   <div class="card-header d-flex justify-content-between">
                      
@@ -45,7 +44,6 @@
                            <th>Team project name</th>
                            <th>Team Description</th>
                            <th>Team employee name</th>
-                           <th>Team project</th>
                            <th>Team status</th>
                            <th style="min-width: 100px">Action</th>
                         </tr>
@@ -64,7 +62,6 @@
                         <td><?php echo $row['t_project_name']?></td>
                         <td><?php echo $row['t_des']?></td>
                         <td><?php echo $row['t_emp']?></td>
-                        <td><?php echo $row['t_project']?></td>
                         <td><?php 
                                  $status = $row['t_status'];
                                  if($status == "active")

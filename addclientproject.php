@@ -1,9 +1,15 @@
+            <?php 
+               include 'sidebar.php';
+               include 'connection.php';
+               // include 'formvalidation.php';
+            ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="main.min.css">
 	<title>Team</title>
    <style>
         .error {
@@ -13,57 +19,9 @@
       margin-left:265px;
     }
    </style>
-      <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        var form = document.getElementById('myForm');
-
-        form.addEventListener('submit', function (event) {
-            var clientName = document.getElementById('tname').value.trim();
-            var projectName = document.getElementById('pname').value.trim();
-            var contact = document.getElementById('contact').value.trim();
-            var projectLanguage = document.getElementById('planguage').value.trim();
-            var projectDescription = document.getElementById('pdescription').value.trim();
-
-            if (clientName === '') {
-                alert('Please enter client/company name');
-                event.preventDefault();
-                return;
-            }
-
-            if (projectName === '') {
-                alert('Please enter project name');
-                event.preventDefault();
-                return;
-            }
-
-            if (contact === '') {
-                alert('Please enter client/company contact');
-                event.preventDefault();
-                return;
-            }
-
-            if (projectLanguage === '') {
-                alert('Please enter project language');
-                event.preventDefault();
-                return;
-            }
-
-            if (projectDescription === '') {
-                alert('Please enter project description');
-                event.preventDefault();
-                return;
-            }
-        });
-    });
-</script>
-
-	<link rel="stylesheet" href="main.min.css">
+  
 
 <body>
-            <?php 
-               include 'sidebar.php';
-               // include 'formvalidation.php';
-            ?>
 <main class="main-content">
 
 			<div class="iq-navbar-header" style="height: 215px;">
@@ -148,7 +106,34 @@
                                  <!-- <span class="error"><?php // echo $e_fname; ?></span>                              -->
                               </div>
                               <fieldset class="mb-3">
-                              <legend>Status:</legend>
+                            
+
+                          
+                              <div class="form-group col-md-15">
+                                 <label class="form-label" for="add1">Project Description</label>
+                                 <input type="text" class="form-control" id="add1" placeholder="Project Description">
+                              <!-- <span class="error"><?php // echo $e_fname; ?></span>   -->
+                              </div>
+                              
+                              <div class="form-group">
+                                    <label class="form-label">Team Name:</label>
+                                    <select name="type" class="selectpicker form-control" data-style="py-0" required>
+                                       <option>Select</option>
+                                       <?php
+                                       // Assuming $conn is your database connection object
+                                       $t_query = "SELECT t_name, t_status FROM team";
+                                       $result = mysqli_query($conn, $t_query);
+                                       if(mysqli_num_rows($result) > 0) {
+                                             while($row = mysqli_fetch_assoc($result)) {
+                                                if($row['t_status'] == "active") {
+                                                   echo "<option>".$row['t_name']."</option>";
+                                                }
+                                             }
+                                       }
+                                       ?>
+                                    </select>
+                                 </div>
+                        <legend>Status:</legend>
                                  <div class="form-check">
                                     <input type="radio" name="radios" class="form-check-input" id="Active">
                                     <label class="form-check-label" for="Active">Active</label>
@@ -158,30 +143,7 @@
                                     <label class="form-check-label" for="Inactive">Inactive</label>
                                  </div>
                               </fieldset> 
-
-
-                          
-                              <div class="form-group col-md-15">
-                                 <label class="form-label" for="add1">Project Description</label>
-                                 <input type="text" class="form-control" id="add1" placeholder="Project Description">
-                              <!-- <span class="error"><?php // echo $e_fname; ?></span>   -->
-                              </div>
-                              
-                              
-                           <div class="form-group">
-                           <label class="form-label">Team Projects</label>
-                           <select name="type" class="selectpicker form-control" data-style="py-0">
-                              <option>Select</option>
-                              <option>Web Designer</option>
-                              <option>Web Developer</option>
-                              <option>Tester</option>
-                              <option>Php Developer</option>
-                              <option>Ios Developer </option>
-                           </select>
-                        </div>
-                          
-                           <!-- <button type="submit" name="sub_btn" class="btn btn-primary">Add New Team</button> -->
-                        <input type="submit" value="submit" class="btn btn-primary" name="sub_btn">
+                         <input type="submit" value="submit" class="btn btn-primary" name="sub_btn">
                         </form>
                      </div>
                   </div>
