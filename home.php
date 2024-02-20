@@ -578,8 +578,48 @@
           }
       </style>
 
-  </head>
-  <body>            
+</head>
+<body>            
+    
+    <!-- Navigation bar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+      <div class="container">
+          <a class="navbar-brand" href="#">
+              <img src="pictures/erp.png" alt="Company Logo" width="40" height="40" class="mr-2">
+              Apextech
+          </a>
+    
+          <!-- Navigation links -->
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+              aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav ml-auto">
+                  <li class="nav-item">
+                      <a class="nav-link" href="home.php">Home</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="about.php">About</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="contact.php">Contact</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="#">Dashboard</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="#">Employees</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="#">Projects</a>
+                  </li>
+              </ul>
+          </div>
+      </div>
+    </nav>
+    
+    <!-- Headings -->
     <form id="form1" >
       <!-- slide images -->
       <div class="slideshow-container">
@@ -613,46 +653,6 @@
         <span class="dot"></span> 
       </div>
         
-      
-      <!-- Navigation bar -->
-      <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="#">
-                <img src="pictures/erp.png" alt="Company Logo" width="40" height="40" class="mr-2">
-                Apextech
-            </a>
-
-            <!-- Navigation links -->
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="home.php">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="about.php">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="contact.php">Contact</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Dashboard</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Employees</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Projects</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-      </nav>
-    
-      <!-- Headings -->
       <div class="background-container">
         <div class="texth">
           <h4 class="welcome">welcome to</h4>
