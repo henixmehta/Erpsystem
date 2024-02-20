@@ -497,15 +497,10 @@
           }
 
           /* Slideshow container */
-
-          .mySlides {
-            display:none;
-          }
-
           .slideshow-container {
             max-width: 1000px;
             position: relative;
-            margin: 01px;
+            margin: 1px;
             margin-top:52.50px; 
           }
 
@@ -513,7 +508,7 @@
             position: absolute;
             top: 0;
             left: 0;
-            width: 1470px;
+            width: 1550px;
             height: 100%;
             background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
           }
@@ -573,7 +568,7 @@
           }
 
           .setpic{
-            width: 1470px ;
+            width: 1550px ;
             height: 85.50%;
           }
       </style>
