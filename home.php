@@ -426,8 +426,8 @@
           }
 
           .footer-column h5 {
-            color: #f8f9fa; /
-            font-size: 20px; 
+            color: #f8f9fa; 
+            font-size : 20px; 
             margin-bottom: 20px; 
             margin-left: 45px;
           }
@@ -533,7 +533,7 @@
           /* Number text (1/3 etc) */
           .numbertext {
             color: #f2f2f2;
-            font-size: 12px;
+            font-size: 12px;  
             padding: 8px 12px;
             position: absolute;
             top: 0;
@@ -577,8 +577,52 @@
           }
       </style>
 
+<<<<<<< HEAD
   </head>
   <body>            
+=======
+</head>
+<body>            
+    
+    <!-- Navigation bar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+      <div class="container">
+          <a class="navbar-brand" href="#">
+              <img src="pictures/erp.png" alt="Company Logo" width="40" height="40" class="mr-2">
+              Apextech
+          </a>
+    
+          <!-- Navigation links -->
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+              aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav ml-auto">
+                  <li class="nav-item">
+                      <a class="nav-link" href="home.php">Home</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="about.php">About</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="contact.php">Contact</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="#">Dashboard</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="#">Employees</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="#">Projects</a>
+                  </li>
+              </ul>
+          </div>
+      </div>
+    </nav>
+    
+>>>>>>> 0c4c3aa36bf6c2d77af261c41c1144c8a39481e9
     <!-- Headings -->
     <form id="form1" >
       <!-- slide images -->
@@ -649,6 +693,10 @@
         <span class="dot"></span> 
         <span class="dot"></span> 
       </div>
+<<<<<<< HEAD
+=======
+        
+>>>>>>> 0c4c3aa36bf6c2d77af261c41c1144c8a39481e9
       <div class="background-container">
         <div class="texth">
           <h4 class="welcome">welcome to</h4>
