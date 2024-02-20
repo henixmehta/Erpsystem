@@ -24,6 +24,7 @@
             max-width: 800px;
             margin: 25px auto;
             padding: 40px;
+            margin-top:10px;
             background-color: rgba(0, 0, 0, 0.6);
             border-radius: 10px;
             box-shadow: 0 0 30px rgba(0, 0, 0, 0.4);
