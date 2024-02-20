@@ -123,8 +123,8 @@
       
           .container {
             max-width: 1200px;
-            margin: 0 140px;
-            padding: 20px;
+            margin: -20px 0;
+            padding: 0;
           }
           
           .row {
@@ -297,7 +297,7 @@
 
           .navbar {
             height: 53px;
-            padding: 27px;
+            padding-left: 147px;
             background-color: rgb(255 255 255 / 2%) !important
           }
 
@@ -316,9 +316,8 @@
             text-transform: uppercase;
             text-decoration: none;
           }
-          
           .navbar a:hover {
-              color: darkblue; /* Change color on hover */
+            color: darkblue; /* Change color on hover */
           }
 
           .navbar .dropdown-menu .dropdown-item:focus {
@@ -580,31 +579,69 @@
 
   </head>
   <body>            
+    <!-- Headings -->
     <form id="form1" >
       <!-- slide images -->
       <div class="slideshow-container">
-      <div class="mySlides fade">
-        <div class="numbertext">1 / 3</div>
-        <img src="pictures/slide10.jpg" class="setpic">
-        <div class="overlay"></div> 
-        <div class="text">An ERP system streamlines business processes by integrating various functions.</div>
-      </div>
+        <!-- Navigation bar -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+          <div class="container">
+              <a class="navbar-brand" href="#">
+                  <img src="pictures/erp.png" alt="Company Logo" width="40" height="40" class="mr-2">
+                  Apextech
+              </a>
+    
+              <!-- Navigation links -->
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                  aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNav">
+                  <ul class="navbar-nav ml-auto">
+                      <li class="nav-item">
+                          <a class="nav-link" href="home.php">Home</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link" href="about.php">About</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link" href="contact.php">Contact</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link" href="#">Dashboard</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link" href="#">Employees</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link" href="#">Projects</a>
+                      </li>
+                  </ul>
+              </div>
+          </div>
+        </nav>
+      
+        <div class="mySlides fade">
+              <div class="numbertext">1 / 3</div>
+              <img src="pictures/slide10.jpg" class="setpic">
+              <div class="overlay"></div> 
+              <div class="text">An ERP system streamlines business processes by integrating various functions.</div>
+            </div>
 
-      <div class="mySlides fade">
-        <div class="numbertext">2 / 3</div>
-        <img src="pictures/x4.jpg" class="setpic">
-        <div class="overlay"></div> 
-        <div class="text">Unify, Simplify, Excel: Transforming Business with ERP Solutions.</div>
-      </div>
+            <div class="mySlides fade">
+              <div class="numbertext">2 / 3</div>
+              <img src="pictures/x4.jpg" class="setpic">
+              <div class="overlay"></div> 
+              <div class="text">Unify, Simplify, Excel: Transforming Business with ERP Solutions.</div>
+            </div>
 
-      <div class="mySlides fade">
-        <div class="numbertext">3 / 3</div>
-        <img src="pictures/slide4.jpg " class="setpic">
-        <div class="overlay"></div> 
-        <div class="text">Effortlessly manage your business operations with our intuitive ERP system!</div>
-      </div>
-
-      </div>
+            <div class="mySlides fade">
+              <div class="numbertext">3 / 3</div>
+              <img src="pictures/slide4.jpg " class="setpic">
+              <div class="overlay"></div> 
+              <div class="text">Effortlessly manage your business operations with our intuitive ERP system!</div>
+            </div>
+       </div>
       <br>
 
       <div style="text-align:center">
@@ -612,47 +649,6 @@
         <span class="dot"></span> 
         <span class="dot"></span> 
       </div>
-        
-      
-      <!-- Navigation bar -->
-      <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="#">
-                <img src="pictures/erp.png" alt="Company Logo" width="40" height="40" class="mr-2">
-                Apextech
-            </a>
-
-            <!-- Navigation links -->
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="home.php">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="about.php">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="contact.php">Contact</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Dashboard</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Employees</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Projects</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-      </nav>
-    
-      <!-- Headings -->
       <div class="background-container">
         <div class="texth">
           <h4 class="welcome">welcome to</h4>
