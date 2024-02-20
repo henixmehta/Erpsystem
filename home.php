@@ -19,6 +19,9 @@
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"/>
 
       <style>          
+          body{
+            margin-top: 62px;
+          }
           form {
             background-color:lightgray;
           }
@@ -305,6 +308,15 @@
             color: rgb(0 173 255 / 90%);
           }
 
+          .navbar-toggler {
+                padding: 1.25rem 0.75rem;
+                font-size: 1.25rem;
+                line-height: 1;
+                background-color: transparent;
+                border: 1px solid transparent;
+                border-radius: 0.25rem;
+                transition: box-shadow .15s ease-in-out;
+            }
           .navbar a.nav-link {
             color: rgb(0 173 255 / 100%) !important;
           }
@@ -512,7 +524,7 @@
             position: absolute;
             top: 0;
             left: 0;
-            width: 1470px;
+            width: 1521px;
             height: 100%;
             background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
           }
@@ -572,158 +584,111 @@
           }
 
           .setpic{
-            width: 1470px ;
+            width: 1521px ;
             height: 85.50%;
           }
       </style>
 
-<<<<<<< HEAD
-  </head>
-  <body>            
-=======
 </head>
 <body>            
-    
-    <!-- Navigation bar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-      <div class="container">
-          <a class="navbar-brand" href="#">
-              <img src="pictures/erp.png" alt="Company Logo" width="40" height="40" class="mr-2">
-              Apextech
-          </a>
-    
-          <!-- Navigation links -->
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-              aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-              <ul class="navbar-nav ml-auto">
-                  <li class="nav-item">
-                      <a class="nav-link" href="home.php">Home</a>
-                  </li>
-                  <li class="nav-item">
-                      <a class="nav-link" href="about.php">About</a>
-                  </li>
-                  <li class="nav-item">
-                      <a class="nav-link" href="contact.php">Contact</a>
-                  </li>
-                  <li class="nav-item">
-                      <a class="nav-link" href="#">Dashboard</a>
-                  </li>
-                  <li class="nav-item">
-                      <a class="nav-link" href="#">Employees</a>
-                  </li>
-                  <li class="nav-item">
-                      <a class="nav-link" href="#">Projects</a>
-                  </li>
-              </ul>
-          </div>
-      </div>
-    </nav>
-    
->>>>>>> 0c4c3aa36bf6c2d77af261c41c1144c8a39481e9
-    <!-- Headings -->
-    <form id="form1" >
-      <!-- slide images -->
-      <div class="slideshow-container">
-        <!-- Navigation bar -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-          <div class="container">
-              <a class="navbar-brand" href="#">
-                  <img src="pictures/erp.png" alt="Company Logo" width="40" height="40" class="mr-2">
-                  Apextech
-              </a>
-    
-              <!-- Navigation links -->
-              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                  aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarNav">
-                  <ul class="navbar-nav ml-auto">
-                      <li class="nav-item">
-                          <a class="nav-link" href="home.php">Home</a>
-                      </li>
-                      <li class="nav-item">
-                          <a class="nav-link" href="about.php">About</a>
-                      </li>
-                      <li class="nav-item">
-                          <a class="nav-link" href="contact.php">Contact</a>
-                      </li>
-                      <li class="nav-item">
-                          <a class="nav-link" href="#">Dashboard</a>
-                      </li>
-                      <li class="nav-item">
-                          <a class="nav-link" href="#">Employees</a>
-                      </li>
-                      <li class="nav-item">
-                          <a class="nav-link" href="#">Projects</a>
-                      </li>
-                  </ul>
-              </div>
-          </div>
-        </nav>
-      
-        <div class="mySlides fade">
-              <div class="numbertext">1 / 3</div>
-              <img src="pictures/slide10.jpg" class="setpic">
-              <div class="overlay"></div> 
-              <div class="text">An ERP system streamlines business processes by integrating various functions.</div>
-            </div>
-
-            <div class="mySlides fade">
-              <div class="numbertext">2 / 3</div>
-              <img src="pictures/x4.jpg" class="setpic">
-              <div class="overlay"></div> 
-              <div class="text">Unify, Simplify, Excel: Transforming Business with ERP Solutions.</div>
-            </div>
-
-            <div class="mySlides fade">
-              <div class="numbertext">3 / 3</div>
-              <img src="pictures/slide4.jpg " class="setpic">
-              <div class="overlay"></div> 
-              <div class="text">Effortlessly manage your business operations with our intuitive ERP system!</div>
-            </div>
-       </div>
-      <br>
-
-      <div style="text-align:center">
-        <span class="dot"></span> 
-        <span class="dot"></span> 
-        <span class="dot"></span> 
-      </div>
-<<<<<<< HEAD
-=======
-        
->>>>>>> 0c4c3aa36bf6c2d77af261c41c1144c8a39481e9
-      <div class="background-container">
-        <div class="texth">
-          <h4 class="welcome">welcome to</h4>
-          <h1 class="crave" >ApexTech</h1>
-          <!-- <h4 class="bold-text">Streamline Your Business <br />Operations with Apextech</h4> -->
+  <!-- Navigation bar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <img src="pictures/erp.png" alt="Company Logo" width="40" height="40" class="mr-2">
+            Apextech
+        </a>
+  
+        <!-- Navigation links -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="home.php">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="about.php">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="contact.php">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Employees</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Projects</a>
+                </li>
+            </ul>
         </div>
-      </div>
+    </div>
+  </nav>
+  
+  <!-- Headings -->
+  <form id="form1" >
+    <!-- slide images -->
+    <!-- slids -->
+    <div class="mySlides fade">
+            <div class="numbertext">1 / 3</div>
+            <img src="pictures/slide10.jpg" class="setpic">
+            <div class="overlay"></div> 
+            <div class="text">An ERP system streamlines business processes by integrating various functions.</div>
+        </div>
 
-      <!-- services -->
-      <div class="bodyservice background-container">
-        <div class="service-section">
-          <h2><i class="fas fa-cogs custom-question-icon"></i> Our Services</h2>
-          <div class="row">
-            <div class="col-sm">
-              <!-- <img src="image_url_here" class="service-icon" /> -->
-              <div class="custom-icon"><i class="fas fa-code"></i></div>  
-              <div class="service-title">Custom Software Development</div>
-              <div class="service-details">Our software development company offers a comprehensive range of services to 
-                meet the diverse needs of our clients. From custom software development and mobile app development to web
-                development and cloud solutions, we leverage cutting-edge technologies to deliver innovative solutions
-                tailored to your specific requirements. With a team of experienced developers, designers, and project
-                managers, we ensure high-quality, scalable, and efficient software solutions that drive business growth and success.
-            </div>
+          <div class="mySlides fade">
+            <div class="numbertext">2 / 3</div>
+            <img src="pictures/x4.jpg" class="setpic">
+            <div class="overlay"></div> 
+            <div class="text">Unify, Simplify, Excel: Transforming Business with ERP Solutions.</div>
           </div>
+
+          <div class="mySlides fade">
+            <div class="numbertext">3 / 3</div>
+            <img src="pictures/slide4.jpg " class="setpic">
+            <div class="overlay"></div> 
+            <div class="text">Effortlessly manage your business operations with our intuitive ERP system!</div>
+          </div>
+     </div>
+    <br>
+
+    <div style="text-align:center">
+      <span class="dot"></span> 
+      <span class="dot"></span> 
+      <span class="dot"></span> 
+    </div>  
+    <div class="background-container">
+      <div class="texth">
+        <h4 class="welcome">welcome to</h4>
+        <h1 class="crave" >ApexTech</h1>
+        <!-- <h4 class="bold-text">Streamline Your Business <br />Operations with Apextech</h4> -->
+      </div>
+    </div>
+
+    <!-- services -->
+    <div class="bodyservice background-container">
+      <div class="service-section">
+        <h2><i class="fas fa-cogs custom-question-icon"></i> Our Services</h2>
+        <div class="row">
           <div class="col-sm">
-              <img class="service-img" src="pictures/image1.jpg" alt="Service Image" />
+            <!-- <img src="image_url_here" class="service-icon" /> -->
+            <div class="custom-icon"><i class="fas fa-code"></i></div>  
+            <div class="service-title">Custom Software Development</div>
+            <div class="service-details">Our software development company offers a comprehensive range of services to 
+              meet the diverse needs of our clients. From custom software development and mobile app development to web
+              development and cloud solutions, we leverage cutting-edge technologies to deliver innovative solutions
+              tailored to your specific requirements. With a team of experienced developers, designers, and project
+              managers, we ensure high-quality, scalable, and efficient software solutions that drive business growth and success.
           </div>
+        </div>
+        <div class="col-sm">
+            <img class="service-img" src="pictures/image1.jpg" alt="Service Image" />
+        </div>
+      <div class="slideshow-container">
           <div class="col-sm">              
             <i class="fas fa-laptop-code custom-icon"></i>
               <div class="service-title">FrontEnd Development</div>
