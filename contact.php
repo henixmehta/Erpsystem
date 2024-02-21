@@ -138,7 +138,7 @@
           font-weight: bold;
           font-size: 16px;
           text-transform: uppercase; 
-          letter-spacing: 1px; /
+          letter-spacing: 1px; 
           transition: background-color 0.3s;
         }
 
