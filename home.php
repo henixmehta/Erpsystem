@@ -519,11 +519,8 @@
             position: absolute;
             top: 0;
             left: 0;
-<<<<<<< HEAD
             width: 1550px;
-=======
             width: 1521px;
->>>>>>> 9a389792fdfb3007d1118fb8cec2fef78d819c1b
             height: 100%;
             background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
           }
@@ -583,11 +580,8 @@
           }
 
           .setpic{
-<<<<<<< HEAD
             width: 1550px ;
-=======
             width: 1521px ;
->>>>>>> 9a389792fdfb3007d1118fb8cec2fef78d819c1b
             height: 85.50%;
           }
       </style>
