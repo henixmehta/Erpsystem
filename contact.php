@@ -300,16 +300,7 @@
                   <li class="nav-item">
                       <a class="nav-link" href="contact.php">Contact</a>
                   </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Dashboard</a>
-                  </li>
-                  <li class="nav-item">
-                      <a class="nav-link" href="#">Employees</a>
-                  </li>
-                  <li class="nav-item">
-                      <a class="nav-link" href="#">Projects</a>
-                    </li>
-              </ul>
+             </ul>
           </div>
       </div>
     </nav>

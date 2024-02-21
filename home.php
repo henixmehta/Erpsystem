@@ -168,13 +168,17 @@
             padding-top:20px;
           }
 
-          .service-img {
+            .service-img {
             width: 100%;
             max-width: 350px; 
             height: auto; 
             margin-top: 20px; 
-            border-radius: 5px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease; 
+            display: inline-block;
+          }
+
+          .service-img:hover {
+            transform: scale(1.1); 
           }
 
           .service-title {
@@ -222,6 +226,10 @@
             display: flex;
             justify-content: center;
             align-items: center;
+          }
+
+          .custom-icon:hover {
+              background-color: #555; 
           }
 
           @media (min-width: 768px) {
@@ -311,84 +319,6 @@
             font-family: 'Roboto', sans-serif;
           }
 
-          .carousel-indicators {
-            padding-left :10%;
-          }
-
-          .carousel-indicators li {
-            border-radius: 10%;
-            background-color: silver;
-            width: 40px;
-            height: 4px;
-            margin: 20px 10px; 
-            cursor: pointer;
-            padding-left: 10px;
-            border: none; 
-          }
-
-          .carousel-indicators .active {
-            background-color: #ff511c;
-            width: 40px;
-            height: 4px;
-            margin: 20px 10px; 
-            cursor: pointer;
-          }
-
-          .carousel-inner {
-            border-radius: 5px;
-            margin-bottom :40px;
-            padding:100px;
-            background-color :rgba(0,0,0,0.7);
-          }
-
-          .carousel-item {
-            height: 200px; 
-            text-align: center;
-          }
-
-          .carousel-caption {
-            background-color: white ;
-            padding: 50px;
-            height:200px;
-            border-radius: 5px;
-            color: black;
-          }
-
-          .carousel-caption h4 {
-            font-size: 15px;
-            margin-bottom: 5px;
-            font-family :Arial;
-            margin-top :10px;
-            margin-left :10px ;
-          }
-
-          .carousel-caption p {
-            font-style: italic;
-            font-size: 16px;
-            font-family :Caladea ;
-            font-weight :500 ;
-          }
-                
-          .check{
-            color :orange ;
-          }
-
-          .img-circle {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            overflow: hidden;
-            margin-right: 20px;
-            border : 1px solid black;
-            margin : auto ;
-          }
-
-          .img-circle img {
-            width: 100%;
-            height: 100%;
-            background-size: cover;
-            }
-
           h2 {
             font-size: 27px;
             font-weight: bold;
@@ -408,6 +338,17 @@
 
           ul {
             list-style:none;
+          }
+
+          .step:hover {
+            transform: translateY(-5px); 
+            transition: transform 0.3s ease; 
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4); 
+          }
+
+          .step-number:hover {
+            background-color: #555; 
+            transition: background-color 0.3s ease; 
           }
 
           /* footer */
@@ -665,15 +606,6 @@
                 <li class="nav-item">
                     <a class="nav-link" href="contact.php">Contact</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Dashboard</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Employees</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Projects</a>
-                </li>
             </ul>
         </div>
     </div>
@@ -838,7 +770,6 @@
               <ul>
                 <li><a href="home.php">Home</a></li>
                 <li><a href="about.php">About Us</a></li>
-                <li><a href="#">Services</a></li>
                 <li><a href="contact.php">Contact</a></li>
               </ul>
             </div>
