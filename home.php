@@ -63,14 +63,110 @@
             text-transform :capitalize ;
           }
 
+        /* navbar */
+          .navbar {
+            height: 53px;
+            padding-left: 147px;
+            background-color: rgb(255 255 255 / 2%) !important
+          }
+
+          .navbar-light .navbar-brand {
+            color: rgb(0 173 255 / 90%);
+          }
+
+          .navbar-toggler {
+                padding: 1.25rem 0.75rem;
+                font-size: 1.25rem;
+                line-height: 1;
+                background-color: transparent;
+                border: 1px solid transparent;
+                border-radius: 0.25rem;
+                transition: box-shadow .15s ease-in-out;
+            }
+          .navbar a.nav-link {
+            color: rgb(0 173 255 / 100%) !important;
+          }
+
+          .navbar a {
+            font-size: 14px;
+            font-weight: bold;
+            font-family: 'Bell MT';
+            text-transform: uppercase;
+            text-decoration: none;
+          }
+
+          a {
+            text-decoration: none;
+            color: black;
+          }
+
+          .navbar a:hover {
+            color: darkblue; /* Change color on hover */
+          }
+
+          .navbar .dropdown-menu .dropdown-item:focus {
+            color: black;
+            background-color: transparent;
+          }
+
+          .nav-item {
+            margin-right: 10px;
+          }
+
+          .logo_span {
+            font-size: 24px;
+            font-weight: bold;
+            font-family: 'Bell MT';
+            text-transform: capitalize;
+            display: inline-block;
+            margin-top: 10px;
+          }
+
+          .search-form {
+            margin-right: 20px;
+            margin-top: 10px;
+          }
+
+          .navbar-brand {
+            margin-right: 10px;
+            width: 40px;
+            height: 40px;
+            border-radius: 90%;
+          }
+
+          .account-dropdown {
+            margin-left: 20px;
+          }
+
+          .navbar a.nav-link:hover,
+          .navbar .dropdown-item:hover {
+            color: #555;
+            text-decoration: none;
+          }
+
+          .navbar a:hover {
+              color: #555 !important; 
+          }
           /* services */
-          .service-section {
-            text-align: center;
-            padding: 50px;
-            background-color: rgba(0  , 0, 0, 0.3);
-            margin-left:0px;
-            margin-right:0px;
-            color: #fff9;
+           .service-section {
+              text-align: center;
+              padding: 64px;
+              background-color: rgba(0 , 0, 0, 0.3);
+              margin-left: 0px;
+              margin-right: 0px;
+              color: #fff9;
+              padding-left: 51px;
+          }
+
+          .service-heading{
+            font-size: 27px;
+            font-weight: bold;
+            margin-bottom: 100px;
+            text-align :center ;
+            text-transform :uppercase ;
+            color: #fff8;
+            font-family: 'Georgia', serif;
+            margin-right:28px;
           }
 
           .service-img {
@@ -86,14 +182,7 @@
             height: 100px;
             margin-top: 100px;
           }
-
-          .service-description {
-            padding: 100px;
-            width: 50%;
-            text-align: left;
-            float: left;
-          }
-
+      
           .service-title {
             font-size: 25px;
             text-align: center;
@@ -105,43 +194,79 @@
 
           .service-details {
             margin-top: 20px;
-            font-size: 17.90px;
+            font-size: 16.90px;
             color: #f1f2f3;
             text-align: center;
             font-family: 'Verdana', sans-serif;
           }
 
           .bodyservice {
-            padding: 0px 0;
+            padding: 0px 0px;
             background-color: #f8f9fa;
             color: #333;
             text-align: center;
+            width:103%;
+          }
+
+          .row {
+              display: flex;
+              flex-wrap: wrap;
+              justify-content: flex-end;
+              margin-bottom: 26px;
+              flex-direction: row;
+              align-content: space-between;
+              align-items: center;
+              margin-top: -80px;
+              text-align:center;
+              margin-right:10px;
+ 
           }
 
           /* how it work */             
-          .bodyhow {
+           .bodyhow {
             font-family: Arial, sans-serif;
             background-color: rgba(255, 255, 255, 0.1);
+            width: 105%;
+            margin-top: 21px;
           }
       
           .container {
             max-width: 1200px;
-            margin: -20px 0;
+            margin: -20px 14px;
             padding: 0;
           }
           
-          .row {
+          .row1 {
             display: flex;
             flex-wrap: wrap;
-            justify-content: space-between;
-            margin-bottom: 30px;
-          }
-          
+            justify-content: flex-end;
+            margin-bottom: 19px;
+            flex-direction: row;
+            align-content: space-between;
+            align-items: center;
+            margin-top: -80px;
+            text-align: center;
+            margin-right: -135px;
+            margin-left: 93px;
+          }          
+
           .col-lg-4 {
-            flex-basis: calc(33.33% - 20px);
-            margin-bottom: 20px;
+            flex-basis: calc(33.33% - 30px);
+            margin-bottom: 100px;
           }
           
+          .step-heading{
+            font-size: 27px;
+            font-weight: bold;
+            margin-bottom: 115px;
+            text-align: center;
+            text-transform: uppercase;
+            color: #fff8;
+            font-family: 'Georgia', serif;
+            margin-left:330px;
+            padding-top:20px;
+          }
+       
           .step {
             background-color: #fff;
             border-radius: 5px;
@@ -168,14 +293,6 @@
             margin-bottom: 10px;
             margin-left: -12px;        
           }
-
-          .step-tit {
-            font-size: 16px;
-            color: #333;
-            margin-bottom: 10px;
-            margin-left: 10px; 
-            }
-        
           
           .step-description {
             font-size: 16px;
@@ -185,14 +302,6 @@
             font-family: 'Roboto', sans-serif;
           }
 
-          .step-desc{
-            font-size: 16px;
-            margin-top: 15px;
-            color: #666;
-            line-height: 1.5;       
-            }
-
-        
           .carousel-indicators {
             padding-left :10%;
           }
@@ -292,137 +401,13 @@
             list-style:none;
           }
 
-            /* navbar */
-          a {
-            text-decoration: none;
-            color: black;
-          }
-
-          .navbar {
-            height: 53px;
-            padding-left: 147px;
-            background-color: rgb(255 255 255 / 2%) !important
-          }
-
-          .navbar-light .navbar-brand {
-            color: rgb(0 173 255 / 90%);
-          }
-
-          .navbar-toggler {
-                padding: 1.25rem 0.75rem;
-                font-size: 1.25rem;
-                line-height: 1;
-                background-color: transparent;
-                border: 1px solid transparent;
-                border-radius: 0.25rem;
-                transition: box-shadow .15s ease-in-out;
-            }
-          .navbar a.nav-link {
-            color: rgb(0 173 255 / 100%) !important;
-          }
-
-          .navbar a {
-            font-size: 14px;
-            font-weight: bold;
-            font-family: 'Bell MT';
-            text-transform: uppercase;
-            text-decoration: none;
-          }
-          .navbar a:hover {
-            color: darkblue; /* Change color on hover */
-          }
-
-          .navbar .dropdown-menu .dropdown-item:focus {
-            color: black;
-            background-color: transparent;
-          }
-
-          .nav-item {
-            margin-right: 10px;
-          }
-
-          .logo_span {
-            font-size: 24px;
-            font-weight: bold;
-            font-family: 'Bell MT';
-            text-transform: capitalize;
-            display: inline-block;
-            margin-top: 10px;
-          }
-
-          .search-form {
-            margin-right: 20px;
-            margin-top: 10px;
-          }
-
-          .navbar-brand {
-            margin-right: 10px;
-            width: 40px;
-            height: 40px;
-            border-radius: 90%;
-          }
-
-          .account-dropdown {
-            margin-left: 20px;
-          }
-
-          .navbar a.nav-link:hover,
-          .navbar .dropdown-item:hover {
-            color: #555;
-            text-decoration: none;
-          }
-
-          .navbar a:hover {
-              color: #555 !important; 
-          }
-
-          /* size */
-          @media (max-width: 767px) {
-          .navbar-brand {
-          position: relative;
-          }
-
-          .logo-container {
-            margin-right: 300px; 
-          }
-
-          .logo_span {
-            font-size: 17px; 
-            font-weight: bold;
-            font-family: 'Bell MT';
-            text-transform: capitalize;
-            margin-top: 0;
-            margin-left: 35px; 
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-          }   
-        
-          .input-group {
-            max-width: 250px;
-            margin: 0 auto;
-          }
-
-          .form-control {
-            font-size: 12px;
-            }
-
-          .search-icon {
-            font-size: 14px;
-            vertical-align: middle;
-            }
-
-          .search-btn {
-            padding: 4px 8px;
-          }      
-
-          .dropdown-item {
-            padding: 5px 10px;
-            text-align:center;
-          }
-        }
-          
           /* footer */
+          .containerend{
+            max-width: 1350px;
+            margin: -20px 14px;
+            padding: 0;
+          }
+
           footer {
             background-color: rgba(0  , 0, 0, 0.3);
             padding: 20px 0; /* Padding around footer content */
@@ -430,11 +415,12 @@
           }
 
           .footer-columns {
-            justify-content: space-between; 
-          }
-
-          .footer-column {
-            margin-bottom: 5px; 
+            justify-content: space-between;
+            margin-top: 38px;
+            margin-left: 200px;
+            text-align: center;
+            padding: 0px;
+            margin-bottom:32px;
           }
 
           .footer-column h5 {
@@ -519,11 +505,8 @@
             position: absolute;
             top: 0;
             left: 0;
-<<<<<<< HEAD
             width: 1550px;
-=======
             width: 1521px;
->>>>>>> 9a389792fdfb3007d1118fb8cec2fef78d819c1b
             height: 100%;
             background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
           }
@@ -583,13 +566,65 @@
           }
 
           .setpic{
-<<<<<<< HEAD
             width: 1550px ;
-=======
             width: 1521px ;
->>>>>>> 9a389792fdfb3007d1118fb8cec2fef78d819c1b
             height: 85.50%;
           }
+
+          
+          /* size */
+          @media (max-width: 767px) {
+          .navbar-brand {
+          position: relative;
+          }
+
+          .logo-container {
+            margin-right: 300px; 
+          }
+
+          .logo_span {
+            font-size: 17px; 
+            font-weight: bold;
+            font-family: 'Bell MT';
+            text-transform: capitalize;
+            margin-top: 0;
+            margin-left: 35px; 
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+          }   
+        
+          .input-group {
+            max-width: 250px;
+            margin: 0 auto;
+          }
+
+          .form-control {
+            font-size: 12px;
+            }
+
+          .search-icon {
+            font-size: 14px;
+            vertical-align: middle;
+            }
+
+          .search-btn {
+            padding: 4px 8px;
+          }      
+
+          .dropdown-item {
+            padding: 5px 10px;
+            text-align:center;
+          }
+          .col-lg-4 {
+            flex-basis: calc(35.33% - 20px);
+          }
+
+          .step-number {
+            margin-left: 0px; /* Reset margin for larger screens */
+          }
+        }
+
       </style>
 
 </head>
@@ -672,26 +707,24 @@
       </div>
     </div>
 
-    <!-- services -->
-    <div class="bodyservice background-container">
-      <div class="service-section">
-        <h2><i class="fas fa-cogs custom-question-icon"></i> Our Services</h2>
-        <div class="row">
-          <div class="col-sm">
-            <!-- <img src="image_url_here" class="service-icon" /> -->
-            <div class="custom-icon"><i class="fas fa-code"></i></div>  
-            <div class="service-title">Custom Software Development</div>
-            <div class="service-details">Our software development company offers a comprehensive range of services to 
-              meet the diverse needs of our clients. From custom software development and mobile app development to web
-              development and cloud solutions, we leverage cutting-edge technologies to deliver innovative solutions
-              tailored to your specific requirements. With a team of experienced developers, designers, and project
-              managers, we ensure high-quality, scalable, and efficient software solutions that drive business growth and success.
+      <!-- services -->
+      <div class="bodyservice background-container">
+        <div class="service-section">
+          <h2 class="service-heading"><i class="fas fa-cogs custom-question-icon"></i> Our Services</h2>
+          <div class="row">
+            <div class="col-sm">
+              <div class="custom-icon"><i class="fas fa-code"></i></div>  
+              <div class="service-title">Custom Software Development</div>
+              <div class="service-details">Our software development company offers a comprehensive range of services to 
+                meet the diverse needs of our clients. From custom software development and mobile app development to web
+                development and cloud solutions, we leverage cutting-edge technologies to deliver innovative solutions
+                tailored to your specific requirements. With a team of experienced developers, designers, and project
+                managers, we ensure high-quality, scalable, and efficient software solutions that drive business growth and success.
+            </div>
           </div>
-        </div>
-        <div class="col-sm">
-            <img class="service-img" src="pictures/image1.jpg" alt="Service Image" />
-        </div>
-      <div class="slideshow-container">
+          <div class="col-sm">
+              <img class="service-img" src="pictures/image1.jpg" alt="Service Image" />
+          </div>
           <div class="col-sm">              
             <i class="fas fa-laptop-code custom-icon"></i>
               <div class="service-title">FrontEnd Development</div>
@@ -724,12 +757,12 @@
               </div>
         </div>
       </div>
-
+      
       <!-- how it works -->
       <div class="bodyhow ">       
         <div class="container">
-          <h2><i class="fas fa-cog custom-question-icon"> </i> How It Works</h2>
-          <div class="row">
+          <h2 class="step-heading"><i class="fas fa-cog custom-question-icon"> </i> How It Works</h2>
+          <div class="row1">
             <div class="col-lg-4">
               <div class="step">
                 <div class="step-number">1</div>
@@ -752,7 +785,7 @@
               </div>
             </div>
           </div>
-          <div class="row">
+          <div class="row1">
             <div class="col-lg-4">
               <div class="step">
                 <div class="step-number">4</div>
@@ -770,8 +803,8 @@
             <div class="col-lg-4">
               <div class="step">
                 <div class="step-number">6</div>
-                <h3 class="step-tit">Training & Support</h3>
-                <p class="step-desc">Receive comprehensive training and support to ensure smooth implementation and usage.</p>
+                <h3 class="step-title">Training & Support</h3>
+                <p class="step-description">Receive comprehensive training and support to ensure smooth implementation and usage.</p>
               </div>
             </div>
           </div>
@@ -780,7 +813,7 @@
   
       <!-- footer -->
       <footer>
-        <div class="container">
+        <div class="containerend">
           <div class="row footer-columns">
             <div class="col-sm footer-column">
               <h5>Company Information</h5>
