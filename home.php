@@ -147,45 +147,38 @@
           .navbar a:hover {
               color: #555 !important; 
           }
-          /* services */
-           .service-section {
-              text-align: center;
-              padding: 64px;
-              background-color: rgba(0 , 0, 0, 0.3);
-              margin-left: 0px;
-              margin-right: 0px;
-              color: #fff9;
-              padding-left: 51px;
+          
+          /* Services section */
+          .service-section {
+            text-align: center;
+            padding: 40px; 
+            background-color: rgba(0 , 0, 0, 0.3);
+            color: #fff;
           }
 
-          .service-heading{
+          .service-heading {
             font-size: 27px;
             font-weight: bold;
-            margin-bottom: 100px;
-            text-align :center ;
-            text-transform :uppercase ;
+            margin-bottom: 30px; /* Adjusted margin */
+            text-align: center;
+            text-transform: uppercase;
             color: #fff8;
             font-family: 'Georgia', serif;
-            margin-right:28px;
+            margin-bottom: 42px;
+            padding-top:20px;
           }
 
           .service-img {
-            margin-top: 30px;
-            width: 390px;
-            height: 450px;
-            border-radius: 1%;
+            width: 100%;
+            max-width: 350px; 
+            height: auto; 
+            margin-top: 20px; 
+            border-radius: 5px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
           }
 
-          .service-icon {
-            width: 100px;
-            height: 100px;
-            margin-top: 100px;
-          }
-      
           .service-title {
-            font-size: 25px;
-            text-align: center;
+            font-size: 22px; 
             font-weight: bold;
             color: #A5A4A5;
             font-family: 'Baskerville Old Face';
@@ -193,33 +186,49 @@
           }
 
           .service-details {
-            margin-top: 20px;
-            font-size: 16.90px;
+            margin-top: 15px; 
+            font-size: 16px;
             color: #f1f2f3;
-            text-align: center;
             font-family: 'Verdana', sans-serif;
           }
 
           .bodyservice {
-            padding: 0px 0px;
+            padding: 0px 0; 
             background-color: #f8f9fa;
             color: #333;
             text-align: center;
-            width:103%;
           }
 
           .row {
-              display: flex;
-              flex-wrap: wrap;
-              justify-content: flex-end;
-              margin-bottom: 26px;
-              flex-direction: row;
-              align-content: space-between;
-              align-items: center;
-              margin-top: -80px;
-              text-align:center;
-              margin-right:10px;
- 
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center; 
+            margin-bottom: 0px;
+            margin-top: px; 
+            text-align: center;
+          }
+
+          .col-sm {
+            flex: 1; 
+            margin-bottom: 0px;
+          }
+
+          .custom-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 15px; 
+            background-color: #333;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+
+          @media (min-width: 768px) {
+            .service-img {
+              max-width: 100%;
+              height: auto;
+            }
           }
 
           /* how it work */             
@@ -227,12 +236,12 @@
             font-family: Arial, sans-serif;
             background-color: rgba(255, 255, 255, 0.1);
             width: 105%;
-            margin-top: 21px;
+            margin-top: 0px;
           }
       
           .container {
             max-width: 1200px;
-            margin: -20px 14px;
+            margin: 0px 14px;
             padding: 0;
           }
           
@@ -244,7 +253,7 @@
             flex-direction: row;
             align-content: space-between;
             align-items: center;
-            margin-top: -80px;
+            margin-top: 0px;
             text-align: center;
             margin-right: -135px;
             margin-left: 93px;
@@ -258,7 +267,7 @@
           .step-heading{
             font-size: 27px;
             font-weight: bold;
-            margin-bottom: 115px;
+            margin-bottom: 42px;
             text-align: center;
             text-transform: uppercase;
             color: #fff8;
@@ -406,11 +415,11 @@
             max-width: 1350px;
             margin: -20px 14px;
             padding: 0;
+            margin-top:-40px;
           }
 
           footer {
             background-color: rgba(0  , 0, 0, 0.3);
-            padding: 20px 0; /* Padding around footer content */
             border-radius: 15px;
           }
 
@@ -419,7 +428,7 @@
             margin-top: 38px;
             margin-left: 200px;
             text-align: center;
-            padding: 0px;
+            padding: 30px;
             margin-bottom:32px;
           }
 
@@ -566,9 +575,8 @@
           }
 
           .setpic{
-            width: 1550px ;
             width: 1521px ;
-            height: 85.50%;
+            height: 92.50%;
           }
 
           
@@ -625,6 +633,10 @@
           }
         }
 
+        @media (max-width: 767px) {
+          
+        }
+
       </style>
 
 </head>
@@ -668,6 +680,7 @@
   </nav>
   
   <!-- Headings -->
+  <div class="background-container">
   <form id="form1" >
     <!-- slide images -->
     <!-- slids -->
@@ -699,14 +712,12 @@
       <span class="dot"></span> 
       <span class="dot"></span> 
     </div>  
-    <div class="background-container">
       <div class="texth">
         <h4 class="welcome">welcome to</h4>
         <h1 class="crave" >ApexTech</h1>
         <!-- <h4 class="bold-text">Streamline Your Business <br />Operations with Apextech</h4> -->
       </div>
-    </div>
-
+      </form>
       <!-- services -->
       <div class="bodyservice background-container">
         <div class="service-section">
@@ -842,7 +853,7 @@
           </div>
         </div>
       </footer>
-    </form>
+    <!-- </form> -->
         <script>
             let slideIndex = 0;
             showSlides();
