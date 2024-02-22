@@ -24,12 +24,10 @@
 </head>
 <body>
     <style>
- 
         form {
         background-color:transparent;
         display: block;
         }
-
         .background-container {
           background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('pictures/Main.jpg');
           background-repeat: no-repeat;
@@ -41,7 +39,6 @@
           padding: 0;
           width: 100%;
         }
-  
        .containerform {
           max-width: 800px;
           margin: 60px auto;
@@ -50,7 +47,6 @@
           border-radius: 10px;
           box-shadow: 0 0 30px rgba(0, 0, 0, 0.4);
         }
- 
         h1 {
           text-align: center;
           color: #A5A4A5;
@@ -59,7 +55,6 @@
           margin-bottom: 20px;
           font-family: 'Georgia', serif;
         }
-
         h2 {
           font-size: 24px;
           font-weight: 500;
@@ -67,22 +62,18 @@
           margin-bottom: 15px;
           font-family: 'Verdana', sans-serif;
         }
-
         .contact-info, .contact-form {
           margin-top: 30px;
         }
-
         .contact-info h2, .contact-form h2 {
           text-align: center;
           font-weight: 400;
         }
-
         .contact-info p, .contact-form label {
           margin: 5px 0;
           text-align: center;
           color: #fff;
         }
-
         .contact-form input, .contact-form textarea {
           width: 100%;
           padding: 10px;
@@ -91,18 +82,15 @@
           border-radius: 5px;
           background-color: rgba(255, 255, 255, 0.1);
           color: #fff;
-        }
-           
+        }  
         p{
           font-family: 'Times New Roman', serif; 
           font-size: 16px;
         }
-
         label{
           font-family: 'Times New Roman', serif; 
           font-size: 16px;
         }
-        
         ul {
           list-style:none;
           }
@@ -125,7 +113,6 @@
             color: #fff;
             transition: background-color 0.3s;
         }
-        
         button[type="submit"] {
           display: block;
           width: 100%;
@@ -141,11 +128,9 @@
           letter-spacing: 1px; 
           transition: background-color 0.3s;
         }
-
         button[type="submit"]:hover {
           background-color: #0056b3;
         }
-
         /* navbar */
         a {
           text-decoration: none;
