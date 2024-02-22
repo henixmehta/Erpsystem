@@ -243,7 +243,7 @@
         $c=mysqli_num_rows($data);
                 if($c > 0)
                 {   
-                  $_SESSION['user']="user";
+                  $_SESSION['e_role']="user";
                   echo '<script type="text/javascript">window.location.href="employee.php";</script>';
                   // header('location:employee.php');
 

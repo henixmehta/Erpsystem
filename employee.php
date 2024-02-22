@@ -80,9 +80,11 @@
 
 
      <?php  
-      
+      if(isset($_POST['sub_btn1'])){
+         $q = "insert into employee values(NULL,'".$_POST['role_name']."','".$_POST['r_status']."')";
+         $insert = mysqli_query($conn,$q);
 
-      
+         }
 
       ?>
       <body>
@@ -131,19 +133,19 @@
                            <div class="row">
                                  <div class="form-group col-md-6">
                                     <label class="form-label" for="fname">First Name:</label>
-                                    <input type="text" class="form-control" id="fname" placeholder="First Name" required>
+                                    <input type="text" class="form-control" name="first_name" id="fname" placeholder="First Name" required>
                                     <!-- <span class="error"><?php // echo $e_fname; ?></span>                              -->
                                  </div>
                                  
                                  <div class="form-group col-md-6">
                                     <label class="form-label" for="lname">Last Name:</label>
-                                    <input type="text" class="form-control" id="lname" placeholder="Last Name"required>
+                                    <input type="text" class="form-control" id="lname"name="last_name" placeholder="Last Name"required>
                                     <!-- <span class="error"><?php // echo $e_lname; ?></span>    -->
                                  </div>
                                
                                  <div class="form-group">
                                     <label class="form-label">Employee Role:</label>
-                                    <select name="type" class="selectpicker form-control" data-style="py-0" required>
+                                    <select name="type" class="selectpicker form-control" name="e_role" data-style="py-0" required>
                                        <option>Select</option>
                                        <?php
                                        // Assuming $conn is your database connection object
@@ -163,20 +165,20 @@
 
                                  <div class="form-group col-md-12">
                                     <label class="form-label" for="bdate">bdate:</label>
-                                    <input type="date" class="form-control" id="bdate" placeholder="Enter your Birthday" required>
+                                    <input type="date" class="form-control" name="e_bdate" id="bdate" placeholder="Enter your Birthday" required>
                                     <!-- <span class="error"><?php // echo $e_lname; ?></span>    -->
                                  </div>
                                  
                                  <div class="form-group col-md-4">
                                     <label class="form-label">Country:</label>
-                                 <select type="text" name="country" id="country" class="form-control" >
+                                 <select type="text" name="country" id="country" name="e_country" class="form-control" >
                                     <option>Select Country</option>
                                  </select>
                                  </div>
                                  
                                  <div class="form-group col-sm-4">
                                     <label class="form-label">state:</label>
-                                    <select type="text" id="state" name="state" class="form-control" ></select>
+                                    <select type="text" id="state" name="state" name="e_stateo" class="form-control" ></select>
                                  </div>
                                  <div class="form-group col-sm-4">
                                     <label class="form-label">City:</label>
