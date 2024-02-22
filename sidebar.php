@@ -44,7 +44,7 @@
                         </a>
                     </li>
                     <?php
-                    $_SESSION['e_role']="";
+                    // $_SESSION['e_role']="";
                     if($_SESSION['e_role']=="admin")
                     {
                     ?>
@@ -77,10 +77,10 @@
                         </li>
                         <?php
                     }
-                    else
+                    else 
                     {
-                        ?> 
-                            <li class="nav-item">
+                        ?>
+                        <li class="nav-item">
                             <a class="nav-link active"  href="#">
                                 <i class="icon">
                                     <svg class="icon-20" width="20" viewBox="0 0 24 24" fill="none"  >
@@ -88,12 +88,10 @@
                                         <path opacity="0.4" d="M17.523 7.39595V8.86667C17.1673 8.7673 16.7913 8.71761 16.4052 8.71761H15.7447V7.39595C15.7447 5.37868 14.0681 3.73903 12.0053 3.73903C9.94257 3.73903 8.26594 5.36874 8.25578 7.37608V8.71761H7.60545C7.20916 8.71761 6.83319 8.7673 6.47754 8.87661V7.39595C6.4877 4.41476 8.95692 2 11.985 2C15.0537 2 17.523 4.41476 17.523 7.39595Z" fill="currentColor"></path>
                                     </svg>
                                 </i>
-                            <span class="item-name">Guest</span>
+                            <span class="item-name">guest</span>
                             </a>
                         </li>
-
-
-                       <?php
+                        <?php
                     }
                     ?>
                     <li class="nav-item">

@@ -237,23 +237,32 @@
 	  //Login Script Start
     if(isset($_POST['sub_btn']))
     {
+      if($_POST['email']=="admin@gmail.com" && $_POST['pass']=="admin")
+      {
+        $_SESSION['e_role']="admin";
+        echo '<script type="text/javascript">window.location.href="employee.php";</script>';
+        // header('location:employee.php');
+      }
+      else
+      {
 
         $q="select * from employee where e_com_email='".$_POST['email']."' and e_pwd='".$_POST['pass']."'";
         $data=mysqli_query($conn,$q);
         $c=mysqli_num_rows($data);
-                if($c > 0)
-                {   
-                  $_SESSION['e_role']="user";
-                  echo '<script type="text/javascript">window.location.href="employee.php";</script>';
-                  // header('location:employee.php');
+        if($c > 0)
+        {   
+          $_SESSION['e_role']="user";
+          echo '<script type="text/javascript">window.location.href="employee.php";</script>';
+          // header('location:employee.php');
 
-                }
-                else{
-                    echo "error";
-                }
         }
-    
-    ?>
+        else
+        {
+            echo "error";
+        }
+        }
+      }
+       ?>
 
 <body>
   <div class="container">
