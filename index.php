@@ -237,12 +237,22 @@
 	  //Login Script Start
     if(isset($_POST['sub_btn']))
     {
-      if($_POST['email']=="admin@gmail.com" && $_POST['pass']=="admin")
+      if($_POST['email']=="admin@gmail.com")
       {
-        $_SESSION['e_role']="admin";
-        echo '<script type="text/javascript">window.location.href="employee.php";</script>';
-        // header('location:employee.php');
+        
+        if($_POST['pass']=="admin")
+            {
+              $_SESSION['e_role']="admin";
+              echo '<script type="text/javascript">window.location.href="employee.php";</script>';
+              // header('location:employee.php');
+            }
+        else{
+
+          echo "enter valid pass";
+
+           }
       }
+
       else
       {
 

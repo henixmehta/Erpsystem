@@ -77,7 +77,7 @@
                         </li>
                         <?php
                     }
-                    else 
+                    elseIF($_SESSION['e_role']="")
                     {
                         ?>
                         <li class="nav-item">
