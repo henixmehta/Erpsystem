@@ -1,8 +1,8 @@
 
 
 <?php 
-  session_start();
   include 'connection.php' ;
+  session_start();
 
 ?>
 <!DOCTYPE html>
@@ -240,36 +240,34 @@
       if($_POST['email']=="admin@gmail.com")
       {
         
-        if($_POST['pass']=="admin")
-            {
-              $_SESSION['e_role']="admin";
-              echo '<script type="text/javascript">window.location.href="employee.php";</script>';
-              // header('location:employee.php');
-            }
-        else{
-
-          echo "enter valid pass";
-
-           }
+          if($_POST['pass']=="admin")
+              {
+                $_SESSION['e_role']="admin";
+                echo '<script type="text/javascript">window.location.href="employee.php";</script>';
+                // header('location:employee.php');
+              }
+          else
+              {
+                  echo "enter valid pass";
+               }
       }
-
       else
       {
 
-        $q="select * from employee where e_com_email='".$_POST['email']."' and e_pwd='".$_POST['pass']."'";
-        $data=mysqli_query($conn,$q);
-        $c=mysqli_num_rows($data);
-        if($c > 0)
-        {   
-          $_SESSION['e_role']="user";
-          echo '<script type="text/javascript">window.location.href="employee.php";</script>';
-          // header('location:employee.php');
+            $q="select * from employee where e_com_email='".$_POST['email']."' and e_pwd='".$_POST['pass']."'";
+            $data=mysqli_query($conn,$q);
+            $c=mysqli_num_rows($data);
+                  if($c > 0)
+                  {   
+                    $_SESSION['e_role']="user";
+                    echo '<script type="text/javascript">window.location.href="employee.php";</script>';
+                    // header('location:employee.php');
 
-        }
-        else
-        {
-            echo "error";
-        }
+                  }
+                  else
+                  {
+                      echo "error";
+                  }
         }
       }
        ?>
