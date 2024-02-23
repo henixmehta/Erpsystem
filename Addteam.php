@@ -16,8 +16,10 @@
 	<link rel="stylesheet" href="main.min.css">
 
 <body> 
+   <!-- Insert query -->
 <?php
-   if ($_SERVER["REQUEST_METHOD"] == "POST") {
+   if ($_SERVER["REQUEST_METHOD"] == "POST") 
+   {
       include 'connection.php';
     
       $stmt = $conn->prepare("INSERT INTO teams (team_name, team_description, team_projects_language, team_status) VALUES (?, ?, ?, ?)");
@@ -40,7 +42,7 @@
     
       $stmt->close();
       $conn->close();
-}
+   }
 ?>
 
             <?php 
