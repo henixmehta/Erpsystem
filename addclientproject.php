@@ -50,23 +50,31 @@ if(isset($_POST['sub_btn'])) {
 if(isset($_POST['sub_btn'])) {
    // Check if file is uploaded
    if(isset($_FILES['com_img']) && $_FILES['com_img']['error'] === UPLOAD_ERR_OK) {
-       // Specify the storage directory
-       $storageDirectory = 'storage/';
-       
-       // Generate a unique filename
-       $filename = uniqid() . '_' . $_FILES['com_img']['name'];
-       
-       // Move the uploaded file to the storage directory
-       if(move_uploaded_file($_FILES['com_img']['tmp_name'], $storageDirectory . $filename)) {
-           // File moved successfully, continue with database insertion
-           // Add $filename to your database insertion query if needed
-       } else {
-           // File upload failed
-           echo 'File upload failed.';
-       }
-   } else {
-       // No file uploaded or error occurred
-       echo 'No file uploaded or error occurred.';
+     // File upload handling
+     $targetDir = "storage/"; // Specify the directory where you want to store uploaded files
+     $fileName = basename($_FILES["com_img"]["name"]);
+     $targetFilePath = $targetDir . $fileName;
+     $fileType = pathinfo($targetFilePath,PATHINFO_EXTENSION);
+     
+     // Allow certain file formats
+     $allowTypes = array('jpg','png','jpeg','gif');
+     if(in_array($fileType, $allowTypes)){
+         // Upload file to server
+         if(move_uploaded_file($_FILES["com_img"]["tmp_name"], $targetFilePath)){
+             // Insert image file path into database
+             $q = "INSERT INTO project (id, p_name, p_client_name, t_name, p_lan, p_client_mob, p_des, p_status, com_img) VALUES (NULL, '".$_POST['proj_name']."', '".$_POST['com_name']."', '".$_POST['team_name']."', '".$_POST['proj_lang']."', '".$_POST['com_con']."', '".$_POST['proj_desc']."', '".$_POST['p_status']."', '".$targetFilePath."')";
+             $insert = mysqli_query($conn, $q); 
+             if(!$insert) {
+                 die("Insertion failed: " . mysqli_error($conn));
+             } else {
+                 echo "Data inserted successfully!";
+             }
+         } else {
+             echo "File upload failed.";
+         }
+     } else {
+         echo "Sorry, only JPG, JPEG, PNG, GIF files are allowed to upload.";
+     }
    }
 }
 ?>
