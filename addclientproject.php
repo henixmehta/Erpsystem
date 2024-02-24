@@ -35,7 +35,7 @@ if(isset($_POST['sub_btn'])) {
     }
      else 
     {
-      $q = "insert into project(`id`, `p_name`, `p_client_name`, `t_name`, `p_lan`, `p_client_mob`, `p_des`, `p_status`) VALUES (NULL, '".$_POST['proj_name']."', '".$_POST['com_name']."', '".$_POST['team_name']."', '".$_POST['proj_lang']."', '".$_POST['com_con']."', '".$_POST['proj_desc']."', '".$_POST['p_status']."')";
+      $q = "insert into project(`id`, `p_name`, `p_client_name`, `t_name`, `p_lan`, `p_client_mob`, `p_des`, `p_status`, `com_img`) VALUES (NULL, '".$_POST['proj_name']."', '".$_POST['com_name']."', '".$_POST['team_name']."', '".$_POST['proj_lang']."', '".$_POST['com_con']."', '".$_POST['proj_desc']."', '".$_POST['p_status']."', '".$_POST['com_img']."')";
       $insert = mysqli_query($conn, $q); 
       // echo $insert;
 
@@ -46,6 +46,28 @@ if(isset($_POST['sub_btn'])) {
       //    echo "Data inserted successfully!";
       // }
     }
+}
+if(isset($_POST['sub_btn'])) {
+   // Check if file is uploaded
+   if(isset($_FILES['com_img']) && $_FILES['com_img']['error'] === UPLOAD_ERR_OK) {
+       // Specify the storage directory
+       $storageDirectory = 'storage/';
+       
+       // Generate a unique filename
+       $filename = uniqid() . '_' . $_FILES['com_img']['name'];
+       
+       // Move the uploaded file to the storage directory
+       if(move_uploaded_file($_FILES['com_img']['tmp_name'], $storageDirectory . $filename)) {
+           // File moved successfully, continue with database insertion
+           // Add $filename to your database insertion query if needed
+       } else {
+           // File upload failed
+           echo 'File upload failed.';
+       }
+   } else {
+       // No file uploaded or error occurred
+       echo 'No file uploaded or error occurred.';
+   }
 }
 ?>
 <body>
@@ -100,11 +122,11 @@ if(isset($_POST['sub_btn'])) {
                                    <input type="text" class="form-control" id="tname" placeholder="Client / Compney  Name" name="com_name">
                                    <span class="error"><?php //echo $e_fname; ?></span>                             
                                 </div>
-                                <!-- <div class="form-group col-md-15">
+                                <div class="form-group col-md-15">
                                     <label class="form-label" for="Degree"> Client / Compney  Image </label>
                                     <input type="file" class="form-control" id="Degree" placeholder="Client / Compney  Image"  name="com_img">
                                     <span class="error"><?php // echo $e_fname; ?></span>  
-                                </div> -->
+                                </div>
                                 <div class="form-group col-md-15">
                                     <label class="form-label" for="fname">Project Name:</label>
                                     <input type="text" class="form-control" id="tname" placeholder="Project  Name" name="proj_name">
