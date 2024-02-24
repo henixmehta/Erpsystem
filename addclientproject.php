@@ -1,8 +1,8 @@
-            <?php 
-               include 'sidebar.php';
-               include 'connection.php';
-               // include 'formvalidation.php';
-            ?>
+<?php 
+   include 'sidebar.php';
+   include 'connection.php';
+  // include 'formvalidation.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,18 +12,44 @@
    <link rel="stylesheet" href="main.min.css">
 	<title>Team</title>
    <style>
-        .error {
-   color: red;
+   .error {
+      color: red;
     }
-    .main-content{
+   .main-content{
       margin-left:265px;
     }
    </style>
-  
+  <?php
+  $p_client_name_error = $p_name_error = $p_client_mob_error = $p_lan_error = $p_des_error = $t_name_error = $p_status_error = "";
 
+if(isset($_POST['sub_btn'])) {
+    if(empty($_POST['com_name']) && empty($_POST['proj_name']) && empty($_POST['com_con']) && empty($_POST['proj_lang']) && empty($_POST['proj_desc']) && empty($_POST['team_name']) && empty($_POST['p_status'])) 
+    {
+        $p_client_name_error = "<li><b>Enter client name</b></li>";
+        $p_name_error = "<li><b>Enter project name</b></li>";
+        $p_client_mob_error = "<li><b>Enter client contact</b></li>";
+        $p_lan_error = "<li><b>Enter project language</b></li>";
+        $p_des_error = "<li><b>Enter project description</b></li>";
+        $t_name_error = "<li><b>Enter team name</b></li>";
+        $p_status_error = "<li><b>Enter project status</b></li>";
+    }
+     else 
+    {
+      $q = "insert into project(`id`, `p_name`, `p_client_name`, `t_name`, `p_lan`, `p_client_mob`, `p_des`, `p_status`) VALUES (NULL, '".$_POST['proj_name']."', '".$_POST['com_name']."', '".$_POST['team_name']."', '".$_POST['proj_lang']."', '".$_POST['com_con']."', '".$_POST['proj_desc']."', '".$_POST['p_status']."')";
+      $insert = mysqli_query($conn, $q); 
+      // echo $insert;
+
+      // if(!$insert) {
+      //    die("Insertion failed: " . mysqli_error($conn));
+      // } 
+      // else {
+      //    echo "Data inserted successfully!";
+      // }
+    }
+}
+?>
 <body>
 <main class="main-content">
-
 			<div class="iq-navbar-header" style="height: 215px;">
                <div class="container-fluid iq-container">
                   <div class="row">
@@ -71,27 +97,27 @@
                            <div class="row">
                                <div class="form-group col-md-15">
                                    <label class="form-label" for="fname">Client / Compney Name:</label>
-                                   <input type="text" class="form-control" id="tname" placeholder="Client / Compney  Name">
+                                   <input type="text" class="form-control" id="tname" placeholder="Client / Compney  Name" name="com_name">
                                    <span class="error"><?php //echo $e_fname; ?></span>                             
                                 </div>
-                                <div class="form-group col-md-15">
+                                <!-- <div class="form-group col-md-15">
                                     <label class="form-label" for="Degree"> Client / Compney  Image </label>
-                                    <input type="file" class="form-control" id="Degree" placeholder="Client / Compney  Image" >
-                                    <!-- <span class="error"><?php // echo $e_fname; ?></span>   -->
-                                </div>
+                                    <input type="file" class="form-control" id="Degree" placeholder="Client / Compney  Image"  name="com_img">
+                                    <span class="error"><?php // echo $e_fname; ?></span>  
+                                </div> -->
                                 <div class="form-group col-md-15">
                                     <label class="form-label" for="fname">Project Name:</label>
-                                    <input type="text" class="form-control" id="tname" placeholder="Project  Name">
+                                    <input type="text" class="form-control" id="tname" placeholder="Project  Name" name="proj_name">
                                     <!-- <span class="error"><?php // echo $e_fname; ?></span>                              -->
                                 </div>
                                 <div class="form-group col-md-15">
-                                    <label class="form-label" for="fname">Client / Compney contect:</label>
-                                    <input type="text" class="form-control" id="tname" placeholder="Client / Compney  contect">
+                                    <label class="form-label" for="fname">Client / Compney contact:</label>
+                                    <input type="text" class="form-control" id="tname" placeholder="Client / Compney  contact" name="com_con">
                                     <!-- <span class="error"><?php // echo $e_fname; ?></span>                              -->
                                 </div>
                                 <div class="form-group">
-                                <label class="form-label">Team Name:</label>
-                                <select name="type" class="selectpicker form-control" data-style="py-0">
+                                <!-- <label class="form-label">Team Name:</label>
+                                <select name="type" class="selectpicker form-control" data-style="py-0" name="t_name">
                                     <option>Select</option>
                                     <option>Web Designer</option>
                                     <option>Web Developer</option>
@@ -99,25 +125,23 @@
                                     <option>Php Developer</option>
                                     <option>Ios Developer </option>
                                 </select>
-                                </div>
+                                </div> -->
                                  <div class="form-group col-md-15">
                                  <label class="form-label" for="fname">Project Language:</label>
-                                 <input type="text" class="form-control" id="tname" placeholder="Project Language">
-                                 <!-- <span class="error"><?php // echo $e_fname; ?></span>                              -->
+                                 <input type="text" class="form-control" id="tname" placeholder="Project Language" name="proj_lang">
+                                 <span class="error"><?php // echo $e_fname; ?></span>                             
                               </div>
-                              <fieldset class="mb-3">
-                            
 
-                          
+                              <fieldset class="mb-3">
                               <div class="form-group col-md-15">
                                  <label class="form-label" for="add1">Project Description</label>
-                                 <input type="text" class="form-control" id="add1" placeholder="Project Description">
+                                 <input type="text" class="form-control" id="add1" placeholder="Project Description" name="proj_desc">
                               <!-- <span class="error"><?php // echo $e_fname; ?></span>   -->
                               </div>
                               
                               <div class="form-group">
                                     <label class="form-label">Team Name:</label>
-                                    <select name="type" class="selectpicker form-control" data-style="py-0" required>
+                                    <select name="team_name" class="selectpicker form-control" data-style="py-0" required>
                                        <option>Select</option>
                                        <?php
                                        // Assuming $conn is your database connection object
@@ -135,12 +159,12 @@
                                  </div>
                         <legend>Status:</legend>
                                  <div class="form-check">
-                                    <input type="radio" name="radios" class="form-check-input" id="Active">
-                                    <label class="form-check-label" for="Active">Active</label>
+                                    <input type="radio" class="form-check-input" name="p_status" value="active" id="Active" checked>
+                                    <label class="form-check-label"    for="Active">Active</label>
                                  </div>
                                  <div class="mb-3 form-check">
-                                    <input type="radio" name="radios" class="form-check-input" id="Inactive">
-                                    <label class="form-check-label" for="Inactive">Inactive</label>
+                                    <input type="radio" class="form-check-input" name="p_status" value="inactive" id="Inactive">
+                                    <label class="form-check-label"  for="Inactive">Inactive</label>
                                  </div>
                               </fieldset> 
                          <input type="submit" value="submit" class="btn btn-primary" name="sub_btn">
