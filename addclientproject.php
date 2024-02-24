@@ -157,6 +157,8 @@ if(isset($_POST['sub_btn'])) {
                                        ?>
                                     </select>
                                  </div>
+
+                                 
                         <legend>Status:</legend>
                                  <div class="form-check">
                                     <input type="radio" class="form-check-input" name="p_status" value="active" id="Active" checked>

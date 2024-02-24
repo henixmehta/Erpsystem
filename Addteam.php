@@ -15,7 +15,36 @@
    </style>
 	<link rel="stylesheet" href="main.min.css">
 
-<body>
+<body> 
+   <!-- Insert query -->
+<?php
+   if ($_SERVER["REQUEST_METHOD"] == "POST") 
+   {
+      include 'connection.php';
+    
+      $stmt = $conn->prepare("INSERT INTO teams (team_name, team_description, team_projects_language, team_status) VALUES (?, ?, ?, ?)");
+    
+      $stmt->bind_param("ssss", $team_name, $team_description, $team_projects_language, $team_status);
+    
+      $team_name = $_POST['tname'];
+      $team_description = $_POST['add1'];
+      $team_projects_language = $_POST['type'];
+      $team_status = $_POST['radios'];
+    
+      if ($stmt->execute()) 
+      {
+         echo "New record created successfully";
+      } 
+      else 
+      {
+         echo "Error: " . $stmt->error;
+      }
+    
+      $stmt->close();
+      $conn->close();
+   }
+?>
+
             <?php 
                include 'sidebar.php';
                // include 'formvalidation.php';
