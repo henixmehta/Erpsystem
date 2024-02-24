@@ -295,7 +295,7 @@
                                        <label class="form-check-label" for="Active">Active</label>
                                     </div>
                                     <div class="mb-3 form-check">
-                                       <input type="radio" name="status" name="inactive" class="form-check-input" id="Inactive" >
+                                       <input type="radio" name="status"  class="form-check-input" value="inactive" id="Inactive" >
                                        <label class="form-check-label" for="Inactive">Inactive</label>
                                     </div>
                                  </fieldset> 
