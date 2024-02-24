@@ -23,8 +23,8 @@
   $p_client_name_error = $p_name_error = $p_client_mob_error = $p_lan_error = $p_des_error = $t_name_error = $p_status_error = "";
 
 if(isset($_POST['sub_btn'])) {
-    if(empty($_POST['com_name']) && empty($_POST['proj_name']) && empty($_POST['com_con']) && empty($_POST['proj_lang']) && empty($_POST['proj_desc']) && empty($_POST['team_name']) && empty($_POST['p_status'])) 
-    {
+   if(empty($_POST['com_name']) && empty($_POST['proj_name']) && empty($_POST['com_con']) && empty($_POST['proj_lang']) && empty($_POST['proj_desc']) && empty($_POST['team_name']) && empty($_POST['p_status'])) 
+   {
         $p_client_name_error = "<li><b>Enter client name</b></li>";
         $p_name_error = "<li><b>Enter project name</b></li>";
         $p_client_mob_error = "<li><b>Enter client contact</b></li>";
@@ -32,9 +32,37 @@ if(isset($_POST['sub_btn'])) {
         $p_des_error = "<li><b>Enter project description</b></li>";
         $t_name_error = "<li><b>Enter team name</b></li>";
         $p_status_error = "<li><b>Enter project status</b></li>";
-    }
-     else 
-    {
+   }
+   else 
+   if(!empty($_FILES['com_img']['name'])){
+     if(isset($_FILES['com_img']) && $_FILES['com_img']['error'] === UPLOAD_ERR_OK) {
+         // File upload handling
+         $targetDir = "storage/"; // Specify the directory where you want to store uploaded files
+         $fileName = basename($_FILES["com_img"]["name"]);
+         $targetFilePath = $targetDir . $fileName;
+         $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
+         
+         // Allow certain file formats
+         $allowTypes = array('jpg', 'png', 'jpeg', 'gif');
+         if(in_array($fileType, $allowTypes)){
+             // Upload file to server
+             if(move_uploaded_file($_FILES["com_img"]["tmp_name"], $targetFilePath)){
+                 // Insert image file path into database
+                 $q = "insert into project(`id`, `p_name`, `p_client_name`, `t_name`, `p_lan`, `p_client_mob`, `p_des`, `p_status`, `com_img`) VALUES (NULL, '".$_POST['proj_name']."', '".$_POST['com_name']."', '".$_POST['team_name']."', '".$_POST['proj_lang']."', '".$_POST['com_con']."', '".$_POST['proj_desc']."', '".$_POST['p_status']."', '".$targetFilePath."')";
+                 $insert = mysqli_query($conn, $q); 
+                 if(!$insert) {
+                     die("Insertion failed: " . mysqli_error($conn));
+                 } else {
+                     echo "Data inserted successfully!";
+                 }
+             } else {
+                 echo "File upload failed.";
+             }
+         } else {
+             echo "Sorry, only JPG, JPEG, PNG, GIF files are allowed to upload.";
+         }
+     }
+     else  {
       $q = "insert into project(`id`, `p_name`, `p_client_name`, `t_name`, `p_lan`, `p_client_mob`, `p_des`, `p_status`, `com_img`) VALUES (NULL, '".$_POST['proj_name']."', '".$_POST['com_name']."', '".$_POST['team_name']."', '".$_POST['proj_lang']."', '".$_POST['com_con']."', '".$_POST['proj_desc']."', '".$_POST['p_status']."', '".$_POST['com_img']."')";
       $insert = mysqli_query($conn, $q); 
       // echo $insert;
@@ -46,37 +74,10 @@ if(isset($_POST['sub_btn'])) {
       //    echo "Data inserted successfully!";
       // }
     }
+
+    }
 }
-if(isset($_POST['sub_btn'])) {
-   // Check if file is uploaded
-   if(isset($_FILES['com_img']) && $_FILES['com_img']['error'] === UPLOAD_ERR_OK) {
-     // File upload handling
-     $targetDir = "storage/"; // Specify the directory where you want to store uploaded files
-     $fileName = basename($_FILES["com_img"]["name"]);
-     $targetFilePath = $targetDir . $fileName;
-     $fileType = pathinfo($targetFilePath,PATHINFO_EXTENSION);
-     
-     // Allow certain file formats
-     $allowTypes = array('jpg','png','jpeg','gif');
-     if(in_array($fileType, $allowTypes)){
-         // Upload file to server
-         if(move_uploaded_file($_FILES["com_img"]["tmp_name"], $targetFilePath)){
-             // Insert image file path into database
-             $q = "INSERT INTO project (id, p_name, p_client_name, t_name, p_lan, p_client_mob, p_des, p_status, com_img) VALUES (NULL, '".$_POST['proj_name']."', '".$_POST['com_name']."', '".$_POST['team_name']."', '".$_POST['proj_lang']."', '".$_POST['com_con']."', '".$_POST['proj_desc']."', '".$_POST['p_status']."', '".$targetFilePath."')";
-             $insert = mysqli_query($conn, $q); 
-             if(!$insert) {
-                 die("Insertion failed: " . mysqli_error($conn));
-             } else {
-                 echo "Data inserted successfully!";
-             }
-         } else {
-             echo "File upload failed.";
-         }
-     } else {
-         echo "Sorry, only JPG, JPEG, PNG, GIF files are allowed to upload.";
-     }
-   }
-}
+
 ?>
 <body>
 <main class="main-content">
@@ -127,7 +128,7 @@ if(isset($_POST['sub_btn'])) {
                            <div class="row">
                                <div class="form-group col-md-15">
                                    <label class="form-label" for="fname">Client / Compney Name:</label>
-                                   <input type="text" class="form-control" id="tname" placeholder="Client / Compney  Name" name="com_name">
+                                   <input type="text" class="form-control" id="name" placeholder="Client / Compney  Name" name="com_name">
                                    <span class="error"><?php //echo $e_fname; ?></span>                             
                                 </div>
                                 <div class="form-group col-md-15">
@@ -137,12 +138,12 @@ if(isset($_POST['sub_btn'])) {
                                 </div>
                                 <div class="form-group col-md-15">
                                     <label class="form-label" for="fname">Project Name:</label>
-                                    <input type="text" class="form-control" id="tname" placeholder="Project  Name" name="proj_name">
+                                    <input type="text" class="form-control" id="project_name" placeholder="Project  Name" name="proj_name">
                                     <!-- <span class="error"><?php // echo $e_fname; ?></span>                              -->
                                 </div>
                                 <div class="form-group col-md-15">
                                     <label class="form-label" for="fname">Client / Compney contact:</label>
-                                    <input type="text" class="form-control" id="tname" placeholder="Client / Compney  contact" name="com_con">
+                                    <input type="text" class="form-control" id="contact" placeholder="Client / Compney  contact" name="com_con">
                                     <!-- <span class="error"><?php // echo $e_fname; ?></span>                              -->
                                 </div>
                                 <div class="form-group">
@@ -158,7 +159,7 @@ if(isset($_POST['sub_btn'])) {
                                 </div> -->
                                  <div class="form-group col-md-15">
                                  <label class="form-label" for="fname">Project Language:</label>
-                                 <input type="text" class="form-control" id="tname" placeholder="Project Language" name="proj_lang">
+                                 <input type="text" class="form-control" id="project_lang" placeholder="Project Language" name="proj_lang">
                                  <span class="error"><?php // echo $e_fname; ?></span>                             
                               </div>
 
