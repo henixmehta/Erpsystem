@@ -37,6 +37,10 @@ if(isset($_POST['sub_btn'])) {
     {
       $q = "insert into project(`id`, `p_name`, `p_client_name`, `t_name`, `p_lan`, `p_client_mob`, `p_des`, `p_status`, `com_img`) VALUES (NULL, '".$_POST['proj_name']."', '".$_POST['com_name']."', '".$_POST['team_name']."', '".$_POST['proj_lang']."', '".$_POST['com_con']."', '".$_POST['proj_desc']."', '".$_POST['p_status']."', '".$_POST['com_img']."')";
       $insert = mysqli_query($conn, $q); 
+
+
+
+      echo '<script type="text/javascript">window.location.href="clientproject.php";</script>';
       // echo $insert;
 
       // if(!$insert) {
@@ -99,22 +103,22 @@ if(isset($_POST['sub_btn'])) {
                            <div class="row">
                                <div class="form-group col-md-15">
                                    <label class="form-label" for="fname">Client / Compney Name:</label>
-                                   <input type="text" class="form-control" id="tname" placeholder="Client / Compney  Name" name="com_name">
+                                   <input type="text" class="form-control" id="tname" placeholder="Client / Compney  Name" name="com_name" required>
                                    <span class="error"><?php //echo $e_fname; ?></span>                             
                                 </div>
                                 <div class="form-group col-md-15">
                                     <label class="form-label" for="Degree"> Client / Compney  Image </label>
-                                    <input type="file" class="form-control" id="Degree" placeholder="Client / Compney  Image"  name="com_img">
+                                    <input type="file" class="form-control" id="image" placeholder="Client / Compney  Image"  name="com_img" required>
                                     <span class="error"><?php // echo $e_fname; ?></span>  
                                 </div>
                                 <div class="form-group col-md-15">
                                     <label class="form-label" for="fname">Project Name:</label>
-                                    <input type="text" class="form-control" id="tname" placeholder="Project  Name" name="proj_name">
+                                    <input type="text" class="form-control" id="tname" placeholder="Project  Name" name="proj_name" required>
                                     <!-- <span class="error"><?php // echo $e_fname; ?></span>                              -->
                                 </div>
                                 <div class="form-group col-md-15">
                                     <label class="form-label" for="fname">Client / Compney contact:</label>
-                                    <input type="text" class="form-control" id="tname" placeholder="Client / Compney  contact" name="com_con">
+                                    <input type="text" class="form-control" id="tname" placeholder="Client / Compney  contact" name="com_con" required>
                                     <!-- <span class="error"><?php // echo $e_fname; ?></span>                              -->
                                 </div>
                                 <div class="form-group">
@@ -130,14 +134,14 @@ if(isset($_POST['sub_btn'])) {
                                 </div> -->
                                  <div class="form-group col-md-15">
                                  <label class="form-label" for="fname">Project Language:</label>
-                                 <input type="text" class="form-control" id="tname" placeholder="Project Language" name="proj_lang">
+                                 <input type="text" class="form-control" id="tname" placeholder="Project Language" name="proj_lang" required>
                                  <span class="error"><?php // echo $e_fname; ?></span>                             
                               </div>
 
                               <fieldset class="mb-3">
                               <div class="form-group col-md-15">
                                  <label class="form-label" for="add1">Project Description</label>
-                                 <input type="text" class="form-control" id="add1" placeholder="Project Description" name="proj_desc">
+                                 <input type="text" class="form-control" id="add1" placeholder="Project Description" name="proj_desc" requiredrequired>
                               <!-- <span class="error"><?php // echo $e_fname; ?></span>   -->
                               </div>
                               
