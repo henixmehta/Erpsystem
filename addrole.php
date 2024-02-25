@@ -17,7 +17,7 @@
       margin-left:265px;
     }
    </style>
-	<link rel="stylesheet" href="main.min.css">
+	<!-- <link rel="stylesheet" href="main.min.css"> -->
    <!-- <script>
     document.addEventListener('DOMContentLoaded', function () {
         var form = document.querySelector('form');
