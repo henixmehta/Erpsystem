@@ -1,7 +1,7 @@
 <?php 
    include 'sidebar.php';
    include 'connection.php';
-  // include 'formvalidation.php';
+//include 'formvalidation.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,39 +20,24 @@
     }
    </style>
   <?php
-  $p_client_name_error = $p_name_error = $p_client_mob_error = $p_lan_error = $p_des_error = $t_name_error = $p_status_error = "";
 
-if(isset($_POST['sub_btn'])) {
-    if(empty($_POST['com_name']) && empty($_POST['proj_name']) && empty($_POST['com_con']) && empty($_POST['proj_lang']) && empty($_POST['proj_desc']) && empty($_POST['team_name']) && empty($_POST['p_status'])) 
-    {
-        $p_client_name_error = "<li><b>Enter client name</b></li>";
-        $p_name_error = "<li><b>Enter project name</b></li>";
-        $p_client_mob_error = "<li><b>Enter client contact</b></li>";
-        $p_lan_error = "<li><b>Enter project language</b></li>";
-        $p_des_error = "<li><b>Enter project description</b></li>";
-        $t_name_error = "<li><b>Enter team name</b></li>";
-        $p_status_error = "<li><b>Enter project status</b></li>";
-    }
-     else 
-    {
-      $q = "insert into project(`id`, `p_name`, `p_client_name`, `t_name`, `p_lan`, `p_client_mob`, `p_des`, `p_status`, `com_img`) VALUES (NULL, '".$_POST['proj_name']."', '".$_POST['com_name']."', '".$_POST['team_name']."', '".$_POST['proj_lang']."', '".$_POST['com_con']."', '".$_POST['proj_desc']."', '".$_POST['p_status']."', '".$_POST['com_img']."')";
-      $insert = mysqli_query($conn, $q); 
-
-
-
-      echo '<script type="text/javascript">window.location.href="clientproject.php";</script>';
-      // echo $insert;
-
-      // if(!$insert) {
-      //    die("Insertion failed: " . mysqli_error($conn));
-      // } 
-      // else {
-      //    echo "Data inserted successfully!";
-      // }
-    }
+  if(isset($_POST['sub_btn'])) {
+       // File upload handling
+       $project_file = $_FILES['c_img']['name'];
+   
+       // Specify the directory where you want to store the files
+       $upload_directory = 'storage/clientproject/';
+   
+       // Create the full path for the uploaded files
+       $project_target_path = $upload_directory . $project_file;
+   
+       // Move the uploaded files to the specified directory
+       move_uploaded_file($_FILES['c_img']['tmp_name'], $project_target_path);
+       
+       $q = "INSERT INTO project(`id`, `p_name`, `p_client_name`, `t_name`, `p_lan`, `p_client_mob`, `p_des`, `p_status`, `com_img`) VALUES (NULL, '".$_POST['proj_name']."', '".$_POST['com_name']."', '".$_POST['team_name']."', '".$_POST['proj_lang']."', '".$_POST['com_con']."', '".$_POST['proj_desc']."', '".$_POST['p_status']."',  '$project_file')";
+       $insert = mysqli_query($conn, $q);       
 }
 ?>
-
 
 <body>
 <main class="main-content">
@@ -94,7 +79,7 @@ if(isset($_POST['sub_btn'])) {
                   <div class="card-body">
                      <div class="new-Team-info">
                      <!-- form-->         
-					<form method="POST">
+					<form method="POST" enctype="multipart/form-data">
                <div class="form-group">
                            <div class="profile-img-edit position-relative">
 							<!-- insert add profile -->
@@ -108,7 +93,11 @@ if(isset($_POST['sub_btn'])) {
                                 </div>
                                 <div class="form-group col-md-15">
                                     <label class="form-label" for="Degree"> Client / Compney  Image </label>
+<<<<<<< HEAD
                                     <input type="file" class="form-control" id="image" placeholder="Client / Compney  Image"  name="com_img" required>
+=======
+                                    <input type="file" class="form-control" id="image" placeholder="Client / Compney  Image"  name="c_img">
+>>>>>>> 69d63d8a5b91f1ca2b4bfd5cf4d06271876b3e5e
                                     <span class="error"><?php // echo $e_fname; ?></span>  
                                 </div>
                                 <div class="form-group col-md-15">
