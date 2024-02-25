@@ -20,7 +20,6 @@
     }
    </style>
   <?php
-  
   if(isset($_POST['sub_btn'])) {
        // File upload handling
        $project_file = $_FILES['c_img']['name'];
@@ -35,8 +34,7 @@
        move_uploaded_file($_FILES['c_img']['tmp_name'], $project_target_path);
        
        $q = "INSERT INTO project(`id`, `p_name`, `p_client_name`, `t_name`, `p_lan`, `p_client_mob`, `p_des`, `p_status`, `com_img`) VALUES (NULL, '".$_POST['proj_name']."', '".$_POST['com_name']."', '".$_POST['team_name']."', '".$_POST['proj_lang']."', '".$_POST['com_con']."', '".$_POST['proj_desc']."', '".$_POST['p_status']."',  '$project_file')";
-       $insert = mysqli_query($conn, $q); 
-       
+       $insert = mysqli_query($conn, $q);       
 }
 ?>
 
