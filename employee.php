@@ -13,61 +13,53 @@
          <link rel="stylesheet" href="main.min.css">
          <script src="js/jquery/3.7.1.min.js" type="text/javascript"></script>
          <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-        <script type="text/javascript">
-            $(document).ready(function() {
+         <script type="text/javascript">
+           $(document).ready(function() {
+    $('#country').change(function() {
+        loadState($(this).find(':selected').val())
+    })
+    $('#state').change(function() {
+        loadCity($(this).find(':selected').val())
+    })
 
-                $('#country').change(function() {
-                    loadState($(this).find(':selected').val())
-                })
-                $('#state').change(function() {
-                    loadCity($(this).find(':selected').val())
-                })
+    // init the countries
+    loadCountry();
+});
 
+function loadCountry() {
+    $.ajax({
+        type: "POST",
+        url: "ajax.php",
+        data: "get=country"
+    }).done(function(result) {
+        // Fix here: use $("#country").append(result) instead of $(result)
+        $("#country").append(result);
+    });
+}
 
-            });
+function loadState(countryId) {
+    $("#state").children().remove()
+    $.ajax({
+        type: "POST",
+        url: "ajax.php",
+        data: "get=state&countryId=" + countryId
+    }).done(function(result) {
+        $("#state").append(result);
+    });
+}
 
-            function loadCountry() {
-                $.ajax({
-                    type: "POST",
-                    url: "ajax.php",
-                    data: "get=country"
-                }).done(function(result) {
+function loadCity(stateId) {
+    $("#city").children().remove()
+    $.ajax({
+        type: "POST",
+        url: "ajax.php",
+        data: "get=city&stateId=" + stateId
+    }).done(function(result) {
+        $("#city").append(result);
+    });
+}
 
-
-                    $(result).each(function() {
-                        $("#country").append($(result));
-                    })
-                });
-            }
-            function loadState(countryId) {
-                $("#state").children().remove()
-                $.ajax({
-                    type: "POST",
-                    url: "ajax.php",
-                    data: "get=state&countryId=" + countryId
-                }).done(function(result) {
-
-                    $("#state").append($(result));
-
-                });
-            }
-            function loadCity(stateId) {
-                $("#city").children().remove()
-                $.ajax({
-                    type: "POST",
-                    url: "ajax.php",
-                    data: "get=city&stateId=" + stateId
-                }).done(function(result) {
-
-                    $("#city").append($(result));
-
-                });
-            }
-
-            // init the countries
-            loadCountry();
         </script>
-
 
             <style>
                         .error {
@@ -82,12 +74,17 @@
      <?php  
       if(isset($_POST['sub_btn1'])){
 
+   
          $f_name = $_POST['f_name'];
          $l_name = $_POST['l_name'];
          $e_role = $_POST['e_role'];
+         $e_bate = $_POST['e_bate'];
          $e_country = $_POST['e_country'];
          $e_state = $_POST['e_state'];
          $e_city = $_POST['e_city'];
+
+         $e_add = $_POST['address'];
+
          $pincode = $_POST['pincode'];
          $mono = $_POST['mono'];
          $alte_mono = $_POST['alte_mono'];
@@ -102,9 +99,11 @@
          $c_pass = $_POST['c_pass'];
          $status = $_POST['status'];
          
-         $q = "insert into employee values(NULL,'".$f_name."','".$l_name."','".$e_role."','".$e_country."','".$e_state."','".$e_city."','".$pincode."','".$mono."','".$alte_mono."','".$email."','".$team_name."','".$j_date."','".$exp."','".$degree."','".$resume."','".$salary."','".$c_email."','".$c_pass."','".$status."')";
-         $insert = mysqli_query($conn,$q);
-
+         // $q = "insert into employee values(NULL,'".$f_name."','".$l_name."','".$e_role."','".$e_bate."','".$e_country."','".$e_state."','".$e_city."','".$pincode."','".$mono."','".$alte_mono."','".$email."','".$team_name."','".$j_date."','".$exp."','".$degree."','".$resume."','".$salary."','".$c_email."','".$c_pass."','".$status."')";
+         $q = "INSERT INTO employee (e_fname, e_lname, e_role, e_bdate, e_country, e_state, e_city, e_add, e_pin, e_mob, e_alt_mob, e_email, e_team_name, e_joindate, e_exp, e_deg, e_resume, e_salary, e_com_email, e_pwd, e_status) 
+         VALUES ('$f_name', '$l_name', '$e_role', '$e_bate', '$e_country', '$e_state', '$e_city', '$e_add', '$pincode', '$mono', '$alte_mono', '$email', '$team_name', '$j_date', '$exp', '$degree', '$resume', '$salary', '$c_email', '$c_pass', '$status')";
+   
+         echo $q;
          }
 
       ?>
@@ -223,7 +222,7 @@
                                  </div>
                                  <div class="form-group col-md-6">
                                     <label class="form-label" for="altconno">Alternate Contact:</label>
-                                    <input type="text" class="form-control" id="altconno" name="alte_mono" placeholder="Alternate Contact"required>
+                                    <input type="text" class="form-control" id="altconno" name="alte_comtect" placeholder="Alternate Contact"required>
                                  <!-- <span class="error"><?php // echo $e_fname; ?></span>   -->
                                  </div>
                                  <div class="form-group col-md-12">
@@ -295,7 +294,7 @@
                                        <label class="form-check-label" for="Active">Active</label>
                                     </div>
                                     <div class="mb-3 form-check">
-                                       <input type="radio" name="status"  class="form-check-input" value="inactive" id="Inactive" >
+                                       <input type="radio" name="status" name="inactive" class="form-check-input" id="Inactive" >
                                        <label class="form-check-label" for="Inactive">Inactive</label>
                                     </div>
                                  </fieldset> 
