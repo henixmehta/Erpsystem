@@ -1,5 +1,5 @@
          <?php 
-                  include 'sidebar.php';
+                  // include 'sidebar.php';
                   include 'connection.php';
                   //   include 'formvalidation.php';
                   ?>
@@ -13,61 +13,53 @@
          <link rel="stylesheet" href="main.min.css">
          <script src="js/jquery/3.7.1.min.js" type="text/javascript"></script>
          <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-        <script type="text/javascript">
-            $(document).ready(function() {
+         <script type="text/javascript">
+           $(document).ready(function() {
+    $('#country').change(function() {
+        loadState($(this).find(':selected').val())
+    })
+    $('#state').change(function() {
+        loadCity($(this).find(':selected').val())
+    })
 
-                $('#country').change(function() {
-                    loadState($(this).find(':selected').val())
-                })
-                $('#state').change(function() {
-                    loadCity($(this).find(':selected').val())
-                })
+    // init the countries
+    loadCountry();
+});
 
+function loadCountry() {
+    $.ajax({
+        type: "POST",
+        url: "ajax.php",
+        data: "get=country"
+    }).done(function(result) {
+        // Fix here: use $("#country").append(result) instead of $(result)
+        $("#country").append(result);
+    });
+}
 
-            });
+function loadState(countryId) {
+    $("#state").children().remove()
+    $.ajax({
+        type: "POST",
+        url: "ajax.php",
+        data: "get=state&countryId=" + countryId
+    }).done(function(result) {
+        $("#state").append(result);
+    });
+}
 
-            function loadCountry() {
-                $.ajax({
-                    type: "POST",
-                    url: "ajax.php",
-                    data: "get=country"
-                }).done(function(result) {
+function loadCity(stateId) {
+    $("#city").children().remove()
+    $.ajax({
+        type: "POST",
+        url: "ajax.php",
+        data: "get=city&stateId=" + stateId
+    }).done(function(result) {
+        $("#city").append(result);
+    });
+}
 
-
-                    $(result).each(function() {
-                        $("#country").append($(result));
-                    })
-                });
-            }
-            function loadState(countryId) {
-                $("#state").children().remove()
-                $.ajax({
-                    type: "POST",
-                    url: "ajax.php",
-                    data: "get=state&countryId=" + countryId
-                }).done(function(result) {
-
-                    $("#state").append($(result));
-
-                });
-            }
-            function loadCity(stateId) {
-                $("#city").children().remove()
-                $.ajax({
-                    type: "POST",
-                    url: "ajax.php",
-                    data: "get=city&stateId=" + stateId
-                }).done(function(result) {
-
-                    $("#city").append($(result));
-
-                });
-            }
-
-            // init the countries
-            loadCountry();
         </script>
-
 
             <style>
                         .error {
@@ -80,32 +72,97 @@
 
 
      <?php  
-      if(isset($_POST['sub_btn1'])){
+  
 
-         $f_name = $_POST['f_name'];
-         $l_name = $_POST['l_name'];
-         $e_role = $_POST['e_role'];
-         $e_country = $_POST['e_country'];
-         $e_state = $_POST['e_state'];
-         $e_city = $_POST['e_city'];
-         $pincode = $_POST['pincode'];
-         $mono = $_POST['mono'];
-         $alte_mono = $_POST['alte_mono'];
-         $email = $_POST['email'];
-         $team_name = $_POST['team_name'];
-         $j_date = $_POST['j_date'];
-         $exp = $_POST['exp'];
-         $degree = $_POST['degree'];
-         $resume = $_POST['resume'];
-         $salary = $_POST['salary'];
-         $c_email = $_POST['c_email'];
-         $c_pass = $_POST['c_pass'];
-         $status = $_POST['status'];
-         
-         $q = "insert into employee values(NULL,'".$f_name."','".$l_name."','".$e_role."','".$e_country."','".$e_state."','".$e_city."','".$pincode."','".$mono."','".$alte_mono."','".$email."','".$team_name."','".$j_date."','".$exp."','".$degree."','".$resume."','".$salary."','".$c_email."','".$c_pass."','".$status."')";
-         $insert = mysqli_query($conn,$q);
+         // if(isset($_POST['sub_btn1'])){
 
-         }
+         //    $f_name = $_POST['f_name'];
+         //    $l_name = $_POST['l_name'];
+         //    $e_role = $_POST['e_role'];
+         //    $e_bate = $_POST['e_bate'];
+         //    $e_country = $_POST['e_country'];
+         //    $e_state = $_POST['e_state'];
+         //    $e_city = $_POST['e_city'];
+   
+         //    $e_add = $_POST['address'];
+   
+         //    $pincode = $_POST['pincode'];
+         //    $mono = $_POST['mono'];
+         //    $alte_mono = $_POST['alte_mono'];
+         //    $email = $_POST['email'];
+         //    $team_name = $_POST['team_name'];
+         //    $j_date = $_POST['j_date'];
+         //    $exp = $_POST['exp'];
+         //    $degree = $_POST['degree'];
+         //    $resume = $_POST['resume'];
+         //    $salary = $_POST['salary'];
+         //    $c_email = $_POST['c_email'];
+         //    $c_pass = $_POST['c_pass'];
+         //    $status = $_POST['status'];
+            
+         //    // $q = "insert into employee values(NULL,'".$f_name."','".$l_name."','".$e_role."','".$e_bate."','".$e_country."','".$e_state."','".$e_city."','".$pincode."','".$mono."','".$alte_mono."','".$email."','".$team_name."','".$j_date."','".$exp."','".$degree."','".$resume."','".$salary."','".$c_email."','".$c_pass."','".$status."')";
+         //    $q = "INSERT INTO employee (e_fname, e_lname, e_role, e_bdate, e_country, e_state, e_city, e_add, e_pin, e_mob, e_alt_mob, e_email, e_team_name, e_joindate, e_exp, e_deg, e_resume, e_salary, e_com_email, e_pwd, e_status) 
+         //    VALUES ('$f_name', '$l_name', '$e_role', '$e_bate', '$e_country', '$e_state', '$e_city', '$e_add', '$pincode', '$mono', '$alte_mono', '$email', '$team_name', '$j_date', '$exp', '$degree', '$resume', '$salary', '$c_email', '$c_pass', '$status')";
+      
+         //    echo $q;
+         //    // $insert = mysqli_query($conn,$q);
+         //    }
+   
+     
+
+         if(isset($_POST['sub_btn1'])){
+            // Your existing code ...
+        
+
+     $f_name = $_POST['f_name'];
+            $l_name = $_POST['l_name'];
+            $e_role = $_POST['e_role'];
+            $e_bate = $_POST['e_bate'];
+            $e_country = $_POST['e_country'];
+            $e_state = $_POST['e_state'];
+            $e_city = $_POST['e_city'];
+   
+            $e_add = $_POST['address'];
+   
+            $pincode = $_POST['pincode'];
+            $mono = $_POST['mono'];
+            $alte_mono = $_POST['alte_mono'];
+            $email = $_POST['email'];
+            $team_name = $_POST['team_name'];
+            $j_date = $_POST['j_date'];
+            $exp = $_POST['exp'];
+            // $degree = $_POST['degree'];
+            // $resume = $_POST['resume'];
+            $salary = $_POST['salary'];
+            $c_email = $_POST['c_email'];
+            $c_pass = $_POST['c_pass'];
+            $status = $_POST['status'];
+
+            
+            // File upload handling
+            $degree_file = $_FILES['degree']['name'];
+            $resume_file = $_FILES['resume']['name'];
+        
+            // Specify the directory where you want to store the files
+            $upload_directory = 'storage/employeedata/';
+        
+            // Create the full path for the uploaded files
+            $degree_target_path = $upload_directory . $degree_file;
+            $resume_target_path = $upload_directory . $resume_file;
+        
+            // Move the uploaded files to the specified directory
+            move_uploaded_file($_FILES['degree']['tmp_name'], $degree_target_path);
+            move_uploaded_file($_FILES['resume']['tmp_name'], $resume_target_path);
+        
+            // Modify your SQL query to include the file names
+            $q = "INSERT INTO employee (e_fname, e_lname, e_role, e_bdate, e_country, e_state, e_city, e_add, e_pin, e_mob, e_alt_mob, e_email, e_team_name, e_joindate, e_exp, e_deg, e_resume, e_salary, e_com_email, e_pwd, e_status) 
+            VALUES ('$f_name', '$l_name', '$e_role', '$e_bate', '$e_country', '$e_state', '$e_city', '$e_add', '$pincode', '$mono', '$alte_mono', '$email', '$team_name', '$j_date', '$exp', '$degree_file', '$resume_file', '$salary', '$c_email', '$c_pass', '$status')";
+          
+            //echo $q;
+            // Execute your SQL query to insert the data into the database
+             $insert = mysqli_query($conn, $q);
+        }
+        
 
       ?>
       <body>
@@ -146,7 +203,7 @@
                      </div>
                      <div class="card-body">
                         <div class="new-employee-info">
-                  <form method="POST">
+                        <form method="POST" enctype="multipart/form-data">
                   <div class="form-group">
                               <div class="profile-img-edit position-relative">
                               </div>
@@ -163,48 +220,50 @@
                                     <input type="text" class="form-control" id="lname" name="l_name" placeholder="Last Name"required>
                                     <!-- <span class="error"><?php // echo $e_lname; ?></span>    -->
                                  </div>
-                               
                                  <div class="form-group">
-                                    <label class="form-label">Employee Role:</label>
-                                    <select name="type" class="selectpicker form-control" name="e_role" data-style="py-0" required>
-                                       <option>Select</option>
-                                       <?php
-                                       // Assuming $conn is your database connection object
-                                       $query = "SELECT role_name, r_status FROM role";
-                                       $result = mysqli_query($conn, $query);
-                                       if(mysqli_num_rows($result) > 0) {
+                                       <label class="form-label">Employee Role:</label>
+                                       <select class="selectpicker form-control" name="e_role" data-style="py-0" required>
+                                          <option>Select</option>
+                                          <?php
+                                          // Assuming $conn is your database connection object
+                                          $query = "SELECT role_name, r_status FROM role";
+                                          $result = mysqli_query($conn, $query);
+                                          if(mysqli_num_rows($result) > 0) {
                                              while($row = mysqli_fetch_assoc($result)) {
-                                                if($row['r_status'] == "active") {
-                                                   echo "<option>".$row['role_name']."</option>";
-                                                }
+                                                   if($row['r_status'] == "active") {
+                                                      echo "<option>".$row['role_name']."</option>";
+                                                   }
                                              }
-                                       }
-                                       ?>
-                                    </select>
+                                          }
+                                          ?>
+                                       </select>
                                  </div>
+
 
                                  
                                  <div class="form-group col-md-12">
                                     <label class="form-label" for="bdate">bdate:</label>
-                                    <input type="date" class="form-control" name="e_bdate" id="bdate" placeholder="Enter your Birthday" required>
+                                    <input type="date" class="form-control" name="e_bate" id="bdate" placeholder="Enter your Birthday" required>
                                     <!-- <span class="error"><?php // echo $e_lname; ?></span>    -->
                                  </div>
                                  
                                  <div class="form-group col-md-4">
                                     <label class="form-label">Country:</label>
-                                 <select type="text" name="country" id="country" name="e_country" class="form-control" >
-                                    <option>Select Country</option>
-                                 </select>
+                                    <select type="text" name="e_country" id="country" class="form-control">
+                                       <option>Select Country</option>
+                                    </select>
                                  </div>
-                                 
+
                                  <div class="form-group col-sm-4">
-                                    <label class="form-label">state:</label>
-                                    <select type="text" id="state" name="state" name="e_state" class="form-control" ></select>
+                                    <label class="form-label">State:</label>
+                                    <select type="text" id="state" name="e_state" class="form-control"></select>
                                  </div>
+
                                  <div class="form-group col-sm-4">
                                     <label class="form-label">City:</label>
-                                    <select name="e_city" id="city" class="form-control" ></select>
+                                    <select name="e_city" id="city" class="form-control"></select>
                                  </div>
+
                                  <div class="form-group col-md-12">
                                     <label class="form-label" for="add1">Street Address 1:</label>
                                     <input type="text" class="form-control" id="add1" name="address" placeholder="Street Address 1" required>
@@ -218,7 +277,7 @@
                               
                                  <div class="form-group col-md-6">
                                  <label class="form-label" for="mobno">Mobile Number:</label>
-                                    <input type="text" class="form-control" id="mobno" nmae="mono" placeholder="Mobile Number" required>
+                                    <input type="text" class="form-control" id="mobno" name="mono" placeholder="Mobile Number" required>
                                  <!-- <span class="error"><?php // echo $e_fname; ?></span>   -->
                                  </div>
                                  <div class="form-group col-md-6">
@@ -228,27 +287,28 @@
                                  </div>
                                  <div class="form-group col-md-12">
                                     <label class="form-label" for="email"> Email:</label>
-                                    <input type="email" class="form-control" id="email" nmae="email" placeholder="Email" required>
+                                    <input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
                                  <!-- <span class="error"><?php // echo $e_fname; ?></span>   -->
                                  </div>
                                  <div class="form-group">
-                                    <label class="form-label">Team Name:</label>
-                                    <select name="type" class="selectpicker form-control" name="team_name" data-style="py-0" required>
-                                       <option>Select</option>
-                                       <?php
-                                       // Assuming $conn is your database connection object
-                                       $t_query = "SELECT t_name, t_status FROM team";
-                                       $result = mysqli_query($conn, $t_query);
-                                       if(mysqli_num_rows($result) > 0) {
-                                             while($row = mysqli_fetch_assoc($result)) {
-                                                if($row['t_status'] == "active") {
-                                                   echo "<option>".$row['t_name']."</option>";
+                                       <label class="form-label">Team Name:</label>
+                                       <select class="selectpicker form-control" name="team_name" data-style="py-0" required>
+                                          <option>Select</option>
+                                          <?php
+                                          // Assuming $conn is your database connection object
+                                          $t_query = "SELECT t_name, t_status FROM team";
+                                          $result = mysqli_query($conn, $t_query);
+                                          if(mysqli_num_rows($result) > 0) {
+                                                while($row = mysqli_fetch_assoc($result)) {
+                                                   if($row['t_status'] == "active") {
+                                                      echo "<option>".$row['t_name']."</option>";
+                                                   }
                                                 }
-                                             }
-                                       }
-                                       ?>
-                                    </select>
-                                 </div>
+                                          }
+                                          ?>
+                                       </select>
+                                    </div>
+
                                  
                                  <div class="form-group col-md-12">
                                     <label class="form-label" for="Joining Date">Joining Date:</label>
