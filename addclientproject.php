@@ -1,5 +1,5 @@
 <?php 
-   include 'sidebar.php';
+   // include 'sidebar.php';
    include 'connection.php';
   // include 'formvalidation.php';
 ?>
@@ -23,33 +23,24 @@
   $p_client_name_error = $p_name_error = $p_client_mob_error = $p_lan_error = $p_des_error = $t_name_error = $p_status_error = "";
 
 if(isset($_POST['sub_btn'])) {
-    if(empty($_POST['com_name']) && empty($_POST['proj_name']) && empty($_POST['com_con']) && empty($_POST['proj_lang']) && empty($_POST['proj_desc']) && empty($_POST['team_name']) && empty($_POST['p_status'])) 
-    {
-        $p_client_name_error = "<li><b>Enter client name</b></li>";
-        $p_name_error = "<li><b>Enter project name</b></li>";
-        $p_client_mob_error = "<li><b>Enter client contact</b></li>";
-        $p_lan_error = "<li><b>Enter project language</b></li>";
-        $p_des_error = "<li><b>Enter project description</b></li>";
-        $t_name_error = "<li><b>Enter team name</b></li>";
-        $p_status_error = "<li><b>Enter project status</b></li>";
-    }
-     else 
-    {
-      $q = "insert into project(`id`, `p_name`, `p_client_name`, `t_name`, `p_lan`, `p_client_mob`, `p_des`, `p_status`, `com_img`) VALUES (NULL, '".$_POST['proj_name']."', '".$_POST['com_name']."', '".$_POST['team_name']."', '".$_POST['proj_lang']."', '".$_POST['com_con']."', '".$_POST['proj_desc']."', '".$_POST['p_status']."', '".$_POST['com_img']."')";
-      $insert = mysqli_query($conn, $q); 
-      // echo $insert;
+   
+          // File upload handling
+          $project_file = $_FILES['com_img']['name'];
+      
+          // Specify the directory where you want to store the files
+          $upload_directory = 'storage/clientproject/';
+      
+          // Create the full path for the uploaded files
+          $project_target_path = $upload_directory . $project_file;
+      
+          // Move the uploaded files to the specified directory
+          move_uploaded_file($_FILES['com_img']['tmp_name'], $project_target_path);
+      
+         $q = "insert into project(`id`, `p_name`, `p_client_name`, `t_name`, `p_lan`, `p_client_mob`, `p_des`, `p_status`, `com_img`) VALUES (NULL, '".$_POST['proj_name']."', '".$_POST['com_name']."', '".$_POST['team_name']."', '".$_POST['proj_lang']."', '".$_POST['com_con']."', '".$_POST['proj_desc']."', '".$_POST['p_status']."',  '".$_FILES['com_img']['name']."')";
+         $insert = mysqli_query($conn, $q); 
+      }
 
-      // if(!$insert) {
-      //    die("Insertion failed: " . mysqli_error($conn));
-      // } 
-      // else {
-      //    echo "Data inserted successfully!";
-      // }
-    }
-}
 ?>
-
-
 <body>
 <main class="main-content">
 			<div class="iq-navbar-header" style="height: 215px;">
