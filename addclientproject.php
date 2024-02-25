@@ -89,49 +89,33 @@
                                <div class="form-group col-md-15">
                                    <label class="form-label" for="fname">Client / Compney Name:</label>
                                    <input type="text" class="form-control" id="tname" placeholder="Client / Compney  Name" name="com_name" required>
-                                   <span class="error"><?php //echo $e_fname; ?></span>                             
+                                                             
                                 </div>
                                 <div class="form-group col-md-15">
                                     <label class="form-label" for="Degree"> Client / Compney  Image </label>
-<<<<<<< HEAD
+
                                     <input type="file" class="form-control" id="image" placeholder="Client / Compney  Image"  name="com_img" required>
-=======
-                                    <input type="file" class="form-control" id="image" placeholder="Client / Compney  Image"  name="c_img">
->>>>>>> 69d63d8a5b91f1ca2b4bfd5cf4d06271876b3e5e
-                                    <span class="error"><?php // echo $e_fname; ?></span>  
+
                                 </div>
                                 <div class="form-group col-md-15">
                                     <label class="form-label" for="fname">Project Name:</label>
                                     <input type="text" class="form-control" id="tname" placeholder="Project  Name" name="proj_name" required>
-                                    <!-- <span class="error"><?php // echo $e_fname; ?></span>                              -->
-                                </div>
+                              </div>
                                 <div class="form-group col-md-15">
                                     <label class="form-label" for="fname">Client / Compney contact:</label>
                                     <input type="text" class="form-control" id="tname" placeholder="Client / Compney  contact" name="com_con" required>
-                                    <!-- <span class="error"><?php // echo $e_fname; ?></span>                              -->
                                 </div>
                                 <div class="form-group">
-                                <!-- <label class="form-label">Team Name:</label>
-                                <select name="type" class="selectpicker form-control" data-style="py-0" name="t_name">
-                                    <option>Select</option>
-                                    <option>Web Designer</option>
-                                    <option>Web Developer</option>
-                                    <option>Tester</option>
-                                    <option>Php Developer</option>
-                                    <option>Ios Developer </option>
-                                </select>
-                                </div> -->
+                              
                                  <div class="form-group col-md-15">
                                  <label class="form-label" for="fname">Project Language:</label>
                                  <input type="text" class="form-control" id="tname" placeholder="Project Language" name="proj_lang" required>
-                                 <span class="error"><?php // echo $e_fname; ?></span>                             
                               </div>
 
                               <fieldset class="mb-3">
                               <div class="form-group col-md-15">
                                  <label class="form-label" for="add1">Project Description</label>
                                  <input type="text" class="form-control" id="add1" placeholder="Project Description" name="proj_desc" requiredrequired>
-                              <!-- <span class="error"><?php // echo $e_fname; ?></span>   -->
                               </div>
                               
                               <div class="form-group">
