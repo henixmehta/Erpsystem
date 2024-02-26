@@ -121,45 +121,39 @@
                            <div class="row">
                                  <div class="form-group col-md-6">
                                     <label class="form-label" for="fname">First Name:</label>
-                                    <input type="text" class="form-control" name="f_name" id="fname" placeholder="First Name" value=<?php echo $row['p_client_name']; ?> required>
+                                    <input type="text" class="form-control" name="f_name" id="fname" placeholder="First Name" value=<?php echo $row['e_fname']; ?> required>
                                     <!-- <span class="error"><?php // echo $e_fname; ?></span>                              -->
                                  </div>
                                  
-                                 <div class="form-group col-md-6">
-                                    <label class="form-label" for="lname">Last Name:</label>
-                                    <input type="text" class="form-control" id="lname" name="l_name" placeholder="Last Name"required>
-                                    <!-- <span class="error"><?php // echo $e_lname; ?></span>    -->
-                                 </div>
                                  <div class="form-group">
-                                       <label class="form-label">Employee Role:</label>
-                                       <select class="selectpicker form-control" name="e_role" data-style="py-0" required>
-                                          <option>Select</option>
-                                          <?php
-                                          // Assuming $conn is your database connection object
-                                          $query = "SELECT role_name, r_status FROM role";
-                                          $result = mysqli_query($conn, $query);
-                                          if(mysqli_num_rows($result) > 0) {
-                                             while($row = mysqli_fetch_assoc($result)) {
-                                                   if($row['r_status'] == "active") {
-                                                      echo "<option>".$row['role_name']."</option>";
-                                                   }
-                                             }
-                                          }
-                                          ?>
-                                       </select>
-                                 </div>
-
-
+                                    <label class="form-label">Employee Role:</label>
+                                    <select class="selectpicker form-control" name="e_role" data-style="py-0" required>
+                                        <option>Select</option>
+                                        <?php
+                                        // Assuming $conn is your database connection object
+                                        $query = "SELECT role_name, r_status FROM role";
+                                        $result = mysqli_query($conn, $query);
+                                        if(mysqli_num_rows($result) > 0) {
+                                            while($role_row = mysqli_fetch_assoc($result)) {
+                                                if($role_row['r_status'] == "active") {
+                                                    $selected = ($row['e_role'] == $role_row['role_name']) ? 'selected' : ''; // Check if the fetched role matches the option, set 'selected' if true
+                                                    echo "<option ".$selected.">".$role_row['role_name']."</option>";
+                                                }
+                                            }
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
                                  
                                  <div class="form-group col-md-12">
                                     <label class="form-label" for="bdate">bdate:</label>
-                                    <input type="date" class="form-control" name="e_bate" id="bdate" placeholder="Enter your Birthday" required>
+                                    <input type="date" class="form-control" name="e_bate" id="bdate" placeholder="Enter your Birthday"  value=<?php echo $row['e_bdate']; ?> required>
                                     <!-- <span class="error"><?php // echo $e_lname; ?></span>    -->
                                  </div>
                                  
                                  <div class="form-group col-md-4">
                                     <label class="form-label">Country:</label>
-                                    <select type="text" name="e_country" id="country" class="form-control">
+                                    <select type="text" name="e_country" id="country" class="form-control" value=<?php echo $row['e_country']; ?> >
                                        <option>Select Country</option>
                                     </select>
                                  </div>
