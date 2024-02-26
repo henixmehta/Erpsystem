@@ -20,100 +20,93 @@
     }
    </style>
 <?php 
-// if(isset($_GET['id'])) {
-//         // Retrieve the project ID from the URL
-//         $pid = $_GET['id'];
-
-//         // Construct the SQL query to retrieve project details based on the project ID
-//         $query = "SELECT * FROM project WHERE id = $pid";
-
-//         // Execute the SQL query
-//         $result = mysqli_query($conn, $query);
-
-//         // Check if the query executed successfully and if any rows are returned
-//         if($result && mysqli_num_rows($result) > 0) {
-//             // Fetch the project details
-//             $row = mysqli_fetch_assoc($result);
-
-//             // Assign project details to variables
-//             $pname = $row['p_name'];
-//             $cname = $row['p_client_name'];
-//             $com_con = $row['p_client_mob'];
-//             $proj_lang = $row['p_lan'];
-//             $proj_desc = $row['p_des'];
-//             $team_name = $row['t_name'];
-//             $p_status = $row['p_status'];
-//             $img = $row['com_img'];
-
-//         } else {
-//             // Handle the case when no project details are found
-//             echo "Error: No project found with ID $pid";
-//             // You may redirect the user or handle this case as per your requirement
-//             exit();
-//         }
-//     } else {
-//         // Redirect the user if the project ID is not provided
-//         echo '<script>window.location.href = "clientproject.php";</script>';
-//     }
-
-//     // Check if the update form is submitted
-//     if(isset($_POST['sub_btn'])) {
-//         // Check if the 'id' index is set in $_POST
-//         if(isset($_POST['id'])) {
-//             // Assign form field values to variables
-//             $pid = $_POST['id'];
-//             $pname = $_POST['proj_name'];
-//             $cname = $_POST['com_name'];
-//             $com_con = $_POST['com_con'];
-//             $proj_lang = $_POST['proj_lang'];
-//             $proj_desc = $_POST['proj_desc'];
-//             $team_name = $_POST['team_name'];
-//             $p_status = $_POST['p_status'];
-//             $img = isset($_POST['com_img']) ? $_POST['com_img'] : ''; // Set $img to $_POST['com_img'] if it is set, otherwise set it to an empty string
-
-//             // Construct the update query
-//             $q = "update project set p_name ='$pname', p_client_name='$cname', t_name='$team_name' , p_lan='$proj_lang' , p_client_mob= '$com_con' , p_des='$proj_desc' , p_status='$p_status' , com_img='$img' WHERE id='$pid'";
-//             // Execute the update query
-//             $insert = mysqli_query($conn, $q); 
-            
-//             // Check if the update was successful
-//             if($insert) {
-//                 // Redirect to the clientproject.php page after successful update
-//                 echo '<script>window.location.href = "clientproject.php";</script>';
-//             } else {
-//                 // Display error message if update fails
-//                 echo "Error: " . mysqli_error($conn);
-//             }
-//         } else {
-//             // Display error message if 'id' is not set in $_POST
-//             echo "Error: Project ID is not provided.";
-//         }
-//     }
-
-
-
            
-                $pid=$_GET['id'];
+                // $pid=$_GET['id'];
+                
+                // if(isset($_GET['id']))
+                // {
+                //     $qry="select * from project where id='".$pid."'";
+                //     $data=mysqli_query($conn,$qry);
+                //     $row=mysqli_fetch_array($data);
+                // }
+
+                // if(isset($_POST['sub_btn']))
+                // {
+
+                //         $q = "update project set p_name='".$_POST['p_name']."',p_client_name='".$_POST['p_client_name']."',t_name='".$_POST['t_name']."',p_lan='".$_POST['p_lan']."',p_client_mob='".$_POST['p_client_mob']."',com_img='".$_POST['com_img']."',p_status='".$_POST['p_status']."' where id='".$pid."' ";
+                //       mysqli_query($conn,$q);
+
+                //     header("location:clientproject.php");
+                // }
 
 
                 
-                if(isset($_GET['id']))
-                {
-                    $qry="select * from project where id='".$pid."'";
-                    $data=mysqli_query($conn,$qry);
-                    $row=mysqli_fetch_array($data);
+                $pid = $_GET['id'];
+                
+                if (isset($_GET['id'])) {
+                    $qry = "SELECT * FROM project WHERE id=?";
+                    $stmt = mysqli_prepare($conn, $qry);
+                    mysqli_stmt_bind_param($stmt, "i", $pid);
+                    mysqli_stmt_execute($stmt);
+                    $result = mysqli_stmt_get_result($stmt);
+                    $row = mysqli_fetch_array($result);
                 }
-
-                if(isset($_POST['sub_btn']))
-                {
-
-                        $q = "update project set p_name='".$_POST['p_name']."',p_client_name='".$_POST['p_client_name']."',t_name='".$_POST['t_name']."',p_lan='".$_POST['p_lan']."',p_client_mob='".$_POST['p_client_mob']."',com_img='".$_POST['com_img']."',p_status='".$_POST['p_status']."' where id='".$pid."' ";
-                      mysqli_query($conn,$q);
-
-                    header("location:clientproject.php");
+                
+                if (isset($_POST['sub_btn'])) {
+                    // Update text fields in the database
+                    $q = "UPDATE project SET p_name=?, p_client_name=?, t_name=?, p_lan=?, p_client_mob=?, p_status=? WHERE id=?";
+                    $stmt = mysqli_prepare($conn, $q);
+                    mysqli_stmt_bind_param($stmt, "ssssssi", $_POST['p_name'], $_POST['p_client_name'], $_POST['t_name'], $_POST['p_lan'], $_POST['p_client_mob'], $_POST['p_status'], $pid);
+                    mysqli_stmt_execute($stmt);
+                
+                    // Handle image upload if a file is selected
+                    if (isset($_FILES["com_img"]) && $_FILES["com_img"]["error"] == 0) {
+                        $targetDirectory = "storage/clientproject/";
+                        $targetFile = $targetDirectory . basename($_FILES["com_img"]["name"]);
+                        $uploadOk = 1;
+                        $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
+                
+                        // Check if image file is a actual image or fake image
+                        $check = getimagesize($_FILES["com_img"]["tmp_name"]);
+                        if ($check !== false) {
+                            echo "File is an image - " . $check["mime"] . ".";
+                            $uploadOk = 1;
+                        } else {
+                            echo "File is not an image.";
+                            $uploadOk = 0;
+                        }
+                
+                        // Check file size
+                        if ($_FILES["com_img"]["size"] > 500000) {
+                            echo "Sorry, your file is too large.";
+                            $uploadOk = 0;
+                        }
+                
+                        // Allow certain file formats
+                        if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+                            && $imageFileType != "gif") {
+                            echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+                            $uploadOk = 0;
+                        }
+                
+                        // Check if $uploadOk is set to 0 by an error
+                        if ($uploadOk == 0) {
+                            echo "Sorry, your file was not uploaded.";
+                        } else {
+                            // if everything is ok, try to upload file
+                            if (move_uploaded_file($_FILES["com_img"]["tmp_name"], $targetFile)) {
+                                echo "The file " . htmlspecialchars(basename($_FILES["com_img"]["name"])) . " has been uploaded.";
+                            } else {
+                                echo "Sorry, there was an error uploading your file.";
+                            }
+                        }
+                    }
+                
+                    header("location: clientproject.php");
+                    exit();
                 }
-
-?>
+                ?>
+                
 <body>
 <main class="main-content">
 		<div class="iq-navbar-header" style="height: 100px;"></div>
@@ -129,7 +122,7 @@
                   <div class="card-body">
                      <div class="new-Team-info">
                      <!-- form-->         
-					<form method="POST">
+					<form method="POST" enctype="multipart/form-data">
                <div class="form-group">
                            <div class="profile-img-edit position-relative">
 							<!-- insert add profile -->
@@ -170,7 +163,7 @@
                               
                             <div class="form-group">
                             <label class="form-label">Team Name:</label>
-                            <select name="team_name" class="selectpicker form-control" data-style="py-0"  required>
+                            <select name="t_name" class="selectpicker form-control" data-style="py-0"  required>
                                 <option>Select</option>
                                 <?php
                                 // Assuming $conn is your database connection object
@@ -190,11 +183,11 @@
         
                             <legend>Status:</legend>
                             <div class="form-check">
-                                <input type="radio" class="form-check-input" name="p_status" value="<?php echo ($row['p_status'] == 'active') ? 'checked' : ''; ?>" id="Active" >
+                                <input type="radio" class="form-check-input" name="p_status" value="active"   id="Active" checked>
                                 <label class="form-check-label" for="Active">Active</label>
                             </div>
                             <div class="mb-3 form-check">
-                                <input type="radio" class="form-check-input" name="p_status" value="<?php echo ($row['p_status'] == 'inactive') ? 'checked' : ''; ?>" id="Inactive" >
+                                <input type="radio" class="form-check-input" name="p_status" value="inactive">
                                 <label class="form-check-label" for="Inactive">Inactive</label>
                             </div>
                          </fieldset> 

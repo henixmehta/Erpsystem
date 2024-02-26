@@ -19,23 +19,27 @@
       margin-left:265px;
     }
    </style>
-  <?php
 
-  if(isset($_POST['sub_btn'])) {
-       // File upload handling
-       $project_file = $_FILES['c_img']['name'];
-   
-       // Specify the directory where you want to store the files
-       $upload_directory = 'storage/clientproject/';
-   
-       // Create the full path for the uploaded files
-       $project_target_path = $upload_directory . $project_file;
-   
-       // Move the uploaded files to the specified directory
-       move_uploaded_file($_FILES['c_img']['tmp_name'], $project_target_path);
-       
-       $q = "INSERT INTO project(`id`, `p_name`, `p_client_name`, `t_name`, `p_lan`, `p_client_mob`, `p_des`, `p_status`, `com_img`) VALUES (NULL, '".$_POST['proj_name']."', '".$_POST['com_name']."', '".$_POST['team_name']."', '".$_POST['proj_lang']."', '".$_POST['com_con']."', '".$_POST['proj_desc']."', '".$_POST['p_status']."',  '$project_file')";
-       $insert = mysqli_query($conn, $q);       
+<?php 
+// include 'sidebar.php';
+// include 'connection.php';
+
+if(isset($_POST['sub_btn'])) {
+    // File upload handling
+    $project_file = $_FILES['com_img']['name'];
+
+    // Specify the directory where you want to store the files
+    $upload_directory = 'storage/clientproject/';
+
+    // Create the full path for the uploaded files
+    $project_target_path = $upload_directory . $project_file;
+
+    // Move the uploaded files to the specified directory
+    move_uploaded_file($_FILES['com_img']['tmp_name'], $project_target_path);
+    
+    $q = "INSERT INTO project (`p_name`, `p_client_name`, `t_name`, `p_lan`, `p_client_mob`, `p_des`, `p_status`, `com_img`) 
+          VALUES ('".$_POST['proj_name']."', '".$_POST['com_name']."', '".$_POST['team_name']."', '".$_POST['proj_lang']."', '".$_POST['com_con']."', '".$_POST['proj_desc']."', '".$_POST['p_status']."',  '$project_file')";
+    $insert = mysqli_query($conn, $q);       
 }
 ?>
 
