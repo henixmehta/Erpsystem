@@ -107,8 +107,8 @@
                 if(isset($_POST['sub_btn']))
                 {
 
-                        $q = "update project set name='".$_POST['name']."',email='".$_POST['email']."',password='".$_POST['pass']."',phone='".$_POST['phone']."',gender='".$_POST['gender']."',city='".$_POST['city']."',state='".$_POST['state']."',hobby='".$_POST['hobby']."',address='".$_POST['address']."',dob='".$_POST['dob']."',pincode='".$_POST['pincode']."' where id='".$uid."' ";
-                    mysqli_query($con,$q);
+                        $q = "update project set p_name='".$_POST['p_name']."',p_client_name='".$_POST['p_client_name']."',t_name='".$_POST['t_name']."',p_lan='".$_POST['p_lan']."',p_client_mob='".$_POST['p_client_mob']."',com_img='".$_POST['com_img']."',p_status='".$_POST['p_status']."' where id='".$pid."' ";
+                      mysqli_query($conn,$q);
 
                     header("location:clientproject.php");
                 }
@@ -138,7 +138,7 @@
                            <div class="row">
                                <div class="form-group col-md-15">
                                    <label class="form-label" for="fname">Client / Compney Name:</label>
-                                   <input type="text" class="form-control" id="tname" placeholder="Client / Compney  Name" name="p_name" value="<?php echo $row['p_name']; ?>">
+                                   <input type="text" class="form-control" id="tname" placeholder="Client / Compney  Name" name="p_client_name" value="<?php echo $row['p_client_name']; ?>">
                                                              
                                 </div>
                                 <div class="form-group col-md-15">
@@ -148,29 +148,29 @@
                                 </div>
                                 <div class="form-group col-md-15">
                                     <label class="form-label" for="fname">Project Name:</label>
-                                    <input type="text" class="form-control" id="tname" placeholder="Project Name" name="proj_name" value="<?php echo $row['p_name']; ?>">
+                                    <input type="text" class="form-control" id="tname" placeholder="Project Name" name="p_name" value="<?php echo $row['p_name']; ?>">
                                    
                                 </div>
                                 <div class="form-group col-md-15">
                                     <label class="form-label" for="fname">Client / Compney contact:</label>
-                                    <input type="text" class="form-control" id="tname" placeholder="Client / Compney  contact" name="com_con" value="<?php echo $com_con; ?>">
+                                    <input type="text" class="form-control" id="tname" placeholder="Client / Compney  contact" name="p_client_mob" value="<?php echo $row['p_client_mob']; ?>">
                                    
                                 </div>
                                 <div class="form-group">
                                  <div class="form-group col-md-15">
                                  <label class="form-label" for="fname">Project Language:</label>
-                                 <input type="text" class="form-control" id="tname" placeholder="Project Language" name="proj_lang" value="<?php echo $proj_lang; ?>">
+                                 <input type="text" class="form-control" id="tname" placeholder="Project Language" name="p_lan" value="<?php echo $row['p_lan']; ?>">
                               </div>
 
                               <fieldset class="mb-3">
                               <div class="form-group col-md-15">
                                  <label class="form-label" for="add1">Project Description</label>
-                                 <input type="text" class="form-control" id="add1" placeholder="Project Description" name="proj_desc" value="<?php echo $proj_desc; ?>">
+                                 <input type="text" class="form-control" id="add1" placeholder="Project Description" name="p_des" value="<?php echo $row['p_des']; ?>">
                               </div>
                               
                             <div class="form-group">
                             <label class="form-label">Team Name:</label>
-                            <select name="team_name" class="selectpicker form-control" data-style="py-0" required>
+                            <select name="team_name" class="selectpicker form-control" data-style="py-0"  required>
                                 <option>Select</option>
                                 <?php
                                 // Assuming $conn is your database connection object
@@ -190,11 +190,11 @@
         
                             <legend>Status:</legend>
                             <div class="form-check">
-                                <input type="radio" class="form-check-input" name="p_status" value="active" id="Active" <?php echo ($p_status === 'active') ? 'checked' : ''; ?>>
+                                <input type="radio" class="form-check-input" name="p_status" value="<?php echo ($row['p_status'] == 'active') ? 'checked' : ''; ?>" id="Active" >
                                 <label class="form-check-label" for="Active">Active</label>
                             </div>
                             <div class="mb-3 form-check">
-                                <input type="radio" class="form-check-input" name="p_status" value="inactive" id="Inactive" <?php echo ($p_status === 'inactive') ? 'checked' : ''; ?>>
+                                <input type="radio" class="form-check-input" name="p_status" value="<?php echo ($row['p_status'] == 'inactive') ? 'checked' : ''; ?>" id="Inactive" >
                                 <label class="form-check-label" for="Inactive">Inactive</label>
                             </div>
                          </fieldset> 
