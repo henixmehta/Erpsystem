@@ -1,5 +1,5 @@
 <?php 
-   // include 'sidebar.php';
+   include 'sidebar.php';
    include 'connection.php';
 //include 'formvalidation.php';
 ?>
