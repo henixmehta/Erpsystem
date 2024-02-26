@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Team</title>
    <style>
-        .error {
+        .error {  
       color: red;
     }
     .main-content{
@@ -23,14 +23,36 @@
       include 'connection.php';
     
       $stmt = $conn->prepare("INSERT INTO teams (team_name, team_description, team_projects_language, team_status) VALUES (?, ?, ?, ?)");
-    
+     
       $stmt->bind_param("ssss", $team_name, $team_description, $team_projects_language, $team_status);
     
       $team_name = $_POST['tname'];
       $team_description = $_POST['add1'];
       $team_projects_language = $_POST['type'];
       $team_status = $_POST['radios'];
-    
+      if (isset($_POST["submit"])){
+         if($_FILES["Image"]["error"]===4){
+            echo "<script> alert ('image is not exitst');</script>";
+         }
+         else{
+            $filename = $_FILES["image"]["name"];
+            $filesize = $_FILES["image"]["size"];
+            $tmpname = $_FILES["image"]["tmp_name"];
+            $valideImageExtension = ['jpg','jpeg','png'];
+            $imageExtension = explode('.'$filename);
+            $imageExtension = strtolower(end($imageExtension));
+            if(!in_array($imageExtension,$valideImageExtension)){
+               echo "<script> alert ('invalid image extension');</script>";
+            }
+            else{
+               $newImageName = uniqid();
+               $newImageName .= '.'.$imageExtension
+               
+               move_uploaded_file($tmpname, 'img/', $newImageName);
+               echo "<script> alert ('Successfully Added '); document.location.href = 'addteam.php'</script>";
+            }
+         }
+      }
       if ($stmt->execute()) 
       {
          echo "New record created successfully";
@@ -39,7 +61,7 @@
       {
          echo "Error: " . $stmt->error;
       }
-    
+      
       $stmt->close();
       $conn->close();
    }

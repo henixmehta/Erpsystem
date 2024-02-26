@@ -161,6 +161,10 @@ function loadCity(stateId) {
             //echo $q;
             // Execute your SQL query to insert the data into the database
              $insert = mysqli_query($conn, $q);
+
+
+             echo '<script type="text/javascript">window.location.href="employee.php";</script>';
+                   
         }
         
 
