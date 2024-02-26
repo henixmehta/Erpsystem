@@ -68,12 +68,13 @@
                         <td><?php echo $row['p_lan']?></td>
                         <td><?php 
                         $status = $row['p_status'];
-                        if($status == "active")
+                        if($status == "active" || $status == "Active" )
                         {
                            ?>
                             <span class="badge bg-primary">Active</span>
                            <?php
                         }
+                        
                         else
                         {  
                            ?>

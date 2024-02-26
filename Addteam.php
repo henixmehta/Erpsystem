@@ -1,3 +1,7 @@
+   <?php 
+      include 'sidebar.php';
+      // include 'formvalidation.php';
+   ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,61 +20,33 @@
 	<link rel="stylesheet" href="css/main.min.css">
 
 <body> 
-   <!-- Insert query -->
-<?php
-   if ($_SERVER["REQUEST_METHOD"] == "POST") 
-   {
-      include 'connection.php';
-    
-      $stmt = $conn->prepare("INSERT INTO teams (team_name, team_description, team_projects_language, team_status) VALUES (?, ?, ?, ?)");
-     
-      $stmt->bind_param("ssss", $team_name, $team_description, $team_projects_language, $team_status);
-    
-      $team_name = $_POST['tname'];
-      $team_description = $_POST['add1'];
-      $team_projects_language = $_POST['type'];
-      $team_status = $_POST['radios'];
-      if (isset($_POST["submit"])){
-         if($_FILES["Image"]["error"]===4){
-            echo "<script> alert ('image is not exitst');</script>";
-         }
-         else{
-            $filename = $_FILES["image"]["name"];
-            $filesize = $_FILES["image"]["size"];
-            $tmpname = $_FILES["image"]["tmp_name"];
-            $valideImageExtension = ['jpg','jpeg','png'];
-            $imageExtension = explode('.'$filename);
-            $imageExtension = strtolower(end($imageExtension));
-            if(!in_array($imageExtension,$valideImageExtension)){
-               echo "<script> alert ('invalid image extension');</script>";
-            }
-            else{
-               $newImageName = uniqid();
-               $newImageName .= '.'.$imageExtension
-               
-               move_uploaded_file($tmpname, 'img/', $newImageName);
-               echo "<script> alert ('Successfully Added '); document.location.href = 'addteam.php'</script>";
-            }
-         }
+   <?php
+   
+      if(isset($_POST['sub_btn'])) {
+         // File upload handling
+         $team_name = $_POST['tname'];
+         $team_project_name = $_FILES['Degree']['name']; // Assuming 'Degree' is the name of your file input
+         $team_description = $_POST['add1'];
+         $team_language = $_POST['type'];
+         $team_status = $_POST['radios'];
+         
+         // Specify the directory where you want to store the files
+         $upload_directory = 'storage/team/';
+         
+         // Create the full path for the uploaded files
+         $team_target_path = $upload_directory . $team_project_name;
+         
+         // Move the uploaded files to the specified directory
+         move_uploaded_file($_FILES['Degree']['tmp_name'], $team_target_path);
+         
+         // SQL query for inserting data into the database
+         $q = "INSERT INTO team (`id`, `t_name`, `t_project_name`, `t_des`, `t_language`, `t_status`) 
+               VALUES (NULL, '$team_name', '$team_project_name', '$team_description', '$team_language', '$team_status')";
+         $insert = mysqli_query($conn, $q);   
+         echo '<script type="text/javascript">window.location.href="clientproject.php";</script>';
       }
-      if ($stmt->execute()) 
-      {
-         echo "New record created successfully";
-      } 
-      else 
-      {
-         echo "Error: " . $stmt->error;
-      }
-      
-      $stmt->close();
-      $conn->close();
-   }
-?>
+   ?>
 
-            <?php 
-               include 'sidebar.php';
-               // include 'formvalidation.php';
-            ?>
 <main class="main-content">
 
 			<div class="iq-navbar-header" style="height: 215px;">
@@ -112,63 +88,51 @@
                      <div class="new-Team-info">
                      <!-- form-->
 
-         
-					<form method="POST">
-               <div class="form-group">
-                           <div class="profile-img-edit position-relative">
-							<!-- insert add profile -->
+                     <form method="POST" enctype="multipart/form-data">
+                           <div class="form-group">
+                              <div class="profile-img-edit position-relative">
+                                    <!-- insert add profile -->
+                              </div>
                            </div>
-                        </div>
-                        <!-- <div class="form-group">
-                           <label class="form-label">Team Role:</label>
-                           <select name="type" class="selectpicker form-control" data-style="py-0">
-                              <option>Select</option>
-                              <option>Web Designer</option>
-                              <option>Web Developer</option>
-                              <option>Tester</option>
-                              <option>Php Developer</option>
-                              <option>Ios Developer </option>
-                           </select>
-                        </div> -->
-            
                            <div class="row">
                               <div class="form-group col-md-15">
-                                 <label class="form-label" for="fname">Team Name:</label>
-                                 <input type="text" class="form-control" id="tname" placeholder="team Name" required>
+                                    <label class="form-label" for="tname">Team Name:</label>
+                                    <input type="text" class="form-control" id="tname" name="tname" placeholder="Team Name" required>
                               </div>
                               <div class="form-group col-md-15">
-                                 <label class="form-label" for="Degree"> Team Image </label>
-                                 <input type="file" class="form-control" id="Degree" placeholder="Degree certificate" required >
+                                    <label class="form-label" for="Degree"> Team Image </label>
+                                    <input type="file" class="form-control" id="Degree" name="Degree" placeholder="Team Image" required >
                               </div>
+                           </div>
+                           <div class="form-group">
                               <label class="form-label" for="add1">Team Description</label>
-                              <input type="text" class="form-control" id="add1" placeholder="Team Description" required>
+                              <input type="text" class="form-control" id="add1" name="add1" placeholder="Team Description" required>
                            </div>
                            <div class="form-group">
                               <label class="form-label">Team Projects language</label>
                               <select name="type" class="selectpicker form-control" data-style="py-0" required>
-                                 <option>Select</option>
-                                 <option>Laravel</option>
-                                 <option>Core PHP</option>
-                                 <option>Android</option>
-                                 <option>IOS</option>
-                                 <option>NODE JS </option>
+                                    <option>Select</option>
+                                    <option>Laravel</option>
+                                    <option>Core PHP</option>
+                                    <option>Android</option>
+                                    <option>IOS</option>
+                                    <option>NODE JS </option>
                               </select>
                            </div>
                            <fieldset class="mb-3">
-                           <legend>Status:</legend>
+                              <legend>Status:</legend>
                               <div class="form-check">
-                                 <input type="radio" name="radios" class="form-check-input" id="Active" required>
-                                 <label class="form-check-label" for="Active">Active</label>
+                                    <input type="radio" name="radios" class="form-check-input" id="Active" value="active" checked>
+                                    <label class="form-check-label" for="Active">Active</label>
                               </div>
                               <div class="mb-3 form-check">
-                                 <input type="radio" name="radios" class="form-check-input" id="Inactive" required>
-                                 <label class="form-check-label" for="Inactive">Inactive</label>
+                                    <input type="radio" name="radios" class="form-check-input" id="Inactive" value="Inactive" >
+                                    <label class="form-check-label" for="Inactive">Inactive</label>
                               </div>
                            </fieldset> 
                            <div class="form-group col-md-15">
-                           <!-- <button type="submit" name="sub_btn" class="btn btn-primary">Add New Team</button> -->
-                           <input type="submit" value="submit" class="btn btn-primary" name="sub_btn">
-                           
+                              <input type="submit" value="Submit" class="btn btn-primary" name="sub_btn">
+                           </div>
                         </form>
                      </div>
                   </div>

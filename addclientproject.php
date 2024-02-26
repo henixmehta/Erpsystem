@@ -126,7 +126,7 @@
                                        $result = mysqli_query($conn, $t_query);
                                        if(mysqli_num_rows($result) > 0) {
                                              while($row = mysqli_fetch_assoc($result)) {
-                                                if($row['t_status'] == "active") {
+                                                if($row['t_status'] == "active" || $row['t_status'] == "Active" ) {
                                                    echo "<option>".$row['t_name']."</option>";
                                                 }
                                              }

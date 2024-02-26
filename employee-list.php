@@ -85,7 +85,7 @@
                         <td><?php echo $row['e_pwd']?></td>
                         <td><?php 
                         $status = $row['e_status'];
-                        if($status == "active")
+                        if($status == "active" || $status == "Active" )
                         {
                            ?>
                             <span class="badge bg-primary">Active</span>
