@@ -234,7 +234,7 @@ function loadCity(stateId) {
                                           $result = mysqli_query($conn, $query);
                                           if(mysqli_num_rows($result) > 0) {
                                              while($row = mysqli_fetch_assoc($result)) {
-                                                   if($row['r_status'] == "active") {
+                                                   if($row['r_status'] == "active" || $row['t_status'] == "Active") {
                                                       echo "<option>".$row['role_name']."</option>";
                                                    }
                                              }
