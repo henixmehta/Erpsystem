@@ -3,7 +3,7 @@
     session_start();
 ?>
 
-<link rel="stylesheet" href="main.min.css">
+<link rel="stylesheet" href="css/css/main.min.css">
 <div class="sidebar">
 <aside class="sidebar sidebar-default sidebar-white sidebar-base navs-rounded-all ">
         <div class="sidebar-header d-flex align-items-center justify-content-start">
