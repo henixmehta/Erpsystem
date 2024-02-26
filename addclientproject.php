@@ -93,11 +93,7 @@
                                 </div>
                                 <div class="form-group col-md-15">
                                     <label class="form-label" for="Degree"> Client / Compney  Image </label>
-<<<<<<< HEAD
-                                    <input type="file" class="form-control" id="image" placeholder="Client / Compney  Image"  name="com_img" required>
-=======
-                                    <input type="file" class="form-control" id="image" placeholder="Client / Compney  Image"  name="c_img">
->>>>>>> 69d63d8a5b91f1ca2b4bfd5cf4d06271876b3e5e
+                                    <input type="file" class="form-control" id="image" placeholder="Client / Compney  Image"  name="c_img" required>
                                     <span class="error"><?php // echo $e_fname; ?></span>  
                                 </div>
                                 <div class="form-group col-md-15">
@@ -152,9 +148,7 @@
                                        ?>
                                     </select>
                                  </div>
-
-                                 
-                        <legend>Status:</legend>
+                 <legend>Status:</legend>
                                  <div class="form-check">
                                     <input type="radio" class="form-check-input" name="p_status" value="active" id="Active" checked>
                                     <label class="form-check-label"    for="Active">Active</label>
