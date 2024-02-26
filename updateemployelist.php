@@ -153,10 +153,26 @@
                                  
                                  <div class="form-group col-md-4">
                                     <label class="form-label">Country:</label>
-                                    <select type="text" name="e_country" id="country" class="form-control" value=<?php echo $row['e_country']; ?> >
-                                       <option>Select Country</option>
+                                    <select name="country" id="country" class="form-control">
+                                        <option value="">Select Country</option>
+                                        <?php
+                                        // Assuming $conn is your database connection object
+                                        $query = "SELECT name, status FROM countries";
+                                        $result = mysqli_query($conn, $query);
+                                        if(mysqli_num_rows($result) > 0) {
+                                            while($country_row = mysqli_fetch_assoc($result)) {
+                                                $selected = ($country_row['name'] == $row['e_country']) ? 'selected' : ''; // Check if the country matches the value from the database
+                                                echo "<option value='".$country_row['name']."' ".$selected.">".$country_row['name']."</option>";
+                                                if($country_row['status'] == "active") {
+                                                    // You can add additional options or modify the existing one based on your requirement
+                                                    echo "<option value='".$country_row['name']."' selected>".$country_row['name']."</option>"; // Set the existing value as selected
+                                                }
+                                            }
+                                        }
+                                        
+                                        ?>
                                     </select>
-                                 </div>
+                                </div>
 
                                  <div class="form-group col-sm-4">
                                     <label class="form-label">State:</label>
@@ -170,33 +186,33 @@
 
                                  <div class="form-group col-md-12">
                                     <label class="form-label" for="add1">Street Address 1:</label>
-                                    <input type="text" class="form-control" id="add1" name="address" placeholder="Street Address 1" required>
+                                    <input type="text" class="form-control" id="add1" name="address" placeholder="Street Address 1"  value=<?php echo $row['e_add']; ?> required>
                                  <!-- <span class="error"><?php // echo $e_fname; ?></span>   -->
                                  </div>
                                  <div class="form-group col-md-12">
                                     <label class="form-label" for="pno">Pin Code:</label>
-                                    <input type="text" class="form-control" id="pno" name="pincode" placeholder="Pin Code" required>
+                                    <input type="text" class="form-control" id="pno" name="pincode" placeholder="Pin Code"   value=<?php echo $row['e_pin']; ?>required>
                                  <!-- <span class="error"><?php // echo $e_fname; ?></span>   -->
                                  </div>
                               
                                  <div class="form-group col-md-6">
                                  <label class="form-label" for="mobno">Mobile Number:</label>
-                                    <input type="text" class="form-control" id="mobno" name="mono" placeholder="Mobile Number" required>
+                                    <input type="text" class="form-control" id="mobno" name="mono" placeholder="Mobile Number"  value=<?php echo $row['e_mob']; ?> required>
                                  <!-- <span class="error"><?php // echo $e_fname; ?></span>   -->
                                  </div>
                                  <div class="form-group col-md-6">
                                     <label class="form-label" for="altconno">Alternate Contact:</label>
-                                    <input type="text" class="form-control" id="altconno" name="alte_mono" placeholder="Alternate Contact"required>
+                                    <input type="text" class="form-control" id="altconno" name="alte_mono" placeholder="Alternate Contact" value=<?php echo $row['e_alt_mob']; ?> required>
                                  <!-- <span class="error"><?php // echo $e_fname; ?></span>   -->
                                  </div>
                                  <div class="form-group col-md-12">
                                     <label class="form-label" for="email"> Email:</label>
-                                    <input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
+                                    <input type="email" class="form-control" id="email" name="email" placeholder="Email"  value=<?php echo $row['e_email']; ?> required>
                                  <!-- <span class="error"><?php // echo $e_fname; ?></span>   -->
                                  </div>
                                  <div class="form-group">
                                        <label class="form-label">Team Name:</label>
-                                       <select class="selectpicker form-control" name="team_name" data-style="py-0" required>
+                                       <select class="selectpicker form-control" name="team_name" data-style="py-0"  value=<?php echo $row['e_team_name']; ?> required>
                                           <option>Select</option>
                                           <?php
                                           // Assuming $conn is your database connection object
@@ -216,29 +232,29 @@
                                  
                                  <div class="form-group col-md-12">
                                     <label class="form-label" for="Joining Date">Joining Date:</label>
-                                    <input type="date" class="form-control" id="joindate" name="j_date" placeholder="Enter your Joining Date" required>
+                                    <input type="date" class="form-control" id="joindate" name="j_date" placeholder="Enter your Joining Date"  value=<?php echo $row['e_joindate']; ?> required>
                                     <!-- <span class="error"><?php // echo $e_lname; ?></span>    -->
                                  </div>
                                  
                                  <div class="form-group col-md-12">
                                     <label class="form-label" for="Experience">Experience: </label>
-                                    <input type="text" class="form-control" id="Experience" name="exp" placeholder="Experience in year/ month" required>
+                                    <input type="text" class="form-control" id="Experience" name="exp" placeholder="Experience in year/ month"   value=<?php echo $row['e_exp']; ?> required>
                                     <!-- <span class="error"><?php // echo $e_fname; ?></span>   -->
                                  </div>
                                  <div class="form-group col-md-12">
                                     <label class="form-label" for="Degree">Degree certificate: </label>
-                                    <input type="file" class="form-control" id="Degree" name="degree" placeholder="Degree certificate" required>
+                                    <input type="file" class="form-control" id="Degree" name="degree" placeholder="Degree certificate"  value=<?php echo $row['e_deg']; ?> required>
                                     <!-- <span class="error"><?php // echo $e_fname; ?></span>   -->
                                  </div>
                                  <div class="form-group col-md-12">
                                     <label class="form-label" for="Resume">Resume: </label>
-                                    <input type="file" class="form-control" id="Resume" name="resume" placeholder="Resume" required>
+                                    <input type="file" class="form-control" id="Resume" name="resume" placeholder="Resume"  value=<?php echo $row['e_resume']; ?> required>
                                     <!-- <span class="error"><?php // echo $e_fname; ?></span>   -->
                                  </div>
                               </div>
                               <div class="form-group col-md-12">
                                  <label class="form-label" for="Salary">Salary: </label>
-                                 <input type="text" class="form-control" name="salary" id="Salary" placeholder="Salary" required>
+                                 <input type="text" class="form-control" name="salary" id="Salary" placeholder="Salary"  value=<?php echo $row['e_salary']; ?> required>
                               <!-- <span class="error"><?php // echo $e_fname; ?></span>   -->
                               </div>   
                               <hr>
@@ -246,20 +262,20 @@
                               <div class="row">
                                  <div class="form-group col-md-6">
                                     <label class="form-label" for="uname">Employee Compney Email:</label>
-                                    <input type="text" class="form-control" id="c_email" name="c_email" placeholder="Employee Compney Email" isValidEmail required >
+                                    <input type="text" class="form-control" id="c_email" name="c_email" placeholder="Employee Compney Email"  value=<?php echo $row['e_com_email']; ?>  isValidEmail required >
                                  </div>
                                  <div class="form-group col-md-6">
                                     <label class="form-label" for="pass">Password:</label>
-                                    <input type="password" class="form-control" id="pass" name="c_pass" placeholder="Employe Compney Password" required>
+                                    <input type="password" class="form-control" id="pass" name="c_pass" placeholder="Employe Compney Password"  value=<?php echo $row['e_pwd']; ?> required>
                                  </div>
                                  <fieldset class="mb-3">
                                  <legend>Status:</legend>
                                     <div class="form-check">
-                                       <input type="radio" name="status" class="form-check-input" value="active" id="Active" checked>
+                                       <input type="radio" name="status" class="form-check-input" value="active" id="Active"  value=<?php echo $row['e_status']; ?> checked>
                                        <label class="form-check-label" for="Active">Active</label>
                                     </div>
                                     <div class="mb-3 form-check">
-                                       <input type="radio" name="status"  class="form-check-input" value="inactive" id="Inactive" >
+                                       <input type="radio" name="status"  class="form-check-input" value="inactive"   value=<?php echo $row['e_status']; ?> id="Inactive" >
                                        <label class="form-check-label" for="Inactive">Inactive</label>
                                     </div>
                                  </fieldset> 
