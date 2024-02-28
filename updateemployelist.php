@@ -182,6 +182,7 @@
                                  <div class="form-group col-md-4">
                                              <label class="form-label">Country:</label>
                                              <select name="country" id="country" class="form-control" required>
+                                             <option>Select Country</option>
                                                 <!-- Options will be loaded dynamically through AJAX -->
                                              </select>
                                           </div>
