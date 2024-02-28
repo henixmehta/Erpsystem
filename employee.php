@@ -1,5 +1,5 @@
          <?php 
-                  include 'sidebar.php';
+                  // include 'sidebar.php';
                   include 'connection.php';
                   //   include 'formvalidation.php';
                   ?>
@@ -16,42 +16,7 @@
          <script src="js/location/location.js"></script>
          
        
-    <script>
-        function validateEmails() {
-            var email_check = document.getElementById('email').value;
-            var com_email_check = document.getElementById('c_email').value;
-
-
-
-
-
-
-
-
-
-            // AJAX request to check if the email exists on the server
-            $.ajax({
-                type: 'POST',
-                url: 'check_email.php',
-                data: {email: email_check, c_email: com_email_check},
-                success: function(response) {
-                    if (response === "exists") {
-                        alert("Email already registered. Please choose a different email.");
-                    } else {
-                        alert("Emails are valid. Proceed with the form submission.");
-                        // You can submit the form or perform additional actions here
-                    }
-                },
-               //  error: function() {
-               //      alert("An error occurred during the email validation.");
-               //  }
-
-
-               
-            });
-            
-        }
-    </script>
+    
             <style>
                         .error {
                         color: red;
@@ -78,7 +43,7 @@
             $emailResult = mysqli_query($conn, $checkEmailSql);
             
             if ($emailResult->num_rows > 0) {
-               echo '<script>alert("exists");</script>';
+               echo 'exists';
             } else {
  
              $f_name = $_POST['f_name'];
@@ -238,20 +203,21 @@
                                     <input type="text" class="form-control" id="add1" name="address" placeholder="Street Address 1" required>
                                  <!-- <span class="error"><?php // echo $e_fname; ?></span>   -->
                                  </div>
+
                                  <div class="form-group col-md-12">
                                     <label class="form-label" for="pno">Pin Code:</label>
-                                    <input type="text" class="form-control" id="pno" name="pincode"  placeholder="Pin Code" required>
+                                    <input type="text" class="form-control" id="pno" name="pincode"  pattern="\d{6}" title="Please enter a 6-digit PIN code"  placeholder="Pin Code" required>
                                  <!-- <span class="error"><?php // echo $e_fname; ?></span>   -->
                                  </div>
                               
                                  <div class="form-group col-md-6">
                                  <label class="form-label" for="mobno">Mobile Number:</label>
-                                    <input type="tel" class="form-control" id="mobno" pattern="^\d{10}$" name="mono" placeholder="Mobile Number" required>
+                                    <input type="text" class="form-control" id="mobno" pattern="^\d{10}$" title="Please enter a 10-digit mobile number "  name="mono" placeholder="Mobile Number" required>
                                  <!-- <span class="error"><?php // echo $e_fname; ?></span>   -->
                                  </div>
                                  <div class="form-group col-md-6">
                                     <label class="form-label" for="altconno">Alternate Contact:</label>
-                                    <input type="tel" class="form-control" id="altconno" name="alte_mono" pattern="^\d{10}$" placeholder="Alternate Contact"required>
+                                    <input type="text" class="form-control" id="altconno" name="alte_mono" pattern="^\d{10}$" title="Please enter a 10-digit mobile number " placeholder="Alternate Contact"required>
                                  <!-- <span class="error"><?php // echo $e_fname; ?></span>   -->
                                  </div>
                                  <div class="form-group col-md-12">
@@ -341,6 +307,34 @@
          </div>
       </main>
    </div>
-  
+   <script>
+        function validateEmails() {
+            var email_check = document.getElementById('email').value;
+            var e_com_email_check = document.getElementById('c_email').value;
+
+            // AJAX request to check if the email exists on the server
+            $.ajax({
+                type: 'POST',
+                url: 'check_eamil.php',
+                data: {email: email_check, c_email: e_com_email_check},
+                success: function(response) {
+                    if (response === "exists") {
+                        alert("Email already registered. Please choose a different email.");
+                    }
+                     else {
+                        alert("Emails are valid. Proceed with the form submission.");
+                        // You can submit the form or perform additional actions here
+                    }
+                },
+               //  error: function() {          
+               //      alert("An error occurred during the email validation.");
+               //  }
+
+
+               
+            });
+            
+        }
+    </script>
    </body>
 </html>       
