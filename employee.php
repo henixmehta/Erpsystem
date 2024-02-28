@@ -1,5 +1,5 @@
          <?php 
-                  // include 'sidebar.php';
+                  include 'sidebar.php';
                   include 'connection.php';
                   //   include 'formvalidation.php';
                   ?>
@@ -16,7 +16,35 @@
          <script src="js/location/location.js"></script>
          
        
-    
+    <script>
+        function validateEmails() {
+            var email_check = document.getElementById('email').value;
+            var e_com_email_check = document.getElementById('c_email').value;
+
+            // AJAX request to check if the email exists on the server
+            $.ajax({
+                type: 'POST',
+                url: 'employee.php',
+                data: {email: email_check, c_email: e_com_email_check},
+                success: function(response) {
+                    if (response === "exists") {
+                        alert("Email already registered. Please choose a different email.");
+                    }
+                     else {
+                        alert("Emails are valid. Proceed with the form submission.");
+                        // You can submit the form or perform additional actions here
+                    }
+                },
+                error: function() {
+                    alert("An error occurred during the email validation.");
+                }
+
+
+               
+            });
+            
+        }
+    </script>
             <style>
                         .error {
                         color: red;
@@ -43,7 +71,7 @@
             $emailResult = mysqli_query($conn, $checkEmailSql);
             
             if ($emailResult->num_rows > 0) {
-               echo 'exists';
+               echo '<script>alert("exists");</script>';
             } else {
  
              $f_name = $_POST['f_name'];
@@ -307,34 +335,6 @@
          </div>
       </main>
    </div>
-   <script>
-        function validateEmails() {
-            var email_check = document.getElementById('email').value;
-            var e_com_email_check = document.getElementById('c_email').value;
-
-            // AJAX request to check if the email exists on the server
-            $.ajax({
-                type: 'POST',
-                url: 'check_eamil.php',
-                data: {email: email_check, c_email: e_com_email_check},
-                success: function(response) {
-                    if (response === "exists") {
-                        alert("Email already registered. Please choose a different email.");
-                    }
-                     else {
-                        alert("Emails are valid. Proceed with the form submission.");
-                        // You can submit the form or perform additional actions here
-                    }
-                },
-               //  error: function() {          
-               //      alert("An error occurred during the email validation.");
-               //  }
-
-
-               
-            });
-            
-        }
-    </script>
+  
    </body>
 </html>       
