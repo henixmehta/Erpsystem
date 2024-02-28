@@ -74,47 +74,13 @@ function loadCity(stateId) {
      <?php  
   
 
-         // if(isset($_POST['sub_btn1'])){
-
-         //    $f_name = $_POST['f_name'];
-         //    $l_name = $_POST['l_name'];
-         //    $e_role = $_POST['e_role'];
-         //    $e_bate = $_POST['e_bate'];
-         //    $e_country = $_POST['e_country'];
-         //    $e_state = $_POST['e_state'];
-         //    $e_city = $_POST['e_city'];
-   
-         //    $e_add = $_POST['address'];
-   
-         //    $pincode = $_POST['pincode'];
-         //    $mono = $_POST['mono'];
-         //    $alte_mono = $_POST['alte_mono'];
-         //    $email = $_POST['email'];
-         //    $team_name = $_POST['team_name'];
-         //    $j_date = $_POST['j_date'];
-         //    $exp = $_POST['exp'];
-         //    $degree = $_POST['degree'];
-         //    $resume = $_POST['resume'];
-         //    $salary = $_POST['salary'];
-         //    $c_email = $_POST['c_email'];
-         //    $c_pass = $_POST['c_pass'];
-         //    $status = $_POST['status'];
-            
-         //    // $q = "insert into employee values(NULL,'".$f_name."','".$l_name."','".$e_role."','".$e_bate."','".$e_country."','".$e_state."','".$e_city."','".$pincode."','".$mono."','".$alte_mono."','".$email."','".$team_name."','".$j_date."','".$exp."','".$degree."','".$resume."','".$salary."','".$c_email."','".$c_pass."','".$status."')";
-         //    $q = "INSERT INTO employee (e_fname, e_lname, e_role, e_bdate, e_country, e_state, e_city, e_add, e_pin, e_mob, e_alt_mob, e_email, e_team_name, e_joindate, e_exp, e_deg, e_resume, e_salary, e_com_email, e_pwd, e_status) 
-         //    VALUES ('$f_name', '$l_name', '$e_role', '$e_bate', '$e_country', '$e_state', '$e_city', '$e_add', '$pincode', '$mono', '$alte_mono', '$email', '$team_name', '$j_date', '$exp', '$degree', '$resume', '$salary', '$c_email', '$c_pass', '$status')";
-      
-         //    echo $q;
-         //    // $insert = mysqli_query($conn,$q);
-         //    }
-   
      
 
          if(isset($_POST['sub_btn1'])){
             // Your existing code ...
         
 
-     $f_name = $_POST['f_name'];
+             $f_name = $_POST['f_name'];
             $l_name = $_POST['l_name'];
             $e_role = $_POST['e_role'];
             $e_bate = $_POST['e_bate'];
