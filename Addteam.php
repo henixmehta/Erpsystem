@@ -1,6 +1,7 @@
    <?php 
       include 'sidebar.php';
       // include 'formvalidation.php';
+      include 'connection.php';
    ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,33 +24,28 @@
    <?php
    
       if(isset($_POST['sub_btn'])) {
-         // File upload handling
-         $team_name = $_POST['tname'];
-         $team_project_name = $_FILES['Degree']['name']; // Assuming 'Degree' is the name of your file input
-         $team_description = $_POST['add1'];
-         $team_language = $_POST['type'];
-         $team_status = $_POST['radios'];
-         
-         // Specify the directory where you want to store the files
-         $upload_directory = 'storage/team/';
-         
-         // Create the full path for the uploaded files
-         $team_target_path = $upload_directory . $team_project_name;
-         
-         // Move the uploaded files to the specified directory
-         move_uploaded_file($_FILES['Degree']['tmp_name'], $team_target_path);
-         
-         // SQL query for inserting data into the database
-         $q = "INSERT INTO team (`id`, `t_name`, `t_project_name`, `t_des`, `t_language`, `t_status`) 
-               VALUES (NULL, '$team_name', '$team_project_name', '$team_description', '$team_language', '$team_status')";
-         $insert = mysqli_query($conn, $q);   
-         echo '<script type="text/javascript">window.location.href="clientproject.php";</script>';
+          // File upload handling
+       $project_file = $_FILES['timg']['name'];
+   
+       // Specify the directory where you want to store the files
+       $upload_directory = 'storage/team/';
+   
+       // Create the full path for the uploaded files
+       $project_target_path = $upload_directory . $project_file;
+   
+       // Move the uploaded files to the specified directory
+       move_uploaded_file($_FILES['timg']['tmp_name'], $project_target_path);
+       
+       $q = "INSERT INTO team(`id`, `t_name`, `t_project_name`, `t_des`, `t_emp`, `t_language`, `t_status`, `t_img`) VALUES (NULL, '".$_POST['tname']."', '".$_POST['tpname']."', '".$_POST['desc']."', '".$_POST['ename']."', '".$_POST['lang']."', '".$_POST['tstatus']."', '$project_file')";
+
+       $insert = mysqli_query($conn, $q);   
+       echo '<script type="text/javascript">window.location.href="teamtable.php";</script>';
       }
    ?>
 
 <main class="main-content">
 
-			<div class="iq-navbar-header" style="height: 215px;">
+			<div class="iq-navbar-header" style="height: 160px;">
                <div class="container-fluid iq-container">
                   <div class="row">
                       <div class="col-md-12" id="header">
@@ -99,18 +95,30 @@
                                     <label class="form-label" for="tname">Team Name:</label>
                                     <input type="text" class="form-control" id="tname" name="tname" placeholder="Team Name" required>
                               </div>
+                              
                               <div class="form-group col-md-15">
-                                    <label class="form-label" for="Degree"> Team Image </label>
-                                    <input type="file" class="form-control" id="Degree" name="Degree" placeholder="Team Image" required >
+                                    <label class="form-label" for="image"> Team Image </label>
+                                    <input type="file" class="form-control" id="Degree" name="timg" placeholder="Team Image" required >
                               </div>
+
+                              <div class="form-group col-md-15">
+                                    <label class="form-label" for="tname">Team project Name:</label>
+                                    <input type="text" class="form-control" id="tpname" name="tpname" placeholder="Team Name" required>
+                              </div>
+                            
+                              <div class="form-group col-md-15">
+                                    <label class="form-label" for="tname">Employee name:</label>
+                                    <input type="text" class="form-control" id="ename" name="ename" placeholder="Employee Name" required>
+                              </div>
+
                            </div>
                            <div class="form-group">
                               <label class="form-label" for="add1">Team Description</label>
-                              <input type="text" class="form-control" id="add1" name="add1" placeholder="Team Description" required>
+                              <input type="text" class="form-control" id="desc" name="desc" placeholder="Team Description" required>
                            </div>
                            <div class="form-group">
                               <label class="form-label">Team Projects language</label>
-                              <select name="type" class="selectpicker form-control" data-style="py-0" required>
+                              <select name="lang" class="selectpicker form-control" data-style="py-0" required>
                                     <option>Select</option>
                                     <option>Laravel</option>
                                     <option>Core PHP</option>
@@ -122,11 +130,11 @@
                            <fieldset class="mb-3">
                               <legend>Status:</legend>
                               <div class="form-check">
-                                    <input type="radio" name="radios" class="form-check-input" id="Active" value="active" checked>
+                                    <input type="radio" name="tstatus" class="form-check-input" id="Active" value="active" checked>
                                     <label class="form-check-label" for="Active">Active</label>
                               </div>
                               <div class="mb-3 form-check">
-                                    <input type="radio" name="radios" class="form-check-input" id="Inactive" value="Inactive" >
+                                    <input type="radio" name="tstatus" class="form-check-input" id="Inactive" value="Inactive" >
                                     <label class="form-check-label" for="Inactive">Inactive</label>
                               </div>
                            </fieldset> 

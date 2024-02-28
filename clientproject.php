@@ -61,7 +61,7 @@
                         ?>
                         <tr>
                         <td><?php echo $row['p_client_name']?></td>                        
-                        <td><img src="./pictures/<?php echo $row['com_img']; ?>" style="max-width: 100px; max-height: 100px; margin-left:50px;"> </td>
+                        <td><img src="./storage/clientproject/<?php echo $row['com_img']; ?>" style="max-width: 100px; max-height: 100px; margin-left:50px;"> </td>
                         <td><?php echo $row['p_name']?></td>
                         <td><?php echo $row['p_client_mob']?></td>
                         <td><?php echo $row['t_name']?></td>
