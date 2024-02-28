@@ -21,6 +21,8 @@
         loadCity(<?php echo $row['state_id']; ?>);
     });
 </script>
+
+
 	<title>Team</title>
    <style>
    .error {
@@ -66,7 +68,7 @@
                       e_deg='" . (isset($_FILES['degree']) && $_FILES['degree']['error'] == 0 ? $_FILES['degree']['name'] : $_POST['old_degree']) . "', 
                       e_resume='" . (isset($_FILES['resume']) && $_FILES['resume']['error'] == 0 ? $_FILES['resume']['name'] : $_POST['old_resume']) . "', 
                       e_salary='" . $_POST['salary'] . "', 
-                      e_com_email='" . $_POST['c_email'] . "', e_pwd='" . $enceipt_pass . "', e_status='" . $_POST['p_status'] . "' 
+                   e_pwd='" . $enceipt_pass . "', e_status='" . $_POST['p_status'] . "' 
                       WHERE id='" . $pid . "'";
                   mysqli_query($conn, $q);
               
@@ -128,6 +130,8 @@
                            <hr>
                            <h4 class="card-title">New Employee Information</h4>
                         </div>
+                        <a href="employee-list.php"><button class="btn btn-primary" style="margin:10 10 10 10 "> back</button></a>
+
                      </div>
                      <div class="card-body">
                         <div class="new-employee-info">
@@ -202,18 +206,18 @@
                                  </div>
                                  <div class="form-group col-md-12">
                                     <label class="form-label" for="pno">Pin Code:</label>
-                                    <input type="text" class="form-control" id="pno" name="pincode" placeholder="Pin Code"   value=<?php echo $row['e_pin']; ?> required>
+                                    <input type="text" class="form-control" id="pno" name="pincode" placeholder="Pin Code"  pattern="\d{6}" title="Please enter a 6-digit PIN code"   value=<?php echo $row['e_pin']; ?> required>
                                  <!-- <span class="error"><?php // echo $e_fname; ?></span>   -->
                                  </div>
                               
                                  <div class="form-group col-md-6">
                                  <label class="form-label" for="mobno">Mobile Number:</label>
-                                    <input type="text" class="form-control" id="mobno" name="mono" placeholder="Mobile Number"  value=<?php echo $row['e_mob']; ?> required>
+                                    <input type="text" class="form-control" id="mobno" name="mono" placeholder="Mobile Number" pattern="^\d{10}$" title="Please enter a 10-digit mobile number "  value=<?php echo $row['e_mob']; ?> required>
                                  <!-- <span class="error"><?php // echo $e_fname; ?></span>   -->
                                  </div>
                                  <div class="form-group col-md-6">
                                     <label class="form-label" for="altconno">Alternate Contact:</label>
-                                    <input type="text" class="form-control" id="altconno" name="alte_mono" placeholder="Alternate Contact" value=<?php echo $row['e_alt_mob']; ?> required>
+                                    <input type="text" class="form-control" id="altconno" name="alte_mono" placeholder="Alternate Contact" pattern="^\d{10}$" title="Please enter a 10-digit mobile number "  value=<?php echo $row['e_alt_mob']; ?> required>
                                  <!-- <span class="error"><?php // echo $e_fname; ?></span>   -->
                                  </div>
                                  <div class="form-group col-md-12">
@@ -282,14 +286,16 @@
                                  <input type="number" class="form-control" name="salary" id="Salary" placeholder="Salary" min="500"  value="<?php echo isset($row['e_salary']) ? $row['e_salary'] : ''; ?>"  required>
                               </div>    
                               <hr>
-                              <h5 class="mb-3">Security</h5>
+                              <h2 class="mb-3">Security</h2>
+                              <hr>
                               <div class="row">
                               <div class="form-group col-md-6">
                                  <label class="form-label" for="c_email">Employee Company Email:</label>
-                                 <input type="text" class="form-control" id="c_email" name="c_email" placeholder="Employee Company Email" value="<?php echo isset($row['e_com_email']) ? htmlspecialchars($row['e_com_email']) : ''; ?>" isValidEmail required>
+                              <b>
+                                 <?php echo "<br>Compney:  ".$row['e_com_email']; ?>
+                              </b>
                               </div>
-
-                                 <div class="form-group col-md-6">
+                                 <div class="form-group ">
                                     <label class="form-label" for="pass">Password:</label>
                                     <input type="password" class="form-control" id="pass" name="c_pass" placeholder="Employe Compney Password" value="<?php echo isset($row['e_pwd']) ? $row['e_pwd'] : ''; ?>"  required>
                                  </div>
