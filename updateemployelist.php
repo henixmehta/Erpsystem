@@ -191,7 +191,7 @@
                                  </div>
                                  <div class="form-group col-md-12">
                                     <label class="form-label" for="pno">Pin Code:</label>
-                                    <input type="text" class="form-control" id="pno" name="pincode" placeholder="Pin Code"   value=<?php echo $row['e_pin']; ?>required>
+                                    <input type="text" class="form-control" id="pno" name="pincode" placeholder="Pin Code"   value=<?php echo $row['e_pin']; ?> required>
                                  <!-- <span class="error"><?php // echo $e_fname; ?></span>   -->
                                  </div>
                               
@@ -210,42 +210,47 @@
                                     <input type="email" class="form-control" id="email" name="email" placeholder="Email"  value=<?php echo $row['e_email']; ?> required>
                                  <!-- <span class="error"><?php // echo $e_fname; ?></span>   -->
                                  </div>
+
                                  <div class="form-group">
-                                       <label class="form-label">Team Name:</label>
-                                       <select class="selectpicker form-control" name="team_name" data-style="py-0"  value=<?php echo $row['e_team_name']; ?> required>
-                                          <option>Select</option>
-                                          <?php
-                                          // Assuming $conn is your database connection object
-                                          $t_query = "SELECT t_name, t_status FROM team";
-                                          $result = mysqli_query($conn, $t_query);
-                                          if(mysqli_num_rows($result) > 0) {
-                                                while($row = mysqli_fetch_assoc($result)) {
-                                                   if($row['t_status'] == "active") {
-                                                      echo "<option>".$row['t_name']."</option>";
-                                                   }
+                                    <label class="form-label">Team Name:</label>
+                                    <select name="e_team_name" class="selectpicker form-control" data-style="py-0" required>
+                                       <option>Select</option>
+                                       <?php
+                                       // Assuming $conn is your database connection object
+                                       $t_query = "SELECT t_name, t_status FROM team";
+                                       $result = mysqli_query($conn, $t_query);
+                                       if(mysqli_num_rows($result) > 0) {
+                                             while($row = mysqli_fetch_assoc($result)) {
+                                                $selected = ($row['t_name'] == $t_name) ? 'selected' : ''; // Check if the option matches the existing value
+                                                if($row['t_status'] == "active") {
+                                                   echo "<option $selected>".$row['t_name']."</option>";
                                                 }
-                                          }
-                                          ?>
-                                       </select>
-                                    </div>
+                                             }
+                                       }
+                                       ?>
+                                    </select>
+                                 </div>
+
+                                 <div class="form-group col-md-12">
+    <label class="form-label" for="Joining Date">Joining Date:</label>
+    <input type="date" class="form-control" id="joindate" name="j_date" value="<?php echo !empty($row['e_joindate']) ? $row['e_joindate'] : ''; ?>" required>
+    <!-- <span class="error"><?php // echo $e_lname; ?></span> -->
+</div>
 
                                  
                                  <div class="form-group col-md-12">
-                                    <label class="form-label" for="Joining Date">Joining Date:</label>
-                                    <input type="date" class="form-control" id="joindate" name="j_date" placeholder="Enter your Joining Date"  value=<?php echo $row['e_joindate']; ?> required>
-                                    <!-- <span class="error"><?php // echo $e_lname; ?></span>    -->
-                                 </div>
-                                 
+    <label class="form-label" for="Experience">Experience: </label>
+    <input type="number" class="form-control" id="Experience" name="exp" placeholder="Experience in year/ month" value="<?php echo isset($row['e_exp']) ? $row['e_exp'] : ''; ?>" required>
+    <!-- <span class="error"><?php // echo $e_fname; ?></span>   -->
+</div>
                                  <div class="form-group col-md-12">
-                                    <label class="form-label" for="Experience">Experience: </label>
-                                    <input type="text" class="form-control" id="Experience" name="exp" placeholder="Experience in year/ month"   value=<?php echo $row['e_exp']; ?> required>
-                                    <!-- <span class="error"><?php // echo $e_fname; ?></span>   -->
+                                    <label class="form-label" for="Degree"> Degree certificate </label>
+                                    <input type="file" class="form-control" id="Degree" placeholder="Degree certificate" name="degree" required>
+                                    <?php if(isset($row['e_deg'])) { ?>
+                                       <div><?php echo $row['e_deg']; ?></div>
+                                    <?php } ?>
                                  </div>
-                                 <div class="form-group col-md-12">
-                                    <label class="form-label" for="Degree">Degree certificate: </label>
-                                    <input type="file" class="form-control" id="Degree" name="degree" placeholder="Degree certificate"  value=<?php echo $row['e_deg']; ?> required>
-                                    <!-- <span class="error"><?php // echo $e_fname; ?></span>   -->
-                                 </div>
+
                                  <div class="form-group col-md-12">
                                     <label class="form-label" for="Resume">Resume: </label>
                                     <input type="file" class="form-control" id="Resume" name="resume" placeholder="Resume"  value=<?php echo $row['e_resume']; ?> required>
@@ -254,36 +259,36 @@
                               </div>
                               <div class="form-group col-md-12">
                                  <label class="form-label" for="Salary">Salary: </label>
-                                 <input type="text" class="form-control" name="salary" id="Salary" placeholder="Salary"  value=<?php echo $row['e_salary']; ?> required>
+                                 <input type="number" class="form-control" name="salary" id="Salary" placeholder="Salary" min="500"  value="<?php echo isset($row['e_salary']) ? $row['e_salary'] : ''; ?>"  required>
                               <!-- <span class="error"><?php // echo $e_fname; ?></span>   -->
-                              </div>   
+                              </div>    
                               <hr>
                               <h5 class="mb-3">Security</h5>
                               <div class="row">
                                  <div class="form-group col-md-6">
                                     <label class="form-label" for="uname">Employee Compney Email:</label>
-                                    <input type="text" class="form-control" id="c_email" name="c_email" placeholder="Employee Compney Email"  value=<?php echo $row['e_com_email']; ?>  isValidEmail required >
+                                    <input type="text" class="form-control" id="c_email" name="c_email" placeholder="Employee Compney Email"  value="<?php echo  $row['e_com_email'] ; ?>"  isValidEmail required >
                                  </div>
                                  <div class="form-group col-md-6">
                                     <label class="form-label" for="pass">Password:</label>
-                                    <input type="password" class="form-control" id="pass" name="c_pass" placeholder="Employe Compney Password"  value=<?php echo $row['e_pwd']; ?> required>
+                                    <input type="password" class="form-control" id="pass" name="c_pass" placeholder="Employe Compney Password" value="<?php echo isset($row['e_pwd']) ? $row['e_pwd'] : ''; ?>"  required>
                                  </div>
                                  <fieldset class="mb-3">
                                  <legend>Status:</legend>
-                                    <div class="form-check">
-                                       <input type="radio" name="status" class="form-check-input" value="active" id="Active"  value=<?php echo $row['e_status']; ?> checked>
-                                       <label class="form-check-label" for="Active">Active</label>
-                                    </div>
-                                    <div class="mb-3 form-check">
-                                       <input type="radio" name="status"  class="form-check-input" value="inactive"   value=<?php echo $row['e_status']; ?> id="Inactive" >
-                                       <label class="form-check-label" for="Inactive">Inactive</label>
-                                    </div>
-                                 </fieldset> 
+                            <div class="form-check">
+                                <input type="radio" class="form-check-input" name="p_status" value="active"   id="Active" checked>
+                                <label class="form-check-label" for="Active">Active</label>
+                            </div>
+                            <div class="mb-3 form-check">
+                                <input type="radio" class="form-check-input" name="p_status" value="inactive">
+                                <label class="form-check-label" for="Inactive">Inactive</label>
+                            </div>
+                         </fieldset>  
                               </fieldset> 
                               </div>
                               <input type="submit" value="submit" class="btn btn-primary" name="sub_btn1">
                         </form>
-                           </div>
+                     </div>
                   </div>
                </div>
             </div>
@@ -292,5 +297,6 @@
       </div>
    </main>
 </div>
+
 </body>
 </html>    

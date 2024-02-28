@@ -102,7 +102,8 @@
                         }
                     }
                 
-                    header("location: clientproject.php");
+                    echo '<script type="text/javascript">window.location.href="clientproject.php";</script>';
+          
                     exit();
                 }
                 ?>
@@ -136,7 +137,8 @@
                                 </div>
                                 <div class="form-group col-md-15">
                                     <label class="form-label" for="Degree"> Client / Compney  Image </label>
-                                    <input type="file" class="form-control" id="Degree" placeholder="Client / Compney  Image"  name="com_img" value="<?php echo $row['com_img']; ?>">
+                                    <input type="file" class="form-control" id="Degree" placeholder="Client / Compney  Image"  name="com_img">
+                                    <div><?php echo $row['com_img'];?></div>
                                    
                                 </div>
                                 <div class="form-group col-md-15">
@@ -163,7 +165,7 @@
                               
                             <div class="form-group">
                             <label class="form-label">Team Name:</label>
-                            <select name="t_name" class="selectpicker form-control" data-style="py-0"  required>
+                            <select name="t_name" class="selectpicker form-control" data-style="py-0" value="<?php echo $row['t_name'] ?>" required>
                                 <option>Select</option>
                                 <?php
                                 // Assuming $conn is your database connection object

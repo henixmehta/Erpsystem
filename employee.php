@@ -161,10 +161,7 @@ function loadCity(stateId) {
             //echo $q;
             // Execute your SQL query to insert the data into the database
              $insert = mysqli_query($conn, $q);
-
-
-             echo '<script type="text/javascript">window.location.href="employee.php";</script>';
-                   
+             echo '<script type="text/javascript">window.location.href="employee-list.php";</script>';
         }
         
 
@@ -296,7 +293,7 @@ function loadCity(stateId) {
                                  </div>
                                  <div class="form-group">
                                        <label class="form-label">Team Name:</label>
-                                       <select class="selectpicker form-control" name="team_name" data-style="py-0" required>
+                                       <select class="selectpicker form-control" name="e_team_name" data-style="py-0" required>
                                           <option>Select</option>
                                           <?php
                                           // Assuming $conn is your database connection object
@@ -313,18 +310,18 @@ function loadCity(stateId) {
                                        </select>
                                     </div>
 
-                                 
                                  <div class="form-group col-md-12">
-                                    <label class="form-label" for="Joining Date">Joining Date:</label>
-                                    <input type="date" class="form-control" id="joindate" name="j_date" placeholder="Enter your Joining Date" required>
+                                    <label class="form-label" for="jdate">Joining Date:</label>
+                                    <input type="date" class="form-control" name="j_bate" id="jdate" placeholder="Enter your Joining Date" required>
                                     <!-- <span class="error"><?php // echo $e_lname; ?></span>    -->
                                  </div>
                                  
                                  <div class="form-group col-md-12">
                                     <label class="form-label" for="Experience">Experience: </label>
-                                    <input type="text" class="form-control" id="Experience" name="exp" placeholder="Experience in year/ month" required>
+                                    <input type="number" class="form-control" id="Experience" name="exp" placeholder="Experience in year/ month" min="0" max="100" required>
                                     <!-- <span class="error"><?php // echo $e_fname; ?></span>   -->
                                  </div>
+
                                  <div class="form-group col-md-12">
                                     <label class="form-label" for="Degree">Degree certificate: </label>
                                     <input type="file" class="form-control" id="Degree" name="degree" placeholder="Degree certificate" required>
@@ -338,7 +335,7 @@ function loadCity(stateId) {
                               </div>
                               <div class="form-group col-md-12">
                                  <label class="form-label" for="Salary">Salary: </label>
-                                 <input type="text" class="form-control" name="salary" id="Salary" placeholder="Salary" required>
+                                 <input type="number" class="form-control" name="salary" id="Salary" placeholder="Salary" min="500" required>
                               <!-- <span class="error"><?php // echo $e_fname; ?></span>   -->
                               </div>   
                               <hr>
@@ -376,5 +373,6 @@ function loadCity(stateId) {
          </div>
       </main>
    </div>
+  
    </body>
 </html>       

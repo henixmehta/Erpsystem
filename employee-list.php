@@ -45,20 +45,24 @@
                            <th>First name</th>
                            <th>Last name</th>
                            <th>Role</th>
-                           <th>Email</th>
+                           <th>Birthdate</th>
                            <th>Country</th>
                            <th>Status</th>
                            <th>City</th>
                            <th>Address</th>
                            <th>Pincode</th>
                            <th>Mobile No.</th>
+                           <th>Alternative mobile no</th>
                            <th>Email</th>
+                           <th>Team name</th>
                            <th>Join date</th>
-                           <th>Expirience</th>
-                           <th>Compney Name</th>
+                           <th>Exprience</th>
+                           <th>Degree</th>
+                           <th>Resume</th>
+                           <th>Salary</th>
+                           <th>Compney email</th>
                            <th>Password</th>
                            <th>Status</th>
-
                            <th style="min-width: 100px">Action</th>
                         </tr>
                      </thead>
@@ -80,9 +84,14 @@
                         <td><?php echo $row['e_add']?></td>
                         <td><?php echo $row['e_pin']?></td>
                         <td><?php echo $row['e_mob']?></td>
+                        <td><?php echo $row['e_alt_mob']?></td>                        
                         <td><?php echo $row['e_email']?></td>
+                        <td><?php echo $row['e_team_name']?></td>                   
                         <td><?php echo $row['e_joindate']?></td>
                         <td><?php echo $row['e_exp']?></td>
+                        <td><?php echo $row['e_deg']?></td>
+                        <td><?php echo $row['e_resume']?></td>
+                        <td><?php echo $row['e_salary']?></td>                       
                         <td><?php echo $row['e_com_email']?></td>
                         <td><?php echo $row['e_pwd']?></td>
                         <td><?php 
@@ -101,9 +110,8 @@
                         }
                         ?>
                         </td>
-                        <td>
-                           
-                        <!-- update -->
+                        <td>                           
+                      <!-- update -->
                            <a class="btn btn-sm btn-icon btn-warning" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit" data-original-title="Edit" href="updateemployelist.php?id=<?php echo $row['id']?>">
                               <span class="btn-inner">
                                  <svg class="icon-20" width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -114,7 +122,7 @@
                               </span>
                            </a>
                            <!-- delete button -->            
-                           <a class="btn btn-sm btn-icon btn-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"  href="deleteemployeelist.php?id=<?php echo $row['id']?>" >
+                           <a class="btn btn-sm btn-icon btn-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"  href="deleteemployelist.php?id=<?php echo $row['id']?>" >
                               <span class="btn-inner">
                                  <svg class="icon-20" width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="currentColor">
                                     <path d="M19.3248 9.46826C19.3248 9.46826 18.7818 16.2033 18.4668 19.0403C18.3168 20.3953 17.4798 21.1893 16.1088 21.2143C13.4998 21.2613 10.8878 21.2643 8.27979 21.2093C6.96079 21.1823 6.13779 20.3783 5.99079 19.0473C5.67379 16.1853 5.13379 9.46826 5.13379 9.46826" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
