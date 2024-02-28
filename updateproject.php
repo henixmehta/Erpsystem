@@ -123,7 +123,7 @@
                   <div class="card-body">
                      <div class="new-Team-info">
                      <!-- form-->         
-					<form method="POST" enctype="multipart/form-data">
+		<form method="POST" enctype="multipart/form-data">
                <div class="form-group">
                            <div class="profile-img-edit position-relative">
 							<!-- insert add profile -->

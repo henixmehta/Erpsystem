@@ -1,5 +1,5 @@
 <?php 
-    include 'sidebar.php';
+   //  include 'sidebar.php';
    include 'connection.php';
   // include 'formvalidation.php';
 ?>
@@ -10,6 +10,17 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
    <link rel="stylesheet" href="css/main.min.css">
+   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+   <script src="js/location/location.js"></script>
+   <script>
+    // Make sure to load the initial values
+    $(document).ready(function() {
+        loadCountry();
+        loadState(<?php echo $row['country_id']; ?>);
+        loadCity(<?php echo $row['state_id']; ?>);
+    });
+</script>
 	<title>Team</title>
    <style>
    .error {
@@ -23,78 +34,85 @@
                 
                 $pid = $_GET['id'];
                 
-                if (isset($_GET['id'])) {
-                    $qry = "SELECT * FROM employee WHERE id=?";
-                    $stmt = mysqli_prepare($conn, $qry);
-                    mysqli_stmt_bind_param($stmt, "i", $pid);
-                    mysqli_stmt_execute($stmt);
-                    $result = mysqli_stmt_get_result($stmt);
-                    $row = mysqli_fetch_array($result);
-                }
+             
+               if(isset($_GET['id'])) {
+                  $qry = "select * from employee where id='".$pid."'";
+                  $data = mysqli_query($conn, $qry);
+              
+                  if ($data) {
+                      $row = mysqli_fetch_array($data);
+                  } else {
+                      echo "Error in fetching data from the database: " . mysqli_error($conn);
+                      // handle the database query error
+                  }
+              } else {
+                  echo "ID not set in the URL";
+                  // handle the case where ID is not set
+              }
+              
                 
-                if (isset($_POST['sub_btn'])) {
-                    // Update text fields in the database
-                    $q = "UPDATE employee SET e_name=?, e_lname=?, e_role=?, e_bdate=?, e_country=?, e_state=?, e_city=?, e_add=?, e_pin=?, e_mob=?, e_alt_mob=?, e_email=?, e_team_name=?, e_joindate=?, e_exp=?, e_deg=?, e_resume=?, e_salary=?, e_com_email=?, e_pwd=?, e_status=? WHERE id=?";
-                    $stmt = mysqli_prepare($conn, $q);
-                    mysqli_stmt_bind_param($stmt, "ssssssi", $_POST['e_name'], $_POST['e_lname'], $_POST['e_role'], $_POST['e_bdate'], $_POST['e_country'], $_POST['e_state'], $_POST['e_city'], $_POST['e_add'], $_POST['e_pin'], $_POST['e_mob'], $_POST['e_alt_mob'],  $_POST['e_email'],  $_POST['e_team_name'],  $_POST['e_joindate'],  $_POST['e_exp'],  $_POST['e_deg'],  $_POST['e_resume'],  $_POST['e_salary'],  $_POST['e_com_email'],  $_POST['e_pwd'],  $_POST['e_status'], $pid);
-                    mysqli_stmt_execute($stmt);
-                
-                    // Handle image upload if a file is selected
-                    if (isset($_FILES["com_img"]) && $_FILES["com_img"]["error"] == 0) {
-                        $targetDirectory = "storage/employeedata/";
-                        $targetFile = $targetDirectory . basename($_FILES["com_img"]["name"]);
-                        $uploadOk = 1;
-                        $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
-                
-                        // Check if image file is a actual image or fake image
-                        $check = getimagesize($_FILES["com_img"]["tmp_name"]);
-                        if ($check !== false) {
-                            echo "File is an image - " . $check["mime"] . ".";
-                            $uploadOk = 1;
-                        } else {
-                            echo "File is not an image.";
-                            $uploadOk = 0;
-                        }
-                
-                        // Check file size
-                        if ($_FILES["com_img"]["size"] > 500000) {
-                            echo "Sorry, your file is too large.";
-                            $uploadOk = 0;
-                        }
-                
-                        // Allow certain file formats
-                        if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-                            && $imageFileType != "gif") {
-                            echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
-                            $uploadOk = 0;
-                        }
-                
-                        // Check if $uploadOk is set to 0 by an error
-                        if ($uploadOk == 0) {
-                            echo "Sorry, your file was not uploaded.";
-                        } else {
-                            // if everything is ok, try to upload file
-                            if (move_uploaded_file($_FILES["com_img"]["tmp_name"], $targetFile)) {
-                                echo "The file " . htmlspecialchars(basename($_FILES["com_img"]["name"])) . " has been uploaded.";
-                            } else {
-                                echo "Sorry, there was an error uploading your file.";
-                            }
-                        }
-                    }
-                
-                    header("location: clientproject.php");
-                    exit();
-                }
+              
+               if (isset($_POST['sub_btn_update'])) {
+                  // Update text fields in the database
+
+
+                  $enceipt_pass= md5($_POST['c_pass']);
+                  $q = "UPDATE employee SET 
+                      e_fname='" . $_POST['f_name'] . "', e_lname='" . $_POST['l_name'] . "', e_role='" . $_POST['e_role'] . "', 
+                      e_bdate='" . $_POST['e_bate'] . "', e_country='" . $_POST['country'] . "', e_state='" . $_POST['e_state'] . "', 
+                      e_city='" . $_POST['e_city'] . "', e_add='" . $_POST['address'] . "', e_pin='" . $_POST['pincode'] . "', 
+                      e_mob='" . $_POST['mono'] . "', e_alt_mob='" . $_POST['alte_mono'] . "', e_email='" . $_POST['email'] . "', 
+                      e_team_name='" . $_POST['e_team_name'] . "', e_joindate='" . $_POST['e_joindate'] . "', e_exp='" . $_POST['exp'] . "', 
+                      e_deg='" . (isset($_FILES['degree']) && $_FILES['degree']['error'] == 0 ? $_FILES['degree']['name'] : $_POST['old_degree']) . "', 
+                      e_resume='" . (isset($_FILES['resume']) && $_FILES['resume']['error'] == 0 ? $_FILES['resume']['name'] : $_POST['old_resume']) . "', 
+                      e_salary='" . $_POST['salary'] . "', 
+                      e_com_email='" . $_POST['c_email'] . "', e_pwd='" . $enceipt_pass . "', e_status='" . $_POST['p_status'] . "' 
+                      WHERE id='" . $pid . "'";
+                  mysqli_query($conn, $q);
+              
+                  // Handle image upload if a file is selected
+                  if (isset($_FILES["com_img"]) && $_FILES["com_img"]["error"] == 0) {
+                      // Your existing image upload code goes here
+                  }
+              
+                  // Handle file uploads for Degree and Resume
+                  if (isset($_FILES['degree']) && $_FILES['degree']['error'] == 0) {
+                      $targetDirectory = "storage/employeedata/";
+                      $targetFileDegree = $targetDirectory . basename($_FILES["degree"]["name"]);
+                      move_uploaded_file($_FILES["degree"]["tmp_name"], $targetFileDegree);
+                  }
+              
+                  if (isset($_FILES['resume']) && $_FILES['resume']['error'] == 0) {
+                      $targetFileResume = $targetDirectory . basename($_FILES["resume"]["name"]);
+                      move_uploaded_file($_FILES["resume"]["tmp_name"], $targetFileResume);
+                  }
+              
+                  header("location: employee-list.php");
+                  exit();
+              }
+              
                 ?>
                 
                 <body>
-         <main class="main-content">
-            <div class="iq-navbar-header" style="height: 100px;">
+          <main class="main-content">
+            <div class="iq-navbar-header" style="height: 215px;">
                   <div class="container-fluid iq-container">
                      <div class="row">
                         <div class="col-md-12" id="header">
                            <div class="flex-wrap d-flex justify-content-between align-items-center">
-            
+                                 <div>
+                                    <h1>Hello Devs!</h1>
+                                    <p>We are on a mission to help developers like you build successful projects for FREE.</p>
+                                 </div>
+                                 <div>
+                                    <a href="" class="btn btn-link btn-soft-light">
+                                       <svg class="icon-20" width="20" viewBox="0 0 24 24" fill="none"  >
+                                             <path d="M11.8251 15.2171H12.1748C14.0987 15.2171 15.731 13.985 16.3054 12.2764C16.3887 12.0276 16.1979 11.7713 15.9334 11.7713H14.8562C14.5133 11.7713 14.2362 11.4977 14.2362 11.16C14.2362 10.8213 14.5133 10.5467 14.8562 10.5467H15.9005C16.2463 10.5467 16.5263 10.2703 16.5263 9.92875C16.5263 9.58722 16.2463 9.31075 15.9005 9.31075H14.8562C14.5133 9.31075 14.2362 9.03619 14.2362 8.69849C14.2362 8.35984 14.5133 8.08528 14.8562 8.08528H15.9005C16.2463 8.08528 16.5263 7.8088 16.5263 7.46728C16.5263 7.12575 16.2463 6.84928 15.9005 6.84928H14.8562C14.5133 6.84928 14.2362 6.57472 14.2362 6.23606C14.2362 5.89837 14.5133 5.62381 14.8562 5.62381H15.9886C16.2483 5.62381 16.4343 5.3789 16.3645 5.13113C15.8501 3.32401 14.1694 2 12.1748 2H11.8251C9.42172 2 7.47363 3.92287 7.47363 6.29729V10.9198C7.47363 13.2933 9.42172 15.2171 11.8251 15.2171Z" fill="currentColor"></path>
+                                             <path opacity="0.4" d="M19.5313 9.82568C18.9966 9.82568 18.5626 10.2533 18.5626 10.7823C18.5626 14.3554 15.6186 17.2627 12.0005 17.2627C8.38136 17.2627 5.43743 14.3554 5.43743 10.7823C5.43743 10.2533 5.00345 9.82568 4.46872 9.82568C3.93398 9.82568 3.5 10.2533 3.5 10.7823C3.5 15.0873 6.79945 18.6413 11.0318 19.1186V21.0434C11.0318 21.5715 11.4648 22.0001 12.0005 22.0001C12.5352 22.0001 12.9692 21.5715 12.9692 21.0434V19.1186C17.2006 18.6413 20.5 15.0873 20.5 10.7823C20.5 10.2533 20.066 9.82568 19.5313 9.82568Z" fill="currentColor"></path>
+                                       </svg>
+                                       Announcements
+                                    </a>
+                                 </div>
                            </div>
                         </div>
                      </div>
@@ -106,14 +124,14 @@
                   <div class="card">
                      <div class="card-header d-flex justify-content-between">
                         <div class="header-title">
-                        <h4 class="card-title">Update an Employee</h4>
+                        <h4 class="card-title">Add New Employee</h4>
                            <hr>
-                           <h4 class="card-title">Updated Employee Information</h4>
+                           <h4 class="card-title">New Employee Information</h4>
                         </div>
                      </div>
                      <div class="card-body">
                         <div class="new-employee-info">
-                        <form method="POST" enctype="multipart/form-data">
+           <form method="POST" enctype="multipart/form-data">
                   <div class="form-group">
                               <div class="profile-img-edit position-relative">
                               </div>
@@ -125,16 +143,22 @@
                                     <!-- <span class="error"><?php // echo $e_fname; ?></span>                              -->
                                  </div>
                                  
+                                 <div class="form-group col-md-6">
+                                    <label class="form-label" for="lname">Last Name:</label>
+                                    <input type="text" class="form-control" id="lname" name="l_name" placeholder="Last Name" value=<?php echo $row['e_lname']; ?> required>
+                                    <!-- <span class="error"><?php // echo $e_lname; ?></span>    -->
+                                 </div>
+                                 
                                  <div class="form-group">
                                     <label class="form-label">Employee Role:</label>
                                     <select class="selectpicker form-control" name="e_role" data-style="py-0" required>
                                         <option>Select</option>
                                         <?php
                                         // Assuming $conn is your database connection object
-                                        $query = "SELECT role_name, r_status FROM role";
-                                        $result = mysqli_query($conn, $query);
-                                        if(mysqli_num_rows($result) > 0) {
-                                            while($role_row = mysqli_fetch_assoc($result)) {
+                                        $query1 = "SELECT role_name, r_status FROM role";
+                                        $result_role = mysqli_query($conn, $query1);
+                                        if(mysqli_num_rows($result_role) > 0) {
+                                            while($role_row = mysqli_fetch_assoc($result_role)) {
                                                 if($role_row['r_status'] == "active") {
                                                     $selected = ($row['e_role'] == $role_row['role_name']) ? 'selected' : ''; // Check if the fetched role matches the option, set 'selected' if true
                                                     echo "<option ".$selected.">".$role_row['role_name']."</option>";
@@ -152,38 +176,25 @@
                                  </div>
                                  
                                  <div class="form-group col-md-4">
-                                    <label class="form-label">Country:</label>
-                                    <select name="country" id="country" class="form-control">
-                                        <option value="">Select Country</option>
-                                        <?php
-                                        // Assuming $conn is your database connection object
-                                        $query = "SELECT name, status FROM countries";
-                                        $result = mysqli_query($conn, $query);
-                                        if(mysqli_num_rows($result) > 0) {
-                                            while($country_row = mysqli_fetch_assoc($result)) {
-                                                $selected = ($country_row['name'] == $row['e_country']) ? 'selected' : ''; // Check if the country matches the value from the database
-                                                echo "<option value='".$country_row['name']."' ".$selected.">".$country_row['name']."</option>";
-                                                if($country_row['status'] == "active") {
-                                                    // You can add additional options or modify the existing one based on your requirement
-                                                    echo "<option value='".$country_row['name']."' selected>".$country_row['name']."</option>"; // Set the existing value as selected
-                                                }
-                                            }
-                                        }
-                                        
-                                        ?>
-                                    </select>
-                                </div>
+                                             <label class="form-label">Country:</label>
+                                             <select name="country" id="country" class="form-control" required>
+                                                <!-- Options will be loaded dynamically through AJAX -->
+                                             </select>
+                                          </div>
 
-                                 <div class="form-group col-sm-4">
-                                    <label class="form-label">State:</label>
-                                    <select type="text" id="state" name="e_state" class="form-control"></select>
-                                 </div>
+                                          <div class="form-group col-sm-4">
+                                             <label class="form-label">State:</label>
+                                             <select type="text" id="state" name="e_state" class="form-control" required>
+                                                <!-- Options will be loaded dynamically through AJAX -->
+                                             </select>
+                                          </div>
 
-                                 <div class="form-group col-sm-4">
-                                    <label class="form-label">City:</label>
-                                    <select name="e_city" id="city" class="form-control"></select>
-                                 </div>
-
+                                          <div class="form-group col-sm-4">
+                                             <label class="form-label">City:</label>
+                                             <select name="e_city" id="city" class="form-control" required>
+                                                <!-- Options will be loaded dynamically through AJAX -->
+                                             </select>
+                                          </div>
                                  <div class="form-group col-md-12">
                                     <label class="form-label" for="add1">Street Address 1:</label>
                                     <input type="text" class="form-control" id="add1" name="address" placeholder="Street Address 1"  value=<?php echo $row['e_add']; ?> required>
@@ -220,55 +231,64 @@
                                        $t_query = "SELECT t_name, t_status FROM team";
                                        $result = mysqli_query($conn, $t_query);
                                        if(mysqli_num_rows($result) > 0) {
-                                             while($row = mysqli_fetch_assoc($result)) {
+                                             while($row1 = mysqli_fetch_assoc($result)) {
                                                 $selected = ($row['t_name'] == $t_name) ? 'selected' : ''; // Check if the option matches the existing value
-                                                if($row['t_status'] == "active") {
-                                                   echo "<option $selected>".$row['t_name']."</option>";
+                                                if($row1['t_status'] == "active") {
+                                                   echo "<option $selected>".$row1['t_name']."</option>";
                                                 }
                                              }
                                        }
                                        ?>
                                     </select>
                                  </div>
-
+                  
                                  <div class="form-group col-md-12">
-    <label class="form-label" for="Joining Date">Joining Date:</label>
-    <input type="date" class="form-control" id="joindate" name="j_date" value="<?php echo !empty($row['e_joindate']) ? $row['e_joindate'] : ''; ?>" required>
-    <!-- <span class="error"><?php // echo $e_lname; ?></span> -->
-</div>
-
-                                 
-                                 <div class="form-group col-md-12">
-    <label class="form-label" for="Experience">Experience: </label>
-    <input type="number" class="form-control" id="Experience" name="exp" placeholder="Experience in year/ month" value="<?php echo isset($row['e_exp']) ? $row['e_exp'] : ''; ?>" required>
-    <!-- <span class="error"><?php // echo $e_fname; ?></span>   -->
-</div>
-                                 <div class="form-group col-md-12">
-                                    <label class="form-label" for="Degree"> Degree certificate </label>
-                                    <input type="file" class="form-control" id="Degree" placeholder="Degree certificate" name="degree" required>
-                                    <?php if(isset($row['e_deg'])) { ?>
-                                       <div><?php echo $row['e_deg']; ?></div>
-                                    <?php } ?>
+                                    <label class="form-label" for="joindate">Joining Date:</label>
+                                    <input type="date" class="form-control" id="joindate" name="e_joindate" value="<?php echo !empty($row['e_joindate']) ? $row['e_joindate'] : ''; ?>" required>
                                  </div>
 
+                                                                     
+                                       <div class="form-group col-md-12">
+                                       <label class="form-label" for="Experience">Experience: </label>
+                                       <input type="number" class="form-control" id="Experience" name="exp" placeholder="Experience in year/ month" value="<?php echo isset($row['e_exp']) ? $row['e_exp'] : ''; ?>" required>
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                          <label class="form-label" for="Degree"> Degree certificate </label>
+                                          <input type="file" class="form-control" id="Degree" name="degree" placeholder="Degree certificate" required>
+                                          <?php if (isset($row['e_deg'])) { ?>
+                                             <div>Old image : <?php echo $row['e_deg']; ?></div>
+                                             <input type="hidden" name="old_degree" value="<?php echo $row['e_deg']; ?>">
+                                          <?php } ?>
+                                       </div>
+
+
                                  <div class="form-group col-md-12">
-                                    <label class="form-label" for="Resume">Resume: </label>
-                                    <input type="file" class="form-control" id="Resume" name="resume" placeholder="Resume"  value=<?php echo $row['e_resume']; ?> required>
-                                    <!-- <span class="error"><?php // echo $e_fname; ?></span>   -->
-                                 </div>
+                                       <label class="form-label" for="Resume">Resume: </label>
+                                       <input type="file" class="form-control" id="Resume" name="resume" placeholder="Resume" required>
+
+                                       <?php
+                                       // Check if $row is not null and if the 'e_resume' key exists in the array
+                                       if ($row !== null && isset($row['e_resume'])) {
+                                          ?>
+                                          <div><?php echo $row['e_resume']; ?></div>
+                                          <?php
+                                       }
+                                       ?>
+                                    </div>
+
                               </div>
                               <div class="form-group col-md-12">
                                  <label class="form-label" for="Salary">Salary: </label>
                                  <input type="number" class="form-control" name="salary" id="Salary" placeholder="Salary" min="500"  value="<?php echo isset($row['e_salary']) ? $row['e_salary'] : ''; ?>"  required>
-                              <!-- <span class="error"><?php // echo $e_fname; ?></span>   -->
                               </div>    
                               <hr>
                               <h5 class="mb-3">Security</h5>
                               <div class="row">
-                                 <div class="form-group col-md-6">
-                                    <label class="form-label" for="uname">Employee Compney Email:</label>
-                                    <input type="text" class="form-control" id="c_email" name="c_email" placeholder="Employee Compney Email"  value="<?php echo  $row['e_com_email'] ; ?>"  isValidEmail required >
-                                 </div>
+                              <div class="form-group col-md-6">
+                                 <label class="form-label" for="c_email">Employee Company Email:</label>
+                                 <input type="text" class="form-control" id="c_email" name="c_email" placeholder="Employee Company Email" value="<?php echo isset($row['e_com_email']) ? htmlspecialchars($row['e_com_email']) : ''; ?>" isValidEmail required>
+                              </div>
+
                                  <div class="form-group col-md-6">
                                     <label class="form-label" for="pass">Password:</label>
                                     <input type="password" class="form-control" id="pass" name="c_pass" placeholder="Employe Compney Password" value="<?php echo isset($row['e_pwd']) ? $row['e_pwd'] : ''; ?>"  required>
@@ -286,8 +306,9 @@
                          </fieldset>  
                               </fieldset> 
                               </div>
-                              <input type="submit" value="submit" class="btn btn-primary" name="sub_btn1">
+                              <input type="submit" value="updated" class="btn btn-primary" name="sub_btn_update">
                         </form>
+                        
                      </div>
                   </div>
                </div>

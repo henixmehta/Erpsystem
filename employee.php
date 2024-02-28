@@ -13,54 +13,45 @@
          <link rel="stylesheet" href="css/main.min.css">
          <script src="js/jquery/3.7.1.min.js" type="text/javascript"></script>
          <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-         <script type="text/javascript">
-           $(document).ready(function() {
-    $('#country').change(function() {
-        loadState($(this).find(':selected').val())
-    })
-    $('#state').change(function() {
-        loadCity($(this).find(':selected').val())
-    })
+         <script src="js/location/location.js"></script>
+         
+       
+    <script>
+        function validateEmails() {
+            var email_check = document.getElementById('email').value;
+            var com_email_check = document.getElementById('c_email').value;
 
-    // init the countries
-    loadCountry();
-});
 
-function loadCountry() {
-    $.ajax({
-        type: "POST",
-        url: "ajax.php",
-        data: "get=country"
-    }).done(function(result) {
-        // Fix here: use $("#country").append(result) instead of $(result)
-        $("#country").append(result);
-    });
-}
 
-function loadState(countryId) {
-    $("#state").children().remove()
-    $.ajax({
-        type: "POST",
-        url: "ajax.php",
-        data: "get=state&countryId=" + countryId
-    }).done(function(result) {
-        $("#state").append(result);
-    });
-}
 
-function loadCity(stateId) {
-    $("#city").children().remove()
-    $.ajax({
-        type: "POST",
-        url: "ajax.php",
-        data: "get=city&stateId=" + stateId
-    }).done(function(result) {
-        $("#city").append(result);
-    });
-}
 
-        </script>
 
+
+
+
+            // AJAX request to check if the email exists on the server
+            $.ajax({
+                type: 'POST',
+                url: 'check_email.php',
+                data: {email: email_check, c_email: com_email_check},
+                success: function(response) {
+                    if (response === "exists") {
+                        alert("Email already registered. Please choose a different email.");
+                    } else {
+                        alert("Emails are valid. Proceed with the form submission.");
+                        // You can submit the form or perform additional actions here
+                    }
+                },
+               //  error: function() {
+               //      alert("An error occurred during the email validation.");
+               //  }
+
+
+               
+            });
+            
+        }
+    </script>
             <style>
                         .error {
                         color: red;
@@ -77,9 +68,19 @@ function loadCity(stateId) {
      
 
          if(isset($_POST['sub_btn1'])){
-            // Your existing code ...
-        
-
+          
+           //sAssuming you have a database connection established in $conn
+            
+            $email_check = $_POST['email'];
+            $com_email_check = $_POST['c_email'];
+            
+            $checkEmailSql = "SELECT * FROM employee WHERE e_email = '$email_check' OR e_com_email = '$com_email_check'";
+            $emailResult = mysqli_query($conn, $checkEmailSql);
+            
+            if ($emailResult->num_rows > 0) {
+               echo '<script>alert("exists");</script>';
+            } else {
+ 
              $f_name = $_POST['f_name'];
             $l_name = $_POST['l_name'];
             $e_role = $_POST['e_role'];
@@ -87,9 +88,7 @@ function loadCity(stateId) {
             $e_country = $_POST['e_country'];
             $e_state = $_POST['e_state'];
             $e_city = $_POST['e_city'];
-   
             $e_add = $_POST['address'];
-   
             $pincode = $_POST['pincode'];
             $mono = $_POST['mono'];
             $alte_mono = $_POST['alte_mono'];
@@ -97,11 +96,9 @@ function loadCity(stateId) {
             $team_name = $_POST['team_name'];
             $j_date = $_POST['j_date'];
             $exp = $_POST['exp'];
-            // $degree = $_POST['degree'];
-            // $resume = $_POST['resume'];
             $salary = $_POST['salary'];
             $c_email = $_POST['c_email'];
-            $c_pass = $_POST['c_pass'];
+            $c_pass = md5($_POST['c_pass']);
             $status = $_POST['status'];
 
             
@@ -130,7 +127,9 @@ function loadCity(stateId) {
              echo '<script type="text/javascript">window.location.href="employee-list.php";</script>';
         }
         
+         }
 
+   
       ?>
       <body>
          <main class="main-content">
@@ -163,10 +162,11 @@ function loadCity(stateId) {
                   <div class="card">
                      <div class="card-header d-flex justify-content-between">
                         <div class="header-title">
-                        <h4 class="card-title">Add New Employee</h4>
+                           <h4 class="card-title">Add New Employee</h4>
                            <hr>
                            <h4 class="card-title">New Employee Information</h4>
                         </div>
+                        <a href="employee-list.php"><button class="btn btn-primary" style="margin:10 10 10 10 "> back</button></a>
                      </div>
                      <div class="card-body">
                         <div class="new-employee-info">
@@ -190,7 +190,7 @@ function loadCity(stateId) {
                                  <div class="form-group">
                                        <label class="form-label">Employee Role:</label>
                                        <select class="selectpicker form-control" name="e_role" data-style="py-0" required>
-                                          <option>Select</option>
+                                          
                                           <?php
                                           // Assuming $conn is your database connection object
                                           $query = "SELECT role_name, r_status FROM role";
@@ -216,19 +216,21 @@ function loadCity(stateId) {
                                  
                                  <div class="form-group col-md-4">
                                     <label class="form-label">Country:</label>
-                                    <select type="text" name="e_country" id="country" class="form-control">
+                                    <select type="text" name="e_country" id="country" class="form-control" required>
                                        <option>Select Country</option>
                                     </select>
                                  </div>
 
                                  <div class="form-group col-sm-4">
                                     <label class="form-label">State:</label>
-                                    <select type="text" id="state" name="e_state" class="form-control"></select>
+                                    <select type="text" id="state" name="e_state" class="form-control" required></select>
+                                    
                                  </div>
 
                                  <div class="form-group col-sm-4">
                                     <label class="form-label">City:</label>
-                                    <select name="e_city" id="city" class="form-control"></select>
+                                    <select name="e_city" id="city" class="form-control" required></select>
+                                   
                                  </div>
 
                                  <div class="form-group col-md-12">
@@ -238,18 +240,18 @@ function loadCity(stateId) {
                                  </div>
                                  <div class="form-group col-md-12">
                                     <label class="form-label" for="pno">Pin Code:</label>
-                                    <input type="text" class="form-control" id="pno" name="pincode" placeholder="Pin Code" required>
+                                    <input type="text" class="form-control" id="pno" name="pincode"  placeholder="Pin Code" required>
                                  <!-- <span class="error"><?php // echo $e_fname; ?></span>   -->
                                  </div>
                               
                                  <div class="form-group col-md-6">
                                  <label class="form-label" for="mobno">Mobile Number:</label>
-                                    <input type="text" class="form-control" id="mobno" name="mono" placeholder="Mobile Number" required>
+                                    <input type="tel" class="form-control" id="mobno" pattern="^\d{10}$" name="mono" placeholder="Mobile Number" required>
                                  <!-- <span class="error"><?php // echo $e_fname; ?></span>   -->
                                  </div>
                                  <div class="form-group col-md-6">
                                     <label class="form-label" for="altconno">Alternate Contact:</label>
-                                    <input type="text" class="form-control" id="altconno" name="alte_mono" placeholder="Alternate Contact"required>
+                                    <input type="tel" class="form-control" id="altconno" name="alte_mono" pattern="^\d{10}$" placeholder="Alternate Contact"required>
                                  <!-- <span class="error"><?php // echo $e_fname; ?></span>   -->
                                  </div>
                                  <div class="form-group col-md-12">
@@ -259,8 +261,7 @@ function loadCity(stateId) {
                                  </div>
                                  <div class="form-group">
                                        <label class="form-label">Team Name:</label>
-                                       <select class="selectpicker form-control" name="e_team_name" data-style="py-0" required>
-                                          <option>Select</option>
+                                       <select class="selectpicker form-control" name="team_name" data-style="py-0" required>
                                           <?php
                                           // Assuming $conn is your database connection object
                                           $t_query = "SELECT t_name, t_status FROM team";
@@ -278,7 +279,7 @@ function loadCity(stateId) {
 
                                  <div class="form-group col-md-12">
                                     <label class="form-label" for="jdate">Joining Date:</label>
-                                    <input type="date" class="form-control" name="j_bate" id="jdate" placeholder="Enter your Joining Date" required>
+                                    <input type="date" class="form-control" name="j_date" id="jdate" placeholder="Enter your Joining Date" required>
                                     <!-- <span class="error"><?php // echo $e_lname; ?></span>    -->
                                  </div>
                                  
@@ -309,7 +310,7 @@ function loadCity(stateId) {
                               <div class="row">
                                  <div class="form-group col-md-6">
                                     <label class="form-label" for="uname">Employee Compney Email:</label>
-                                    <input type="text" class="form-control" id="c_email" name="c_email" placeholder="Employee Compney Email" isValidEmail required >
+                                    <input type="email" class="form-control" id="c_email" name="c_email" placeholder="Employee Compney Email" isValidEmail required >
                                  </div>
                                  <div class="form-group col-md-6">
                                     <label class="form-label" for="pass">Password:</label>
@@ -328,8 +329,9 @@ function loadCity(stateId) {
                                  </fieldset> 
                               </fieldset> 
                               </div>
-                              <input type="submit" value="submit" class="btn btn-primary" name="sub_btn1">
-                        </form>
+                              <input type="submit" value="submit" onclick="validateEmails()" class="btn btn-primary" name="sub_btn1">
+                              
+                           </form>
                         </div>
                      </div>
                   </div>
