@@ -1,6 +1,6 @@
 <?php 
 
-    include 'connection.php';
+    include '../Erpsystem/connection.php';
 
 ?>
 
@@ -63,6 +63,6 @@
         <script src='vendor/fullcalendar/list/main.js'></script>
         <script src='vendor/fullcalendar/interaction/main.js'></script>
         <script src='vendor/moment.min.js'></script>
-        <script src='js/plugins/calender.js'></script>
+        <script src='plugins/calender.js'></script>
   </body>
 </html>
