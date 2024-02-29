@@ -42,23 +42,15 @@
                   <table id="user-list-table" class="table table-striped" role="grid" data-bs-toggle="data-table">
                      <thead>
                         <tr class="ligth">
-                           <th>First name</th>
-                           <th>Last name</th>
+                           <th>ID</th>
+                           <th>Employee name</th>
                            <th>Role</th>
                            <th>Birthdate</th>
-                           <th>Country</th>
-                           <th>Status</th>
-                           <th>City</th>
-                           <th>Address</th>
-                           <th>Pincode</th>
                            <th>Mobile No.</th>
-                           <th>Alternative mobile no</th>
                            <th>Email</th>
                            <th>Team name</th>
                            <th>Join date</th>
                            <th>Exprience</th>
-                           <th>Degree</th>
-                           <th>Resume</th>
                            <th>Salary</th>
                            <th>Compney email</th>
                            <th>Password</th>
@@ -74,23 +66,15 @@
                         {       
                         ?>
                         <tr>
-                        <td><?php echo $row['e_fname']?></td>
-                        <td><?php echo $row['e_lname']?></td>
+                        <td><?php echo $row['id']?></td>
+                        <td><?php echo $row['e_fname']." ". $row['e_lname']?></td>
                         <td><?php echo $row['e_role']?></td>
                         <td><?php echo $row['e_bdate']?></td>
-                        <td><?php echo $row['e_country']?></td>
-                        <td><?php echo $row['e_state']?></td>
-                        <td><?php echo $row['e_city']?></td>
-                        <td><?php echo $row['e_add']?></td>
-                        <td><?php echo $row['e_pin']?></td>
-                        <td><?php echo $row['e_mob']?></td>
-                        <td><?php echo $row['e_alt_mob']?></td>                        
+                        <td><?php echo $row['e_mob']?></td>                      
                         <td><?php echo $row['e_email']?></td>
                         <td><?php echo $row['e_team_name']?></td>                   
                         <td><?php echo $row['e_joindate']?></td>
                         <td><?php echo $row['e_exp']?></td>
-                        <td><?php echo $row['e_deg']?></td>
-                        <td><?php echo $row['e_resume']?></td>
                         <td><?php echo $row['e_salary']?></td>                       
                         <td><?php echo $row['e_com_email']?></td>
                         <td><?php echo md5($row['e_pwd'])?></td>
