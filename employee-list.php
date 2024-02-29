@@ -93,7 +93,7 @@
                         <td><?php echo $row['e_resume']?></td>
                         <td><?php echo $row['e_salary']?></td>                       
                         <td><?php echo $row['e_com_email']?></td>
-                        <td><?php echo $row['e_pwd']?></td>
+                        <td><?php echo md5($row['e_pwd'])?></td>
                         <td><?php 
                         $status = $row['e_status'];
                         if($status == "active" || $status == "Active" )
