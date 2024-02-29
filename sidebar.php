@@ -395,5 +395,4 @@
     </div>
     
     <!-- Library Bundle Script -->
-    <script src="js/core/libs.min.js"></script>
-      <script src="js/plugins/slider-tabs.js"></script>
+    <script src="assets/js/core/libs.min.js"></script>
