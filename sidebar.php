@@ -8,10 +8,12 @@
                     .error {
                         color: red;
                      }
-                    
-                     .hearder1{
-                        padding-top: 10px;
+                     .main-content {
                         margin-left:265px; 
+                     }
+                     .hearder{
+                        padding-top: 5px;
+                        
                      }
             </style>
              <?php
@@ -26,7 +28,7 @@
                 ?>
                 <main class="main-content">
                             <div class="iq-navbar-header" style="height: 215px;">
-                           <div class="card col-md-12 " style="margin-top:10px;"> 
+                           <div class="card col-md-12" style="margin-top:10px;"> 
                                 <div class="container-fluid iq-container">
                                     <div class="row">
                                         <div class="col-md-12" id="header">
@@ -35,9 +37,9 @@
                                                 <?php 
                                                     if ($row_id !== null) {
                                                         // Now you can use $row_id to access user information
-                                                        echo '<h1 class="hearder1"> @: ' . $row_id['e_fname'] . ' ' . $row_id['e_lname'] . '</h1>';
+                                                        echo '<h1 class="hearder"> @: ' . $row_id['e_fname'] . ' ' . $row_id['e_lname'] . '</h1>';
                                                     } else {
-                                                        echo '<h1 class="hearder1">@: Admin</h1>';
+                                                        echo '<h1 class="hearder">@: Admin</h1>';
                                                     }
                                                 ?>
                                             </div>
