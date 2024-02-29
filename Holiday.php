@@ -1,3 +1,27 @@
+<?php 
+    // include 'sidebar.php';
+    include 'connection.php';
+    //   include 'formvalidation.php';
+?>
+<?php  
+    if(isset($_POST['sub_btn1']))
+    {
+        $f_name = $_POST['f_name'];
+        $l_name = $_POST['l_name'];
+        $s_bate = $_POST['s_bate'];
+        $e_date = $_POST['e_date'];
+        $h_type = $_POST['h_type'];
+        $dric = $_POST['$dric'];
+        $status = $_POST['status'];
+ 
+        $q = "INSERT INTO holiday (fname, lname, sbdate, ebdate, types, dric, status) 
+        VALUES ('$f_name', '$l_name', '$s_date', '$e_date', '$h_type', '$dric', '$status')";
+
+        $insert = mysqli_query($conn, $q);
+
+        echo '<script type="text/javascript">window.location.href="employee-list.php";</script>';
+    }
+?>
 <html>  
     <head>
         <meta charset="UTF-8">
@@ -52,13 +76,13 @@
                                                 <label class="form-label" for="sdate">
                                                     Start date:
                                                 </label>
-                                                <input type="date" class="form-control" name="s_bate" id="sdate" placeholder="Enter your Start date" required>
+                                                <input type="date" class="form-control" name="s_date" id="sdate" placeholder="Enter your Start date" required>
                                             </div>
                                             <div class="form-group col-md-12">
                                                 <label class="form-label" for="edate">
                                                     End date:
                                                 </label>
-                                                <input type="date" class="form-control" name="e_bate" id="edate" placeholder="Enter your End date" required>
+                                                <input type="date" class="form-control" name="e_date" id="edate" placeholder="Enter your End date" required>
                                             </div>
                                             <div class="form-group">
                                                 <label class="form-label">
