@@ -89,7 +89,7 @@
             $exp = $_POST['exp'];
             $salary = $_POST['salary'];
             $c_email = $_POST['c_email'];
-            $c_pass = md5($_POST['c_pass']);
+            $c_pass = $_POST['c_pass'];
             $status = $_POST['status'];
 
             

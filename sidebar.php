@@ -10,8 +10,21 @@
                      }
                      .main-content {
                         margin-left:265px;
+                        
+                     }
+                     .hearder1{
+                        padding-top: 30px;
                      }
             </style>
+             <?php
+                    $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
+                    // $u_id = $_SESSION['user_id'] ;
+                    // $_SESSION['e_role']="";
+
+                    $q="select * from employee where  id='$user_id'";
+                    $data=mysqli_query($conn,$q);
+                    $row_id = mysqli_fetch_array($data);
+                    ?>
                 <main class="main-content">
                             <div class="iq-navbar-header" style="height: 215px;">
                                 <div class="container-fluid iq-container">
@@ -19,7 +32,7 @@
                                         <div class="col-md-12" id="header">
                                         <div class="flex-wrap d-flex justify-content-between align-items-center">
                                                 <div>
-                                                    <h1>Hello Devs!</h1>
+                                                    <h1 class="hearder1"><?php echo $row_id['e_fname']." ".$row_id['e_lname']; ?></h1>
                                                     <p>We are on a mission to help developers like you build successful projects for FREE.</p>
                                                 </div>
                                                 <div>
@@ -74,15 +87,8 @@
                             <span class="mini-icon">-</span>
                         </a>
                     </li>
+                   
                     <?php
-                    $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
-                    // $u_id = $_SESSION['user_id'] ;
-                    // $_SESSION['e_role']="";
-
-                    $q="select * from employee where  id='$user_id'";
-                    $data=mysqli_query($conn,$q);
-                    $row_id = mysqli_fetch_array($data);
-
 
                     if($_SESSION['e_role']=="admin")
                     {
