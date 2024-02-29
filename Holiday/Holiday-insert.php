@@ -1,6 +1,6 @@
 <?php 
     // include 'sidebar.php';
-    include 'connection.php';
+    include '../connection.php';
     //   include 'formvalidation.php';
 ?>
 <?php  
@@ -14,12 +14,12 @@
         $dric = $_POST['$dric'];
         $status = $_POST['status'];
  
-        $q = "INSERT INTO holiday (fname, lname, sbdate, ebdate, types, dric, status) 
+        $q = "INSERT INTO holiday(fname, lname, sbdate, ebdate, types, dric, status) 
         VALUES ('$f_name', '$l_name', '$s_date', '$e_date', '$h_type', '$dric', '$status')";
 
         $insert = mysqli_query($conn, $q);
 
-        echo '<script type="text/javascript">window.location.href="employee-list.php";</script>';
+        echo '<script type="text/javascript">window.location.href="Holiday-list.php";</script>';
     }
 ?>
 <html>  
@@ -28,10 +28,9 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Employee</title>
-        <link rel="stylesheet" href="css/main.min.css">
-        <script src="js/jquery/3.7.1.min.js" type="text/javascript"></script>
+        <link rel="stylesheet" href="../css/main.min.css">
+        <script src="../js/jquery/3.7.1.min.js" type="text/javascript"></script>
         <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-        <script src="js/location/location.js"></script>
     </head>  
     <body>
         <main class="main-content">
@@ -115,7 +114,7 @@
                                                 </label>
                                             </div>
                                         </div>
-                                        <input type="submit" value="submit" onclick="validateEmails()" class="btn btn-primary" name="sub_btn1">
+                                        <input type="submit" value="submit" class="btn btn-primary" name="sub_btn1">
                                     </form>
                                 </div>
                             </div>
