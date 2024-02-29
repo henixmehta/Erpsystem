@@ -28,9 +28,7 @@
    .error {
       color: red;
     }
-   .main-content{
-      margin-left:265px;
-    }
+   
    </style>
 <?php 
                 

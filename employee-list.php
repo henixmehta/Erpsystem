@@ -15,10 +15,7 @@
         .error {
       color: red;
     }
-    .main-content{
-      margin-left:265px;
-      margin-top: 100px;
-    }
+    
    </style>
 </head>
 

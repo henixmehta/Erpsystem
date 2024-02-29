@@ -234,6 +234,13 @@
    
 
   <?php 
+
+  if(!empty($_SESSION['e_role'])){
+    echo '<script type="text/javascript">window.location.href="dashboard.php";</script>';
+  }
+  else
+  {
+  
 	  //Login Script Start
     if(isset($_POST['sub_btn']))
     {
@@ -243,7 +250,7 @@
           if($_POST['pass']=="admin")
               {
                 $_SESSION['e_role']="admin";
-                echo '<script type="text/javascript">window.location.href="employee.php";</script>';
+                echo '<script type="text/javascript">window.location.href="dashboard.php";</script>';
                 // header('location:employee.php');
               }
           else
@@ -256,20 +263,28 @@
 
             $q="select * from employee where e_com_email='".$_POST['email']."' and e_pwd='".$_POST['pass']."'";
             $data=mysqli_query($conn,$q);
-            $c=mysqli_num_rows($data);
-                  if($c > 0)
-                  {   
-                    $_SESSION['e_role']="user";
-                    echo '<script type="text/javascript">window.location.href="employee.php";</script>';
+            $row_check_login=mysqli_num_rows($data);
+            
+            if($row_check_login > 0)
+            {   
+              
+              $row_id = mysqli_fetch_array($data);
+              $_SESSION['e_role']="user";
+
+              $_SESSION['user_id'] = $row_id['id'];
+             
+             
+              echo '<script type="text/javascript">window.location.href="dashboard.php";</script>';
                     // header('location:employee.php');
 
                   }
                   else
                   {
-                      echo "error";
+                    echo '<script>alert("Please Enter Valid Password");</script>';
                   }
         }
       }
+    }
        ?>
 
 <body>

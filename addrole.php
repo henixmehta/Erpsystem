@@ -14,9 +14,7 @@
         .error {
       color: red;
     }
-    .main-content{
-      margin-left:265px;
-    }
+    
    </style>
    <!-- <script>
     document.addEventListener('DOMContentLoaded', function () {

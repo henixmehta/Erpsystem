@@ -13,9 +13,7 @@
         .error {
       color: red;
     }
-    .main-content{
-      margin-left:265px;
-    }
+   
    </style>
 	<link rel="stylesheet" href="css/main.min.css">
 
