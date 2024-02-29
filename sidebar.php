@@ -3,57 +3,52 @@
     session_start();
 ?>
 
-<link rel="stylesheet" href="css/main.min.css">
-<style>
-                        .error {
+        <link rel="stylesheet" href="css/main.min.css">
+        <style>
+                    .error {
                         color: red;
                      }
-                     .main-content {
-                        margin-left:265px;
-                        
-                     }
+                    
                      .hearder1{
-                        padding-top: 30px;
+                        padding-top: 10px;
+                        margin-left:265px; 
                      }
             </style>
              <?php
                     $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
                     // $u_id = $_SESSION['user_id'] ;
-                    // $_SESSION['e_role']="";
-
+                   // $_SESSION['e_role']="";
+ 
                     $q="select * from employee where  id='$user_id'";
                     $data=mysqli_query($conn,$q);
                     $row_id = mysqli_fetch_array($data);
-                    ?>
+                    
+                ?>
                 <main class="main-content">
                             <div class="iq-navbar-header" style="height: 215px;">
+                           <div class="card col-md-12 " style="margin-top:10px;"> 
                                 <div class="container-fluid iq-container">
                                     <div class="row">
                                         <div class="col-md-12" id="header">
-                                        <div class="flex-wrap d-flex justify-content-between align-items-center">
-                                                <div>
-                                                    <h1 class="hearder1"><?php echo $row_id['e_fname']." ".$row_id['e_lname']; ?></h1>
-                                                    <p>We are on a mission to help developers like you build successful projects for FREE.</p>
-                                                </div>
-                                                <div>
-                                                    <a href="" class="btn btn-link btn-soft-light">
-                                                    <svg class="icon-20" width="20" viewBox="0 0 24 24" fill="none"  >
-                                                            <path d="M11.8251 15.2171H12.1748C14.0987 15.2171 15.731 13.985 16.3054 12.2764C16.3887 12.0276 16.1979 11.7713 15.9334 11.7713H14.8562C14.5133 11.7713 14.2362 11.4977 14.2362 11.16C14.2362 10.8213 14.5133 10.5467 14.8562 10.5467H15.9005C16.2463 10.5467 16.5263 10.2703 16.5263 9.92875C16.5263 9.58722 16.2463 9.31075 15.9005 9.31075H14.8562C14.5133 9.31075 14.2362 9.03619 14.2362 8.69849C14.2362 8.35984 14.5133 8.08528 14.8562 8.08528H15.9005C16.2463 8.08528 16.5263 7.8088 16.5263 7.46728C16.5263 7.12575 16.2463 6.84928 15.9005 6.84928H14.8562C14.5133 6.84928 14.2362 6.57472 14.2362 6.23606C14.2362 5.89837 14.5133 5.62381 14.8562 5.62381H15.9886C16.2483 5.62381 16.4343 5.3789 16.3645 5.13113C15.8501 3.32401 14.1694 2 12.1748 2H11.8251C9.42172 2 7.47363 3.92287 7.47363 6.29729V10.9198C7.47363 13.2933 9.42172 15.2171 11.8251 15.2171Z" fill="currentColor"></path>
-                                                            <path opacity="0.4" d="M19.5313 9.82568C18.9966 9.82568 18.5626 10.2533 18.5626 10.7823C18.5626 14.3554 15.6186 17.2627 12.0005 17.2627C8.38136 17.2627 5.43743 14.3554 5.43743 10.7823C5.43743 10.2533 5.00345 9.82568 4.46872 9.82568C3.93398 9.82568 3.5 10.2533 3.5 10.7823C3.5 15.0873 6.79945 18.6413 11.0318 19.1186V21.0434C11.0318 21.5715 11.4648 22.0001 12.0005 22.0001C12.5352 22.0001 12.9692 21.5715 12.9692 21.0434V19.1186C17.2006 18.6413 20.5 15.0873 20.5 10.7823C20.5 10.2533 20.066 9.82568 19.5313 9.82568Z" fill="currentColor"></path>
-                                                    </svg>
-                                                    Announcements
-                                                    </a>
-                                                </div>
-                                        </div>
+                                            <div class="flex-wrap d-flex justify-content-between align-items-center">
+                                               
+                                                <?php 
+                                                    if ($row_id !== null) {
+                                                        // Now you can use $row_id to access user information
+                                                        echo '<h1 class="hearder1"> @: ' . $row_id['e_fname'] . ' ' . $row_id['e_lname'] . '</h1>';
+                                                    } else {
+                                                        echo '<h1 class="hearder1">@: Admin</h1>';
+                                                    }
+                                                ?>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                     </main>
-<div class="sidebar">
-
-<aside class="sidebar sidebar-default sidebar-white sidebar-base navs-rounded-all ">
-        <div class="sidebar-header d-flex align-items-center justify-content-start">
+     <div class="sidebar">
+        <aside class="sidebar sidebar-default sidebar-white sidebar-base navs-rounded-all ">
+            <div class="sidebar-header d-flex align-items-center justify-content-start">
           
                 <!--Logo start-->
                 <div class="logo-main">
@@ -87,9 +82,7 @@
                             <span class="mini-icon">-</span>
                         </a>
                     </li>
-                   
                     <?php
-
                     if($_SESSION['e_role']=="admin")
                     {
                         ?>
@@ -126,13 +119,11 @@
                         </li>
                         <?php
                     }
-
                     // elseif($_SESSION['e_role']=="")
                     else
                     {
                         if($_SESSION['e_role']=="")
-                        {
-                            
+                        {  
                             header("Location: errorpage.php");
                          }
                          else
@@ -154,7 +145,7 @@
                     }
                     ?>
                     <li class="nav-item">
-                        <a class="nav-link " aria-current="page" href="../dashboard/index.html">
+                        <a class="nav-link " aria-current="page" href="dashboard.php">
                             <i class="icon">
                                 <svg width="20" viewBox="0 0 24 24" fill="none"   class="icon-20">
                                     <path opacity="0.4" d="M16.0756 2H19.4616C20.8639 2 22.0001 3.14585 22.0001 4.55996V7.97452C22.0001 9.38864 20.8639 10.5345 19.4616 10.5345H16.0756C14.6734 10.5345 13.5371 9.38864 13.5371 7.97452V4.55996C13.5371 3.14585 14.6734 2 16.0756 2Z" fill="currentColor"></path>
@@ -261,7 +252,7 @@
                     </li>
                     <?php 
                     }
-                        ?>
+                    ?>
                     <li class="nav-item">
                         <a class="nav-link" data-bs-toggle="collapse" href="#sidebar-Attendence" role="button" aria-expanded="false" aria-controls="sidebar-Attendence">
                             <i class="icon">
@@ -394,11 +385,12 @@
                         </a>
                     </li>
                 </ul>
-                <!-- Sidebar Menu End -->        </div>
-        </div>
-        <div class="sidebar-footer"></div>
-    </aside>
-</div>
+                <!-- Sidebar Menu End -->      
+              </div>
+            </div>
+            <div class="sidebar-footer"></div>
+        </aside>
+    </div>
     
     <!-- Library Bundle Script -->
     <script src="js/core/libs.min.js"></script>
