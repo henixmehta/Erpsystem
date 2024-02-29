@@ -1,4 +1,8 @@
+<?php 
 
+    include 'connection.php';
+
+?>
 
 <!doctype html>
 <html lang="en" dir="ltr">
@@ -13,6 +17,9 @@
         <link rel='stylesheet' href='vendor/fullcalendar/timegrid/main.css' />
         <link rel='stylesheet' href='vendor/fullcalendar/list/main.css' />
   </head>
+
+
+
  
    
                 
