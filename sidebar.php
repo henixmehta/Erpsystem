@@ -2,8 +2,9 @@
     include 'connection.php';
     session_start();
 ?>
-
-        <link rel="stylesheet" href="css/main.min.css">
+   <script src="assets/js/core/libs.min.js"></script>
+      <script src="assets/js/plugins/slider-tabs.js"></script>
+        <link rel="stylesheet" href="assets/css/main.min.css">
         <style>
                     .error {
                         color: red;
@@ -298,7 +299,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link " href="Holiday/Holiday-list.php">
+                                <a class="nav-link " href="../Holiday/Holiday-list.php">
                                     <i class="icon">
                                         <svg class="icon-10"   width="10" viewBox="0 0 24 24" fill="currentColor">
                                             <g>
@@ -395,5 +396,4 @@
     </div>
     
     <!-- Library Bundle Script -->
-    <script src="js/core/libs.min.js"></script>
-      <script src="js/plugins/slider-tabs.js"></script>
+ 
