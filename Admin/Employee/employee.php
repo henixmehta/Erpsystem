@@ -1,140 +1,135 @@
-         <?php 
-                  include 'sidebar.php';
-                  include 'connection.php';
-                  //   include 'formvalidation.php';
-                  ?>
-   <html>
-      
-      <head>
-         <meta charset="UTF-8">
-         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-         <title>Employee</title>
-         <link rel="stylesheet" href="css/main.min.css">
-         <script src="js/jquery/3.7.1.min.js" type="text/javascript"></script>
-         <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-         <script src="js/location/location.js"></script>
-         
-       
-    <script>
-        function validateEmails() {
+<?php 
+   include 'special-pages/sidebar.php';
+   include 'special-pages/connection.php';
+// include 'formvalidation.php';
+?>
+<html>
+   <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Employee</title>
+      <link rel="stylesheet" href="css/main.min.css">
+      <script src="js/jquery/3.7.1.min.js" type="text/javascript"></script>
+      <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+      <script src="js/location/location.js"></script>
+      <script>
+        function validateEmails() 
+        {
             var email_check = document.getElementById('email').value;
             var e_com_email_check = document.getElementById('c_email').value;
 
             // AJAX request to check if the email exists on the server
             $.ajax({
-                type: 'POST',
-                url: 'employee.php',
-                data: {email: email_check, c_email: e_com_email_check},
-                success: function(response) {
-                    if (response === "exists") {
-                        alert("Email already registered. Please choose a different email.");
-                    }
-                     else {
-                        alert("Emails are valid. Proceed with the form submission.");
-                        // You can submit the form or perform additional actions here
-                    }
-                },
-                error: function() {
-                    alert("An error occurred during the email validation.");
-                }
-
-
-               
+               type: 'POST',
+               url: 'employee.php',
+               data: {email: email_check, c_email: e_com_email_check},
+               success: function(response)
+               {
+                  if (response === "exists") 
+                  {
+                     alert("Email already registered. Please choose a different email.");
+                  }
+                  else 
+                  {
+                     alert("Emails are valid. Proceed with the form submission.");
+                     // You can submit the form or perform additional actions here
+                  }
+               },
+               error: function() 
+               {
+                  alert("An error occurred during the email validation.");
+               }
             });
-            
         }
-    </script>
-            <style>
-                        .error {
-                        color: red;
-                     }
+      </script>
+      <style>
+         .error 
+         {
+            color: red;
+         }
                      
-            </style>
-
-
-     <?php  
-  
-
-     
-
-         if(isset($_POST['sub_btn1'])){
+      </style>
+      <?php  
+         if(isset($_POST['sub_btn1']))
+         {
           
-           //sAssuming you have a database connection established in $conn
-            
+            //sAssuming you have a database connection established in $conn
+               
             $email_check = $_POST['email'];
             $com_email_check = $_POST['c_email'];
-            
+               
             $checkEmailSql = "SELECT * FROM employee WHERE e_email = '$email_check' OR e_com_email = '$com_email_check'";
             $emailResult = mysqli_query($conn, $checkEmailSql);
-            
-            if ($emailResult->num_rows > 0) {
+               
+            if ($emailResult->num_rows > 0) 
+            {
                echo '<script>alert("exists");</script>';
-            } else {
- 
-             $f_name = $_POST['f_name'];
-            $l_name = $_POST['l_name'];
-            $e_role = $_POST['e_role'];
-            $e_bate = $_POST['e_bate'];
-            $e_country = $_POST['e_country'];
-            $e_state = $_POST['e_state'];
-            $e_city = $_POST['e_city'];
-            $e_add = $_POST['address'];
-            $pincode = $_POST['pincode'];
-            $mono = $_POST['mono'];
-            $alte_mono = $_POST['alte_mono'];
-            $email = $_POST['email'];
-            $team_name = $_POST['team_name'];
-            $j_date = $_POST['j_date'];
-            $exp = $_POST['exp'];
-            $salary = $_POST['salary'];
-            $c_email = $_POST['c_email'];
-            $c_pass = $_POST['c_pass'];
-            $status = $_POST['status'];
+            } 
+            else 
+            {
+               $f_name = $_POST['f_name'];
+               $l_name = $_POST['l_name'];
+               $e_role = $_POST['e_role'];
+               $e_bate = $_POST['e_bate'];
+               $e_country = $_POST['e_country'];
+               $e_state = $_POST['e_state'];
+               $e_city = $_POST['e_city'];
+               $e_add = $_POST['address'];
+               $pincode = $_POST['pincode'];
+               $mono = $_POST['mono'];
+               $alte_mono = $_POST['alte_mono'];
+               $email = $_POST['email'];
+               $team_name = $_POST['team_name'];
+               $j_date = $_POST['j_date'];
+               $exp = $_POST['exp'];
+               $salary = $_POST['salary'];
+               $c_email = $_POST['c_email'];
+               $c_pass = $_POST['c_pass'];
+               $status = $_POST['status'];
 
+               // File upload handling
+               $degree_file = $_FILES['degree']['name'];
+               $resume_file = $_FILES['resume']['name'];
+         
+               // Specify the directory where you want to store the files
+               $upload_directory = 'storage/employeedata/';
+         
+               // Create the full path for the uploaded files
+               $degree_target_path = $upload_directory . $degree_file;
+               $resume_target_path = $upload_directory . $resume_file;
+         
+               // Move the uploaded files to the specified directory
+               move_uploaded_file($_FILES['degree']['tmp_name'], $degree_target_path);
+               move_uploaded_file($_FILES['resume']['tmp_name'], $resume_target_path);
+         
+               // Modify your SQL query to include the file names
+               $q = "INSERT INTO employee (e_fname, e_lname, e_role, e_bdate, e_country, e_state, e_city, e_add, e_pin, e_mob, e_alt_mob, e_email, e_team_name, e_joindate, e_exp, e_deg, e_resume, e_salary, e_com_email, e_pwd, e_status) 
+               VALUES ('$f_name', '$l_name', '$e_role', '$e_bate', '$e_country', '$e_state', '$e_city', '$e_add', '$pincode', '$mono', '$alte_mono', '$email', '$team_name', '$j_date', '$exp', '$degree_file', '$resume_file', '$salary', '$c_email', '$c_pass', '$status')";
             
-            // File upload handling
-            $degree_file = $_FILES['degree']['name'];
-            $resume_file = $_FILES['resume']['name'];
-        
-            // Specify the directory where you want to store the files
-            $upload_directory = 'storage/employeedata/';
-        
-            // Create the full path for the uploaded files
-            $degree_target_path = $upload_directory . $degree_file;
-            $resume_target_path = $upload_directory . $resume_file;
-        
-            // Move the uploaded files to the specified directory
-            move_uploaded_file($_FILES['degree']['tmp_name'], $degree_target_path);
-            move_uploaded_file($_FILES['resume']['tmp_name'], $resume_target_path);
-        
-            // Modify your SQL query to include the file names
-            $q = "INSERT INTO employee (e_fname, e_lname, e_role, e_bdate, e_country, e_state, e_city, e_add, e_pin, e_mob, e_alt_mob, e_email, e_team_name, e_joindate, e_exp, e_deg, e_resume, e_salary, e_com_email, e_pwd, e_status) 
-            VALUES ('$f_name', '$l_name', '$e_role', '$e_bate', '$e_country', '$e_state', '$e_city', '$e_add', '$pincode', '$mono', '$alte_mono', '$email', '$team_name', '$j_date', '$exp', '$degree_file', '$resume_file', '$salary', '$c_email', '$c_pass', '$status')";
-          
-            //echo $q;
-            // Execute your SQL query to insert the data into the database
-             $insert = mysqli_query($conn, $q);
-             echo '<script type="text/javascript">window.location.href="employee-list.php";</script>';
-        }
-        
+               //echo $q;
+               // Execute your SQL query to insert the data into the database
+               $insert = mysqli_query($conn, $q);
+               echo '<script type="text/javascript">window.location.href="employee-list.php";</script>';
+            }  
          }
-
-   
       ?>
       <body>
          <main class="main-content">
-           
             <div class="conatiner-fluid content-inner mt-n5 py-0">
-            <div class="row">
-               <div class="col-xl-12 col-lg-8">
-                  <div class="card">
-                     <div class="card-header d-flex justify-content-between">
-                        <div class="header-title">
-                           <h4 class="card-title">Add New Employee</h4>
-                           <hr>
-                           <h4 class="card-title">New Employee Information</h4>
-                        </div>
+               <div class="row">
+                  <div class="col-xl-12 col-lg-8">
+                     <div class="card">
+                        <div class="card-header d-flex justify-content-between">
+                           <div class="header-title">
+                              <h4 class="card-title">
+                                 Add New Employee
+                              </h4>
+                              <hr>
+                              <h4 class="card-title">
+                                 New Employee Information
+                              </h4>
+                           </div>
                         <a href="employee-list.php"><button class="btn btn-primary" style="margin:10 10 10 10 "> back</button></a>
                      </div>
                      <div class="card-body">

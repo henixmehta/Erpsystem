@@ -1,6 +1,7 @@
 <?php 
-   include 'sidebar.php';
-   include 'connection.php';  
+   include 'special-pages/sidebar.php';
+   include 'special-pages/connection.php';
+   include 'special-pages/css.php'; 
 ?>
    <main class="main-content">
 <!DOCTYPE html>
@@ -9,7 +10,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-	<link rel="stylesheet" href="css/main.min.css">
+	<!-- <link rel="stylesheet" href="css/main.min.css"> -->
    <!-- <link rel="stylesheet" href="sidebar.css"> -->
    <style>
         .error {
