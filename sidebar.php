@@ -148,7 +148,7 @@
                     }
                     ?>
                     <li class="nav-item">
-                        <a class="nav-link " aria-current="page" href="../dashboard.php">
+                        <a class="nav-link " aria-current="page" href="dashboard.php">
                             <i class="icon">
                                 <svg width="20" viewBox="0 0 24 24" fill="none"   class="icon-20">
                                     <path opacity="0.4" d="M16.0756 2H19.4616C20.8639 2 22.0001 3.14585 22.0001 4.55996V7.97452C22.0001 9.38864 20.8639 10.5345 19.4616 10.5345H16.0756C14.6734 10.5345 13.5371 9.38864 13.5371 7.97452V4.55996C13.5371 3.14585 14.6734 2 16.0756 2Z" fill="currentColor"></path>
@@ -185,7 +185,7 @@
                            
                        <li class="nav-item">
                                <!-- emp list  -->
-                               <a class="nav-link " href="roletable.php">
+                               <a class="nav-link " href="Admin/Role/roletable.php">
                                    <i class="icon">
                                        <svg class="icon-10"   width="10" viewBox="0 0 24 24" fill="currentColor">
                                            <g>
@@ -376,7 +376,7 @@
                     // }
                     ?> -->
                     <li class="nav-item">
-                        <a class="nav-link" href="../logout.php">
+                        <a class="nav-link" href="logout.php">
                             <i class="icon">
                                  <svg class="icon-20" width="20" viewBox="0 0 24 24" fill="none"  >                                
                            <path d="M2 11.0786C2.05 13.4166 2.19 17.4156 2.21 17.8566C2.281 18.7996 2.642 19.7526 3.204 20.4246C3.986 21.3676 4.949 21.7886 6.292 21.7886C8.148 21.7986 10.194 21.7986 12.181 21.7986C14.176 21.7986 16.112 21.7986 17.747 21.7886C19.071 21.7886 20.064 21.3566 20.836 20.4246C21.398 19.7526 21.759 18.7896 21.81 17.8566C21.83 17.4856 21.93 13.1446 21.99 11.0786H2Z" fill="currentColor"></path>

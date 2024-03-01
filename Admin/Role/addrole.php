@@ -1,6 +1,6 @@
 <?php 
-   include 'sidebar.php';
-   include 'connection.php';
+   include '../../sidebar.php';
+   include '../../connection.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -8,7 +8,7 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <link rel="stylesheet" href="css/main.min.css">
+   <link rel="stylesheet" href="../../assets/css/main.min.css">
 	<title>Employee</title>
    <style>
         .error {
@@ -16,31 +16,7 @@
     }
     
    </style>
-   <!-- <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        var form = document.querySelector('form');
-
-        form.addEventListener('submit', function (event) {
-            var roleName = document.getElementById('Rolename').value.trim();
-            var statusActive = document.getElementById('Active').checked;
-            var statusInactive = document.getElementById('Inactive').checked;
-
-            if (roleName === '') {
-                alert('Please enter role name');
-                event.preventDefault();
-                return;
-            }
-
-            if (!statusActive && !statusInactive) {
-                alert('Please select status');
-                event.preventDefault();
-                return;
-            }
-        });
-    });
-</script> -->
-
-
+ 
 <?php 
 
 $rolne_name_error = $rolne_status_error ="";
@@ -59,6 +35,9 @@ if(isset($_POST['sub_btn1']))
       {
          $q = "insert into role values(NULL,'".$_POST['role_name']."','".$_POST['r_status']."')";
          $insert = mysqli_query($conn,$q);
+
+         echo '<script type="text/javascript">window.location.href="roletable.php";</script>';
+
       }
     }
 ?>
@@ -96,7 +75,7 @@ if(isset($_POST['sub_btn1']))
                               <fieldset class="mb-3">
                                  <legend>Status:</legend>
                                     <div class="form-check">
-                                       <input type="radio" name="r_status" value="active" class="form-check-input" id="Active" required>
+                                       <input type="radio" name="r_status" value="active" class="form-check-input" id="Active" required checked>
                                        <label class="form-check-label" for="Active">Active</label>
                                     </div>
                                     <div class="mb-3 form-check">
