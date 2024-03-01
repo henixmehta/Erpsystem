@@ -9,14 +9,13 @@
 	<title>Employee</title>
 	<!-- <link rel="stylesheet" href="emp.css">
 	<link rel="stylesheet" href="sidebar.css"> -->
-	
 	<!-- <link rel="stylesheet" href="sidebar.css"> -->
 </head>
 <body>
 <div class="dashboard">
 		<?php
-			include 'sidebar.php';
-			include 'calender/calender.php';
+			include 'special-pages/sidebar.php';
+			include 'special-pages/Calender/calender.php';
 
 		?>   
 	 <main class="main-content">

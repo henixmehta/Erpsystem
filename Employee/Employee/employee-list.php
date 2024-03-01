@@ -1,7 +1,7 @@
 <?php 
    include 'special-pages/sidebar.php';
    include 'special-pages/connection.php';
-   include 'special-pages/css.php'; 
+   // include 'special-pages/css.php'; 
 ?>
    <main class="main-content">
 <!DOCTYPE html>

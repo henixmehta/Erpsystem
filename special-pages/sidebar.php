@@ -1,5 +1,6 @@
 <?php
     include 'connection.php';
+    include 'special-pages/css.php'
     session_start();
 ?>
    <script src="assets/js/core/libs.min.js"></script>
