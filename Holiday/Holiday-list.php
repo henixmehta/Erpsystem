@@ -1,4 +1,5 @@
 <?php 
+//    session_start();
    include '../sidebar.php';
    include '../connection.php';  
 ?>
@@ -19,12 +20,19 @@
                             <div class="card-header d-flex justify-content-between">
                                 <h4 class="card-title">
                                     Holiday List
-                                </h4>
-                                <a href="employee.php">
+                                </h4> 
+                                   <?php 
+                                   if($_SESSION['e_role']=="admin")
+                                   {
+                                       ?>
+                                <a href="Holiday-insert.php">
                                      <button class="btn btn-primary">
                                         Add
                                     </button>
                                 </a>
+                                    <?php
+                                   }
+                                    ?>
                             </div>
                             <div class="card-body">         
                                 <div class="card-body px-0">

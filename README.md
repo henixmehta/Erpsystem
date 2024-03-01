@@ -1,3 +1,3 @@
 # Erpsystem
 
-git clone https://henixmehta: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@github.com/henixmehta/Erpsystem.git
+git clone https://henixmehta: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@github.com/henixmehta/Erpsystem.git

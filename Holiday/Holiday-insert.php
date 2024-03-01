@@ -1,5 +1,5 @@
 <?php 
-    // include 'sidebar.php';
+    include '../sidebar.php';
     include '../connection.php';
     //   include 'formvalidation.php';
 ?>
@@ -34,7 +34,7 @@
     </head>  
     <body>
         <main class="main-content">
-            <div class="iq-navbar-header" style="height: 100px;">
+            <div class="iq-navbar-header" style="height: 50px;">
             </div>
             <div class="conatiner-fluid content-inner mt-n5 py-0">
                 <div class="row">
