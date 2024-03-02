@@ -1,17 +1,17 @@
 <?php
     include 'connection.php';
-    include 'special-pages/css.php';
+    include 'css.php';
     session_start();
 ?>
-   <script src="assets/js/core/libs.min.js"></script>
-      <script src="assets/js/plugins/slider-tabs.js"></script>
-        <link rel="stylesheet" href="assets/css/main.min.css">
+   <script src="Assets/js/core/libs.min.js"></script>
+      <script src="Assets/js/plugins/slider-tabs.js"></script>
+        <link rel="stylesheet" href="Assets/css/main.min.css">
         <style>
                     .error {
                         color: red;
                      }
                      .main-content {
-                        margin-left:265px; 
+                        margin-left: 265px; 
                      }
                      .hearder{
                         padding-top: 5px;
@@ -28,7 +28,7 @@
                     $row_id = mysqli_fetch_array($data);
                     
                 ?>
-                <main class="main-content">
+                <!-- <main class="main-content"> -->
                             <div class="iq-navbar-header" style="height: 215px;">
                            <div class="card col-md-12" style="margin-top:10px;"> 
                                 <div class="container-fluid iq-container">
@@ -49,7 +49,7 @@
                                     </div>
                                 </div>
                             </div>
-                    </main>
+                    <!-- </main> -->
      <div class="sidebar">
         <aside class="sidebar sidebar-default sidebar-white sidebar-base navs-rounded-all ">
             <div class="sidebar-header d-flex align-items-center justify-content-start">
@@ -185,7 +185,7 @@
                        <ul class="sub-nav collapse" id="sidebar-role" data-bs-parent="#sidebar-menu">
                            
                        <li class="nav-item">
-                               <!-- emp list  -->
+                               
                                <a class="nav-link " href="Admin/Role/roletable.php">
                                    <i class="icon">
                                        <svg class="icon-10"   width="10" viewBox="0 0 24 24" fill="currentColor">

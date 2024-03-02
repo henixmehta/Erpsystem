@@ -13,7 +13,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
   <?php 
-    if(!empty($_SESSION['e_role'])){
+    if(!empty($_SESSION['e_role']))
+    {
       echo '<script type="text/javascript">window.location.href="dashboard.php";</script>';
     }
     else
