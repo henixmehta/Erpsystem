@@ -14,7 +14,7 @@ $(document).ready(function() {
 function loadCountry() {
     $.ajax({
         type: "POST",
-        url: "ajax.php",
+        url: "../ajax.php",
         data: "get=country"
     }).done(function(result) {
         console.log("Country Response:", result);
@@ -26,7 +26,7 @@ function loadState(countryId) {
     $("#state").children().remove();
     $.ajax({
         type: "POST",
-        url: "ajax.php",
+        url: "../ajax.php",
         data: "get=state&countryId=" + countryId
     }).done(function(result) {
         console.log("State Response:", result);
@@ -38,7 +38,7 @@ function loadCity(stateId) {
     $("#city").children().remove();
     $.ajax({
         type: "POST",
-        url: "ajax.php",
+        url: "../ajax.php",
         data: "get=city&stateId=" + stateId
     }).done(function(result) {
         console.log("City Response:", result);
