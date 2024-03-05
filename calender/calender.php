@@ -8,10 +8,10 @@
       <title>calender</title>
 <head>
         <!-- Fullcalender CSS -->
-        <link rel='stylesheet' href='vendor/fullcalendar/core/main.css' />
-        <link rel='stylesheet' href='vendor/fullcalendar/daygrid/main.css' />
-        <link rel='stylesheet' href='vendor/fullcalendar/timegrid/main.css' />
-        <link rel='stylesheet' href='vendor/fullcalendar/list/main.css' />
+        <link rel='stylesheet' href='../vendor/fullcalendar/core/main.css' />
+        <link rel='stylesheet' href='../vendor/fullcalendar/daygrid/main.css' />
+        <link rel='stylesheet' href='../vendor/fullcalendar/timegrid/main.css' />
+        <link rel='stylesheet' href='../vendor/fullcalendar/list/main.css' />
   </head>
  
    
@@ -26,9 +26,6 @@
                         <div class="card-body d-flex justify-content-between align-items-center">
                             <div class="card-title mb-0">
                                 <h4 class="mb-0">Calender</h4>
-                            </div>
-                            <div class="card-action">
-                                <a href="#" class="btn btn-primary" role="button">Back</a>
                             </div>
                         </div>
                     </div>
@@ -50,12 +47,12 @@
       </div>
 </main>
         <!-- Fullcalender Javascript -->
-        <script src='vendor/fullcalendar/core/main.js'></script>
-        <script src='vendor/fullcalendar/daygrid/main.js'></script>
-        <script src='vendor/fullcalendar/timegrid/main.js'></script>
-        <script src='vendor/fullcalendar/list/main.js'></script>
-        <script src='vendor/fullcalendar/interaction/main.js'></script>
-        <script src='vendor/moment.min.js'></script>
-        <script src='js/plugins/calender.js'></script>
+        <script src='../vendor/fullcalendar/core/main.js'></script>
+        <script src='../vendor/fullcalendar/daygrid/main.js'></script>
+        <script src='../vendor/fullcalendar/timegrid/main.js'></script>
+        <script src='../vendor/fullcalendar/list/main.js'></script>
+        <script src='../vendor/fullcalendar/interaction/main.js'></script>
+        <script src='../vendor/moment.min.js'></script>
+        <script src='../js/plugins/calender.js'></script>
   </body>
 </html>

@@ -15,9 +15,9 @@
 <body>
 <div class="dashboard">
 		<?php
-		include 
+
 			include '../sidebar/sidebar.php';
-			// include '../calender.php';
+			include '../calender/calender.php';
 
 		?>   
 	 <main class="main-content">
