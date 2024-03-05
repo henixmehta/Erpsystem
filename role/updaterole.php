@@ -66,6 +66,8 @@ include '../connection/connection.php';
                      <div class="header-title">
                      <h4 class="card-title">Update Employee Role</h4>
                      </div>
+                     <a href="roletable.php"><button class="btn btn-primary" style="margin:10 10 10 10 "> back</button></a>
+
                   </div>
                   <div class="card-body">
                      <div class="new-employee-info">

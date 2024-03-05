@@ -289,7 +289,7 @@
                          </fieldset>  
                               </fieldset> 
                               </div>
-                              <input type="submit" value="updated" class="btn btn-primary" name="sub_btn_update">
+                              <input type="submit" value="Update" class="btn btn-primary" name="sub_btn_update">
                         </form>
                         
                      </div>

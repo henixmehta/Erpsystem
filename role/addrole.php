@@ -78,6 +78,7 @@ if(isset($_POST['sub_btn1']))
                      <div class="header-title">
                      <h4 class="card-title">Add  Employee Role</h4>
                      </div>
+                     <a href="roletable.php"><button class="btn btn-primary" style="margin:10 10 10 10 "> back</button></a>
                   </div>
                   <div class="card-body">
                      <div class="new-employee-info">
@@ -88,6 +89,7 @@ if(isset($_POST['sub_btn1']))
                <div class="form-group">
                            <div class="profile-img-edit position-relative">
 							<!-- insert add profile -->
+
                         </div>
                            <div class="row">
                               <div class="form-group col-md-12 ">
