@@ -1,6 +1,6 @@
 <?php
 
-    include ('connection.php');
+    include ('../connection/connection.php');
 
     $countryId = isset($_POST['countryId']) ? $_POST['countryId'] : 0;
     $stateId = isset($_POST['stateId']) ? $_POST['stateId'] : 0;
