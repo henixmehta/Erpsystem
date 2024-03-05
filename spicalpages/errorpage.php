@@ -24,7 +24,7 @@
 <body>
     <h1>Oops! Something went wrong.</h1>
     <p>We're sorry, but an error occurred. Please try again later.</p>
-    <a href="../index.php"><button type="btn btn-success">  success</button></a>
+    <a href="../index.php">  Back to login </a>
     <!-- You can include additional information or links here -->
 </body>
 </html>
