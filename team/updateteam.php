@@ -1,7 +1,6 @@
 <?php 
-       include 'sidebar.php';
-      // include 'formvalidation.php';
-      include 'connection.php';
+   include '../sidebar/sidebar.php';
+   include '../connection/connection.php';
    ?>
 <!DOCTYPE html>
 <html lang="en">

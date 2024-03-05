@@ -1,7 +1,7 @@
 <?php 
 
-include 'sidebar.php';
-include 'connection.php';
+include '../sidebar/sidebar.php';
+include '../connection/connection.php';
 
 if(isset($_GET['id'])) {
     $id = $_GET['id'];

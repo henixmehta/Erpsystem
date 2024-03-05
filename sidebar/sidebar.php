@@ -1,9 +1,9 @@
 <?php
-    include 'connection.php';
+    include '../connection/connection.php';
     session_start();
 ?>
 
-        <link rel="stylesheet" href="css/main.min.css">
+        <link rel="stylesheet" href="../css/main.min.css">
         <style>
                     .error {
                         color: red;
@@ -147,7 +147,7 @@
                     }
                     ?>
                     <li class="nav-item">
-                        <a class="nav-link " aria-current="page" href="dashboard.php">
+                        <a class="nav-link " aria-current="page" href="../dashboard/dashboard.php">
                             <i class="icon">
                                 <svg width="20" viewBox="0 0 24 24" fill="none"   class="icon-20">
                                     <path opacity="0.4" d="M16.0756 2H19.4616C20.8639 2 22.0001 3.14585 22.0001 4.55996V7.97452C22.0001 9.38864 20.8639 10.5345 19.4616 10.5345H16.0756C14.6734 10.5345 13.5371 9.38864 13.5371 7.97452V4.55996C13.5371 3.14585 14.6734 2 16.0756 2Z" fill="currentColor"></path>
@@ -184,7 +184,7 @@
                            
                        <li class="nav-item">
                                <!-- emp list  -->
-                               <a class="nav-link " href="roletable.php">
+                               <a class="nav-link " href="../role/roletable.php">
                                    <i class="icon">
                                        <svg class="icon-10"   width="10" viewBox="0 0 24 24" fill="currentColor">
                                            <g>
@@ -195,7 +195,7 @@
                                    <i class="sidenav-mini-icon"> U </i>
                                    <span class="item-name">Add Employee Role</span>
                                </a>
-                               <a class="nav-link " href="employee-list.php">
+                               <a class="nav-link " href="../employee/employee-list.php">
                                    <i class="icon">
                                        <svg class="icon-10"   width="10" viewBox="0 0 24 24" fill="currentColor">
                                            <g>
@@ -212,7 +212,7 @@
                       
 
                     <li class="nav-item">
-                        <a class="nav-link" href="teamtable.php">
+                        <a class="nav-link" href="../team/teamtable.php">
                             <i class="icon">
                                  <svg class="icon-20" width="20" viewBox="0 0 24 24" fill="none"  >                                
                                <path opacity="0.4" d="M2 11.0786C2.05 13.4166 2.19 17.4156 2.21 17.8566C2.281 18.7996 2.642 19.7526 3.204 20.4246C3.986 21.3676 4.949 21.7886 6.292 21.7886C8.148 21.7986 10.194 21.7986 12.181 21.7986C14.176 21.7986 16.112 21.7986 17.747 21.7886C19.071 21.7886 20.064 21.3566 20.836 20.4246C21.398 19.7526 21.759 18.7896 21.81 17.8566C21.83 17.4856 21.93 13.1446 21.99 11.0786H2Z" fill="currentColor"></path>                                <path d="M11.2451 15.3843V16.6783C11.2451 17.0923 11.5811 17.4283 11.9951 17.4283C12.4091 17.4283 12.7451 17.0923 12.7451 16.6783V15.3843C12.7451 14.9703 12.4091 14.6343 11.9951 14.6343C11.5811 14.6343 11.2451 14.9703 11.2451 15.3843Z" fill="currentColor"></path>                                <path fill-rule="evenodd" clip-rule="evenodd" d="M10.211 14.5565C10.111 14.9195 9.762 15.1515 9.384 15.1015C6.833 14.7455 4.395 13.8405 2.337 12.4815C2.126 12.3435 2 12.1075 2 11.8555V8.38949C2 6.28949 3.712 4.58149 5.817 4.58149H7.784C7.972 3.12949 9.202 2.00049 10.704 2.00049H13.286C14.787 2.00049 16.018 3.12949 16.206 4.58149H18.183C20.282 4.58149 21.99 6.28949 21.99 8.38949V11.8555C21.99 12.1075 21.863 12.3425 21.654 12.4815C19.592 13.8465 17.144 14.7555 14.576 15.1105C14.541 15.1155 14.507 15.1175 14.473 15.1175C14.134 15.1175 13.831 14.8885 13.746 14.5525C13.544 13.7565 12.821 13.1995 11.99 13.1995C11.148 13.1995 10.433 13.7445 10.211 14.5565ZM13.286 3.50049H10.704C10.031 3.50049 9.469 3.96049 9.301 4.58149H14.688C14.52 3.96049 13.958 3.50049 13.286 3.50049Z" fill="currentColor">
@@ -238,7 +238,7 @@
                         </a>
                         <ul class="sub-nav collapse" id="sidebar-Projects" data-bs-parent="#sidebar-menu">
                             <li class="nav-item">
-                                <a class="nav-link " href="clientproject.php">
+                                <a class="nav-link " href="../clientproject/clientproject.php">
                                     <i class="icon">
                                         <svg class="icon-10"   width="10" viewBox="0 0 24 24" fill="currentColor">
                                             <g>
@@ -298,7 +298,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link " href="Holiday/Holiday-list.php">
+                                <a class="nav-link " href="../Holiday/Holiday-list.php">
                                     <i class="icon">
                                         <svg class="icon-10"   width="10" viewBox="0 0 24 24" fill="currentColor">
                                             <g>
@@ -312,68 +312,6 @@
                             </li>
                         </ul>
                     </li>
-                    
-                    <?php 
-                    if($_SESSION['e_role']=="admin")
-                    {
-                        ?>
-                    <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="collapse" href="#sidebar-maps" role="button" aria-expanded="false" aria-controls="sidebar-maps">
-                            <i class="icon">
-                                <svg class="icon-20" width="20" viewBox="0 0 24 24" fill="none"  >
-                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M8.53162 2.93677C10.7165 1.66727 13.402 1.68946 15.5664 2.99489C17.7095 4.32691 19.012 6.70418 18.9998 9.26144C18.95 11.8019 17.5533 14.19 15.8075 16.0361C14.7998 17.1064 13.6726 18.0528 12.4488 18.856C12.3228 18.9289 12.1848 18.9777 12.0415 19C11.9036 18.9941 11.7693 18.9534 11.6508 18.8814C9.78243 17.6746 8.14334 16.134 6.81233 14.334C5.69859 12.8314 5.06584 11.016 5 9.13442C4.99856 6.57225 6.34677 4.20627 8.53162 2.93677ZM9.79416 10.1948C10.1617 11.1008 11.0292 11.6918 11.9916 11.6918C12.6221 11.6964 13.2282 11.4438 13.6748 10.9905C14.1214 10.5371 14.3715 9.92064 14.3692 9.27838C14.3726 8.29804 13.7955 7.41231 12.9073 7.03477C12.0191 6.65723 10.995 6.86235 10.3133 7.55435C9.63159 8.24635 9.42664 9.28872 9.79416 10.1948Z" fill="currentColor"></path>
-                                    <ellipse opacity="0.4" cx="12" cy="21" rx="5" ry="1" fill="currentColor"></ellipse>
-                                </svg>
-                            </i>
-                            <span class="item-name">Maps</span>
-                            <i class="right-icon">
-                                <svg class="icon-18"   width="18" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                                </svg>
-                            </i>
-                        </a>
-                        <ul class="sub-nav collapse" id="sidebar-maps" data-bs-parent="#sidebar-menu">
-                            <li class="nav-item">
-                                <a class="nav-link " href="country/country.php">
-                                    <i class="icon">
-                                        <svg class="icon-10"   width="10" viewBox="0 0 24 24" fill="currentColor">
-                                            <g>
-                                            <circle cx="12" cy="12" r="8" fill="currentColor"></circle>
-                                            </g>
-                                        </svg>
-                                    </i>
-                                    <span class="item-name">Country</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link " href="country/state.php">
-                                   <i class="icon">
-                                        <svg class="icon-10"   width="10" viewBox="0 0 24 24" fill="currentColor">
-                                            <g>
-                                            <circle cx="12" cy="12" r="8" fill="currentColor"></circle>
-                                            </g>
-                                        </svg>
-                                    </i>
-                                    <span class="item-name">State</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link " href="country/city.php">
-                                   <i class="icon">
-                                        <svg class="icon-10"   width="10" viewBox="0 0 24 24" fill="currentColor">
-                                            <g>
-                                            <circle cx="12" cy="12" r="8" fill="currentColor"></circle>
-                                            </g>
-                                        </svg>
-                                    </i>
-                                    <span class="item-name">City</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <?php
-                    }
-                    ?>
                     <li class="nav-item">
                         <a class="nav-link" href="logout.php">
                             <i class="icon">
@@ -395,5 +333,5 @@
     </div>
     
     <!-- Library Bundle Script -->
-    <script src="js/core/libs.min.js"></script>
-      <script src="js/plugins/slider-tabs.js"></script>
+    <script src="../js/core/libs.min.js"></script>
+      <script src="../js/plugins/slider-tabs.js"></script>

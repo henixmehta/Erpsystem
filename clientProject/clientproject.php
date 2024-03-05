@@ -1,15 +1,7 @@
 <?php 
-   include 'sidebar.php';
-   include 'connection.php';
+ include '../sidebar/sidebar.php';
+ include '../connection/connection.php';
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,10 +11,10 @@
 	<link rel="stylesheet" href="css/main.min.css">
    <!-- <link rel="stylesheet" href="sidebar.css"> -->
    <style>
-   .error {
+        .error {
       color: red;
-   }
-   
+    }
+
    </style>
 </head>
 <body>
@@ -35,8 +27,8 @@
                <div class="card">
                   <div class="card-header d-flex justify-content-between">
                      
-                     <h4 class="card-title">Role List</h4>
-                    <a href="addrole.php"> <button class="btn btn-primary">Add</button></a>
+                     <h4 class="card-title">Teams List</h4>
+                    <a href="addclientproject.php"> <button class="btn btn-primary">Add</button></a>
                   </div>
                   <div class="card-body">         
                      <div class="card-body px-0">
@@ -46,28 +38,40 @@
                   <table id="user-list-table" class="table table-striped" role="grid" data-bs-toggle="data-table">
                      <thead>
                         <tr class="ligth">
-                           <th>Role Name</th>
+                           <th>Client Name / Compney Name</th>
+                           <th>Client_Image / Compney_image</th>
+                           <th>Project_name</th>
+                           <th>Contect</th>
+                           <th>Team_name</th>
+                           <th>Project_language</th>
                            <th>Status</th>
+                           <th>Project_Description</th>
                            <th style="min-width: 100px">Action</th>
                         </tr>
                      </thead>
                      <tbody>
                      <?php
-                        $q = "select * from role" ;
+                        $q = "select * from project" ;
                         $data=mysqli_query($conn,$q);
                         while($row=mysqli_fetch_array($data))
                         {       
                         ?>
                         <tr>
-                        <td><?php echo $row['role_name']?></td>
+                        <td><?php echo $row['p_client_name']?></td>                        
+                        <td><img src="./storage/clientproject/<?php echo $row['com_img']; ?>" style="max-width: 100px; max-height: 100px; margin-left:50px;"> </td>
+                        <td><?php echo $row['p_name']?></td>
+                        <td><?php echo $row['p_client_mob']?></td>
+                        <td><?php echo $row['t_name']?></td>
+                        <td><?php echo $row['p_lan']?></td>
                         <td><?php 
-                        $status = $row['r_status'];
-                        if($status == "active")
+                        $status = $row['p_status'];
+                        if($status == "active" || $status == "Active" )
                         {
                            ?>
                             <span class="badge bg-primary">Active</span>
                            <?php
                         }
+                        
                         else
                         {  
                            ?>
@@ -76,9 +80,12 @@
                         }
                         ?>
                         </td>
+                        <td><?php echo $row['p_des']?></td>
+    
                         <td>
+                           
                         <!-- update -->
-                           <a class="btn btn-sm btn-icon btn-warning" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit" data-original-title="Edit" href="updaterole.php?id=<?php echo $row['id']?>">
+                           <a class="btn btn-sm btn-icon btn-warning" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit" data-original-title="Edit" href="updateproject.php?id=<?php echo $row['id']?>">
                               <span class="btn-inner">
                                  <svg class="icon-20" width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M11.4925 2.78906H7.75349C4.67849 2.78906 2.75049 4.96606 2.75049 8.04806V16.3621C2.75049 19.4441 4.66949 21.6211 7.75349 21.6211H16.5775C19.6625 21.6211 21.5815 19.4441 21.5815 16.3621V12.3341" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
@@ -88,7 +95,7 @@
                               </span>
                            </a>
                            <!-- delete button -->            
-                           <a class="btn btn-sm btn-icon btn-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"  href="deleterole.php?id=<?php echo $row['id']?>" >
+                           <a class="btn btn-sm btn-icon btn-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"  href="deleteproject.php?id=<?php echo $row['id']?>" >
                               <span class="btn-inner">
                                  <svg class="icon-20" width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="currentColor">
                                     <path d="M19.3248 9.46826C19.3248 9.46826 18.7818 16.2033 18.4668 19.0403C18.3168 20.3953 17.4798 21.1893 16.1088 21.2143C13.4998 21.2613 10.8878 21.2643 8.27979 21.2093C6.96079 21.1823 6.13779 20.3783 5.99079 19.0473C5.67379 16.1853 5.13379 9.46826 5.13379 9.46826" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
@@ -115,6 +122,4 @@
             </div>
         </main>
     </body>
-</html>
-</body>
 </html>

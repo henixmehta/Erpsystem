@@ -1,16 +1,16 @@
 <?php 
 
-include 'sidebar.php';
-include 'connection.php';
+include '../sidebar/sidebar.php';
+include '../connection/connection.php';
 
 if(isset($_GET['id'])) {
     $id = $_GET['id'];
 
-    $q = "delete from employee WHERE id = $id";
+    $q = "delete from project WHERE id = $id";
     $insert = mysqli_query($conn, $q); 
 
     if(mysqli_query($conn, $q)) {
-        echo '<script>window.location.href = "employee-list.php";</script>';
+        echo '<script>window.location.href = "clientproject.php";</script>';
 
     } else {
         echo "Error: " . mysqli_error($conn);

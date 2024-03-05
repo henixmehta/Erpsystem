@@ -1,6 +1,6 @@
    <?php 
-      include 'sidebar.php';
-      include 'connection.php';
+   include '../sidebar/sidebar.php';
+   include '../connection/connection.php';
    ?>
    <body>
 <!DOCTYPE html>

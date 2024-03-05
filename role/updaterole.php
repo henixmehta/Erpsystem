@@ -1,6 +1,7 @@
 <?php 
-   include 'sidebar.php';
-   include 'connection.php';
+   
+include '../sidebar/sidebar.php';
+include '../connection/connection.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,7 +16,7 @@
     }
    
    </style>
-	<link rel="stylesheet" href="css/main.min.css">
+	<!-- <link rel="stylesheet" href="css/main.min.css"> -->
 
 <?php                 
     $pid = $_GET['id'];
@@ -43,7 +44,7 @@
     ?>
 <body>
         <main class="main-content">
-			<div class="iq-navbar-header" style="height: 215px;">
+			<div class="iq-navbar-header">
                <div class="container-fluid iq-container">
                   <div class="row">
                       <div class="col-md-12" id="header">

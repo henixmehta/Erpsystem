@@ -1,7 +1,7 @@
          <?php 
-                  include 'sidebar.php';
-                  include 'connection.php';
-                  //   include 'formvalidation.php';
+                 
+   include '../sidebar/sidebar.php';
+   include '../connection/connection.php';
                   ?>
    <html>
       
@@ -10,10 +10,10 @@
          <meta http-equiv="X-UA-Compatible" content="IE=edge">
          <meta name="viewport" content="width=device-width, initial-scale=1.0">
          <title>Employee</title>
-         <link rel="stylesheet" href="css/main.min.css">
-         <script src="js/jquery/3.7.1.min.js" type="text/javascript"></script>
+         <link rel="stylesheet" href="../css/main.min.css">
+         <script src="../js/jquery/3.7.1.min.js" type="text/javascript"></script>
          <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-         <script src="js/location/location.js"></script>
+         <script src="../js/location/location.js"></script>
          
        
     <script>

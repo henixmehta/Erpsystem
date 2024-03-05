@@ -1,7 +1,7 @@
 
 
 <?php 
-  include 'connection.php' ;
+  include 'connection/connection.php' ;
   session_start();
 
 ?>
@@ -21,7 +21,7 @@
   <?php 
 
   if(!empty($_SESSION['e_role'])){
-    echo '<script type="text/javascript">window.location.href="dashboard.php";</script>';
+    echo '<script type="text/javascript">window.location.href="dashboard/dashboard.php";</script>';
   }
   else
   {
@@ -35,7 +35,7 @@
           if($_POST['pass']=="admin")
               {
                 $_SESSION['e_role']="admin";
-                echo '<script type="text/javascript">window.location.href="dashboard.php";</script>';
+                echo '<script type="text/javascript">window.location.href="dashboard/dashboard.php";</script>';
                 // header('location:employee.php');
               }
           else
@@ -59,7 +59,7 @@
               $_SESSION['user_id'] = $row_id['id'];
              
              
-              echo '<script type="text/javascript">window.location.href="dashboard.php";</script>';
+              echo '<script type="text/javascript">window.location.href="dashboard/dashboard.php";</script>';
                     // header('location:employee.php');
 
                   }

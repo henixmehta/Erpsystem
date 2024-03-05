@@ -1,7 +1,9 @@
 <?php 
-   include 'sidebar.php';
-   include 'connection.php';
+
+include '../sidebar/sidebar.php';
+include '../connection/connection.php';
 ?>
+   <main class="main-content">
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,11 +16,11 @@
         .error {
       color: red;
     }
-
+    
    </style>
 </head>
+
 <body>
-	<main class="main-content">
    <div class="conatiner-fluid content-inner mt-n5 py-0">
       <div>
          <div class="row">
@@ -27,8 +29,8 @@
                <div class="card">
                   <div class="card-header d-flex justify-content-between">
                      
-                     <h4 class="card-title">Teams List</h4>
-                    <a href="addclientproject.php"> <button class="btn btn-primary">Add</button></a>
+                     <h4 class="card-title">Employee List</h4>
+                    <a href="employee.php"> <button class="btn btn-primary">Add</button></a>
                   </div>
                   <div class="card-body">         
                      <div class="card-body px-0">
@@ -38,40 +40,50 @@
                   <table id="user-list-table" class="table table-striped" role="grid" data-bs-toggle="data-table">
                      <thead>
                         <tr class="ligth">
-                           <th>Client Name / Compney Name</th>
-                           <th>Client_Image / Compney_image</th>
-                           <th>Project_name</th>
-                           <th>Contect</th>
-                           <th>Team_name</th>
-                           <th>Project_language</th>
+                           <th>ID</th>
+                           <th>Employee name</th>
+                           <th>Role</th>
+                           <th>Birthdate</th>
+                           <th>Mobile No.</th>
+                           <th>Email</th>
+                           <th>Team name</th>
+                           <th>Join date</th>
+                           <th>Exprience</th>
+                           <th>Salary</th>
+                           <th>Compney email</th>
+                           <th>Password</th>
                            <th>Status</th>
-                           <th>Project_Description</th>
                            <th style="min-width: 100px">Action</th>
                         </tr>
                      </thead>
-                     <tbody>
-                     <?php
-                        $q = "select * from project" ;
+               <tbody>                 
+                  <?php
+                        $q = "select * from employee" ;
                         $data=mysqli_query($conn,$q);
                         while($row=mysqli_fetch_array($data))
                         {       
                         ?>
                         <tr>
-                        <td><?php echo $row['p_client_name']?></td>                        
-                        <td><img src="./storage/clientproject/<?php echo $row['com_img']; ?>" style="max-width: 100px; max-height: 100px; margin-left:50px;"> </td>
-                        <td><?php echo $row['p_name']?></td>
-                        <td><?php echo $row['p_client_mob']?></td>
-                        <td><?php echo $row['t_name']?></td>
-                        <td><?php echo $row['p_lan']?></td>
+                        <td><?php echo $row['id']?></td>
+                        <td><?php echo $row['e_fname']." ". $row['e_lname']?></td>
+                        <td><?php echo $row['e_role']?></td>
+                        <td><?php echo $row['e_bdate']?></td>
+                        <td><?php echo $row['e_mob']?></td>                      
+                        <td><?php echo $row['e_email']?></td>
+                        <td><?php echo $row['e_team_name']?></td>                   
+                        <td><?php echo $row['e_joindate']?></td>
+                        <td><?php echo $row['e_exp']?></td>
+                        <td><?php echo $row['e_salary']?></td>                       
+                        <td><?php echo $row['e_com_email']?></td>
+                        <td><?php echo md5($row['e_pwd'])?></td>
                         <td><?php 
-                        $status = $row['p_status'];
+                        $status = $row['e_status'];
                         if($status == "active" || $status == "Active" )
                         {
                            ?>
                             <span class="badge bg-primary">Active</span>
                            <?php
                         }
-                        
                         else
                         {  
                            ?>
@@ -80,12 +92,9 @@
                         }
                         ?>
                         </td>
-                        <td><?php echo $row['p_des']?></td>
-    
-                        <td>
-                           
-                        <!-- update -->
-                           <a class="btn btn-sm btn-icon btn-warning" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit" data-original-title="Edit" href="updateproject.php?id=<?php echo $row['id']?>">
+                        <td>                           
+                      <!-- update -->
+                           <a class="btn btn-sm btn-icon btn-warning" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit" data-original-title="Edit" href="updateemployelist.php?id=<?php echo $row['id']?>">
                               <span class="btn-inner">
                                  <svg class="icon-20" width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M11.4925 2.78906H7.75349C4.67849 2.78906 2.75049 4.96606 2.75049 8.04806V16.3621C2.75049 19.4441 4.66949 21.6211 7.75349 21.6211H16.5775C19.6625 21.6211 21.5815 19.4441 21.5815 16.3621V12.3341" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
@@ -95,7 +104,7 @@
                               </span>
                            </a>
                            <!-- delete button -->            
-                           <a class="btn btn-sm btn-icon btn-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"  href="deleteproject.php?id=<?php echo $row['id']?>" >
+                           <a class="btn btn-sm btn-icon btn-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"  href="deleteemployelist.php?id=<?php echo $row['id']?>" >
                               <span class="btn-inner">
                                  <svg class="icon-20" width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="currentColor">
                                     <path d="M19.3248 9.46826C19.3248 9.46826 18.7818 16.2033 18.4668 19.0403C18.3168 20.3953 17.4798 21.1893 16.1088 21.2143C13.4998 21.2613 10.8878 21.2643 8.27979 21.2093C6.96079 21.1823 6.13779 20.3783 5.99079 19.0473C5.67379 16.1853 5.13379 9.46826 5.13379 9.46826" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
@@ -110,9 +119,8 @@
                         <?php  
                         }
                         ?>
-
-                     </tbody>
-                  </table>
+               </tbody>
+            </table>
                </div>
                </div>
                   

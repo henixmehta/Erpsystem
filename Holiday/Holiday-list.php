@@ -1,14 +1,14 @@
 <?php 
-   include '../sidebar.php';
-   include '../connection.php';  
+   include '../sidebar/sidebar.php';
+   include '../connection/connection.php';  
 ?>
 <html>
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Holiday-List</title>
-        <link rel="stylesheet" href="../css/main.min.css">
-        <link rel="stylesheet" href="../sidebar.css">
+        <!-- <link rel="stylesheet" href="../css/main.min.css">
+        <link rel="stylesheet" href="../sidebar.css"> -->
     </head>
     <body>
         <main class="main-content">
@@ -20,7 +20,7 @@
                                 <h4 class="card-title">
                                     Holiday List
                                 </h4>
-                                <a href="employee.php">
+                                <a href="Holiday-insert.php">
                                      <button class="btn btn-primary">
                                         Add
                                     </button>

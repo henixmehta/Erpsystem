@@ -1,6 +1,6 @@
 <?php 
-   include 'sidebar.php';
-   include 'connection.php';
+   include '../sidebar/sidebar.php';
+   include '../connection/connection.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -59,6 +59,8 @@ if(isset($_POST['sub_btn1']))
       {
          $q = "insert into role values(NULL,'".$_POST['role_name']."','".$_POST['r_status']."')";
          $insert = mysqli_query($conn,$q);
+         echo '<script type="text/javascript">window.location.href="clientproject.php";</script>';
+
       }
     }
 ?>
