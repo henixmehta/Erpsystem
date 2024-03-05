@@ -69,6 +69,8 @@ if (isset($_POST['sub_btn1'])) {
                                         Send your  Holiday Request Form to us
                                     </h5>
                                 </div>
+                                <a href="Holiday-list.php"><button class="btn btn-primary" style="margin:10 10 10 10 "> back</button></a>
+
                             </div>
                             <div class="card-body">
                                 <div class="new-employee-info">

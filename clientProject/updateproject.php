@@ -18,24 +18,7 @@
    </style>
 <?php 
            
-                // $pid=$_GET['id'];
-                
-                // if(isset($_GET['id']))
-                // {
-                //     $qry="select * from project where id='".$pid."'";
-                //     $data=mysqli_query($conn,$qry);
-                //     $row=mysqli_fetch_array($data);
-                // }
-
-                // if(isset($_POST['sub_btn']))
-                // {
-
-                //         $q = "update project set p_name='".$_POST['p_name']."',p_client_name='".$_POST['p_client_name']."',t_name='".$_POST['t_name']."',p_lan='".$_POST['p_lan']."',p_client_mob='".$_POST['p_client_mob']."',com_img='".$_POST['com_img']."',p_status='".$_POST['p_status']."' where id='".$pid."' ";
-                //       mysqli_query($conn,$q);
-
-                //     header("location:clientproject.php");
-                // }
-
+            
 
                 
                 $pid = $_GET['id'];
@@ -105,101 +88,103 @@
                 }
                 ?>
                 
-<body>
-<main class="main-content">
-		<div class="iq-navbar-header" style="height: 100px;"></div>
-        <div class="conatiner-fluid content-inner mt-n5 py-0"><div>
-        <div class="row">   
-            <div class="col-xl-12 col-lg-8">
-               <div class="card">
-                  <div class="card-header d-flex justify-content-between">
-                     <div class="header-title">
-                        <h4 class="card-title">Update client Project Information</h4>
-                     </div>
-                  </div>
-                  <div class="card-body">
-                     <div class="new-Team-info">
-                     <!-- form-->         
-		<form method="POST" enctype="multipart/form-data">
-               <div class="form-group">
-                           <div class="profile-img-edit position-relative">
-							<!-- insert add profile -->
-                           </div>
-                           
-                           <div class="row">
-                               <div class="form-group col-md-15">
-                                   <label class="form-label" for="fname">Client / Compney Name:</label>
-                                   <input type="text" class="form-control" id="tname" placeholder="Client / Compney  Name" name="p_client_name" value="<?php echo $row['p_client_name']; ?>">
-                                                             
-                                </div>
-                                <div class="form-group col-md-15">
-                                    <label class="form-label" for="Degree"> Client / Compney  Image </label>
-                                    <input type="file" class="form-control" id="Degree" placeholder="Client / Compney  Image"  name="com_img">
-                                    <div><?php echo $row['com_img'];?></div>
-                                   
-                                </div>
-                                <div class="form-group col-md-15">
-                                    <label class="form-label" for="fname">Project Name:</label>
-                                    <input type="text" class="form-control" id="tname" placeholder="Project Name" name="p_name" value="<?php echo $row['p_name']; ?>">
-                                   
-                                </div>
-                                <div class="form-group col-md-15">
-                                    <label class="form-label" for="fname">Client / Compney contact:</label>
-                                    <input type="text" class="form-control" id="tname" placeholder="Client / Compney  contact" name="p_client_mob" value="<?php echo $row['p_client_mob']; ?>">
-                                   
-                                </div>
-                                <div class="form-group">
-                                 <div class="form-group col-md-15">
-                                 <label class="form-label" for="fname">Project Language:</label>
-                                 <input type="text" class="form-control" id="tname" placeholder="Project Language" name="p_lan" value="<?php echo $row['p_lan']; ?>">
-                              </div>
+            <body>
+                <main class="main-content">
+                        <div class="iq-navbar-header" >
+                        <div class="conatiner-fluid content-inner mt-n5 py-0"><div>
+                        <div class="row">   
+                            <div class="col-xl-12 col-lg-8">
+                            <div class="card">
+                                <div class="card-header d-flex justify-content-between">
+                                    <div class="header-title">
+                                        <h4 class="card-title">Update client Project Information</h4>
+                                    </div>
+                                    <a href="clientproject.php"><button class="btn btn-primary" style="margin:10 10 10 10 "> back</button></a>
 
-                              <fieldset class="mb-3">
-                              <div class="form-group col-md-15">
-                                 <label class="form-label" for="add1">Project Description</label>
-                                 <input type="text" class="form-control" id="add1" placeholder="Project Description" name="p_des" value="<?php echo $row['p_des']; ?>">
-                              </div>
-                              
+                                </div>
+                                <div class="card-body">
+                                    <div class="new-Team-info">
+                                    <!-- form-->         
+                        <form method="POST" enctype="multipart/form-data">
                             <div class="form-group">
-                            <label class="form-label">Team Name:</label>
-                            <select name="t_name" class="selectpicker form-control" data-style="py-0" value="<?php echo $row['t_name'] ?>" required>
-                                <option>Select</option>
-                                <?php
-                                // Assuming $conn is your database connection object
-                                $t_query = "SELECT t_name, t_status FROM team";
-                                $result = mysqli_query($conn, $t_query);
-                                if(mysqli_num_rows($result) > 0) {
-                                    while($row = mysqli_fetch_assoc($result)) {
-                                        $selected = ($row['t_name'] == $team_name) ? 'selected' : ''; 
-                                        if($row['t_status'] == "active") {
-                                            echo "<option $selected>".$row['t_name']."</option>";
-                                        }
-                                    }
-                                }
-                                ?>
-                            </select>
+                                        <div class="profile-img-edit position-relative">
+                                            <!-- insert add profile -->
+                                        </div>
+                                        
+                                        <div class="row">
+                                            <div class="form-group col-md-15">
+                                                <label class="form-label" for="fname">Client / Compney Name:</label>
+                                                <input type="text" class="form-control" id="tname" placeholder="Client / Compney  Name" name="p_client_name" value="<?php echo $row['p_client_name']; ?>">
+                                                                            
+                                                </div>
+                                                <div class="form-group col-md-15">
+                                                    <label class="form-label" for="Degree"> Client / Compney  Image </label>
+                                                    <input type="file" class="form-control" id="Degree" placeholder="Client / Compney  Image"  name="com_img">
+                                                    <div><?php echo $row['com_img'];?></div>
+                                                
+                                                </div>
+                                                <div class="form-group col-md-15">
+                                                    <label class="form-label" for="fname">Project Name:</label>
+                                                    <input type="text" class="form-control" id="tname" placeholder="Project Name" name="p_name" value="<?php echo $row['p_name']; ?>">
+                                                
+                                                </div>
+                                                <div class="form-group col-md-15">
+                                                    <label class="form-label" for="fname">Client / Compney contact:</label>
+                                                    <input type="text" class="form-control" id="tname" placeholder="Client / Compney  contact" name="p_client_mob" value="<?php echo $row['p_client_mob']; ?>">
+                                                
+                                                </div>
+                                                <div class="form-group">
+                                                <div class="form-group col-md-15">
+                                                <label class="form-label" for="fname">Project Language:</label>
+                                                <input type="text" class="form-control" id="tname" placeholder="Project Language" name="p_lan" value="<?php echo $row['p_lan']; ?>">
+                                            </div>
+
+                                            <fieldset class="mb-3">
+                                            <div class="form-group col-md-15">
+                                                <label class="form-label" for="add1">Project Description</label>
+                                                <input type="text" class="form-control" id="add1" placeholder="Project Description" name="p_des" value="<?php echo $row['p_des']; ?>">
+                                            </div>
+                                            
+                                            <div class="form-group">
+                                            <label class="form-label">Team Name:</label>
+                                            <select name="t_name" class="selectpicker form-control" data-style="py-0" value="<?php echo $row['t_name'] ?>" required>
+                                                <option>Select</option>
+                                                <?php
+                                                // Assuming $conn is your database connection object
+                                                $t_query = "SELECT t_name, t_status FROM team";
+                                                $result = mysqli_query($conn, $t_query);
+                                                if(mysqli_num_rows($result) > 0) {
+                                                    while($row = mysqli_fetch_assoc($result)) {
+                                                        $selected = ($row['t_name'] == $team_name) ? 'selected' : ''; 
+                                                        if($row['t_status'] == "active") {
+                                                            echo "<option $selected>".$row['t_name']."</option>";
+                                                        }
+                                                    }
+                                                }
+                                                ?>
+                                            </select>
+                                            </div>
+                        
+                                            <legend>Status:</legend>
+                                            <div class="form-check">
+                                                <input type="radio" class="form-check-input" name="p_status" value="active"   id="Active" checked>
+                                                <label class="form-check-label" for="Active">Active</label>
+                                            </div>
+                                            <div class="mb-3 form-check">
+                                                <input type="radio" class="form-check-input" name="p_status" value="inactive">
+                                                <label class="form-check-label" for="Inactive">Inactive</label>
+                                            </div>
+                                        </fieldset> 
+                                        <input type="submit" value="Update" class="btn btn-primary" name="sub_btn">
+                                        </form>
+                                    </div>
+                                </div>
                             </div>
-        
-                            <legend>Status:</legend>
-                            <div class="form-check">
-                                <input type="radio" class="form-check-input" name="p_status" value="active"   id="Active" checked>
-                                <label class="form-check-label" for="Active">Active</label>
                             </div>
-                            <div class="mb-3 form-check">
-                                <input type="radio" class="form-check-input" name="p_status" value="inactive">
-                                <label class="form-check-label" for="Inactive">Inactive</label>
-                            </div>
-                         </fieldset> 
-                         <input type="submit" value="Update" class="btn btn-primary" name="sub_btn">
-                        </form>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </div>
-      </div>
-   </main>
-</div>
-</body>
+                        </div>
+                    </div>
+                    </div>
+                </main>
+          
+        </body>
 </html>    

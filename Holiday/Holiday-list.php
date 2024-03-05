@@ -1,6 +1,7 @@
 <?php 
    include '../sidebar/sidebar.php';
    include '../connection/connection.php';  
+   
 ?>
 <html>
     <head>
@@ -20,11 +21,20 @@
                                 <h4 class="card-title">
                                     Holiday List
                                 </h4>
+                               
+                    <!-- set session -->
+                        <?php
+                        if($_SESSION['e_role']=="admin")
+                        {
+                            ?>
                                 <a href="Holiday-insert.php">
-                                     <button class="btn btn-primary">
+                                    <button class="btn btn-primary">
                                         Add
                                     </button>
                                 </a>
+                            <?php
+                        }
+                                         ?>
                             </div>
                             <div class="card-body">         
                                 <div class="card-body px-0">
@@ -55,9 +65,19 @@
                                                         <th>
                                                             Status
                                                         </th>
+
+                                                        <!-- set action -->
+                                                        <?php
+                                                        if($_SESSION['e_role']=="admin")
+                                                        {
+                                                            ?>
+                                                        <td>       
                                                         <th style="min-width: 100px">
                                                             Action
                                                         </th>
+                                                        <?php 
+                                                        }
+                                                        ?>
                                                     </tr>
                                                 </thead>
                                                 <tbody>                 
@@ -91,6 +111,12 @@
                                                                 }
                                                             ?>
                                                         </td>
+                                                        
+                                                        <!-- set action -->
+                                                        <?php
+                                                        if($_SESSION['e_role']=="admin")
+                                                        {
+                                                            ?>
                                                         <td>                           
                                                             <!-- update -->
                                                             <a class="btn btn-sm btn-icon btn-warning" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit" data-original-title="Edit" href="Holiday-update.php?id=<?php echo $row['id']?>">
@@ -113,6 +139,9 @@
                                                                 </span>
                                                             </a>
                                                         </td>
+                                                        <?php
+                                                        }
+                                                        ?>
 
                                                     </tr>
                                                     <?php  

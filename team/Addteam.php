@@ -51,6 +51,8 @@
                      <div class="header-title">
                         <h4 class="card-title">Add New Team Information</h4>
                      </div>
+                     <a href="teamtable.php"><button class="btn btn-primary" style="margin:10 10 10 10 "> back</button></a>
+
                   </div>
                   <div class="card-body">
                      <div class="new-Team-info">
