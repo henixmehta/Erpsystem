@@ -44,7 +44,7 @@ if (isset($_POST['sub_btn'])) {
     
       // Handle image upload if a file is selected
       if (isset($_FILES["com_img"]) && $_FILES["com_img"]["error"] == 0) {
-        $targetDirectory = "storage/team/";
+        $targetDirectory = "../storage/team/";
         $targetFile = $targetDirectory . basename($_FILES["com_img"]["name"]);
         $uploadOk = 1;
         $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
@@ -93,7 +93,7 @@ if (isset($_POST['sub_btn'])) {
 ?>
 <main class="main-content">
 
-			<div class="iq-navbar-header" style="height: 100px;">
+			<div class="iq-navbar-header">
                <div class="container-fluid iq-container">
                   <div class="row">
                       <div class="col-md-12" id="header">

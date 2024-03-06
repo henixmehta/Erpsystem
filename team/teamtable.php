@@ -58,7 +58,7 @@
 
                         <tr>
                         <td><?php echo $row['t_name']?></td>
-                        <td><img src="./storage/team/<?php echo $row['t_img']; ?>" style="max-width: 100px; max-height: 100px; margin-left:50px;"> </td>
+                        <td><img src="../storage/team/<?php echo $row['t_img']; ?>" style="max-width: 100px; max-height: 100px; margin-left:50px;"> </td>
                         <td><?php echo $row['t_project_name']?></td>
                         <td><?php echo $row['t_des']?></td>
                         <td><?php echo $row['t_emp']?></td>

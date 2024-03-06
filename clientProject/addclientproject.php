@@ -23,7 +23,7 @@ include '../connection/connection.php';
        $project_file = $_FILES['com_img']['name'];
    
        // Specify the directory where you want to store the files
-       $upload_directory = 'storage/clientproject/';
+       $upload_directory = '../storage/clientproject/';
    
        // Create the full path for the uploaded files
        $project_target_path = $upload_directory . $project_file;

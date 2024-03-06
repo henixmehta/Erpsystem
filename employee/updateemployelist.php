@@ -77,7 +77,7 @@
               
                   // Handle file uploads for Degree and Resume
                   if (isset($_FILES['degree']) && $_FILES['degree']['error'] == 0) {
-                      $targetDirectory = "storage/employeedata/";
+                      $targetDirectory = "../storage/employeedata/";
                       $targetFileDegree = $targetDirectory . basename($_FILES["degree"]["name"]);
                       move_uploaded_file($_FILES["degree"]["tmp_name"], $targetFileDegree);
                   }

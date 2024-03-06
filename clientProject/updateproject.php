@@ -41,7 +41,7 @@
                 
                     // Handle image upload if a file is selected
                     if (isset($_FILES["com_img"]) && $_FILES["com_img"]["error"] == 0) {
-                        $targetDirectory = "storage/clientproject/";
+                        $targetDirectory = "../storage/clientproject/";
                         $targetFile = $targetDirectory . basename($_FILES["com_img"]["name"]);
                         $uploadOk = 1;
                         $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));

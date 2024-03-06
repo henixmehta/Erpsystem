@@ -98,7 +98,7 @@
             $resume_file = $_FILES['resume']['name'];
         
             // Specify the directory where you want to store the files
-            $upload_directory = 'storage/employeedata/';
+            $upload_directory = '../storage/employeedata/';
         
             // Create the full path for the uploaded files
             $degree_target_path = $upload_directory . $degree_file;

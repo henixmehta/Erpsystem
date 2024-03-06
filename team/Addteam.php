@@ -25,7 +25,7 @@
        $project_file = $_FILES['timg']['name'];
    
        // Specify the directory where you want to store the files
-       $upload_directory = 'storage/team/';
+       $upload_directory = '../storage/team/';
    
        // Create the full path for the uploaded files
        $project_target_path = $upload_directory . $project_file;
