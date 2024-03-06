@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-      <title>calender</title>
+      <title>Calender</title>
 <head>
         <!-- Fullcalender CSS -->
         <link rel='stylesheet' href='../vendor/fullcalendar/core/main.css' />

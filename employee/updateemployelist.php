@@ -23,7 +23,7 @@
 </script>
 
 
-	<title>Team</title>
+	<title>Project</title>
    <style>
    .error {
       color: red;

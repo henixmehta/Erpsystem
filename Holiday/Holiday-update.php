@@ -48,7 +48,7 @@ if (isset($_POST['sub_btn1'])) {
 <html>
 
 <head>
-    <!-- ... (your existing head content) ... -->
+   <title>Holiday</title>.. -->
 </head>
 
 <body>
