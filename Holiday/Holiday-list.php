@@ -34,7 +34,7 @@
                                 </a>
                             <?php
                         }
-                                         ?>
+                         ?>
                             </div>
                             <div class="card-body">         
                                 <div class="card-body px-0">
@@ -68,14 +68,13 @@
 
                                                         <!-- set action -->
                                                         <?php
-                                                        if($_SESSION['e_role']=="admin")
-                                                        {
-                                                            ?>
-                                                        <td>       
-                                                        <th style="min-width: 100px">
-                                                            Action
-                                                        </th>
-                                                        <?php 
+                                                            if($_SESSION['e_role']=="admin")
+                                                            {
+                                                            ?>       
+                                                            <th style="min-width: 100px">
+                                                                Action
+                                                            </th>
+                                                            <?php 
                                                         }
                                                         ?>
                                                     </tr>
