@@ -35,10 +35,15 @@
                                             if($_SESSION['e_role']=="user")
                                             {
                                                 ?>
-                                                    <button id="Punch_in" class="btn btn-primary" onclick="Punch_in()">Punch-in</button>
+                                                    <input type="button" id="punch_in" class="btn btn-primary" onclick="Punch_in()" name="punch-in">
+                                                    <input type="button" id="break_in" class="btn btn-primary" onclick="Break_in()" name="Break-in">
+                                                    <input type="button" id="break_out" class="btn btn-primary" onclick="break_out()" name="Break-out">
+                                                    <input type="button" id="Break_out" class="btn btn-primary" onclick="Break_out()" name="Break-out">
+                                                    
+                                                    <!-- <button id="Punch_in" class="btn btn-primary" onclick="Punch_in()">Punch-in</button>
                                                     <button id="Break_in" class="btn btn-primary" onclick="Break_in()" style="display:none"; >Break-in</button>
                                                     <button id="Break_out" class="btn btn-primary" onclick="Break_out()" style="display:none"; >Break-out</button>
-                                                    <button id="Punch_out" class="btn btn-primary" onclick="Punch_out()" style="display:none";>Punch-out</button>
+                                                    <button id="Punch_out" class="btn btn-primary" onclick="Punch_out()" style="display:none";>Punch-out</button> -->
                                                 <?php
                                             }
                                             ?>
