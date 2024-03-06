@@ -30,15 +30,19 @@
                             <div class="card-body d-flex justify-content-between align-items-center">
                                 <div class="card-title mb-0">
                                     <h4 class="mb-3">Calender</h4>
-                        <?php
-                        if($_SESSION['e_role']=="user")
-                        {
-                            ?>
-                                <button id="activateDiceBtn" class="btn btn-primary" onclick="activateDice()">Activate Dice</button>
-                            <?php
-                        }
-                        ?>
-                        
+                                        <form method="POST" enctype="multipart/form-data">
+                                            <?php
+                                            if($_SESSION['e_role']=="user")
+                                            {
+                                                ?>
+                                                    <button id="Punch_in" class="btn btn-primary" onclick="Punch_in()">Punch-in</button>
+                                                    <button id="Break_in" class="btn btn-primary" onclick="Break_in()" style="display:none"; >Break-in</button>
+                                                    <button id="Break_out" class="btn btn-primary" onclick="Break_out()" style="display:none"; >Break-out</button>
+                                                    <button id="Punch_out" class="btn btn-primary" onclick="Punch_out()" style="display:none";>Punch-out</button>
+                                                <?php
+                                            }
+                                            ?>
+                                        </form>
                                 </div>
                             </div>
                         </div>
@@ -70,20 +74,16 @@
         <script src='../js/plugins/calender.js'></script>
 </body>
 </html>
+<script>
+    function Punch_in() {
+        var breakInButton = document.getElementById('Break_in');
+        var breakOutButton = document.getElementById('Break_out');
+        var punchOutButton = document.getElementById('Punch_out');
 
+        breakInButton.style.display = 'inline-block';
+        breakOutButton.style.display = 'inline-block';
+        punchOutButton.style.display = 'inline-block';
 
-
-    <script>
-    function activateDice() {
-        const currentTime = new Date();
-        const currentHour = currentTime.getHours();
-
-        // Check if the current time is after 10 PM (22:00)
-        if (currentHour >= 22) {
-            // Add your dice activation logic here
-            alert("Dice activated!");
-        } else {
-            alert("Dice activation only allowed after 10 PM.");
-        }
+        document.getElementById('Punch_in').style.display = 'none';
     }
-    </script>
+</script>
