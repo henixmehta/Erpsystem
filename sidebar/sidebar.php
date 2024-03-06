@@ -1,3 +1,4 @@
+
 <?php
     include '../connection/connection.php';
     session_start();
@@ -15,6 +16,93 @@
                         padding-top: 5px;
                         
                      }
+
+                    .sidebar .navbar {
+                            height: 53px;
+                            padding-left: 147px;
+                            background-color: rgb(255 255 255 / 2%) !important
+                        }
+
+                        .sidebar.navbar-nav {
+                            margin: 0 auto; 
+                            display: flex; 
+                            justify-content: center; 
+                        }
+
+                    
+                        .sidebar .navbar-toggler {
+                            padding: 1.25rem 0.75rem;
+                            font-size: 1.25rem;
+                            line-height: 1;
+                            background-color: transparent;
+                            border: 1px solid transparent;
+                            border-radius: 0.25rem;
+                            transition: box-shadow .15s ease-in-out;
+                            }
+
+                            .sidebar .navbar a.nav-link {
+                            color: rgb(0 173 255 / 100%) !important;
+                        }
+
+                        .sidebar .navbar a {
+                            font-size: 14px;
+                            font-weight: bold;
+                            font-family: 'Bell MT';
+                            text-transform: uppercase;
+                            text-decoration: none;
+                        }
+
+                        a {
+                            text-decoration: none;
+                            color: black;
+                        }
+
+                        .sidebar .navbar a:hover {
+                            color: darkblue; /* Change color on hover */
+                        }
+
+                        .navbar .dropdown-menu .dropdown-item:focus {
+                            color: black;
+                            background-color: transparent;
+                        }
+
+                        .nav-item {
+                            margin-right: 10px;
+                        }
+
+                        .sidebar .logo_span {
+                            font-size: 24px;
+                            font-weight: bold;
+                            font-family: 'Bell MT';
+                            text-transform: capitalize;
+                            display: inline-block;
+                            margin-top: 10px;
+                        }
+                        .sidebar .navbar {
+            height: 53px;
+            padding-left: 147px;
+            background-color: rgb(255 255 255 / 2%) !important
+          }
+
+          .sidebar .navbar-nav {
+            margin: 0 auto; 
+            display: flex; 
+            justify-content: center; 
+        }
+
+          
+          .sidebar .navbar-brand{
+                 color: rgb(0 173 255 / 90%);
+      
+          }
+
+        .sidebar a {
+    font-size: 14px;
+    font-weight: bold;
+    font-family: 'Bell MT';
+    text-transform: uppercase;
+    text-decoration: none;
+}
             </style>
              <?php
                     $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
@@ -26,6 +114,7 @@
                     $row_id = mysqli_fetch_array($data);
                     
                 ?>
+        
                 <main class="main-content">
                             <div class="iq-navbar-header" style="height: 215px;">
                            <div class="card col-md-12" style="margin-top:10px;"> 
@@ -65,12 +154,14 @@
                             <rect x="10.5562" y="-0.556152" width="28" height="4" rx="2" transform="rotate(45 10.5562 -0.556152)" fill="currentColor"/>
                         </svg>
                     </div>
-                </div>
-                <!--logo End--> 
-                <h4 class="logo-title">Com name</h4>
-            </a>
-            
-        </div>
+                    <div class="container">
+                    <a class="navbar-brand" href="#">
+                    <?php
+                        echo '<img src="../pictures/erp.png" alt="Company Logo" width="40" height="40" class="mr-2">';
+                    ?>
+                    APEXTECH
+                    </a>    
+                    </div>
         <!-- <div class="sidebar-body pt-0 data-scrollbar"> -->
      <div class="sidebar-body pt-0 data-scrollbar"  style="max-height: calc(100vh - 100px); overflow-y: auto;">
         <div class="sidebar-body pt-0 data-scrollbar"  style="max-height: calc(100vh - 100px); overflow-y: auto;">
