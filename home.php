@@ -295,7 +295,7 @@
             text-transform: uppercase;
             color: #fff8;
             font-family: 'Georgia', serif;
-            margin-left:330px;
+            margin-left:0px;
             padding-top:20px;
           }
        
