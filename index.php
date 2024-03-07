@@ -29,22 +29,23 @@
 	  //Login Script Start
     if(isset($_POST['sub_btn']))
     {
-      if($_POST['email']=="admin@gmail.com")
-      {
+      // if($_POST['email']=="admin@gmail.com")
+      // {
         
-          if($_POST['pass']=="admin")
-              {
-                $_SESSION['e_role']="admin";
-                echo '<script type="text/javascript">window.location.href="dashboard/dashboard.php";</script>';
-                // header('location:employee.php');
-              }
-          else
-              {
-                echo '<script>alert("enter valid email & password")</script>';
-                    }
-                  }
-                  else
-                  {
+      //     if($_POST['pass']=="admin")
+      //         {
+      //           $_SESSION['e_role']="admin";
+      //           echo '<script type="text/javascript">window.location.href="dashboard/dashboard.php";</script>';
+      //           // header('location:employee.php');
+      //         }
+      //     else
+      //         {
+      //           echo '<script>alert("enter valid email & password")</script>';
+      //               }
+      //             }
+      //             else
+      //             {
+
 
             $q="select * from employee where e_com_email='".$_POST['email']."' and e_pwd='".$_POST['pass']."'";
             $data=mysqli_query($conn,$q);
@@ -52,16 +53,22 @@
             
             if($row_check_login > 0)
             {   
+                $row_id = mysqli_fetch_array($data);
               
-              $row_id = mysqli_fetch_array($data);
-              $_SESSION['e_role']="user";
+              if($row_id['e_role'] == 'admin')
+              {
+                $_SESSION['e_role']="admin";
+                           echo '<script type="text/javascript">window.location.href="dashboard/dashboard.php";</script>';
+                        // header('location:employee.php');
+              }
+              elseif( $row_id['e_role'] == 'employee')
+              {
+                $_SESSION['e_role']="user";
 
-              $_SESSION['user_id'] = $row_id['id'];
-             
-             
-            echo '<script type="text/javascript">window.location.href="dashboard/dashboard.php";</script>';
-                    // header('location:employee.php');
-
+                $_SESSION['user_id'] = $row_id['id'];
+                echo '<script type="text/javascript">window.location.href="dashboard/dashboard.php";</script>';
+                // header('location:employee.php');
+              }
                   }
                   else
                   {
@@ -69,7 +76,7 @@
                   }
         }
       }
-    }
+    // }
        ?>
 
 <body>
