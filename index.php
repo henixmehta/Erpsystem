@@ -29,23 +29,7 @@
 	  //Login Script Start
     if(isset($_POST['sub_btn']))
     {
-      // if($_POST['email']=="admin@gmail.com")
-      // {
-        
-      //     if($_POST['pass']=="admin")
-      //         {
-      //           $_SESSION['e_role']="admin";
-      //           echo '<script type="text/javascript">window.location.href="dashboard/dashboard.php";</script>';
-      //           // header('location:employee.php');
-      //         }
-      //     else
-      //         {
-      //           echo '<script>alert("enter valid email & password")</script>';
-      //               }
-      //             }
-      //             else
-      //             {
-
+  
 
             $q="select * from employee where e_com_email='".$_POST['email']."' and e_pwd='".$_POST['pass']."'";
             $data=mysqli_query($conn,$q);
