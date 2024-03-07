@@ -35,10 +35,15 @@
                                             if($_SESSION['e_role']=="user")
                                             {
                                                 ?>
-                                                    <button id="Punch_in" class="btn btn-primary" onclick="Punch_in()">Punch-in</button>
+                                                    <input type="button" id="punch_in" value="punch_in" class="btn btn-primary" onclick="Punch_in()" name="punch-in">
+                                                    <input type="button" id="break_in" value="break_in" class="btn btn-primary" onclick="Break_in()" name="Break-in">
+                                                    <input type="button" id="break_out" value="break_out" class="btn btn-primary" onclick="Break_out()" name="Break-out">
+                                                    <input type="button" id="punch_out" value="punch_out" class="btn btn-primary" onclick="Punch_out()" name="Punch-out">
+                                                    
+                                                    <!-- <button id="Punch_in" class="btn btn-primary" onclick="Punch_in()">Punch-in</button>
                                                     <button id="Break_in" class="btn btn-primary" onclick="Break_in()" style="display:none"; >Break-in</button>
                                                     <button id="Break_out" class="btn btn-primary" onclick="Break_out()" style="display:none"; >Break-out</button>
-                                                    <button id="Punch_out" class="btn btn-primary" onclick="Punch_out()" style="display:none";>Punch-out</button>
+                                                    <button id="Punch_out" class="btn btn-primary" onclick="Punch_out()" style="display:none";>Punch-out</button> -->
                                                 <?php
                                             }
                                             ?>
@@ -74,16 +79,39 @@
         <script src='../js/plugins/calender.js'></script>
 </body>
 </html>
-<script>
-    function Punch_in() {
-        var breakInButton = document.getElementById('Break_in');
-        var breakOutButton = document.getElementById('Break_out');
-        var punchOutButton = document.getElementById('Punch_out');
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#break_in").hide();
+            $("#break_out").hide();
+            $("#punch_out").hide();
+        });
 
-        breakInButton.style.display = 'inline-block';
-        breakOutButton.style.display = 'inline-block';
-        punchOutButton.style.display = 'inline-block';
+        function Punch_in() {
+            $("#punch_in").hide();
+            $("#break_in").show();
+            $("#break_out").show();
+            $("#punch_out").show();
+        }
 
-        document.getElementById('Punch_in').style.display = 'none';
-    }
-</script>
+        function Break_in() {
+            $("#punch_in").hide();
+            $("#break_in").hide();
+            $("#break_out").show();
+            $("#punch_out").show();
+        }
+
+        function Break_out() {
+            $("#punch_in").hide();
+            $("#break_in").hide();
+            $("#break_out").hide();
+            $("#punch_out").show();
+        }
+
+        function Punch_out() {
+            $("#punch_in").hide();
+            $("#break_in").hide();
+            $("#break_out").hide();
+            $("#punch_out").hide();
+        }
+    </script>

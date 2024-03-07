@@ -1,7 +1,6 @@
-
 <?php
-    session_start();
     include '../connection/connection.php';
+    session_start();
 ?>
 
         <link rel="stylesheet" href="../css/main.min.css">
@@ -16,93 +15,9 @@
                         padding-top: 5px;
                         
                      }
-
-                    .sidebar .navbar {
-                            height: 53px;
-                            padding-left: 147px;
-                            background-color: rgb(255 255 255 / 2%) !important
-                        }
-
-                        .sidebar.navbar-nav {
-                            margin: 0 auto; 
-                            display: flex; 
-                            justify-content: center; 
-                        }
-
-                    
-                        .sidebar .navbar-toggler {
-                            padding: 1.25rem 0.75rem;
-                            font-size: 1.25rem;
-                            line-height: 1;
-                            background-color: transparent;
-                            border: 1px solid transparent;
-                            border-radius: 0.25rem;
-                            transition: box-shadow .15s ease-in-out;
-                            }
-
-                            .sidebar .navbar a.nav-link {
-                            color: rgb(0 173 255 / 100%) !important;
-                        }
-
-                        .sidebar .navbar a {
-                            font-size: 14px;
-                            font-weight: bold;
-                            font-family: 'Bell MT';
-                            text-transform: uppercase;
-                            text-decoration: none;
-                        }
-
-                        a {
-                            text-decoration: none;
-                            color: black;
-                        }
-
-                        .sidebar .navbar a:hover {
-                            color: darkblue; /* Change color on hover */
-                        }
-
-                        .navbar .dropdown-menu .dropdown-item:focus {
-                            color: black;
-                            background-color: transparent;
-                        }
-
-                        .nav-item {
-                            margin-right: 10px;
-                        }
-
-                        .sidebar .logo_span {
-                            font-size: 24px;
-                            font-weight: bold;
-                            font-family: 'Bell MT';
-                            text-transform: capitalize;
-                            display: inline-block;
-                            margin-top: 10px;
-                        }
-                        .sidebar .navbar {
-            height: 53px;
-            padding-left: 147px;
-            background-color: rgb(255 255 255 / 2%) !important
-          }
-
-          .sidebar .navbar-nav {
-            margin: 0 auto; 
-            display: flex; 
-            justify-content: center; 
-        }
-
-          
-          .sidebar .navbar-brand{
-                 color: rgb(0 173 255 / 90%);
-      
-          }
-
-        .sidebar a {
-    font-size: 14px;
-    font-weight: bold;
-    font-family: 'Bell MT';
-    text-transform: uppercase;
-    text-decoration: none;
-}
+                     .logo-title{
+                        color: #3a57e8;
+                     }
             </style>
              <?php
                     $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
@@ -114,10 +29,9 @@
                     $row_id = mysqli_fetch_array($data);
                     
                 ?>
-        
                 <main class="main-content">
-                            <div class="iq-navbar-header" style="height: 130px;">
-                           <div class="card col-md-12" style="margin-top:20px;"> 
+                            <div class="iq-navbar-header" style="height: 215px;">
+                           <div class="card col-md-12" style="margin-top:10px;"> 
                                 <div class="container-fluid iq-container">
                                     <div class="row">
                                         <div class="col-md-12" id="header">
@@ -143,8 +57,8 @@
           
                 <!--Logo start-->
                 <div class="logo-main">
-                    <div class="logo-normal">
-                       
+                    <div class="logo-normal" style="padding-left:5px">
+                     <img src="../pictures/erp.png" alt="Company Logo" width="50" height="50" class="mt-2 ms-2">
                     </div>
                     <div class="logo-mini">
                         <svg class=" icon-30" viewBox="0 0 30 30" fill="none"  >
@@ -154,14 +68,11 @@
                             <rect x="10.5562" y="-0.556152" width="28" height="4" rx="2" transform="rotate(45 10.5562 -0.556152)" fill="currentColor"/>
                         </svg>
                     </div>
-                    <div class="container">
-                    <a class="navbar-brand" href="#">
-                    <?php
-                        echo '<img src="../pictures/erp.png" alt="Company Logo" width="40" height="40" class="mr-2">';
-                    ?>
-                    APEXTECH
-                    </a>    
-                    </div>
+                </div>
+                <!--logo End--> 
+                <h4 class="logo-title ms-3">APEXTECH</h4>
+        </div>
+        
         <!-- <div class="sidebar-body pt-0 data-scrollbar"> -->
      <div class="sidebar-body pt-0 data-scrollbar"  style="max-height: calc(100vh - 100px); overflow-y: auto;">
         <div class="sidebar-body pt-0 data-scrollbar"  style="max-height: calc(100vh - 100px); overflow-y: auto;">
@@ -175,12 +86,12 @@
                             <span class="mini-icon">-</span>
                         </a>
                     </li>
-                <?php
+                    <?php
 
-                if(isset($_SESSION['e_role']))
-                {
+                    if(isset($_SESSION['e_role']))
+                    {
 
-
+               
                     if($_SESSION['e_role']=="admin")
                     {
                         ?>
@@ -212,17 +123,19 @@
                                         <path opacity="0.4" d="M17.523 7.39595V8.86667C17.1673 8.7673 16.7913 8.71761 16.4052 8.71761H15.7447V7.39595C15.7447 5.37868 14.0681 3.73903 12.0053 3.73903C9.94257 3.73903 8.26594 5.36874 8.25578 7.37608V8.71761H7.60545C7.20916 8.71761 6.83319 8.7673 6.47754 8.87661V7.39595C6.4877 4.41476 8.95692 2 11.985 2C15.0537 2 17.523 4.41476 17.523 7.39595Z" fill="currentColor"></path>
                                     </svg>
                                 </i>
-                                <span class="item-name">Employee</span>
+                                <span class="item-name"> Employee</span>
                             </a>
                         </li>
                         <?php
                     }
-                }
-                else
-                {
-                        header("Location: ../spicalpages/errorpage.php");
-                }
-                ?>
+                    }
+                    elseif(empty($_SESSION['e_role']))
+                    {
+                        echo '<script type="text/javascript">window.location.href="../spicalpages/errorpage.php";</script>';
+
+                            // header("Location: ../spicalpages/errorpage.php");
+                    }
+                    ?>
                     <li class="nav-item">
                         <a class="nav-link " aria-current="page" href="../dashboard/dashboard.php">
                             <i class="icon">
@@ -235,9 +148,9 @@
                         </a>
                     </li>
                     <?php 
-                if($_SESSION['e_role']=="admin")
-                {
-                    ?>
+                    if($_SESSION['e_role']=="admin")
+                    {
+                        ?>
                         <li class="nav-item">
                        <a class="nav-link" data-bs-toggle="collapse" href="#sidebar-role" role="button" aria-expanded="false" aria-controls="sidebar-role">
                            <i class="icon">
@@ -329,9 +242,9 @@
                             </li>
                         </ul>
                     </li>
-                <?php 
-                }
-                ?>
+                    <?php 
+                    }
+                    ?>
                     <li class="nav-item">
                         <a class="nav-link" data-bs-toggle="collapse" href="#sidebar-Attendence" role="button" aria-expanded="false" aria-controls="sidebar-Attendence">
                             <i class="icon">
@@ -362,7 +275,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link " href="">
+                                <a class="nav-link " href="../leave/leave-display.php">
                                     <i class="icon">
                                         <svg class="icon-10"   width="10" viewBox="0 0 24 24" fill="currentColor">
                                             <g>
