@@ -22,8 +22,11 @@
           body{
             margin-top: 62px;
           }
+          
           form {
             background-color:lightgray;
+            /* height:100%;
+            width:100%; */
           }
 
           .background-container {
@@ -38,6 +41,7 @@
             width: 100%;
           }
 
+          
           /* heading */
           .texth {
             text-align: center;
@@ -64,6 +68,15 @@
           }
 
         /* navbar */
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            align-items: center;
+        }
+
           .navbar {
             height: 53px;
             padding-left: 147px;
@@ -243,35 +256,37 @@
            .bodyhow {
             font-family: Arial, sans-serif;
             background-color: rgba(255, 255, 255, 0.1);
-            width: 105%;
+            width: 100%;
             margin-top: 0px;
           }
       
           .container {
-            max-width: 1200px;
-            margin: 0px 14px;
-            padding: 0;
+              display: flex;
+              justify-content: center;
+              flex-direction: row-reverse;
+              flex-wrap: wrap;
           }
-          
+
           .row1 {
             display: flex;
-            flex-wrap: wrap;
-            justify-content: flex-end;
-            margin-bottom: 19px;
-            flex-direction: row;
-            align-content: space-between;
-            align-items: center;
-            margin-top: 0px;
-            text-align: center;
-            margin-right: -135px;
-            margin-left: 93px;
-          }          
+          flex-wrap: wrap;
+          justify-content: space-evenly;
+          margin-bottom: 19px;
+          flex-direction: row-reverse;
+          align-content: stretch;
+          align-items: center;
+          margin-top: 0px;
+          text-align: center;
+          margin-right: 0px;
+          margin-left: 0px;
+          padding: 0px;
+      }
 
-          .col-lg-4 {
-            flex-basis: calc(33.33% - 30px);
-            margin-bottom: 100px;
-          }
-          
+            .col-lg-4 {
+              flex-basis: calc(33.33% - 40px);
+              margin-bottom: 100px;
+            }   
+
           .step-heading{
             font-size: 27px;
             font-weight: bold;
@@ -455,8 +470,7 @@
             position: absolute;
             top: 0;
             left: 0;
-            width: 1550px;
-            width: 1521px;
+            width: 100%;
             height: 100%;
             background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
           }
@@ -470,7 +484,6 @@
             bottom: 8px;
             width: 100%;
             text-align: center;
-            margin-left:230px;
             font-family: Verdana, sans-serif;
           }
 
@@ -484,17 +497,18 @@
           }
 
           /* The dots/bullets/indicators */
-          .dot {
-            height: 15px;
-            width: 15px;
-            margin: 0 2px;
-            background-color: #bbb;
-            border-radius: 50%;
-            display: inline-block;
-            transition: background-color 0.6s ease;
-            margin-bottom:10px;
+          .dot { 
+            height: 15px; 
+            width: 15px; 
+            margin: 16px 2px; 
+            background-color: #bbb; 
+            border-radius: 50%; 
+            display: inline-block; 
+            transition: background-color 0.6s ease; 
+            margin-bottom: 10px; 
           }
 
+          
           .active {
             background-color: #717171;
           }
@@ -516,8 +530,8 @@
           }
 
           .setpic{
-            width: 1521px ;
-            height: 92.50%;
+            width: 100% ;
+            height: 100%;
           }
 
           
@@ -573,11 +587,6 @@
             margin-left: 0px; /* Reset margin for larger screens */
           }
         }
-
-        @media (max-width: 767px) {
-          
-        }
-
       </style>
 
 </head>
@@ -616,7 +625,9 @@
   <form id="form1" >
     <!-- slide images -->
     <!-- slids -->
-    <div class="mySlides fade">
+    <!-- services -->
+    <div class="bodyservice">
+      <div class="mySlides fade">
             <div class="numbertext">1 / 3</div>
             <img src="pictures/slide10.jpg" class="setpic">
             <div class="overlay"></div> 
@@ -635,23 +646,20 @@
             <img src="pictures/slide4.jpg " class="setpic">
             <div class="overlay"></div> 
             <div class="text">Effortlessly manage your business operations with our intuitive ERP system!</div>
-          </div>
+      </div>  
      </div>
+     <div style="text-align:center"><span class="dot"></span> <span class="dot"></span> <span class="dot"></span></div>
+
+
     <br>
 
-    <div style="text-align:center">
-      <span class="dot"></span> 
-      <span class="dot"></span> 
-      <span class="dot"></span> 
-    </div>  
       <div class="texth">
         <h4 class="welcome">welcome to</h4>
         <h1 class="crave" >ApexTech</h1>
         <!-- <h4 class="bold-text">Streamline Your Business <br />Operations with Apextech</h4> -->
       </div>
-      </form>
-      <!-- services -->
-      <div class="bodyservice background-container">
+    </form>
+ 
         <div class="service-section">
           <h2 class="service-heading"><i class="fas fa-cogs custom-question-icon"></i> Our Services</h2>
           <div class="row">
