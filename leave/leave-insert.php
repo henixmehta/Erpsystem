@@ -70,7 +70,7 @@
                                                     if(mysqli_num_rows($result) > 0) {
                                                         while($row = mysqli_fetch_assoc($result)) {
                                                             if($row['e_status'] == "active" || $row['e_status'] == "Active") {
-                                                                echo "<option>".$row['e_fname']."".$row['e_lname']."</option>";
+                                                                echo "<option>".$row['e_fname']."</option>";
                                                             }
                                                         }
                                                     }

@@ -80,10 +80,49 @@
                                                 </thead>
                                                 <tbody>                 
                                                     <?php
-                                                        $q = "select * from leaves" ;
+                                                      if($_SESSION['e_role']=="user")
+                                                      {
+
+                                                      $q = "select * from leaves where emp_name = '".$_SESSION['emp_fname']."' " ;
                                                         $data=mysqli_query($conn,$q);
                                                         while($row=mysqli_fetch_array($data))
-                                                        {       
+                                                        {
+                                                            ?>
+                                                        <tr>
+                                                        <td><?php echo $row['id']?></td>
+                                                        <td><?php echo $row['emp_name']?></td>
+                                                        <td><?php echo $row['s_date']?></td>
+                                                        <td><?php echo $row['e_date']?></td>                      
+                                                        <td><?php echo $row['leave_type']?></td>
+                                                        <td><?php echo $row['reason']?></td>                   
+                                                        <td>
+                                                            <?php 
+                                                                $status = $row['status'];
+                                                                if($status == "active" || $status == "Active" )
+                                                                {
+                                                            ?>
+                                                            <span class="badge bg-primary">Active</span>
+                                                            <?php
+                                                                }
+                                                                else
+                                                                {  
+                                                            ?>
+                                                                <span class="badge bg-danger">Inactive</span>
+                                                            <?php
+                                                                }
+                                                            ?>
+                                                        </td>
+                                                            <?php
+                                                        }
+                                                        
+                                                      }
+                                                      else
+                                                      {     
+                                                          $q = "select * from leaves" ;
+                                                          $data=mysqli_query($conn,$q);
+                                                          while($row=mysqli_fetch_array($data))
+                                                          {
+                                                               
                                                     ?>
                                                     <tr>
                                                         <td><?php echo $row['id']?></td>
@@ -140,10 +179,10 @@
                                                         <?php
                                                         }
                                                         ?>
-
-                                                    </tr>
-                                                    <?php  
+                                                        </tr>
+                                                        <?php  
                                                         }
+                                                    }
                                                     ?>
                                                 </tbody>
                                             </table>
