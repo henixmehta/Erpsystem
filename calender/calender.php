@@ -35,10 +35,10 @@
                                             if($_SESSION['e_role']=="user")
                                             {
                                                 ?>
-                                                    <input type="button" id="punch_in" class="btn btn-primary" onclick="Punch_in()" name="punch-in">
-                                                    <input type="button" id="break_in" class="btn btn-primary" onclick="Break_in()" name="Break-in">
-                                                    <input type="button" id="break_out" class="btn btn-primary" onclick="break_out()" name="Break-out">
-                                                    <input type="button" id="punch_out" class="btn btn-primary" onclick="Punch_out()" name="Punch-out">
+                                                    <input type="button" id="punch_in" value="punch_in" class="btn btn-primary" onclick="Punch_in()" name="punch-in">
+                                                    <input type="button" id="break_in" value="break_in" class="btn btn-primary" onclick="Break_in()" name="Break-in">
+                                                    <input type="button" id="break_out" value="break_out" class="btn btn-primary" onclick="Break_out()" name="Break-out">
+                                                    <input type="button" id="punch_out" value="punch_out" class="btn btn-primary" onclick="Punch_out()" name="Punch-out">
                                                     
                                                     <!-- <button id="Punch_in" class="btn btn-primary" onclick="Punch_in()">Punch-in</button>
                                                     <button id="Break_in" class="btn btn-primary" onclick="Break_in()" style="display:none"; >Break-in</button>
@@ -84,25 +84,34 @@
         $(document).ready(function(){
             $("#break_in").hide();
             $("#break_out").hide();
-            $("#Punch_out").hide();
+            $("#punch_out").hide();
         });
 
         function Punch_in() {
             $("#punch_in").hide();
             $("#break_in").show();
             $("#break_out").show();
-            $("#Punch_out").show();
+            $("#punch_out").show();
         }
 
         function Break_in() {
-            // Your Break_in logic here
-        }
-
-        function break_out() {
-            // Your break_out logic here
+            $("#punch_in").hide();
+            $("#break_in").hide();
+            $("#break_out").show();
+            $("#punch_out").show();
         }
 
         function Break_out() {
-            // Your Break_out logic here
+            $("#punch_in").hide();
+            $("#break_in").hide();
+            $("#break_out").hide();
+            $("#punch_out").show();
+        }
+
+        function Punch_out() {
+            $("#punch_in").hide();
+            $("#break_in").hide();
+            $("#break_out").hide();
+            $("#punch_out").hide();
         }
     </script>
