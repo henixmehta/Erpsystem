@@ -8,14 +8,15 @@
         // $emp_id = $_SESSION['user_id'];    
         //  $emp_id = $_SESSION['user_id']; 
 
+       $emp_name = $_POST['emp_name'];
        $s_date = $_POST['s_date'];
         $e_date = $_POST['e_date'];
         $l_type = $_POST['l_type'];
         $reason = $_POST['reason'];
         $status = $_POST['status'];
  
-        $q = "INSERT INTO leaves( emp_id , s_date, e_date, leave_type, reason , status) 
-        VALUES ('$emp_id', '$s_date', '$e_date', '$l_type', '$reason', '$status')";
+        $q = "INSERT INTO leaves( emp_name ,   s_date,    e_date,    leave_type, reason , status) 
+                          VALUES ('$emp_name', '$s_date', '$e_date', '$l_type', '$reason', '$status')";
 
         $insert = mysqli_query($conn, $q);
 
@@ -58,6 +59,24 @@
                                             </div>
                                         </div>
                                         <div class="row">
+                                             <div class="form-group">
+                                                <label class="form-label">Employee Name:</label>
+                                                <select class="selectpicker form-control" name="emp_name" data-style="py-0" required>
+                                                    
+                                                    <?php
+                                                    // Assuming $conn is your database connection object
+                                                    $query = "SELECT e_fname, e_status FROM employee";
+                                                    $result = mysqli_query($conn, $query);
+                                                    if(mysqli_num_rows($result) > 0) {
+                                                        while($row = mysqli_fetch_assoc($result)) {
+                                                            if($row['e_status'] == "active" || $row['e_status'] == "Active") {
+                                                                echo "<option>".$row['e_fname']."".$row['e_lname']."</option>";
+                                                            }
+                                                        }
+                                                    }
+                                                    ?>
+                                                </select>
+                                            </div>
                                             <div class="form-group col-md-12">
                                                 <label class="form-label" for="sdate">
                                                     Start date:
@@ -81,7 +100,7 @@
                                             </div>
                                             <div class="form-group col-md-12">
                                                 <label class="form-label" for="dric">
-                                                    Latter:
+                                                    Reason:
                                                 </label>
                                                 <input type="textarea" class="form-control" id="reason" name="reason" placeholder="reason" required>
                                             </div>

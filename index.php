@@ -59,7 +59,7 @@
               $_SESSION['user_id'] = $row_id['id'];
              
              
-              echo '<script type="text/javascript">window.location.href="dashboard/dashboard.php";</script>';
+            echo '<script type="text/javascript">window.location.href="dashboard/dashboard.php";</script>';
                     // header('location:employee.php');
 
                   }

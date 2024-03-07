@@ -129,9 +129,11 @@
                         <?php
                     }
                     }
-                    else
+                    elseif(empty($_SESSION['e_role']))
                     {
-                            header("Location: ../spicalpages/errorpage.php");
+                        echo '<script type="text/javascript">window.location.href="../spicalpages/errorpage.php";</script>';
+
+                            // header("Location: ../spicalpages/errorpage.php");
                     }
                     ?>
                     <li class="nav-item">

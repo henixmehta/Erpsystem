@@ -76,6 +76,24 @@ if (isset($_POST['sub_btn1'])) {
                                             </div>
                                         </div>
                                         <div class="row">
+                                        <div class="form-group">
+                                                <label class="form-label">Employee Name:</label>
+                                                <select class="selectpicker form-control" name="emp_name" data-style="py-0" required>
+                                                    
+                                                    <?php
+                                                    // Assuming $conn is your database connection object
+                                                    $query = "SELECT e_fname, e_status FROM employee";
+                                                    $result = mysqli_query($conn, $query);
+                                                    if(mysqli_num_rows($result) > 0) {
+                                                        while($row = mysqli_fetch_assoc($result)) {
+                                                            if($row['e_status'] == "active" || $row['e_status'] == "Active") {
+                                                                echo "<option>".$row['e_fname']."</option>";
+                                                            }
+                                                        }
+                                                    }
+                                                    ?>
+                                                </select>
+                                            </div>
                                             <div class="form-group col-md-12">
                                                 <label class="form-label" for="sdate">
                                                     Start date:

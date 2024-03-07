@@ -19,7 +19,7 @@
                         <div class="card">
                             <div class="card-header d-flex justify-content-between">
                                 <h4 class="card-title">
-                                    Holiday List
+                                    Leaves List
                                 </h4>
                                
                     <!-- set session -->
@@ -45,6 +45,9 @@
                                                     <tr class="ligth">
                                                         <th>
                                                             ID
+                                                        </th>
+                                                        <th>
+                                                            Emp name
                                                         </th>
                                                         <th>
                                                             start date
@@ -84,6 +87,7 @@
                                                     ?>
                                                     <tr>
                                                         <td><?php echo $row['id']?></td>
+                                                        <td><?php echo $row['emp_name']?></td>
                                                         <td><?php echo $row['s_date']?></td>
                                                         <td><?php echo $row['e_date']?></td>                      
                                                         <td><?php echo $row['leave_type']?></td>

@@ -59,7 +59,7 @@ if(isset($_POST['sub_btn1']))
       {
          $q = "insert into role values(NULL,'".$_POST['role_name']."','".$_POST['r_status']."')";
          $insert = mysqli_query($conn,$q);
-         echo '<script type="text/javascript">window.location.href="clientproject.php";</script>';
+         echo '<script type="text/javascript">window.location.href="roletable.php";</script>';
 
       }
     }

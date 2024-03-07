@@ -87,7 +87,9 @@
                       move_uploaded_file($_FILES["resume"]["tmp_name"], $targetFileResume);
                   }
               
-                  header("location: employee-list.php");
+                  // header("location: employee-list.php");
+                  echo '<script type="text/javascript">window.location.href="employee-list.php";</script>';
+
                   exit();
               }
               
