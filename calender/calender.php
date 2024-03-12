@@ -1,8 +1,101 @@
 <?php
 
-        include '../connection/connection.php';
-// session_start();
+include '../connection/connection.php';
+session_start();
+
+// Fetch Employee Data
+$uid = $_SESSION['user_id'];
+
+$qry = "SELECT * FROM employee WHERE id='".$uid."'";
+$data = mysqli_query($conn, $qry);
+$emp_row = mysqli_fetch_array($data);
+
+$qry = "SELECT * FROM attendance WHERE emp_id='".$uid."'";
+$attendance_data = mysqli_query($conn, $qry);
+$attendance_emp_row = mysqli_fetch_array($attendance_data);
+
+if (isset($_POST['punch_in'])) {
+    $today_date = date("Y-m-d");
+    
+    // Check if the user has already punched in for today
+    $check_query = "SELECT * FROM attendance WHERE emp_id = '$uid' AND DATE(punchin_time) = '$today_date'";
+    $result = mysqli_query($conn, $check_query);
+
+    if (mysqli_num_rows($result) > 0) {
+        // User has already punched in today
+        echo "You have already punched in for today.";
+    } else {
+        // User hasn't punched in today, proceed with insertion
+        $punchin_time = date("Y-m-d H:i:s");
+        $insert_query = "INSERT INTO attendance(`id`, `emp_id`, `punchin_time`) VALUES (NULL, '$uid', '$punchin_time')";
+        $insert = mysqli_query($conn, $insert_query);
+
+        if ($insert) {
+            echo "Punch in successful.";
+            // Update the attendance_emp_row variable to reflect the new punch in time
+            $attendance_emp_row['punchin_time'] = $punchin_time;
+        } else {
+            echo "Error: " . mysqli_error($conn);
+        }
+    }
+}
+
+
+
+if (isset($_POST['break_in'])) {
+    // Update the break in time in the database
+    $breakin_time = date("Y-m-d H:i:s");
+    $update_query = "UPDATE attendance SET breakin_time = '$breakin_time' WHERE emp_id = '$uid' AND DATE(punchin_time) = CURDATE()";
+    $update_result = mysqli_query($conn, $update_query);
+
+    if ($update_result) {
+        echo "Break In time updated successfully.";
+        // Update the attendance_emp_row variable to reflect the new break in time
+        $attendance_emp_row['breakin_time'] = $breakin_time;
+    } else {
+        echo "Error: " . mysqli_error($conn);
+    }
+}
+
+
+
+
+
+if (isset($_POST['break_out'])) {
+    // Update the break out time in the database
+    $breakout_time = date("Y-m-d H:i:s");
+    $update_query = "UPDATE attendance SET breakout_time = '$breakout_time' WHERE emp_id = '$uid' AND DATE(punchin_time) = CURDATE()";
+    $update_result = mysqli_query($conn, $update_query);
+
+    if ($update_result) {
+        echo "Break Out time updated successfully.";
+        // Update the attendance_emp_row variable to reflect the new break out time
+        $attendance_emp_row['breakout_time'] = $breakout_time;
+    } else {
+        echo "Error: " . mysqli_error($conn);
+    }
+}
+
+
+
+if (isset($_POST['punch_out'])) {
+    // Update the punch out time in the database
+    $punchout_time = date("Y-m-d H:i:s");
+    $update_query = "UPDATE attendance SET punchout_time = '$punchout_time' WHERE emp_id = '$uid' AND DATE(punchin_time) = CURDATE()";
+    $update_result = mysqli_query($conn, $update_query);
+
+    if ($update_result) {
+        echo "Punch Out time updated successfully.";
+        // Update the attendance_emp_row variable to reflect the new punch out time
+        $attendance_emp_row['punchout_time'] = $punchout_time;
+    } else {
+        echo "Error: " . mysqli_error($conn);
+    }
+}
 ?>
+
+
+
 
 <!doctype html>
 <html lang="en" dir="ltr">
@@ -18,89 +111,7 @@
         <link rel='stylesheet' href='../vendor/fullcalendar/list/main.css' />
 </head>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-    $(document).ready(function(){
-        // Initially hide all buttons
-        $("#punch_in").show();
-        $("#break_in").hide();
-        $("#break_out").hide();
-        $("#punch_out").hide();
 
-        // Function to handle Punch In button click
-        function Punch_in() {
-            $("#punch_in").hide();
-            $("#break_in").show();
-            $("#break_out").show();
-            $("#punch_out").show();
-        }
-
-        // Function to handle Break In button click
-        function Break_in() {
-            $("#punch_in").hide();
-            $("#break_in").hide();
-            $("#break_out").show();
-            $("#punch_out").show();
-        }
-
-        // Function to handle Break Out button click
-        function Break_out() {
-            $("#punch_in").hide();
-            $("#break_in").hide();
-            $("#break_out").hide();
-            $("#punch_out").show();
-        }
-
-        // Function to handle Punch Out button click
-        function Punch_out() {
-            $("#punch_in").hide();
-            $("#break_in").hide();
-            $("#break_out").hide();
-            $("#punch_out").hide();
-        }
-
-        // Attach event handlers to buttons
-        $(document).on("click", "#punch_in", Punch_in);
-        $(document).on("click", "#break_in", Break_in);
-        $(document).on("click", "#break_out", Break_out);
-        $(document).on("click", "#punch_out", Punch_out);
-    });
-</script>
-
-<?php
-// Fetch Employee Data
-$uid = $_SESSION['user_id'];
-
-$qry = "SELECT * FROM employee WHERE id='".$uid."'";
-$data = mysqli_query($conn, $qry);
-$emp_row = mysqli_fetch_array($data);
-
-$qry = "SELECT * FROM attendance WHERE emp_id='".$uid."'";
-$attendance_data = mysqli_query($conn, $qry);
-$attendance_emp_row = mysqli_fetch_array($attendance_data);
-
-// if (empty($attendance_emp_row['punchin_time'])) {
-    if (isset($_POST['punch_in'])) {
-        $punchin_time = date("Y-m-d H:i:s");
-
-        $q = "INSERT INTO attendance(`id`, `emp_id`, `punchin_time`) VALUES (NULL, '".$uid."', '".$punchin_time."')";
-        
-        $insert = mysqli_query($conn, $q);
-
-        if ($insert) {
-            // Redirect to the dashboard on successful insertion
-            echo '<script type="text/javascript">window.location.href="../dashboard/dashboard.php";</script>';
-        } else {
-            // Handle the case where the insertion fails
-            echo "Error: " . mysqli_error($conn);
-        }
-    }
-// } else {
-//     // If the user has already punched in, show an alert
-//     echo '<script>alert("You are already punched in.");</script>';
-// }
-?>
-
-                
 <body>
     <main class="main-content">
         <div class="conatiner-fluid content-inner mt-n5 py-0">
@@ -111,39 +122,43 @@ $attendance_emp_row = mysqli_fetch_array($attendance_data);
                             <div class="card-body d-flex justify-content-between align-items-center">
                                 <div class="card-title mb-0">
                                     <h4 class="mb-3">Calender</h4>
-                                    <form method="POST" action="" enctype="multipart/form-data">
-                                    <?php   
+                                    <?php
                                         if ($_SESSION['e_role'] == "user") {
                                             // Check if the user has already punched in
                                             if (empty($attendance_emp_row['punchin_time'])) {
                                                 ?>
-                                                <input type="submit" id="punch_in" name="punch_in" value="Punch In" class="btn btn-primary">
+                                                <form method="POST" action="" enctype="multipart/form-data">
+                                                    <input type="submit" id="punch_in" name="punch_in" value="Punch In" class="btn btn-primary">
+                                                </form>
                                                 <?php
-                                            } elseif (empty($attendance_emp_row['breakin_time']) && $attendance_emp_row['breakout_time'] == NULL) {
+                                            } elseif (empty($attendance_emp_row['breakin_time'])) {
                                                 ?>
-                                                <input type="submit" id="break_in" name="break_in" value="Break In" class="btn btn-primary">
+                                                <form method="POST" action="" enctype="multipart/form-data">
+                                                    <input type="submit" id="break_in" name="break_in" value="Break In" class="btn btn-primary">
+                                                </form>
                                                 <?php
-                                            } elseif ($attendance_emp_row['breakout_time'] == NULL) {
+                                            } elseif (empty($attendance_emp_row['breakout_time'])) {
                                                 ?>
-                                                <input type="submit" id="break_out" name="break_out" value="Break out" class="btn btn-primary">
+                                                <form method="POST" action="" enctype="multipart/form-data">
+                                                    <input type="submit" id="break_out" name="break_out" value="Break Out" class="btn btn-primary">
+                                                </form>
                                                 <?php
-                                            } else {
-                                                // User has already punched in, taken a break, and probably punched out
-                                                // Display a message or other actions
-                                                // echo '<p>You are already punched in and took a break.</p>';
+                                            } elseif (empty($attendance_emp_row['punchout_time']))  {
+                                                ?>
+                                                <form method="POST" action="" enctype="multipart/form-data">
+                                                    <input type="submit" id="punch_out" name="punch_out" value="Punch Out" class="btn btn-primary">
+                                                </form>
+                                                <?php
                                             }
                                         }
                                         ?>
 
-                                        </form>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>            
-                <!-- <input type="submit" id="break_in" value="break_in" class="btn btn-primary" onclick="Break_in()" name="Break-in">
-                <input type="submit" id="punch_out" value="punch_out" class="btn btn-primary" onclick="Punch_out()" name="Punch-out"> -->
-                
+               
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="row">
