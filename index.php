@@ -61,7 +61,7 @@
                            echo '<script type="text/javascript">window.location.href="dashboard/dashboard.php";</script>';
                         // header('location:employee.php');
               }
-              elseif( $row_id['e_role'] == 'employee')
+              elseif( $row_id['e_role'] == 'employee' || $row_id['e_role'] == 'Employee'|| $row_id['e_role'] == 'user' || $row_id['e_role'] == 'User' )
               {
                 $_SESSION['e_role']="user";
 
