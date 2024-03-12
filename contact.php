@@ -1,3 +1,7 @@
+<?php
+  include 'connection/connection.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -259,6 +263,20 @@
         }
 
 </style>
+
+
+<?php 
+if(isset($_POST['sub_btn1'])) {
+    $q = "INSERT INTO contact VALUES (NULL, '".$_POST['name']."', '".$_POST['email']."', '".$_POST['message']."')";
+    $insert = mysqli_query($conn, $q);
+  if($insert)
+  {
+    echo '<script>alert("Your message has been submited")</script>';
+    echo '<script type="text/javascript">window.location.href="contact.php";</script>';
+  }
+}
+?>
+
 <div class="background-container">
   
   <!-- Navigation bar -->
@@ -305,7 +323,7 @@
 
     <div class="contact-form">
         <h2>Send us a Message</h2>
-        <form id="contact-form">
+        <form id="contact-form" method="post">
             <label for="name">Name:</label>
             <input type="text" id="name" name="name" required>
 
@@ -314,8 +332,9 @@
 
             <label for="message">Message:</label>
             <textarea id="message" name="message" rows="4" required></textarea>
-
-            <button type="submit" id="submit-btn">Send Message</button>
+            
+            <input type="submit" name="sub_btn1" value="Send Message"  >
+            <!-- <button type="submit" id="submit-btn" name="sub_btn1">Send Message</button> -->
         </form>
     </div>
   </div>
