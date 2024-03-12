@@ -35,6 +35,8 @@
           if($_POST['pass']=="superadmin")
               {
                 $_SESSION['e_role']="admin";
+                
+                $_SESSION['user_id'] ="";
                 echo '<script type="text/javascript">window.location.href="dashboard/dashboard.php";</script>';
                 // header('location:employee.php');
               }
@@ -58,6 +60,8 @@
               if($row_id['e_role'] == 'admin')
               {
                 $_SESSION['e_role']="admin";
+                $_SESSION['user_id'] = $row_id['id'];
+
                            echo '<script type="text/javascript">window.location.href="dashboard/dashboard.php";</script>';
                         // header('location:employee.php');
               }

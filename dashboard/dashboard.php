@@ -16,7 +16,7 @@
 <div class="dashboard">
 		<?php
 
-			// include '../sidebar/sidebar.php';
+			include '../sidebar/sidebar.php';
 			include '../calender/calender.php';
 
 		?>   
