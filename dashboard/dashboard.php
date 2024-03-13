@@ -17,7 +17,7 @@
 		<?php
 
 			include '../sidebar/sidebar.php';
-			include '../calender/calender.php';
+			include '../punch/punch.php';
 
 		?>   
 	 <main class="main-content">
