@@ -4,11 +4,13 @@
 // Database connection
 include '../connection/connection.php';
 $uid = $_SESSION['user_id'];
-class Employee {
+class Employee
+{
     private $name;
     private $db;
 
-    public function __construct($name) {
+    public function __construct($name)
+    {
         $this->name = $name;
         $this->db = new mysqli("localhost", "root", "", "erpsystem");
 
@@ -17,7 +19,8 @@ class Employee {
         }
     }
 
-    public function punchIn() {
+    public function punchIn()
+    {
         $uid = $_SESSION['user_id'];
         $today_date = date("Y-m-d");
         // Check if the user has already punched in for today
@@ -41,7 +44,8 @@ class Employee {
         }
     }
 
-    public function punchOut($punchout_message) {
+    public function punchOut($punchout_message)
+    {
         $uid = $_SESSION['user_id'];
         // Update the punch out time in the database
         $punchout_time = date("Y-m-d H:i:s");
@@ -55,12 +59,13 @@ class Employee {
         }
     }
 
-    public function printPunches() {
+    public function printPunches()
+    {
         $uid = $_SESSION['user_id'];
         $today_date = date("Y-m-d");
         $sql = "SELECT * FROM attendance WHERE emp_id='$uid' AND DATE(punchin_time) = '$today_date' ORDER BY punchin_time DESC";
         $result = $this->db->query($sql);
-    
+
         if ($result && $result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
                 echo "Punch Type: " . ($row["punch_type"] ?? "") . ", Punch Time: " . ($row["punch_time"] ?? "") . "<br>";
@@ -69,7 +74,6 @@ class Employee {
             echo "No punches recorded for today.";
         }
     }
-    
 }
 
 // Example usage
@@ -86,25 +90,27 @@ if (isset($_POST['punch_in'])) {
 
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Punch In/Out</title>
 </head>
+
 <body>
     <main class="main-content">
         <div class="conatiner-fluid content-inner mt-n5 py-0">
             <div>
-            <?php
-            if ($_SESSION['e_role'] == "user") {
+                <?php
+                if ($_SESSION['e_role'] == "user") {
                 ?>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="card">
-                            <div class="card-body d-flex justify-content-between align-items-center">
-                                <div class="card-title mb-0">
-                                    <h4 class="mb-3">Punch In/Out</h4>
-                                    <?php
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-body d-flex justify-content-between align-items-center">
+                                    <div class="card-title mb-0">
+                                        <h4 class="mb-3">Punch In/Out</h4>
+                                        <?php
                                         // Check if the user has already punched in for the same date
                                         $check_query = "SELECT * FROM attendance WHERE emp_id = '$uid' AND DATE(punchin_time) = CURDATE()";
                                         $result = mysqli_query($conn, $check_query);
@@ -130,24 +136,24 @@ if (isset($_POST['punch_in'])) {
                                         }
                                         ?>
 
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <?php $employee->printPunches(); ?>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <?php $employee->printPunches(); ?>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 <?php
                 }
                 ?>
@@ -155,4 +161,5 @@ if (isset($_POST['punch_in'])) {
         </div>
     </main>
 </body>
+
 </html>
