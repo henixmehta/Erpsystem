@@ -31,7 +31,7 @@
                         alert("Email already registered. Please choose a different email.");
                     }
                      else {
-                        alert("Emails are valid. Proceed with the form submission.");
+                        // alert("Emails are valid. Proceed with the form submission.");
                         // You can submit the form or perform additional actions here
                     }
                 },

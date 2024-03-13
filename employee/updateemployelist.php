@@ -30,7 +30,37 @@
     }
    
    </style>
+      
+      <script>
+        function validateEmails() {
+            var email_check = document.getElementById('email').value;
+            var e_com_email_check = document.getElementById('c_email').value;
+
+            // AJAX request to check if the email exists on the server
+            $.ajax({
+                type: 'POST',
+                url: 'employee.php',
+                data: {email: email_check, c_email: e_com_email_check},
+                success: function(response) {
+                    if (response === "exists") {
+                        alert("Email already registered. Please choose a different email.");
+                    }
+                     else {
+                        alert("Emails are valid. Proceed with the form submission.");
+                        // You can submit the form or perform additional actions here
+                    }
+                },
+                error: function(){}
+                
+
+
+               
+            });
+            
+        }
+    </script>
 <?php 
+
                 
                 $pid = $_GET['id'];
                 
@@ -291,7 +321,7 @@
                          </fieldset>  
                               </fieldset> 
                               </div>
-                              <input type="submit" value="Update" class="btn btn-primary" name="sub_btn_update">
+                              <input type="submit" value="Update" class="btn btn-primary" onclick="validateEmails()" name="sub_btn_update">
                         </form>
                         
                      </div>
