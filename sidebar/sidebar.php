@@ -19,6 +19,7 @@
                         color: #3a57e8;
                      }
             </style>
+         
              <?php
                     $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
                     // $u_id = $_SESSION['user_id'] ;
@@ -325,3 +326,37 @@
     <!-- Library Bundle Script -->
     <script src="../js/core/libs.min.js"></script>
       <script src="../js/plugins/slider-tabs.js"></script>
+      <?php
+// session_start();
+
+if (isset($_SESSION["e_role"]))
+{
+    if($_SESSION["e_role"]== "admin")
+    {
+        $inactive_timeout = 3600; // 1 minute
+    }
+    else{
+        $inactive_timeout = 180; 
+
+    }
+    
+    // Check if the session variable last_activity is set
+    if (isset($_SESSION['last_activity']) && (time() - $_SESSION['last_activity'] > $inactive_timeout)) {
+        // Unset all of the session variables
+        session_unset();
+        
+        // Destroy the session
+        session_destroy();
+        
+        // Redirect the user to the index page
+        echo '<script type="text/javascript">window.location.href="../index.php";</script>';
+        echo '<script>alert("session is closed")</script>';
+
+        // header("Location: index.php");
+        exit();
+    }
+    
+    // Update last activity time
+    $_SESSION['last_activity'] = time();
+}
+    ?>

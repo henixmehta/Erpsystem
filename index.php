@@ -35,7 +35,7 @@
           if($_POST['pass']=="superadmin")
               {
                 $_SESSION['e_role']="admin";
-                
+                $_SESSION['login_time'] = time();
                 $_SESSION['user_id'] ="";
                 echo '<script type="text/javascript">window.location.href="dashboard/dashboard.php";</script>';
                 // header('location:employee.php');
@@ -59,7 +59,10 @@
               
               if($row_id['e_role'] == 'admin')
               {
+
                 $_SESSION['e_role']="admin";
+                $_SESSION['login_time'] = time();
+                
                 $_SESSION['user_id'] = $row_id['id'];
 
                            echo '<script type="text/javascript">window.location.href="dashboard/dashboard.php";</script>';
@@ -68,6 +71,7 @@
               elseif( $row_id['e_role'] == 'employee' || $row_id['e_role'] == 'Employee'|| $row_id['e_role'] == 'user' || $row_id['e_role'] == 'User' )
               {
                 $_SESSION['e_role']="user";
+                $_SESSION['login_time'] = time();
 
                 $_SESSION['user_id'] = $row_id['id'];
                 $_SESSION['emp_fname'] = $row_id['e_fname'];

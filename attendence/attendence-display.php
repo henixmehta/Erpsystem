@@ -44,26 +44,15 @@
                                                 <thead>
                                                     <tr class="ligth">
                                                         <th>
-                                                            ID
+                                                            id
                                                         </th>
                                                         <th>
-                                                            Emp name
+                                                           Punchin Time
                                                         </th>
                                                         <th>
-                                                            start date
+                                                            Punchout_Time
                                                         </th>
-                                                        <th>
-                                                            Last date
-                                                        </th>
-                                                        <th>
-                                                        leave_type
-                                                        </th>
-                                                        <th>
-                                                        reason
-                                                        </th>
-                                                        <th>
-                                                            Status
-                                                        </th>
+                                                       
 
                                                         <!-- set action -->
                                                         <?php
@@ -83,42 +72,23 @@
                                                       if($_SESSION['e_role']=="user")
                                                       {
 
-                                                      $q = "select * from leaves where emp_name = '".$_SESSION['emp_fname']."' " ;
+                                                      $q = "select * from attendance where emp_id = '".$_SESSION['user_id']."' " ;
                                                         $data=mysqli_query($conn,$q);
                                                         while($row=mysqli_fetch_array($data))
                                                         {
                                                             ?>
                                                         <tr>
-                                                        <td><?php echo $row['id']?></td>
-                                                        <td><?php echo $row['emp_name']?></td>
-                                                        <td><?php echo $row['s_date']?></td>
-                                                        <td><?php echo $row['e_date']?></td>                      
-                                                        <td><?php echo $row['leave_type']?></td>
-                                                        <td><?php echo $row['reason']?></td>                   
-                                                        <td>
-                                                            <?php 
-                                                                $status = $row['status'];
-                                                                if($status == "active" || $status == "Active" )
-                                                                {
-                                                            ?>
-                                                            <span class="badge bg-primary">Active</span>
-                                                            <?php
-                                                                }
-                                                                else
-                                                                {  
-                                                            ?>
-                                                                <span class="badge bg-danger">Inactive</span>
-                                                            <?php
-                                                                }
-                                                            ?>
-                                                        </td>
+                                                         <td><?php echo $row['id']?></td>
+                                                         <td><?php echo $row['punchin_time']?></td>
+                                                        <td><?php echo $row['punchout_time']?></td>               
+                                                        
                                                             <?php
                                                         }
                                                         
                                                       }
-                                                      else
+                                                      elseif($_SESSION['e_role']=="admin")
                                                       {     
-                                                          $q = "select * from leaves" ;
+                                                          $q = "select * from attendance" ;
                                                           $data=mysqli_query($conn,$q);
                                                           while($row=mysqli_fetch_array($data))
                                                           {
