@@ -48,9 +48,9 @@ $row_id = mysqli_fetch_array($data);
                             <?php
                             if ($row_id !== null) {
                                 // Now you can use $row_id to access user information
-                                echo '<h2 class="hearder"> ' . strtoupper($row_id['e_fname']) . ' ' . strtoupper($row_id['e_lname']) .' <br> ROLE:'.strtoupper($_SESSION['e_role']).
-                                '<div class="profile"> </div> '.
-                                '</h2>';
+                                echo '<h2 class="hearder"> ' . strtoupper($row_id['e_fname']) . ' ' . strtoupper($row_id['e_lname']) . ' <br> ROLE:' . strtoupper($_SESSION['e_role']) .
+                                    '<div class="profile"> </div> ' .
+                                    '</h2>';
                             } else {
                                 echo '<h1 class="hearder">@: SuperAdmin</h1>';
                             }
