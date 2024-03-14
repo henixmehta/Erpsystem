@@ -231,7 +231,7 @@
                                  </div>
                                  <div class="form-group">
                                        <label class="form-label">Team Name:</label>
-                                       <select class="selectpicker form-control" name="team_name" data-style="py-0" required>
+                                       <select class="selectpicker form-control" name="team_name" data-style="py-0" >
                                           <?php
                                           // Assuming $conn is your database connection object
                                           $t_query = "SELECT t_name, t_status FROM team";
