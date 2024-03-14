@@ -5,7 +5,7 @@
 include '../connection/connection.php';
 $uid = $_SESSION['user_id'];
 $tz = 'Asia/Kolkata';
- date_default_timezone_set($tz); 
+ $now=date_default_timezone_set($tz); 
 
 class Employee
 {
@@ -121,7 +121,7 @@ if (isset($_POST['punch_in'])) {
                                         if (mysqli_num_rows($result) == 0) {
                                             // User hasn't punched in for the same date, display the punch-in button
                                             echo '<form method="post" action="">
-                                                    <input type="submit" name="punch_in" value="Punch In">
+                                                    <input type="submit" class="btn btn-primary" name="punch_in" value="Punch In">
                                                 </form>';
                                         } else {
                                             // User has already punched in for the same date
@@ -129,8 +129,8 @@ if (isset($_POST['punch_in'])) {
                                             if ($row['punchout_time'] === NULL) {
                                                 // User has punched in but not punched out yet, display punch-out form
                                                 echo '<form method="post" action="">
-                                                        <input type="text" name="punchout_message" placeholder="Enter message about today\'s work" required>
-                                                        <input type="submit" name="punch_out" value="Punch Out">
+                                                        <input type="text" class="form-control" name="punchout_message" placeholder="Enter message about today\'s work" required>
+                                                        <input type="submit" class="btn btn-primary"  name="punch_out" value="Punch Out">
                                                     </form>';
                                             } else {
                                                 // User has already punched out for the same date, display a message
