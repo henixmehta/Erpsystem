@@ -27,7 +27,7 @@
                <div class="card">
                   <div class="card-header d-flex justify-content-between">
                      
-                     <h4 class="card-title">Teams List</h4>
+                     <h4 class="card-title">Project List</h4>
                     <a href="addclientproject.php"> <button class="btn btn-primary">Add</button></a>
                   </div>
                   <div class="card-body">         

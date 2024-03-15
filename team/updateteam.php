@@ -135,7 +135,7 @@ if (isset($_POST['sub_btn'])) {
                               
                               <div class="form-group col-md-15">
                                     <label class="form-label" for="image"> Team Image </label>
-                                    <input type="file" class="form-control" id="Degree" name="com_img" placeholder="Team Image"  required >
+                                    <input type="file" class="form-control" id="com_img" name="com_img" placeholder="Team Image"  required >
                                     <div><?php echo isset($row['t_img']) ? $row['t_img'] : ''; ?></div>
                               </div>
 
