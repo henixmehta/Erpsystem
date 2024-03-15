@@ -35,60 +35,85 @@ if (isset($_GET['id'])) {
 }
 
 // Check if the form is submitted
-if (isset($_POST['sub_btn'])) {
-    // Update team information in the database
-    $q = "UPDATE team SET t_name=?, t_project_name=?, t_des=?, t_emp=?, t_language=?, t_status=?, t_img=? WHERE id=?";
-    $stmt = mysqli_prepare($conn, $q);
-    mysqli_stmt_bind_param($stmt, "sssssssi", $_POST['tname'], $_POST['tpname'], $_POST['desc'], $_POST['ename'], $_POST['lang'], $_POST['tstatus'], $_FILES['com_img']['name'], $pid);
-    mysqli_stmt_execute($stmt);
+// if (isset($_POST['sub_btn'])) {
+//     // Update team information in the database
+//     $q = "UPDATE team SET t_name=?, t_project_name=?, t_des=?, t_emp=?, t_language=?, t_status=?, t_img=? WHERE id=?";
+//     $stmt = mysqli_prepare($conn, $q);
+//     mysqli_stmt_bind_param($stmt, "sssssssi", $_POST['tname'], $_POST['tpname'], $_POST['desc'], $_POST['ename'], $_POST['lang'], $_POST['tstatus'], $_FILES['com_img']['name'], $pid);
+//     mysqli_stmt_execute($stmt);
     
-      // Handle image upload if a file is selected
-      if (isset($_FILES["com_img"]) && $_FILES["com_img"]["error"] == 0) {
-        $targetDirectory = "../storage/team/";
-        $targetFile = $targetDirectory . basename($_FILES["com_img"]["name"]);
-        $uploadOk = 1;
-        $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
+//       // Handle image upload if a file is selected
+//       if (isset($_FILES["com_img"]) && $_FILES["com_img"]["error"] == 0) {
+//         $targetDirectory = "../storage/team/";
+//         $targetFile = $targetDirectory . basename($_FILES["com_img"]["name"]);
+//         $uploadOk = 1;
+//         $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
 
-        // Check if image file is a actual image or fake image
-        $check = getimagesize($_FILES["com_img"]["tmp_name"]);
-        if ($check !== false) {
-            // echo "File is an image - " . $check["mime"] . ".";
-            $uploadOk = 1;
-        } else {
-            echo "File is not an image.";
-            $uploadOk = 0;
-        }
+//         // Check if image file is a actual image or fake image
+//         $check = getimagesize($_FILES["com_img"]["tmp_name"]);
+//         if ($check !== false) {
+//             // echo "File is an image - " . $check["mime"] . ".";
+//             $uploadOk = 1;
+//         } else {
+//             echo "File is not an image.";
+//             $uploadOk = 0;
+//         }
 
-        // Check file size
-        if ($_FILES["com_img"]["size"] > 5000000) {
-            echo "Sorry, your file is too large.";
-            $uploadOk = 0;
-        }
+//         // Check file size
+//         if ($_FILES["com_img"]["size"] > 5000000) {
+//             echo "Sorry, your file is too large.";
+//             $uploadOk = 0;
+//         }
 
-        // Allow certain file formats
-        if ($imageFileType == "jpg" && $imageFileType == "png" && $imageFileType == "jpeg"
-            && $imageFileType == "gif") {
-            echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
-            $uploadOk = 0;
-        }
+//         // Allow certain file formats
+//         if ($imageFileType == "jpg" && $imageFileType == "png" && $imageFileType == "jpeg"
+//             && $imageFileType == "gif") {
+//             echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+//             $uploadOk = 0;
+//         }
 
-        // Check if $uploadOk is set to 0 by an error
-        if ($uploadOk == 0) {
-            echo "Sorry, your file was not uploaded.";
-        } else {
-            // if everything is ok, try to upload file
-            if (move_uploaded_file($_FILES["com_img"]["tmp_name"], $targetFile)) {
-                // echo "The file " . htmlspecialchars(basename($_FILES["com_img"]["name"])) . " has been uploaded.";
-            } else {
-                echo "Sorry, there was an error uploading your file.";
-            }
-        }
-    }
+//         // Check if $uploadOk is set to 0 by an error
+//         if ($uploadOk == 0) {
+//             echo "Sorry, your file was not uploaded.";
+//         } else {
+//             // if everything is ok, try to upload file
+//             if (move_uploaded_file($_FILES["com_img"]["tmp_name"], $targetFile)) {
+//                 // echo "The file " . htmlspecialchars(basename($_FILES["com_img"]["name"])) . " has been uploaded.";
+//             } else {
+//                 echo "Sorry, there was an error uploading your file.";
+//             }
+//         }
+//     }
 
  
-    // Redirect to team table page after updating
-    echo '<script type="text/javascript">window.location.href="teamtable.php";</script>';
-    exit();
+//     // Redirect to team table page after updating
+//     echo '<script type="text/javascript">window.location.href="teamtable.php";</script>';
+//     exit();
+// }
+     
+if (isset($_POST['sub_btn'])) {
+   // Update text fields in the database
+   $q = "UPDATE team SET t_name=?, t_project_name=?, t_des=?, t_emp=?, t_language=?, t_status=?, t_img=? WHERE id=?";
+   $stmt = mysqli_prepare($conn, $q);
+
+   // Check if image field is empty
+   if (!empty($_FILES['com_img']['name'])) {
+       mysqli_stmt_bind_param($stmt, "sssssssi", $_POST['tname'], $_POST['tpname'], $_POST['desc'], $_POST['ename'], $_POST['lang'], $_POST['tstatus'], $_FILES['com_img']['name'], $pid);
+   } else {
+       mysqli_stmt_bind_param($stmt, "sssssssi", $_POST['tname'], $_POST['tpname'], $_POST['desc'], $_POST['ename'], $_POST['lang'], $_POST['tstatus'], $row['t_img'], $pid);
+   }
+   mysqli_stmt_execute($stmt);
+   
+   // Handle image upload if a file is selected
+   if (!empty($_FILES["com_img"]["name"])) {
+      $targetDirectory = "../storage/clientproject/";
+      $targetFile = $targetDirectory . basename($_FILES["com_img"]["name"]);
+      $uploadOk = 1;
+      $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
+   }
+
+   echo '<script type="text/javascript">window.location.href="teamtable.php";</script>';
+   exit();
 }
 ?>
 <main class="main-content">
@@ -135,7 +160,7 @@ if (isset($_POST['sub_btn'])) {
                               
                               <div class="form-group col-md-15">
                                     <label class="form-label" for="image"> Team Image </label>
-                                    <input type="file" class="form-control" id="com_img" name="com_img" placeholder="Team Image"  required >
+                                    <input type="file" class="form-control" id="com_img" name="com_img" placeholder="Team Image"   >
                                     <div><?php echo isset($row['t_img']) ? $row['t_img'] : ''; ?></div>
                               </div>
 

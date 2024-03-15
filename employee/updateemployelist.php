@@ -267,7 +267,7 @@
                                     </div>
                                     <div class="form-group col-md-12">
                                           <label class="form-label" for="Degree"> Degree certificate </label>
-                                          <input type="file" class="form-control" id="Degree" name="degree" placeholder="Degree certificate" required>
+                                          <input type="file" class="form-control" id="Degree" name="degree" placeholder="Degree certificate" >
                                           <?php if (isset($row['e_deg'])) { ?>
                                              <div>Old image : <?php echo $row['e_deg']; ?></div>
                                              <input type="hidden" name="old_degree" value="<?php echo $row['e_deg']; ?>">
@@ -277,7 +277,7 @@
 
                                  <div class="form-group col-md-12">
                                        <label class="form-label" for="Resume">Resume: </label>
-                                       <input type="file" class="form-control" id="Resume" name="resume" placeholder="Resume" required>
+                                       <input type="file" class="form-control" id="Resume" name="resume" placeholder="Resume" >
 
                                        <?php
                                        // Check if $row is not null and if the 'e_resume' key exists in the array

@@ -47,7 +47,10 @@
                     
                     // Handle image upload if a file is selected
                     if (!empty($_FILES["com_img"]["name"])) {
-                        // Handle image upload
+                        $targetDirectory = "../storage/clientproject/";
+                                $targetFile = $targetDirectory . basename($_FILES["com_img"]["name"]);
+                                $uploadOk = 1;
+                                $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
                     }
                 
                     echo '<script type="text/javascript">window.location.href="clientproject.php";</script>';
