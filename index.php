@@ -79,7 +79,7 @@
                 echo '<script type="text/javascript">window.location.href="dashboard/dashboard.php";</script>';
                 // header('location:employee.php');
               }
-              elseif( $row_id['e_role'] == 'team manager' || $row_id['e_role'] == 'Team Manager'  )
+              elseif( $row_id['e_role'] == 'team manager' || $row_id['e_role'] == 'Team Manager' || $row_id['e_role'] == 'Manager' || $row_id['e_role'] == 'manager' )
               {
                 $_SESSION['e_role']="team manager";
                 $_SESSION['login_time'] = time();
