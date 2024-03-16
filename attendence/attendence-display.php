@@ -25,7 +25,7 @@ include '../connection/connection.php';
                     <div class="card">
                         <div class="card-header d-flex justify-content-between">
                             <h4 class="card-title">
-                                Attendence List
+                                Attendance List
                             </h4>
                         </div>
                         <div class="card-body">
