@@ -79,6 +79,17 @@
                 echo '<script type="text/javascript">window.location.href="dashboard/dashboard.php";</script>';
                 // header('location:employee.php');
               }
+              elseif( $row_id['e_role'] == 'team manager' || $row_id['e_role'] == 'Team Manager'  )
+              {
+                $_SESSION['e_role']="team manager";
+                $_SESSION['login_time'] = time();
+
+                $_SESSION['user_id'] = $row_id['id'];
+                $_SESSION['emp_fname'] = $row_id['e_fname'];
+                // $_SESSION['emp_lname'] = $row_id['e_lname'];
+                echo '<script type="text/javascript">window.location.href="dashboard/dashboard.php";</script>';
+                // header('location:employee.php');
+              }
                   }
                   else
                   {

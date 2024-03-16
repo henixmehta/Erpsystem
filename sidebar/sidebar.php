@@ -202,7 +202,11 @@ $row_id = mysqli_fetch_array($data);
                                     </li>
                                 </ul>
                             </li>
-
+                        <?php 
+                        }
+                        if($_SESSION['e_role'] == "admin"|| $_SESSION['e_role']="team manager")
+                        {
+                        ?>
 
                             <li class="nav-item">
                                 <a class="nav-link" href="../team/teamtable.php">
@@ -250,6 +254,8 @@ $row_id = mysqli_fetch_array($data);
                             </li>
                         <?php
                         }
+                        if($_SESSION['e_role'] != "team manager" )
+                        {
                         ?>
                         <li class="nav-item">
                             <a class="nav-link" data-bs-toggle="collapse" href="#sidebar-Attendence" role="button" aria-expanded="false" aria-controls="sidebar-Attendence">
@@ -308,6 +314,9 @@ $row_id = mysqli_fetch_array($data);
                                 </li>
                             </ul>
                         </li>
+                        <?php
+                        }
+                        ?>
                         <li class="nav-item">
                             <a class="nav-link" href="../logout.php">
                                 <i class="icon">
