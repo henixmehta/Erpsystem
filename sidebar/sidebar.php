@@ -38,6 +38,7 @@ $data = mysqli_query($conn, $q);
 $row_id = mysqli_fetch_array($data);
 
 ?>
+
 <main class="main-content">
     <div class="iq-navbar-header" style="height: 215px;">
         <div class="card col-md-12" style="margin-top:10px;">
@@ -48,9 +49,19 @@ $row_id = mysqli_fetch_array($data);
                             <?php
                             if ($row_id !== null) {
                                 // Now you can use $row_id to access user information
-                                echo '<h2 class="hearder"> ' . strtoupper($row_id['e_fname']) . ' ' . strtoupper($row_id['e_lname']) . ' <br> ROLE:' . strtoupper($_SESSION['e_role']) .
-                                    // '<div class="profile"> </div> ' .
+                                echo '<h2 class="hearder"> ' . strtoupper($row_id['e_fname']) . ' ' . strtoupper($row_id['e_lname'])  .
                                     '</h2>';
+                                    ?>
+                                     <li class="nav-item dropdown">
+                                    <a class="py-0 nav-link d-flex align-items-center" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <div class="caption ms-3 d-none d-md-block ">
+                                            <h6 class="mb-0 caption-title"><?php echo  strtoupper($row_id['e_fname']) . ''.  strtoupper($row_id['e_lname']) ; ?></h6>
+                                            <p class="mb-0 caption-sub-title"><?php echo 'ROLE:' . strtoupper($_SESSION['e_role']); ?></p>
+                                        </div>
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                        <li><a class="dropdown-item" href="../profile/profile.php?id=<?php echo $row_id['id']?>">Profile</a></li>
+                                   <?php
                             } else {
                                 echo '<h1 class="hearder">@: SuperAdmin</h1>';
                             }

@@ -86,7 +86,7 @@
                   // Update text fields in the database
 
 
-                  $enceipt_pass= $_POST['c_pass'];
+                  // $enceipt_pass= $_POST['c_pass'];
                   $q = "UPDATE employee SET 
                       e_fname='" . $_POST['f_name'] . "', e_lname='" . $_POST['l_name'] . "', e_role='" . $_POST['e_role'] . "', 
                       e_bdate='" . $_POST['e_bate'] . "', e_country='" . $_POST['country'] . "', e_state='" . $_POST['e_state'] . "', 
@@ -96,7 +96,7 @@
                       e_deg='" . (isset($_FILES['degree']) && $_FILES['degree']['error'] == 0 ? $_FILES['degree']['name'] : $_POST['old_degree']) . "', 
                       e_resume='" . (isset($_FILES['resume']) && $_FILES['resume']['error'] == 0 ? $_FILES['resume']['name'] : $_POST['old_resume']) . "', 
                       e_salary='" . $_POST['salary'] . "', 
-                   e_pwd='" . $enceipt_pass . "', e_status='" . $_POST['p_status'] . "' 
+                   e_pwd='" . $_POST['c_pass'] . "', e_status='" . $_POST['p_status'] . "' 
                       WHERE id='" . $pid . "'";
                   mysqli_query($conn, $q);
               
@@ -258,9 +258,7 @@
                                  <div class="form-group col-md-12">
                                     <label class="form-label" for="joindate">Joining Date:</label>
                                     <input type="date" class="form-control" id="joindate" name="e_joindate" value="<?php echo !empty($row['e_joindate']) ? $row['e_joindate'] : ''; ?>" required>
-                                 </div>
-
-                                                                     
+                                 </div>                              
                                        <div class="form-group col-md-12">
                                        <label class="form-label" for="Experience">Experience: </label>
                                        <input type="number" class="form-control" id="Experience" name="exp" placeholder="Experience in year/ month" value="<?php echo isset($row['e_exp']) ? $row['e_exp'] : ''; ?>" required>
