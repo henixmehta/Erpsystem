@@ -145,7 +145,7 @@ if (isset($_POST['punch_in'])) {
                         </div>
                     </div>
                 <?php
-                } else {
+                } elseif($_SESSION['e_role'] == "admin" || $_SESSION['e_role'] == "Manager" ) {
                 ?>
                     <div class="row">
                         <div class="col-lg-3">

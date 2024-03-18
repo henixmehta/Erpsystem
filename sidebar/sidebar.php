@@ -215,7 +215,7 @@ $row_id = mysqli_fetch_array($data);
                             </li>
                         <?php 
                         }
-                        if($_SESSION['e_role'] == "admin"|| $_SESSION['e_role']="team manager")
+                        if($_SESSION['e_role'] == "admin" || $_SESSION['e_role'] == "Manager")
                         {
                         ?>
 
@@ -265,7 +265,7 @@ $row_id = mysqli_fetch_array($data);
                             </li>
                         <?php
                         }
-                        if($_SESSION['e_role'] != "team manager" )
+                        if($_SESSION['e_role'] != "Manager" )
                         {
                         ?>
                         <li class="nav-item">

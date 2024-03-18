@@ -11,6 +11,7 @@
     <meta charset="UTF-8">
     <script src="/Erpsystem/js/jquery/3.7.1.min.js"></script>
     <link rel="stylesheet" href="css/login.css">
+    <title>Loginn page</title>
     <!-- Fontawesome CDN Link -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -68,7 +69,9 @@
                            echo '<script type="text/javascript">window.location.href="dashboard/dashboard.php";</script>';
                         // header('location:employee.php');
               }
-              elseif( $row_id['e_role'] == 'employee' || $row_id['e_role'] == 'Employee'|| $row_id['e_role'] == 'user' || $row_id['e_role'] == 'User' )
+           
+              
+              if( $row_id['e_role'] == 'employee' || $row_id['e_role'] == 'Employee'|| $row_id['e_role'] == 'user' || $row_id['e_role'] == 'User' )
               {
                 $_SESSION['e_role']="user";
                 $_SESSION['login_time'] = time();
@@ -79,9 +82,10 @@
                 echo '<script type="text/javascript">window.location.href="dashboard/dashboard.php";</script>';
                 // header('location:employee.php');
               }
-              elseif( $row_id['e_role'] == 'team manager' || $row_id['e_role'] == 'Team Manager' || $row_id['e_role'] == 'Manager' || $row_id['e_role'] == 'manager' )
+              
+              if( $row_id['e_role'] == 'Team Manager' || $row_id['e_role'] == 'Manager' ||  $row_id['e_role'] == 'team manager' )
               {
-                $_SESSION['e_role']="team manager";
+                $_SESSION['e_role']="Manager";
                 $_SESSION['login_time'] = time();
 
                 $_SESSION['user_id'] = $row_id['id'];
@@ -90,6 +94,7 @@
                 echo '<script type="text/javascript">window.location.href="dashboard/dashboard.php";</script>';
                 // header('location:employee.php');
               }
+              
                   }
                   else
                   {
