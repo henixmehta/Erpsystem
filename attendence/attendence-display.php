@@ -2,6 +2,8 @@
 include '../sidebar/sidebar.php';
 include '../connection/connection.php';
 
+$tz = 'Asia/Kolkata';
+$now = date_default_timezone_set($tz);
 ?>
 <html>
 
@@ -12,11 +14,12 @@ include '../connection/connection.php';
     <!-- <link rel="stylesheet" href="../css/main.min.css">
         <link rel="stylesheet" href="../sidebar.css"> -->
 </head>
-<?php 
- $q_emp = "select * from employee" ;
- $data_emp =mysqli_query($conn,$q_emp);
- $row_emp=mysqli_fetch_array($data_emp)
+<?php
+$q_emp = "select * from employee";
+$data_emp = mysqli_query($conn, $q_emp);
+$row_emp = mysqli_fetch_array($data_emp)
 ?>
+
 <body>
     <main class="main-content">
         <div class="conatiner-fluid content-inner mt-n5 py-0">
@@ -59,8 +62,8 @@ include '../connection/connection.php';
                                             <tbody>
                                                 <?php
                                                 if ($_SESSION['e_role'] == "user") {
-
-                                                    $q = "select * from attendance where emp_id = '" . $_SESSION['user_id'] . "' ";
+                                                    $today_date = date("Y-m-d");
+                                                    $q = "select * from attendance where emp_id = '" . $_SESSION['user_id'] . "' "; //c_date = '$today_date'
                                                     $data = mysqli_query($conn, $q);
                                                     while ($row = mysqli_fetch_array($data)) {
                                                 ?>
@@ -77,7 +80,7 @@ include '../connection/connection.php';
                                                     while ($row = mysqli_fetch_array($data)) {
                                                         ?>
                                                         <tr>
-                                                            <td><?php echo $row_emp['e_fname'] ." ". $row_emp['e_lname']  ?></td>
+                                                            <td><?php echo $row['emp_id'] ?></td>
                                                             <td><?php echo $row['c_date'] ?></td>
                                                             <td><?php echo $row['punchin_time'] ?></td>
                                                             <td><?php echo $row['punchout_time'] ?></td>

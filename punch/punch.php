@@ -5,7 +5,7 @@
 include '../connection/connection.php';
 $uid = $_SESSION['user_id'];
 $tz = 'Asia/Kolkata';
- $now=date_default_timezone_set($tz); 
+$now = date_default_timezone_set($tz);
 
 class Employee
 {
@@ -134,7 +134,7 @@ if (isset($_POST['punch_in'])) {
                                                     </form>';
                                             } else {
                                                 // User has already punched out for the same date, display a message
-                                                echo "You have already punched out for today.";
+                                                echo  "<h4>Punchin Time:</h4>" . $row['punchin_time'] . "<br><br><h4>Punchout Time:</h4>" . $row['punchout_time'] . "<br><br><b>You have already punched out for today.</b>";
                                             }
                                         }
                                         ?>
@@ -145,7 +145,7 @@ if (isset($_POST['punch_in'])) {
                         </div>
                     </div>
                 <?php
-                } elseif($_SESSION['e_role'] == "admin" || $_SESSION['e_role'] == "Manager" ) {
+                } elseif ($_SESSION['e_role'] == "admin" || $_SESSION['e_role'] == "Manager") {
                 ?>
                     <div class="row">
                         <div class="col-lg-3">
