@@ -28,8 +28,7 @@
                         <div class="card-header d-flex justify-content-between">
 
                            <h4 class="card-title">Feedback List</h4>
-                           <a href="addteam.php"> <button class="btn btn-primary">Add</button></a>
-                        </div>
+                          </div>
                         <div class="card-body">
                            <form method="POST" action="" id="searchForm" class="row">
                               <div class="form-group col-md-6">
