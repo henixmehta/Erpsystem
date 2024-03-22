@@ -37,25 +37,41 @@ if (isset($_GET['id'])) {
 
      
 if (isset($_POST['sub_btn'])) {
+
+   $project_file = $_FILES['com_img']['name'];
+
+   // Specify the directory where you want to store the files
+   $upload_directory = '../storage/team/';
+
+   // Create the full path for the uploaded files
+   $project_target_path = $upload_directory . $project_file;
+
+   // Move the uploaded files to the specified directory
+   move_uploaded_file($_FILES['com_img']['tmp_name'], $project_target_path);
+
+
+
+
+
    // Update text fields in the database
    $q = "UPDATE team SET t_name=?, t_project_name=?, t_des=?, t_emp=?, t_language=?, t_status=?, t_img=? WHERE id=?";
    $stmt = mysqli_prepare($conn, $q);
 
    // Check if image field is empty
    if (!empty($_FILES['com_img']['name'])) {
-       mysqli_stmt_bind_param($stmt, "sssssssi", $_POST['tname'], $_POST['tpname'], $_POST['desc'], $_POST['ename'], $_POST['lang'], $_POST['tstatus'], $_FILES['com_img']['name'], $pid);
+       mysqli_stmt_bind_param($stmt, "sssssssi", $_POST['tname'], $_POST['tpname'], $_POST['desc'], $_POST['ename'], $_POST['lang'], $_POST['tstatus'], $project_file, $pid);
    } else {
        mysqli_stmt_bind_param($stmt, "sssssssi", $_POST['tname'], $_POST['tpname'], $_POST['desc'], $_POST['ename'], $_POST['lang'], $_POST['tstatus'], $row['t_img'], $pid);
    }
    mysqli_stmt_execute($stmt);
    
-   // Handle image upload if a file is selected
-   if (!empty($_FILES["com_img"]["name"])) {
-      $targetDirectory = "../storage/clientproject/";
-      $targetFile = $targetDirectory . basename($_FILES["com_img"]["name"]);
-      $uploadOk = 1;
-      $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
-   }
+   // // Handle image upload if a file is selected
+   // if (!empty($_FILES["com_img"]["name"])) {
+   //    $targetDirectory = "../storage/clientproject/";
+   //    $targetFile = $targetDirectory . basename($_FILES["com_img"]["name"]);
+   //    $uploadOk = 1;
+   //    $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
+   // }
 
    echo '<script type="text/javascript">window.location.href="teamtable.php";</script>';
    exit();
