@@ -84,12 +84,12 @@ if (isset($_POST['sub_btn1'])) {
                                                     
                                                     <?php
                                                     // Assuming $conn is your database connection object
-                                                    $query = "SELECT e_fname,e_lname, e_status FROM employee";
+                                                    $query = "SELECT e_fname, e_status FROM employee";
                                                     $result = mysqli_query($conn, $query);
                                                     if(mysqli_num_rows($result) > 0) {
                                                         while($row = mysqli_fetch_assoc($result)) {
                                                             if($row['e_status'] == "active" || $row['e_status'] == "Active") {
-                                                                echo "<option>".$row['e_fname']." ".$row['e_lname']."</option>";
+                                                                echo "<option>".$row['e_fname']."</option>";
                                                             }
                                                         }
                                                     }
