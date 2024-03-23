@@ -364,10 +364,10 @@ $row_id = mysqli_fetch_array($data);
     // session_start();
 
     if (isset($_SESSION["e_role"])) {
-        if ($_SESSION["e_role"] == "admin" || $_SESSION['e_role'] = "Manager") {
-            $inactive_timeout = 3600; 
+        if ($_SESSION["e_role"] == "admin") {
+            $inactive_timeout = 3600; // 1 minute
         } else {
-            $inactive_timeout = 250;
+            $inactive_timeout = 300;
         }
 
         // Check if the session variable last_activity is set
