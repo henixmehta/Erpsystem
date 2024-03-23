@@ -24,6 +24,8 @@ if (isset($_GET['id'])) {
 // Handle the form submission
 if (isset($_POST['sub_btn1'])) {
     // $emp_id = $_SESSION['user_id']; 
+    $emp_name = $_POST['emp_name'];
+
        $s_date = $_POST['s_date'];
         $e_date = $_POST['e_date'];
         $l_type = $_POST['l_type'];
@@ -31,7 +33,7 @@ if (isset($_POST['sub_btn1'])) {
         $status = $_POST['status'];
 
     // Update existing holiday
-    $q = "UPDATE leaves SET  s_date='$s_date', e_date='$e_date', leave_type='$l_type', reason='$reason', status='$status' WHERE id='$leave_id'";
+    $q = "UPDATE leaves SET emp_name='$emp_name', s_date='$s_date', e_date='$e_date', leave_type='$l_type', reason='$reason', status='$status' WHERE id='$leave_id'";
 
     $update = mysqli_query($conn, $q);
 
@@ -82,12 +84,12 @@ if (isset($_POST['sub_btn1'])) {
                                                     
                                                     <?php
                                                     // Assuming $conn is your database connection object
-                                                    $query = "SELECT e_fname, e_status FROM employee";
+                                                    $query = "SELECT e_fname,e_lname, e_status FROM employee";
                                                     $result = mysqli_query($conn, $query);
                                                     if(mysqli_num_rows($result) > 0) {
                                                         while($row = mysqli_fetch_assoc($result)) {
                                                             if($row['e_status'] == "active" || $row['e_status'] == "Active") {
-                                                                echo "<option>".$row['e_fname']."</option>";
+                                                                echo "<option>".$row['e_fname']." ".$row['e_lname']."</option>";
                                                             }
                                                         }
                                                     }
