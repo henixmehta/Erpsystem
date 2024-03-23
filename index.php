@@ -70,7 +70,7 @@ if (!empty($_SESSION['e_role'])) {
           // header('location:employee.php');
         }
 
-        if ($row_id['e_role'] == 'Team Manager' || $row_id['e_role'] == 'Manager' ||  $row_id['e_role'] == 'team manager') {
+        if ($row_id['e_role'] == 'Team Manager' || $row_id['e_role'] == 'Manager' || $row_id['e_role'] == 'manager' ||  $row_id['e_role'] == 'team manager') {
           $_SESSION['e_role'] = "Manager";
           $_SESSION['login_time'] = time();
 
