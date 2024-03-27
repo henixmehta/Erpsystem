@@ -63,7 +63,7 @@ $row_id = mysqli_fetch_array($data);
                                         <a class="py-0 nav-link d-flex align-items-center" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                             <div class="caption ms-3 d-none d-md-block ">
                                                 <h6 class="mb-0 caption-title"><?php echo  strtoupper($row_id['e_fname']) . '' .  strtoupper($row_id['e_lname']); ?></h6>
-                                                <p class="mb-0 caption-sub-title"><?php echo 'ROLE:' . strtoupper($_SESSION['e_role']); ?></p>
+                                                <p class="mb-0 caption-sub-title"><?php echo 'ROLE:' . strtoupper($row_id['e_role']); ?></p>
                                             </div>
                                         </a>
                                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
