@@ -47,7 +47,7 @@ if (!empty($_SESSION['e_role'])) {
       if ($row_check_login > 0) {
         $row_id = mysqli_fetch_array($data);
 
-        if ($row_id['e_role'] == 'admin') {
+        if ($row_id['e_role'] == 'admin' || $row_id['e_role'] == 'Admin') {
 
           $_SESSION['e_role'] = "admin";
           $_SESSION['login_time'] = time();
