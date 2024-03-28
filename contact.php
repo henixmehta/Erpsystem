@@ -136,81 +136,98 @@
           background-color: #0056b3;
         }
         /* navbar */
-        a {
-          text-decoration: none;
-          color: black;
+       
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            align-items: center;
         }
 
-        .navbar {
-          height: 53px;
-          padding: 27px;
-          background-color: rgb(255 255 255 / 2%) !important
-        }
+          .navbar {
+            height: 53px;
+            padding-left: 147px;
+            background-color: rgb(255 255 255 / 2%) !important
+          }
 
-        .navbar-light .navbar-brand {
-          color: rgb(0 173 255 / 90%);
-        }
+          .navbar-light .navbar-brand {
+            color: rgb(0 173 255 / 90%);
+          }
 
-        .navbar a.nav-link {
-          color: rgb(0 173 255 / 100%) !important;
-        }
+          .navbar-toggler {
+                padding: 1.25rem 0.75rem;
+                font-size: 1.25rem;
+                line-height: 1;
+                background-color: transparent;
+                border: 1px solid transparent;
+                border-radius: 0.25rem;
+                transition: box-shadow .15s ease-in-out;
+            }
+          .navbar a.nav-link {
+            color: rgb(0 173 255 / 100%) !important;
+          }
 
-        .navbar a {
-          font-size: 14px;
-          font-weight: bold;
-          font-family: 'Bell MT';
-          text-transform: uppercase;
-          text-decoration: none;
-        }
-        
-        .navbar a:hover {
-            color: darkblue; 
-        }
+          .navbar a {
+            font-size: 14px;
+            font-weight: bold;
+            font-family: 'Bell MT';
+            text-transform: uppercase;
+            text-decoration: none;
+          }
 
-        .navbar .dropdown-menu .dropdown-item:focus {
-          color: black;
-          background-color: transparent;
-        }
+          a {
+            text-decoration: none;
+            color: black;
+          }
 
-        .nav-item {
-          margin-right: 10px;
-        }
+          .navbar a:hover {
+            color: darkblue; /* Change color on hover */
+          }
 
-        .logo_span {
-          font-size: 24px;
-          font-weight: bold;
-          font-family: 'Bell MT';
-          text-transform: capitalize;
-          display: inline-block;
-          margin-top: 10px;
-        }
+          .navbar .dropdown-menu .dropdown-item:focus {
+            color: black;
+            background-color: transparent;
+          }
 
-        .search-form {
-          margin-right: 20px;
-          margin-top: 10px;
-        }
+          .nav-item {
+            margin-right: 10px;
+          }
 
-        .navbar-brand {
-          margin-right: 10px;
-          width: 40px;
-          height: 40px;
-          border-radius: 90%;
-        }
+          .logo_span {
+            font-size: 24px;
+            font-weight: bold;
+            font-family: 'Bell MT';
+            text-transform: capitalize;
+            display: inline-block;
+            margin-top: 10px;
+          }
 
-        .account-dropdown {
-          margin-left: 20px;
-        }
+          .search-form {
+            margin-right: 20px;
+            margin-top: 10px;
+          }
 
-        .navbar a.nav-link:hover,
-        .navbar .dropdown-item:hover {
-          color: #555;
-          text-decoration: none;
-        }
+          .navbar-brand {
+            margin-right: 10px;
+            width: 40px;
+            height: 40px;
+            border-radius: 90%;
+          }
 
-        .navbar a:hover {
-            color: #555 !important; 
-        }
+          .account-dropdown {
+            margin-left: 20px;
+          }
 
+          .navbar a.nav-link:hover,
+          .navbar .dropdown-item:hover {
+            color: #555;
+            text-decoration: none;
+          }
+
+          .navbar a:hover {
+              color: #555 !important; 
+          }
         /* size */
         @media (max-width: 767px) {
         .navbar-brand {
