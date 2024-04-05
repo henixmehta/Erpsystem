@@ -32,7 +32,7 @@ class Employee
 
         if ($result->num_rows > 0) {
             // User has already punched in today
-            echo "You have already punched in for today.";
+            echo "<script>alert('You have already punched in for today.');</script>";
         } else {
             // User hasn't punched in today, proceed with insertion
             $punchin_time = date("Y-m-d H:i:s");
@@ -40,7 +40,8 @@ class Employee
             $insert = $this->db->query($insert_query);
 
             if ($insert) {
-                echo "Punch in successful.";
+                echo "<script>alert('Punch in successful.');</script>";
+                
             } else {
                 echo "Error: " . $this->db->error;
             }
@@ -129,8 +130,10 @@ if (isset($_POST['punch_in'])) {
                                             if ($row['punchout_time'] === NULL) {
                                                 // User has punched in but not punched out yet, display punch-out form
                                                 echo '<form method="post" action="">
-                                                        <input type="text" class="form-control" name="punchout_message" placeholder="Enter message about today\'s work" required>
-                                                        <input type="submit" class="btn btn-primary"  name="punch_out" value="Punch Out">
+                                                    <textarea class="form-control" name="punchout_message" placeholder="Enter message about todays work" required style="width: 600px;"></textarea>
+                                                        <div class="col-md-2">
+                                                            <input type="submit" class="btn btn-primary"  name="punch_out" value="Punch Out">
+                                                        </div>
                                                     </form>';
                                             } else {
                                                 // User has already punched out for the same date, display a message

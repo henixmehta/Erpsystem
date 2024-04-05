@@ -784,9 +784,9 @@
             <div class="col-sm footer-column">
               <h5>Follow Us</h5>
               <ul>
-                <li><a href="#">Facebook</a></li>
-                <li><a href="#">Twitter</a></li>
-                <li><a href="#">LinkedIn</a></li>
+                <li><a href="https://www.facebook.com/profile.php?id=61556898087092">Facebook</a></li>
+                <li><a href="https://www.instagram.com/gift._galaxy/?hl=en">Facebook</a></li>
+                <li><a href="https://in.linkedin.com/in/henix-mehta-63ab06256">LinkedIn</a></li>
               </ul>
             </div>
           </div>
