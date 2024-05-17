@@ -69,6 +69,7 @@
                $checkEmailSql = "SELECT * FROM employee WHERE e_email = '$email_check' OR e_com_email = '$com_email_check'";
                $emailResult = mysqli_query($conn, $checkEmailSql);
 
+
                if ($emailResult->num_rows > 0) {
                   echo '<script>alert("exists");</script>';
                } else {
@@ -93,6 +94,13 @@
                   $c_pass = $_POST['c_pass'];
                   $status = $_POST['status'];
 
+
+
+                  // $check_role_query = "SELECT id FROM role WHERE id = ?";
+                  // $stmt = $conn->prepare($check_role_query);
+                  // $stmt->bind_param("i", $e_role);
+                  // $stmt->execute();
+                  // $result = $stmt->get_result();
 
                   // File upload handling
                   $degree_file = $_FILES['degree']['name'];
@@ -162,24 +170,20 @@
                                        <div class="form-group">
                                           <label class="form-label">Employee Role:</label>
                                           <select class="selectpicker form-control" name="e_role" data-style="py-0" required>
-
                                              <?php
                                              // Assuming $conn is your database connection object
-                                             $query = "SELECT role_name, r_status FROM role";
+                                             $query = "SELECT id, role_name, r_status FROM role";
                                              $result = mysqli_query($conn, $query);
                                              if (mysqli_num_rows($result) > 0) {
                                                 while ($row = mysqli_fetch_assoc($result)) {
-                                                   if ($row['r_status'] == "active" || $row['t_status'] == "Active") {
-                                                      echo "<option>" . $row['role_name'] . "</option>";
+                                                   if ($row['r_status'] == "active") {
+                                                      echo "<option value='" . $row['id'] . "'>" . $row['role_name'] . "</option>";
                                                    }
                                                 }
                                              }
                                              ?>
                                           </select>
                                        </div>
-
-
-
                                        <div class="form-group col-md-12">
                                           <label class="form-label" for="bdate">bdate:</label>
                                           <input type="date" class="form-control" name="e_bate" id="bdate" placeholder="Enter your Birthday" required>

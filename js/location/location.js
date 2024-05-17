@@ -1,47 +1,61 @@
 $(document).ready(function() {
+    // When a country is selected, load states
     $('#country').change(function() {
-        loadState($(this).find(':selected').val());
+        var countryId = $(this).val();
+        if (countryId !== '') {
+            loadStates(countryId);
+            $('#state').prop('disabled', false).html('<option value="">Loading...</option>');
+        } else {
+            $('#state').prop('disabled', true).html('<option value="">Select State</option>');
+            $('#city').prop('disabled', true).html('<option value="">Select City</option>');
+        }
     });
 
+    // When a state is selected, load cities
     $('#state').change(function() {
-        loadCity($(this).find(':selected').val());
+        var stateId = $(this).val();
+        if (stateId !== '') {
+            loadCities(stateId);
+            $('#city').prop('disabled', false).html('<option value="">Loading...</option>');
+        } else {
+            $('#city').prop('disabled', true).html('<option value="">Select City</option>');
+        }
     });
 
-    // init the countries
-    loadCountry();
+    // Load countries when the page loads
+    loadCountries();
 });
 
-function loadCountry() {
+function loadCountries() {
     $.ajax({
-        type: "POST",
+        type: "GET",
         url: "ajax.php",
-        data: "get=country"
-    }).done(function(result) {
-        console.log("Country Response:", result);
-        $("#country").append(result);
+        data: "action=get_countries",
+        success: function(response) {
+            $('#country').html(response);
+        }
     });
 }
 
-function loadState(countryId) {
-    $("#state").children().remove();
+function loadStates(countryId) {
     $.ajax({
-        type: "POST",
+        type: "GET",
         url: "ajax.php",
-        data: "get=state&countryId=" + countryId
-    }).done(function(result) {
-        console.log("State Response:", result);
-        $("#state").append(result);
+        data: "action=get_states&country_id=" + countryId,
+        success: function(response) {
+            $('#state').html(response);
+        }
     });
 }
 
-function loadCity(stateId) {
-    $("#city").children().remove();
+function loadCities(stateId) {
     $.ajax({
-        type: "POST",
+        type: "GET",
         url: "ajax.php",
-        data: "get=city&stateId=" + stateId
-    }).done(function(result) {
-        console.log("City Response:", result);
-        $("#city").append(result);
+        data: "action=get_cities&state_id=" + stateId,
+        success: function(response) {
+            $('#city').html(response);
+        }
     });
 }
+
